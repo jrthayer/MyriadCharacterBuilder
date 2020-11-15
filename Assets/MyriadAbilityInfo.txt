@@ -1,0 +1,2858 @@
+=====================
+DEX
+=====================
+*Light Arsenal
+Info    Increase your weapon tier mastery by 1.
+This applies to Light weapons and Ranged weapons.
+Skill+1 Increase your weapon tier mastery by 1.
+This applies to Light weapons and Ranged weapons.
+
+*Accuracy
+Info    +4 Accuracy
+Skill+1 +4 Accuracy
+
+*[Tier1]
+
+*Risk
+Info    Gain 2 Adrenaline at the start of every Round instead of 1.
+-2 total Armor (Can go Negative causing bonus damage to be dealt)
+Skill+1 Gain +1 more Adrenaline
+-3 more Armor
+
+*Sneak Attack
+Info    When attacking with a weapon from stealth, during a surprise round before the target has acted, or while flanking an enemy you gain 'Sneak Attack'.
+Sneak attack: +1dDEX
+
+Sneak attack deals the same damage type as your weapon
+Skill+1 Sneak Attack: +2dDEX
+
+*Dodge Roll
+Info    Your Step gains +1 Move
+Gain +1 Move
+Skill+1 Your Step gains +1 Move
+Gain +1 Move
+
+*Accuracy+
+Info    +12 Accuracy 
+Skill+1 +10 Accuracy 
+All weapons you carry gain the 'Quick' tag
+
+*[Tier2]
+
+*Medium Attire
+Info    You can wear Medium Attire
+
+*Reactionary
+Info    +5 to Initiative
+
+*Light Arsenal
+Info    Increase your weapon tier mastery by 1.
+This applies to Light weapons and Ranged weapons.
+Skill+1 Increase your weapon tier mastery by 1.
+This applies to Light weapons and Ranged weapons.
+
+*Disable
+Activate    Automatically succeed at disabling Complexity Tier 1 locks.
+Roll DEX for additional effects.
+7+  If the lock was for a door,
+Nobody will see you enter the room.
+Automatically succeed at a Stealth check for entering the room and hiding.
+10+ You can automatically do this to the next
+lock you encounter today.
+Action  Move or Attack
+Focus   1
+Stat    DEX
+Skill+1 +1 Complexity Lock is automatically Succeeded
+Skill+2 +1 Complexity Lock is automatically Succeeded
+
+*Thrill of the Kill
+Info    Gain +1 Adrenaline when you Slay an enemy with a Critical Hit
+
+*Haste
+Action  Free, Once per turn
+Adrenaline  1
+Info    Apply 1 Haste to yourself.
+
+(Haste grants +1 Move which decays at the end of every turn)
+(Haste removes an equal amount of Slow)
+Skill+1 You may use Haste multiple times per turn
+
+*Accuracy++
+Info    +10 Accuracy
+Skill+1 +10 Accuracy
+Skill+2 +10 Accuracy
+Skill+3 +10 Accuracy
+
+*Technique
+Info    Do not Provoke Attacks of Opportunity when performing a combat maneuver of your choice when you select this skill.
+Skill+1 Another choice of Combat Maneuver
+
+*[Tier3(Signature Skill)]
+
+*Double
+Info    Take an additional turn
+Adrenaline  8
+Skill+1 -2 Adrenaline Cost
+
+*Patience
+Info    Delay costs 0 Adrenaline
+Skill+1 If you act last on Initiative,
+You may set yourself anywhere on Initiative
+at the beginning of the next round.
+
+*Quick Attack
+Info    Make a single weapon attack that deals 1 damage
+Action  Free
+Adrenaline  3
+
+*Barrage
+Info    As a reaction to hitting a target, Divide a single weapon attack's damage by 3 instead of damaging the original target. Deal the split damage to 3 unique targets within range of your weapon.
+Skill+1 Deal the damage to 4 unique targets
+Action  Reaction
+Adrenaline  3
+
+*[Tier4(Subtlety)]
+
+*Stealth Mastery
+Info    Carried light sources do not count agaisnt you while you are using Stealth
+Skill+1 Automatically succeed Tier 1 Stealth Checks
+
+*Clutch
+Info    When you are the last of your allies who is concious in combat (not the only one participating in it),
+Gain 4 Move and +5 damage for one turn.
+
+This may only apply once per combat.
+
+*Shadow Blade
+Info    Your melee attacks have a chance to extinguish all light sources on the target of your attack.
+Roll DEX to determine success.
+Skill+1 You extinguish all light sources within 45ft on success.
+
+*Assassinate
+Info    Make a single attack with 1 weapon.
+Multiply the total damage dealt by 2x
+
+If it is a Dagger,
+Multiply damage by 3x
+
+If the attack misses, refund the adrenaline spent.
+If the attack critically hits, the Crit Multiplier is added after the Assassinate multiplication.
+Action  Attack
+Adrenaline  6
+Skill+1 -1 Adrenaline Cost
+
+*Perfected Trap
+Info    All traps you place or create deal +2 Damage of their damage type
+Skill+1 +2 Damage
+
+*Quick Placement
+Info    All consumeable items in your inventory gain the 'Quick' tag.
+
+Skill+1 As a reaction,
+You may activate a consumeable item on the ground that creates a tile or tiles at any part of a Step action.
+It is placed on any 1 tile you pass over, 
+or multiple if the item would normally create more than 1.
+(For example, to leave a trail of Caltrops)
+
+*Disarm++
+Info    You do not provoke Attacks of Opportunity when you use the Disarm maneuver.
+
+On a 10+ Success,
+You knock the weapon 2 Tiles away from the foe in a direction of your choice.
+Skill+1 Disarm can also be used during combat to take any item from a target that is not secured inside a bag or not being held.
+You may, however, disarm them of the entire bag by cutting the straps, for example.
+When the item or object is removed from the target it follows the same rules as if it were a dropped weapon.
+Skill+2 When you disarm you may choose to equip the disarmed item 
+as long as you have the open hands required to wield it.
+Skill+3 On a 10+ Success,
+whatever was Disarmed may travel an additional 1 Tile and target creatures as a throwing knife.
+
+*Dirty Trick++
+Info    You do not provoke Attacks of Opportunity when you use the Dirty Trick maneuver.
+Skill+1 Dirty trick always lasts +1 Round
+
+*Primed Object
+Info    Trap an Object so that when it is destroyed, interacted with, or deals Splat damage it Triggers.
+Enemies are unaware of this effect if you were not visible to any when you created it. 
+If a creature inspects the object it uses your Stealth check.
+
+The trap itself is small sized and must fit onto or into the Primed Object.
+
+
+When triggered,
+All tiles adjacent to the trap are dealt 5d4 Fire damage.
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Full-Action
+Range   Touch
+Wealth  1
+Skill+1 All targets adjacent to the triggered trap become Confused for 1 Round
+Skill+2 +2d4 Fire Damage
+Skill+3 Deals 2x damage if the target was unaware of the Primed Object and activates it themselves.
+
+*Knockout
+Info    All enemies have +1 resistance to being knocked prone by you.
+Anyone you knock Prone is instead considered to have the Sleep status.
+Skill+1 Gain +1 damage and +1 push against targets with the Sleep status
+
+*Quick Dodge
+Info    If you successfully dodge a melee attack,
+you may attack with a Light weapon one time.
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 After dodging you may attack with any weapon
+Skill+2 After dodging and attacking you may immediately use a Step
+
+*Patience
+Info    Gain the Precision status when attacking an enemy who was unware of your presence
+(+0.5 Crit Multiplier which lasts for 1 critical hit)
+Skill+1 Gain +1 Adrenaline on a turn where you use no Action
+Skill+2 Gain +1 Adrenaline on a turn where you use no Action
+
+*Squad Stealth
+Info    When you stealth,
+one ally may come with you.
+You make 1 stealth check for the both of you.
+Skill+1 All party members may follow
+Skill+2 Auto succeed at Complexity tier +1 Stealth Checks
+
+*Sleight of Hand
+Focus   2
+Info    When a target is unaware of your presence while you are within 1 tile of them,
+you may steal an item from them that is not stowed away in a closed bag with garaunteed success.
+Skill+1 You may place an item on this target without them noticing.
+If it is something like a bomb or poison that requires activation, it can automatically activate
+in a set number of turns that you decide when you place it.
+The item will always activate on your turn.
+Skill+2 An item placed on an enemy is twice as effective against this specific target.
+Skill+3 -1 Focus Cost
+
+*[Tier4(Finesse)]
+
+*Light Weaponry
+Info    +8 Accuracy with Light weapons +1 Damage with Daggers
+Skill+1 +8 Accuracy with Light weapons
+
+*Crippling Strike
+Adrenaline  1
+Info    Targets you hit with Light weapons this turn have 1 Slow applied to them.
+
+*Poisonous Attack
+Info    You may decide during a turn that your 'Sneak Attack' feature deal half of it's damage as Poison instead
+of dealing any of the normal sneak attack damage.
+Skill+1 All of your sneak attack damage becomes Poison
+
+*Poison Fang
+Adrenaline  2
+Activate    One weapon attack on the turn you activate Poison Fang will trigger Poison
+on the target to deal its damage immediately.
+Skill+1 All weapon attacks on the turn you activate Poison Fang will trigger Poison
+on the target to deal its damage immediately.
+
+*Combo
+Info    Gain +10 Accuracy for every Adrenaline you spend during a turn.
+Remove this accuracy at the end of the turn.
+Skill+1 Also gain Haste 1 for every 2 Adrenaline you spend during a turn.
+
+*Fall Resistance
+Info    Reduce splat damage recieved by 2
+Skill+1 +1 More
+
+*Kick-Off
+Info    After attacking and hitting a standing creature in Melee,
+use your Step action to Step away from the enemy.
+
+On a Succesful DEX roll,
+also Push the target directly away 1 Tile from your starting location.
+Skill+1 If the DEX roll to push the target away succeeds,
+also trip the target.
+
+This does not provoke.
+Skill+2 If the Step action from Kick-Off lands you adjacent to another standing creature,
+you may repeat Kick-Off for 1 Adrenaline.
+Skill+3 A Kick-Off that succesfully Pushes a target deals damage equal to the distance of your Step.
+Skill+4 All targets you sucessfully Push with Kick-Off are also Confused for one round.
+
+*Evasion
+Info    
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Once per day,
+You may avoid damage from one source completely.
+Skill+2 Once per Combat,
+You may decide to take half damage from one damage source.
+Skill+3 You automatically succeed at evading complexity 1 traps and damage sources that require a DEX roll to evade.
+Skill+4 +1 Complexity 
+
+*Vault
+Info    You are considered to be Jumping during all of your Step actions.
+You have just enough height to go over medium creatures.
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Whenever you Jump,
+You can go 2 tiles up in the air,
+which may allow you to jump over a Large creature or onto a higher Elevation.
+Skill+2 Any time you Jump over an enemy creature,
+You may attempt any Combat Manuever on them as an Action
+that does not Provoke and Attack of Opportunity.
+
+You may only do this once per turn.
+
+If you attempt this maneuver after using the 'Kick-Off' ability,
+You may instead use a Reaction instead of an Action.
+Skill+3 Immediately before combat starts,
+you may move once.
+
+*Multi-Kill
+Info    Spend Adrenaline when you slay an enemy with a melee attack action as a Free action.
+You may step and then immediately make a melee attack action against another target.
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Adrenaline  1
+Skill+1 If you slay an enemy and then use Multi-Kill to slay another enemy in the same turn, Gain 1 Adrenaline.
+Skill+2 You may use Multi-Kill with Throwing weapons.
+
+*Charge
+Info    
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 You may Move 1 before initiating a Charge.
+Skill+2 Adrenaline: 1
+When you charge an enemy,
+you may instead decide to Push them away from you an amount of distance equal to the amount you moved.
+Skill+3 If you slay an enemy with a Charge,
+continue your charge if you have any Move remaining in the same direction with the ability to attack another target.
+You may select this skill multiple times to charge through additional targets.
+Skill+4 You are immune to attacks of opportunity while charging
+
+*Following Step
+Info    Whenever an adjacent foe attempts to take Step Action away from you, 
+you may use your Reaction to take the basic Step action to follow that foe.
+You must attempt to move as close as you can to the foe who triggered this reaction.
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 No longer uses a Reaction,
+but can only be done once per round.
+Skill+2 +1 Move to associated Step action
+Skill+3 You may also attempt to Trip a target who uses a Step action to get away from you as a Reaction,
+but the target has +2 Resistance to this trip attempt.
+
+*On the Run
+Info    You may continue using your remaining movement after using an Attack Action with a Light melee weapon.
+
+*Freedom of Movement
+Info    You are a +1 Complexity target against anything that would slow or stop your movement
+Skill+1 +1
+
+*[Tier4(Distance)]
+
+*Mobile Hitter
+Info    You may continue using your remaining movement after a Ranged weapon attack.
+Skill+1 +8 Accuracy with Ranged Weapons
+
+*Fading Vigilence
+Info    Always apply +1 level of Vigilent to yourself. 
+Lose 2 Vigilence whenever you miss an attack.
+Skill+1 +1 Vigilence applied
+Skill+2 +1 Adrenaline gained on an Omega Hit
+
+*Shoving Shot
+Info    Push targets away from you an amount of distance in feet equal to the damage dealt with ranged weapon attacks this round.
+Adrenaline  3
+Skill+1 +1 Global Splat Damage
+
+*Trickshot
+Info    One ranged attack you make this round sends out an identical ranged attack in the opposite direction.
+Adrenaline  1
+
+*Arrow Rain
+Info    Attack once with a Ranged weapon.
+Deal your ranged attack damage and any associated effects in a 2x2 AOE within your range.
+You must have line of sight to all tiles.
+Action  Full-Action
+Adrenaline  3
+Skill+1 2x3 AOE
+Skill+2 2x4 AOE
+Skill+3 2x6 AOE
+
+*Overwatch Stance
+Info    Target a 3x3 cube and overlook this area for 1 round.
+When an enemy enters this area or moves within it for the first time this round
+and is within the range of your equipped weapon,
+you may target it and attack with an equipped ranged weapon even if it is not your turn.
+
+While you are in Overwatch Stance you do not gain the benefit of Armor.
+
+These attacks use no action.
+You may do 2 ranged attacks in this manner per use of Overwatch Stance
+Skill+1 Target area becomes a 4x4 cube.
+You may overwatch attack 3 times
+Skill+2 If you maintain vision of this area
+Overwatch will remain active for +1 round.
+At the start of a new round reset available targets
+Skill+3 You may overwatch attack 4 times
+
+*Close Ranger
+Info    Weapons with the Ranged tag gain +1 Damage when used by you,
+but you lose 6 range with bows and 2 range with throwing weapons.
+
+*Throwing Master
+Info    If you are Dual Wielding throwing weapons,
+You may throw 3 times as part of one attack action.
+All attacks except for the first one have Half Cover dual wielding penalty imposed on them.
+The third thrown item gains the 'Quick' tag so that it may be equipped and thrown.
+Skill+1 If you also have a skill point in Defensive Stance,
+Throwing Weapons also always count as Melee Weapons when used while adjacent to enemies
+
+*True Strike
+Info    Apply 'True Strike' to yourself.
+(True Strike applies +50% to your total accuracy)
+Action  Free Action
+Adrenaline  3
+Skill+1 -1 Adrenaline Cost
+Skill+2 If your 'True Shot' attack kills a target,
+you may immediately re-apply 'True Shot' for 1 Focus.
+Skill+3 No longer costs 1 Focus to re-apply
+
+*Penetrating Shot
+Info    
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Adrenaline  2
+Activate    Ranged Weapon attacks travels their full range and go through targets until hitting a wall, missing, or having the damage fully mitigated by Armor.
+Skill+1 Bow damage is dealt as Piercing when using Penetrating Shot
+Skill+2 If you only throw 1 weapon during a turn,
+you can apply Penetrating Shot with 0 Adrenaline cost.
+
+However, targets can benefit from Half Cover as they normally would
+
+*Precision
+Info    Gain the Precision status at the start of combat.
+(+0.5 Crit Multiplier which lasts for 1 critical hit)
+Skill+1 Whenever you kill an enemy with a critical hit while you have the 'Precision' status,
+re-apply the Precision status to yourself.
+Skill+2 +0.1 Crit Multiplier
+Skill+3 +0.1 Crit Multiplier
+Skill+4 Gain Conditional +1
+(Increase benefits of all status effects)
+
+*First Strike
+Info    You can not miss with a ranged weapon
+if you are stealthed to the target or in a surprise round and it is before the target has acted.
+Skill+1 1 Arrow during a Surprise Round gains +100 Accuracy
+Skill+2 Start combat with +1 Adrenaline
+
+*Defensive Stance
+Info    You threaten your adjacent tiles with a ranged weapon as though you were using a Melee weapon.
+You may not benefit from Defensive Stance if you are using the Overwatch ability.
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1  You may Step after you AoO with ranged weapons
+Skill+2 Dealing damage with an AoO applies Hinder to the target.
+Skill+3 Whenever your ranged weapon deals damage as part of an AoO,
+it's damage is dealt as Piercing.
+
+*[Tier4(Desperation)]
+
+*Conversion
+Info    Convert 15 Sanity into 2 Adrenaline. You may freely do this once per round.
+Skill+2 -3 Sanity Cost
+
+*Sustained
+Info    -5 Sanity lost when falling in Combat
+Skill+1 Do not lose any Adrenaline when you fall in battle.
+
+*Incite Madness
+Activate    Infect a touched target with a random tier 2 Madness.
+You may choose to free the target of this Madness at will.
+Multiple uses of Incite Madness on the same target will upgrade the initial Madness.
+
+The Madness lasts for 1 Day
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Sanity  8
+Range   Touch
+
+Skill+1 The Madness lasts for 1 Month
+Skill+2 When you Incite a Madness to a target, Roll MAD.
+On a succesful Roll remove 1 Buff from the target.
+Skill+3 +2 Range
+Skill+4 When you deal the final blow to an enemy that you have gifted a Madness to,
+you may decide to create tile effects underneath where the creature died and in all adjacent tiles.
+Your choice;
+1 - Poison (2)
+2 - Blood
+3 - Ice
+4 - Darkness
+
+This choice can not be changed after selection of this skill.
+
+*Pierce
+Info    Your attacks this turn deal Piercing damage.
+Your attacks that Hit this turn apply 1 Blight to the target.
+Adrenaline  2
+Skill+1 Your Critical Hits apply 2 Blight to the target
+
+*Inspire
+Info    When you would Critically Hit with a Weapon Attack,
+Restore 2 Sanity to all allies within 6 Tiles.
+
+*Sanity Shield
+Info    Once per Combat,
+You may recieve damage dealt to your Sanity instead of your Health.
+
+*Perception Filter
+Info    You must use MAD to roll Stealth checks
+Skill+1 Recieve a -1 to stealth checks,
+but when you succeed a stealth check against a specific target,
+they ignore you completely for 1 minute unless attacked or interacted with.
+
+*Maw
+Info    Spend all of your Adrenaline.
+Deal 3 psychic damage for every 1 adrenline spent to all of your adjacent Tiles.
+Action  Attack
+Adrenaline  X
+Non-Consecutive
+Skill+1 Always deals a flat +1 Psychic Damage
+Skill+2 Apply 1 Blight to all targets you dealt Psychic damage to
+
+*Slayer
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 When you kill an enemy in combat
+you may decide to Dispel 1 on-death effect the creature has.
+Skill+2 Never become Blind due to Darkness Tiles
+
+*Bloodletting
+Info    Target a creature.
+Whenever the target takes damage,
+crystalized fragments of their blood shoot out and deal 2 piercing damage on connecting tiles.
+Range   8
+Sanity  12
+Skill+1 Targeted creature gains the Frenzy condition.
+Frenzy ends whenever the target does not recieve damage before their next turn.
+
+*Psychic Swings
+Info    You may make Melee Attacks against a target with 'Blight' that is up to 4 Range away from you.
+This does not increase your threat range or apply to reactions.
+Range   4
+Sanity  -8 Max Sanity
+Skill+1 +4 Range
+Skill+2 Psychic Swings count as Ranged Weapon attacks for all abilities that require them.
+
+*From Naught
+Info    Active all of your On Kill effects as though you've killed 1 specific target within range 
+Adrenaline  3
+Range   4
+Skill+1 +2 Range
+Skill+2 -1 Adrenaline Cost
+
+*Narrow Mind
+Info    Apply Vigilant 3 to yourself
+Action  Attack
+Adrenaline  1
+Sanity  20
+Skill+1 Also heal yourself for 2d4 hit points
+Skill+2 Vigilant +1
+
+*Overkill
+Activate    As a reaction to killing a target with a Weapon Attack,
+Deal any excess damage to another target within 4 Tiles of the slain creature.
+
+This damage is dealt as Psychic damage
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  10
+Skill+1 -2 Sanity Cost
+Skill+2 This ability may chain react to as many targets as the original damage can kill in a row.
+The range always originates from the last target to die.
+Skill+3 +3 Range
+
+=====================
+INT
+=====================
+*Focus
+Info  +1 Focus
+Skill+1 +2 more Focus
+
+*Shield Arsenal
+Info    You can use Shields of +1 Tier
+Skill+1 You can use Shields of +1 Tier
+
+*[Tier1]
+
+*Focus
+Info    +1 Focus
+Skill+1 +1  Focus
+
+*Absolute Focus
+Info    Once per day,
+you may spend (X) amount of Focus and touch yourself or an Ally to grant them the condition Vigilant (X).
+You may not spend more than 2 Focus.
+
+The Vigilant condition grants +10 Accuracy per tier.
+Skill+1 You may not spend more than 4 focus.
+
+*Bonus Heal
+Info    Gain +1 Bonus Heal This applies whenever you heal or heal others
+Skill+1 +1 Bonus Heal
+
+*[Tier2]
+
+*Load
+Info    +1 Load
+Skill+1 +1 Load
+Skill+2 +1 Load
+
+*Investment
+Info    +6 Wealth
+Skill+1 +6 Wealth
+
+*Magic Find
+Info    Gain +15 Rarity & Magic Find
+Action  Reaction to finding random loot
+Focus   2
+Sanity  10
+Skill+1 +15 Rarity & Magic Find
+Skill+2 +15 Rarity & Magic Find
+
+*Accessorize
+Info    You may attune to an additional Non-Magical accessory
+
+*Battle Cleric
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Weapon tier mastery +1 for all Blunt weapons and Thuribles
+Skill+2 Weapon tier mastery +1 for all Blunt weapons and Thuribles
+Skill+3 Weapon tier mastery +1 for all Blunt weapons and Thuribles
+Skill+4 Add your Bonus Healing as damage to a Thurible.
+
+*Crit Multiplier
+Info    +0.2 Crit Multiplier
+
+*Loremaster
+Info    Automatically succeed at Tier 1 INT rolls 
+to recall historical and mythological information.
+Skill+1 Automatically succeed at Tier 2 INT rolls of this type.
+
+*Vigilant
+Info    You can not gain the Impervious, Resilient, or Vicious conditions.
+Always gain +1 higher level of the Vigilant condition.
+
+*[Tier3(Signature Skill)]
+
+*Masterful Assistance
+Info    Target a creature.
+The next action this creature takes will duplicate and occur twice.
+This may cause any Once Per Combat abilities or consumeable Items to activate twice for the same action.
+Range   Touch
+Focus   2
+Wealth  2
+Adrenaline  5
+Skill+1 No longer has a Wealth cost
+
+*Focusing
+Activate    Before an Ally makes a roll,
+Give them +1 to the roll.
+This applies to all complexity rolls associated with completing a single task.
+This bonus continues to apply even if they reroll with Focus.
+Action  Reaction 
+(to their roll attempt, before they have rolled anything)
+Focus   1
+Range   Touch
+Skill+1 +30ft Range
+
+*Cure
+Activate    You use any amount of Adrenaline you have.
+Heal an ally you touch for 3x the amount of Adrenaline spent.
+Action  Attack,
+Non-Consecutive
+Adrenaline  X
+Range   Touch
+Skill+1 Thrubile weapons gain +1 Reach
+
+*Wonder Child
+Info    Select 1 skill from a class from a different STAT tree
+other than the ones you have access to.
+Apply 1 Skillpoint to this ability.
+
+You may level that skill as though it were a Racial skill.
+Skill+1 You may only select this skill twice if you are Human
+
+*Crit Multiplier
+Info    +0.30 Crit Multiplier
+Skill+1 Increase your weapon tier mastery by 1 with Light weapons.
++0.20 Crit Multiplier
+
+*[Tier4(Tactician)]
+
+*Study Target
+Activate    Focus on a target in combat to attempt to reveal
+some of their specific combat capabilities or weaknesses.
+7+  Learn about an ability the target possesses.
+
+The target always becomes 'Studied'.
+Action  Move
+Focus   1
+Stat    INT
+Skill+1 Always reveal an ability from the Target
+
+*Spell Forensic
+Activate    Check if magic is present or was recently used in the area.
+You gain insight into what this magical effect does or did.
+7+  You will always remember the magical signature
+to compare it with other magic you encounter.
+Police have a repository to help identify spell casters
+with this information.
+10+ Even if you didn't see the spell being cast,
+You know the immediate action the caster took after the spell was created,
+which may include the direction they went.
+Action  Free
+Focus   1
+Stat    INT
+
+*Focused Strike
+Info    You may spend 1 Focus to re-roll a Weapon Attack roll.
+It regains any one time attack statuses that expired.
+
+You always take the re-rolled result.
+Focus   -1 Max Focus
+
+*Magic Reflect
+Info    Target yourself.
+As long as you are channeling, 
+You will reflect the first magic cast on you to a chosen target within this spells range.
+
+This effect ends after 1 spell has succesfully been reflected or your channel is interupted.
+Range   8
+Focus   2
+Channel Infinite
+Skill+1 You may target an Ally.
+
+*Beneficiary
+Info    Duplicate a Buff from any Ally and place it on another Ally within range
+Action  Attack
+Range   6
+Focus   3
+
+*Purify
+Info    3x3 square is cleansed of all tile effects.
+Certain tile effects may be resistant and require an INT roll to remove.
+Range   8
+Focus   1
+
+*Studied Strike
+Info    Gain Sneak Attack if you do not already have the ability.
+Sneak Attack: +1 Damage (1 total if you did not have any Sneak Attack)
+-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Always apply 'Sneak Attack' to a 'Studied' target.
+Skill+2 You may continue using your movement after an action that results in Sneak Attack damage being dealt.
+You do not provoke Attacks of Opportunity with your movement from any targets.
+Skill+3 You may decide not to deal Sneak Attack damage and instead damage the target's STR, DEX, INT, or MAD by 1d3.
+The target must be Studied.
+
+*Commander
+Info    Tell any ally within 3 tiles to make an Attack Action.
+They use your Action instead of their own.
+Skill+1 Alternatively,
+you may decide to spend 2 Focus instead of 2 Adrenaline to use this ability.
+
+*Focus Ally
+Info    Grant an ally (not yourself) one of the following Buffs:
+
+Precision, Pure Heart, Vigilant 1, Haste 1
+Action  Attack
+Focus   2
+Range   4
+Skill+1 -1 Focus Cost
+
+*Weak Spot
+Info    Call out a weak spot on an 'Studied' enemy.
+
+Until your next turn,
+The target gains the Vulnerable condition.
+Action  Attack
+Focus   3
+Skill+1 Alternatively,
+Call attention to the target's attacks.
+The Target gains the 'Weak' status until your next turn.
+
+*Arrange Pieces
+Activate    Command all allies that can hear you.
+They may immediately use their Reaction to use a Step action.
+You may also use a Step action.
+Skill+1 All allies gain +2 Move to this Step.
+This ability can also now cleanse any Fear effect on these allies.
+Skill+2 All allies gain +2 Move to this Step.
+
+*Bruising Intellect
+Info    You may perform Combat Maneuvers against Studied Targets
+without provoking Attacks of Opportunity.
+
+You use INT to determine the outcome of all combat maneuvers against Studied Targets.
+
+*Inspired Combat
+Info    Copy an Adrenline spender that an ally used this round.
+You may use this ability as if you had the exact same one.
+
+You may only use Inspired Combat once per Combat.
+Adrenaline  X
+Skill+1 Twice per combat
+
+*Spell Stopper
+Info    You may make an Attack of Opportunity against any target
+within your Reach that attempts to use Magic.
+
+You are always aware when a target uses magic within 2 tiles of you.
+
+*Spell Memory
+Info    You know how to cast the last spell you were
+affected by, that you dispelled, or that you identified with Spell Forensic.
+
+You can not learn magic this way that is granted by Gods.
+
+Whenever you gain a new Spell Memory,
+Forget the last one.
+Skill+1 You can remember 2 Spells. The oldest spell you know is always forgotten first.
+
+*Counter Spell
+Activate    As a reaction,
+Prevent a single target within 4 tiles from casting magic.
+
+Requires a succesful INT roll whose complexity varies based on the spell you are countering.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Reaction
+Adrenaline  1
+Focus   2
+Range   4
+Stat    INT
+Skill+1 Whenever magic is used on you even if it has a positive effect,
+roll MAD. On a success, the spell is dispelled.
+Skill+2 May also be used on a target within 4 Range to remove 1 magical effect. 
+Requires a succesful INT roll whose complexity varies based on the effect you are countering.
+
+*[Tier4(Cleric)]
+
+*Last Chance
+Info    The first time you would drop to 0 or lower HP in combat,
+instead stop at 1 HP and Gain +2 Adrenaline.
+Skill+1 +2 more Adrenaline
+
+*Cure Madness
+Activate    Perform a Ritual to attempt to clear someone's mind
+7+  Remove 1 Madness Complexity from a character
+12+ Remove 2 Madness Complexity from a character
+Action  Ritual
+Focus   4
+Wealth  8
+Stat    MAD
+Skill+1 4 Wealth returned on a Failed attempt
+
+*Torch Bearer
+Info    Once per Day for 3 Focus,
+You may grant yourself and all allies within 3 tiles 'Clear Mind'-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Illusion magic can not exist within the range of any lightsource you hold.
+Skill+2 Light sources you hold gain +2 radius
+Skill+3 Light sources you hold gain +2 radius
+
+*Illuminate
+Activate    An object you touch becomes a 6 radius light source.
+This lasts for 1 hour.
+
+If touching a hostile creature or their belongings, 
+they may resist with an opposed MAD roll.
+
+You may dismiss this light at will.
+Action  Attack
+Focus   1
+Wealth  1 Wealth increases the radius to 12
+Range   Touch
+Skill+1 An enemy creature you apply Illuminate to is blind for 1d3 rounds.
+
+*Radiance
+Info    Create a 10 tile blinding light originating from you or where your Illuminate ability is.
+All creatures, excluding yourself or anyone else with the Cleric class unlocked, in this radius are Blinded for 1 round.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Focus   3
+Wealth  1 Wealth to spare Allies from the Blind
+Skill+1 The light remains in the location it was cast for for 2 rounds
+Skill+2 If you use 1 Wealth to spare allies from being Blinded,
+allies within your radius are also gain +1 to the Vigilance condition
+until the end of combat or it is removed.
+Skill+3 Any ally who starts their turn within the light gains 2 Healing
+
+*Heal
+Info    Heal a target 1
+Action  Attack
+Range   20
+Focus   1
+Skill+1 +1 global Bonus Healing
+
+*Haggle
+Info    When buying a consumeable item that costs 2 Wealth or less,
+You may get 2 for the price of 1.
+(Assuming the Merchant has 2 to sell)
+
+Anything gained from Haggle can not be resold for profit.
+Skill+1 +2 Wealth Limit
+
+*Martyr
+Info    For the duration of your Channel,
+All damage your party takes is instead dealt to you.
+Your ally's armor value is used, not yours.
+
+You can not use Martyr while you are in a Sanctuary.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Adrenaline  2
+Focus   1
+Wealth  1 Wealth when cast will end the Martyr effect when you would be hit to negative hit points.
+Instead, stop at 1 HP.
+Channel 1
+Skill+1 Use your Armor value instead of your Ally's
+Skill+2 Heal 3 when the effect ends
+
+*Generator
+Info    Spend 2 Wealth to gain 2 Focus
+Action  Free, Once per Round
+Wealth  2
+Skill+1 Alternatively,
+Spend 3 Wealth to gain 2 Adrenaline
+
+*Encouragement
+Info    Push an allied target 4 tiles.
+They are immune to Splat damage caused by this push.
+Action  Attack
+Range   8
+Focus   2
+Skill+1 +2 Push
+Skill+2 The pushed Ally may use their Reaction to make 1 weapon attack against
+a target that Encouragement forces them to deal Splat damage to.
+
+*Power of Coin
+Info    Whenever you expend Wealth during combat, heal an ally within 4 tiles for 2.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 You may choose to instead deal 2 psychic damage to an enemy within the same range.
+This damage gains bonus from your Bonus Healing.
+
+*Cure Wound
+Activate    Touch a creature to heal them +1dINT
+Action  Attack
+Focus   2
+Wealth  6 range per 1 Wealth spent
+
+Spend 4 Wealth to also heal yourself when you heal an ally 
+Range   Touch
+Requires    Non-Consecutive Skill
+Skill+1 +1dINT
+Skill+2 +1dINT
+Skill+3 +1dINT
+Skill+4 +1dINT
+
+*Versatile Heal
+Info    If your Action during your turn results in somebody other than yourself being healed,
+you may continue using your movement after the action.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Your healing deals damage to Amalgams and Oozes
+Skill+2 The signature skill "cure" gains 2 range
+Skill+3 The skill "Cure Wounds" gains 4 range
+
+*Impervious
+Info    Gain the Impervious condition.
+(Immune to the next source of damage)
+Action  Attack
+Range   Touch
+Focus   2
+Duration    5 Minutes
+Skill+1 Impervious may be applied to allies.
+Skill+2 Alternatively,
+Apply Impervious to all adjacent allies and yourself.
+This costs 1 Adrenaline per ally it applies to.
+
+*Cleric's Vow
+Info    A bastardization of Far Left traditions.
+
+You may pledge your oath to another and become bound by this vow.
+The target becomes convinced you will do as you say and trusts you.
+If you do not do what you say you will,
+you automatically pay the target 10 wealth.
+Even if the target is no longer alive the Wealth will be deducted anyway.
+
+You can go negative wealth due to this.
+If you have negative wealth due to a Vow debt, you can not cast any spells
+and you deal 1/2 damage. Any future wealth earned is automatically spent to pay this debt.
+
+You need a minimum of 4 Wealth to initiate a Vow.
+You may only have 1 Vow active at a time.
+
+If you ever reach -15 Wealth,
+You die.
+Skill+1 You may have 2 Vows active at one time,
+but need a seperate 4 Wealth to initiate the 2nd vow.
+
+*Mental Fortitude
+Info    You have +1 resistance to any mind affecting ability
+
+*Sanctuary
+Info    Target any tile within range.
+
+As long as you Channel,
+Any creature who fully occupies this tile can not recieve damage.
+They also can not take any action that would result in damaging enemies or applying status effects to them.
+
+A hostile creature can not end their turn inside of a Sanctuary you have created.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Focus   2
+Wealth  1 Wealth prevents the channel from failing due to taking damage
+Range   15ft
+Channel 4
+Skill+1 A creature that starts it's turn inside of the Sanctuary heals for 2
+Skill+2 A creature that starts it's turn inside of the Sanctuary gains +6 movement for that turn
+Skill+3 Alternatively,
+Create a circle of pain in any unoccupied tile.
+
+While in a Circle of Pain,
+The damage a creature recieves is multiplied by your Critical Multiplier.
+Skill+4 -1 Focus Cost
+
+*Healing Well
+Info    Choose an unoccupied tile.
+The first creature to pass through or stand on this tile will be healed 2d4.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+
+After a Healing Well is used it is removed.
+Action  Attack
+Range   6
+Focus   2
+Duration    5 Minutes
+Skill+1 If an enemy creature enters a Healing Well tile,
+they will instead be dealt 2d4 damage.
+Skill+2 Add +1dINT to all rolls associated with Healing Well.
+Skill+3 Create 2 Healing Well tiles with one cast that must be adjacent to eachother.
+Skill+4 For 6 Adrenaline and No Focus,
+Create a 2x3 area of Healing Wells.
+
+*[Tier4(Foreman)]
+
+*Coin is King
+Info    You may use 'Ritual' abilities even if you can not read
+Skill+1 For 1 Wealth,
+Ritual abilities may be done in 1 action,
+instead of the moment they normally take to prepare.
+
+*Rules of Transmutation
+Activate    Gain access to the wonderful world of Transmutation
+Info    Transmutation is easier if you are starting with something that has high elemental purity.
+Good examples of common Tranmutation ingredients include:
+1. Sand (50% Silicon, required in large amounts, but easily obtainable)
+2. Coal (78%) or 92-98% for hard coal (typically mined in Midway)
+
+The density of starting material greatly helps results.
+
+Ritual circles of any size can be created to Transmute things in mass, but the larger the circle the more difficult it is to complete the transmutation process.  10 cubic feet of 50% silicon content sand is collected and put in a Ritual Circle.  (much higher failure if the Sand is not collected and deliberately organized for transmutation) 10 cubic feet of Sand == 1 cubic foot of pure Iron. This pure iron is then easily transmuteable into other shapes and materials. In construction this often results in metal sheets melded into clay bases.
+Requires    A succesful INT roll of varying complexity.
+An amount of Wealth relative to complexity.
+Skill+1 +1 INT on rolls for Transmutation
+
+*Soldering
+Activate    Meld an Object or Door completely shut or connect two objects together.
+
+It is a Complexity 1 strength check to break any item apart that you solder together.
++1 Complexity per skill level.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Focus   1
+Range   Touch
+Skill+1 You may use the Soldering ability to remove a Lock from a door or object
+Skill+2 You may use Soldering on an ally's weapon during combat.
+The ally gains the Precision status until they land 1 critical hit.
+
+*Duplicate
+Activate    Place a mundane object worth 1 Wealth or less
+on a surface and take a moment to create ritual circles around it.
+You always duplicate the item, but the quality varies when being closely inspected.
+7+  The item shows some flaws
+10+ The object is passable, 
+but not an exact replica
+12+ The object is an exact replica
+Action  Ritual
+Focus   1
+Wealth  1
+Stat    MAD
+Skill+1 Can duplicate items costing +1 more Wealth. 
+This increases Complexity of the roll by +1
+Skill+2 Can duplicate items costing +1 more Wealth. 
+This increases Complexity of the roll by +1
+Skill+3 Can duplicate items costing +1 more Wealth. 
+This increases Complexity of the roll by +1
+
+*Dissolve
+Activate    Take a moment to prepare chalk ritual drawings on a surface you can touch.
+
+Once it is prepared,
+You may Transmute that surface to dust,
+creating a 1-3 tile wide opening in the surface
+
+If enemies are on the other side of the wall you activate a surprise round.
+Action  Ritual
+Focus   2
+Stat    MAD
+Skill+1 When you succesfully disarm a weapon,
+you may dissolve it as part of the disarm with a succesful INT roll.
+Skill+2 You always succeed at dissolving a disarmed weapon
+
+*Mending
+Activate    On a Succesful INT roll,
+You repair all damage to a broken object.
+The object must be something small enough to hold in your hands.
+
+If the object is very large it may still be repaired,
+but requires a Ritual.
+
+Complex machinery can be repaired,
+but it automatically does not properly connect together again.
+You only mend the physical damages of individual objects - such as each individual gear or cog.
+Action  Attack
+Focus   1
+Range   Touch
+
+*Shield
+Activate    As a Reaction to being attacked or taking damage from something Armor would prevent,
+Gain the tier 2 of the Resilient status until your next turn.
+
+Resilient grants +1 Armor per tier.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Reaction
+Focus   2
+Skill+1 If an ally is attacked within 3 tiles of you,
+You may use a Reaction to cast the Shield spell on them.
+It lasts until their turn.
+Skill+2 Resilient gains +1 Tier
+Skill+3 Resilient gains +1 Tier
+
+*Spikes
+Activate    Modify a floor or wall tile within 2 tiles of you to become a spiked surface.
+Any creature forcefully moved into a spiked wall takes 3 piercing damage.
+
+If a target is knocked Prone on a Spiked floor they take 3 piercing damage.
+Action  Attack
+Focus   1
+Wealth  1 Wealth adds 2 Poison damage to your Spikes
+Range   12
+Skill+1 You may create a 3x3 cube of floor spikes.
+Your floor spikes are difficult terrain.
+
+You may create Wall Spikes on up to 5 connecting wall tiles
+Skill+2 Attempt to Trip all targets that are standing where you create Floor Spikes. (INT roll)
+
+Instantly deal the damage to anyone who stands next to a wall where you create Wall Spikes.
+
+*Degrade Armor
+Info    Reduce a target's armor by 1dINT
+A target may only be effected by Degrade Armor once per combat
+Action  Attack
+Range   2
+Focus   3
+Skill+1 Reduce armor by an additional +1
+
+*Launching Ritual
+Info    Create a Launching Ritual on an unnocupied tile (or underneath yourself).
+Determine the direction it will launch targets when it is created.
+
+When a creature enters the Lauch Pad tile 
+they are pushed 6 in this direction and are considered to be Flying during the push until they land at the end of the Push.
+
+If the creature is an enemy,
+they are dealt 8 Splat damage when they land.
+If a target is launched and lands ontop of another creature, 
+the creature that is landed on takes this damage and is shoved 1 in a direction of their choice to make room.
+Action  Ritual
+Focus   1
+Range   5
+Duration    5 minutes
+Can be maintained as an Action to reset the duration.
+Skill+1 +2 Push
++2 damage to enemies
+Skill+2 Allies who use the Launching Ritual may end their push early.
++1 Damage to enemies
+Skill+3 You determine the direction a target is pushed as a free action when a target is pushed by Launching Ritual.
+Skill+4 Launching Ritual no longer requires a Ritual to cast.
+-10 Max Sanity
+Skill+5 Create a Launching Ritual adjacent to you immediately when combat starts for no action.
+This costs 3 focus.
+
+*Spiked Object
+Info    Manipulate an Object to grow spikes.
+It converts all Splat damage that it deals to Piercing.
+Action  Attack
+Range   4
+Focus   1
+Skill+1 +1 Splat damage added to Object
+Skill+2 The Object will be prevented from breaking 1 time
+
+*Totem
+Info    Designate a medium sized Object within your range to be a 'Totem'.
+
+An Ally can use a Totem as an item to gain 4 Healing.
+This does not destroy the Object itself, it just removes the 'Totem' status from it.
+
+When you create a Totem it has a random effect:
+
+1: All enemies adjacent to the Totem are Hindered
+2: Allies do not use movement while adjacent to the Totem.
+3: All adjacent tiles are covered in a thick blinding fog that can not be removed unless the Totem is.
+4: Deal 4 psychic damage to enemies that start their turn adjacent to the Totem
+5: All adjacent allies gain Full Cover from Ranged Attacks
+6: When an ally starts their turn adjacent to this Totem they gain 1 Healing
+Action  Attack
+Focus   1
+Range   2
+Duration    Until the End of Combat.
+If created outside of Combat,
+Totems will last 5 minutes, but have no effects until combat starts.
+Skill+1 If you ever have 4 active totems during a Combat,
+draw a rectangle using the Totems as the points for the corners.
+This is a Totem Square.
+
+All of the internal Totem Square tiles gain the effect of one of your Totems used to create it.
+You choose this effect once you create 4 Totems and it can not be changed unless a new square is designated. 
+You may only have one Totem Square effect active at a time.
+Skill+2 Your Totem Square gains a total of 2 properties of the Totems that create it.
+These effects must be two different effects.
+Skill+3 +2 Range
+Skill+4 For 10 Sanity you may use your Action to teleport and trade places with a Totem within 6 tiles.
+This effect recreates any associated Totem Square and allows you to change the Totem Square effect.
+
+*Totem+
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 The healing recieved if a Totem is used as an item becomes 10
+Skill+2 Select a random Totem Type.
+You may choose to have any randomly rolled Totem be replaced with this type any time you create a Totem.
+Skill+3 You may only have 1 Totem active at a time.
+This Totem effects 3 tiles around it instead of the directly adjacent area.
+Skill+4 If a Totem is used as a Healing Item,
+all tiles adjacent to the Totem gain 2 healing.
+
+*Feng Shui
+Info    You always Push Objects 2 more.
+Skill+1 +1 Splat Damage
+
+*[Tier4(Chemist)]
+
+*Crafted Item
+Info    Select a consumeable item that costs no more than 1 Wealth at the start of each day.
+You may use that item once per day and you do not require the load to carry it.
+At the end of the day the item expires. 
+You can not give this item to another character.
+Skill+1 You have a total of 2 Crafted items.
+They can be any 2 unique items, but they all must be determined at the start of the day.
+
+*Item Thrower
+Info    As an Attack Action,
+You may throw consumeable items accurately up to 6 tiles.
+This can be used to throw one beneficial item to an ally or place traps at a distance.
+You can not target enemies or place traps underneath enemies.
+
+When throwing a beneficial item to an ally they automatically catch it,
+but must use a Reaction when they catch it if they want to immediately use it.
+If they do not immediately use it, it will not count against their Load to use during this combat if used later.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 You can target enemies with your thrown items.
+
+Roll a chance to Hit the target,
+any activation effects from the item instantly apply when they hit the target.
+
+If the item misses,
+It does not activate and lands harmlessly near the target.
+It may be picked up again or retrieved after combat ends.
+Skill+2 Allies no longer need to use a Reaction to immediately use the item thrown to them.
+Skill+3 You may roll to hit allies when throwing items to them.
+The throw never misses, but has a chance to Critical Hit.
+The effect of whatever is thrown to the ally is multiplied by your Critical Multiplier if it is immediately used.
+
+*Medical Professional
+Info    Automatically succeed on Tier 1 rolls related to the following:
+Identifying Illness
+Severity of Wounds
+How a target died
+How long a target has been dead
+General Medicine
+Skill+1 Automatically succeed on a Tier 2 roll
+
+*Ooze Jar
+Info    After slaying a biological enemy you may prepare an Ooze Jar of their remains.
+This is time sensitive and must be done immediately after combat ends.
+This only gives you time to do this to one enemy even if the combat had multiple enemies.
+
+You may throw the container up to 6 tiles to open it.
+The container opens and unleashes an Ooze creature which mindlessly attacks the nearest creatures.
+
+If combat would end with the exception of the still active Ooze,
+you are able to peacefully return the Ooze to your jar.
+
+You may only have 1 Ooze Jar at a time.
+Requires    Rare Ingredients worth 2 Wealth
+Focus   3
+Skill+1 Simple Oozes do not consider you an enemy
+Skill+2 You may have up to 2 Ooze Jars at one time.
+Skill+3 You may spend +3 Wealth when you create an Ooze Jar.
+The resulting Ooze is empowered.
+
+*Preperation
+Info    --Can only be cast outside of combat--
+
+At the start of the next combat you enter,
+gain one of the benefits chosen below.
+
+You may not have the same Preperation active multiple times.
+
+You may choose to not have the effect take place,
+but your Wealth spent is not refunded.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Focus   1
+Wealth  1
+Skill+1 A mist errupts from your location and all allies within 6 tiles of you gain Stealth.
+This Stealth is aboslute and can not be seen, unless the enemies possess certain sight abilities.
+
+At the beginning of Round 2, 
+Stealth granted from this effect ends.
+Skill+2 Place 4 Web Tiles anywhere within 8 of your starting location.
+Only 1 Web may be placed on an already occupied tile.
+Skill+3 All allies within 4 range gain Haste 2.
++2 Haste per additional Focus spent.
+Skill+4 You attack one time with an equipped Ranged Weapon before combat officially starts.
+Skill+5 Create a 3x3 cube of Bramble somewhere within 12 tiles of you.
+Skill+6 A 5x5 cube of ground tiles starting within 12 tiles of you become Ice
+
+*Administered Healing
+Info    Whenever you heal a target with a consumeable item,
+Add your 1dINT to the amount healed.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 You may apply medical aid to each party member you have 1 time per day.
+Without expending any resources heal this ally for 2d3 by using an action in touch range.
+Skill+2 Whenever you heal an ally directly
+heal yourself 1.
+
+*Concoctions
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Any consumeable item you use that has a Poison value has that value increased by 2.
+Poison tiles created by items only gain +1 effectiveness.
+Skill+2 You can apply up to 2 poisons onto one weapon
+(default 1)
+Skill+3 Automatically succeed on Tier 1 rolls to identify liquids and concoctions.
+
+*Familiar
+Info    You have trained a small harmless animal to aid you.
+Your Familiar can recieve basics commands, but nothing too complex for it's low level of intelligence.
+It can nod its head yes and no to answer very basic questions.
+
+A familiar is size Tiny and has 6 Move.
+It is destroyed if it takes 2 hits during combat.
+The hits are refreshed on a Rest.
+It takes 1 week to replace a Familiar.
+
+You can use a Familiar's movement on your turn.
+A Familiar can not be an animal that can fly.
+Skill+1 It can recieve an item from you as a reaction and move to use it on another character as it's Action.
+Skill+2 The Familiar resets the 2 hits it can recieve at the end of combat.
+
+Your familiar can have the ability to fly.
+It gains +2 Move
+
+*Homonculus
+Info    Your Familiar becomes a Homonculus.
+
+The Homonculus may enter your body as an Action whenever it is adjacent to you.
+While inside your body a Homonculus can not recieve damage.
+
+Gain +4 maximum hit points-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Requires    Familiar
+Sanity  -5 Max Sanity
+Skill+1 The Homonculus allows you to breathe underwater while it is in your body.
+Skill+2 Your Armor value reduces Poison damage while a Homonculus is in your body
+Skill+3 Your Homonculus grants you +15 accuracy while it is alive
+Skill+4 Once per day,
+While the Homonculus is in your body,
+it may heal you for 1d4+INT as a free action.
+
+This ability costs you 6 sanity
+Skill+5 The Homonculus gains +4 Move while it is not in your body.
+Skill+6 When your Homonculus is destroyed,
+it regrows within your body in 1 round.
+Skill+7 While the Homonculus is inside of your body,
+You may use your Homonculus as a ranged throwing weapon or as ammunition for a Bow.
+A Homonculus that you shoot or throw deals piercing damage with it's individual attack.
+This also allows your Homonculus to instantly travel to the area it was shot.
+
+This costs 6 Sanity
+Skill+8 Gain +1 to any one STAT. 
+The STAT can not be increased to higher than +3 with this ability.
+
+*Molten Object
+Info    Cause an existing Object to create Fire over any tile it is Pushed.
+
+The Object deals Fire damage instead of Splat damage where applicable.
+Action  Attack
+Range   4
+Focus   2
+Wealth  For 1 Wealth,
+Also push the object 4 Tiles when you activate this ability.
+Skill+1 Alternatively,
+The Object creates either Oil or Poison tiles.
+Both objects deal Splat damage as normal.
+Skill+2 A poison Object instead applies poison equal to the splat damage it would deal.
+
+*Cataclysm Mixture
+Info    Deal 1dINT Fire damage in a 3x2 area infront of you.
+These tiles become Fire Tiles.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Range   1
+Wealth  1
+Skill+1 +3 Range
+Skill+2 +1 Fire Damage
+
+*Alchemist Fire
+Info    Any time you would apply Poison or create a Poison effect,
+you instead create an Alchemist Fire effect.
+This fire is a liquid that may be poured and applied just as Poison would.
+
+For every 2 Poison you would apply instead deal 1d4 Fire damage.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Your Armor applies to Fire damage recieved
+Skill+2 You may convert the effects of Poison items to Alchemist Fire so that your allies may use them
+Skill+3 You may spend 1 Wealth at any time to add 2d4 Alchemist Fire to a weapon you touch.
+This works as applied poison and lasts for the default 1 attack.
+Skill+4 Once per day,
+When you would deal Fire damage to a single target,
+Also apply that Fire damage to a target adjacent to your initial target.
+Skill+5 Once per combat,
+Leave fire tiles underneath all tiles you melee attacked.
+Skill+6 Gain +2 Move if you start your turn on a Fire tile
+
+*Consume
+Info    Remove Fire, Oil, or Poison tiles in a 2x2 area and gain 1 Haste for each tile removed that can be used after this spell cast.
+Action  Attack
+Range   4
+Wealth  1
+Skill+1 Becomes a Free action
+3x3 Area
+
+=====================
+STR
+=====================
+
+*Vitality
+Info    +4 HP
+Skill+1 +4 HP
+
+*Starting Arsenal
+Info    You can use Melee weapons that are Tier 1
+Skill+1 You can use Melee weapons that are Tier 2
+
+*[Tier 1]
+
+*Vitality+
+Info    +8 HP
+Skill+1 +8 HP
+
+*Cleave
+Info    When you use the default Attack action to attack a target within your melee reach, you may also attack one other target adjacent to that one who is still within your reach. 
+Action  Attack
+Adrenaline  1
+Skill+1 You may attack a third target
+
+*Power Attack
+Info    -12 Accuracy STR is added to weapon damage 1 more time
+Skill+1 -10 Accuracy
+STR is added to weapon damage 1 more time
+
+*Ultimate Arsenal
+Info    You may use any weapon or shield except for Tomes.
+Skill+1 You may use any Attire type
+
+*[Tier 2]
+
+*Attire+
+Info    You can wear Medium Attire
+Skill+1 You can wear Heavy Attire
+Skill+2 Hold Position maneuver costs -1 Adrenaline while you wear Heavy Armor
+
+*Technique
+Info    Do not Provoke Attacks of Opportunity when performing a combat maneuver of your choice when you select this skill.
+Skill+1 Another choice of Combat Maneuver
+
+*Weight Lifted
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 +1 movement while wearing no armor
+Skill+2 +1 Bonus Healing while wearing no armor
+Skill+3 +1 Armor while wearning no armor
+Skill+4 Immune to Calm while wearing no armor
+
+*Melee Arsenal
+Info    You can use Melee weapons of +1 weapon Tier
+Skill+1 You can use Melee weapons of +1 weapon Tier
+
+*Accuracy
+Info    +6 Accuracy
+Skill+1 +6 Accuracy
+Skill+2 +6 Accuracy
+Skill+3 +6 Accuracy
+
+*Equipment
+Info    +3 Load You may only assign Load to Weapons or Shields
+Skill+1 Info    +3 Load You may only assign Load to Weapons or Shields
+
+*Boiling Blood
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 You do not die until you reach -20 negative hitpoints.
+(Default is -10)
+Skill+2 You can not gain the Precision, Vigiliant, or Resilient status.
+Gain +2 bonus Frenzy damage.
+Skill+3 Whenever you would gain the Precision or True Strike status,
+instead gain Pure Heart.
+
+This does not work if you are immune to recieving these status effects.
+
+*Shield Arsenal
+Info    You can use Shields of +1 Tier
+Skill+1 You can use Shields of +1 Tier
+
+*[Tier 3(Signature Skill)]
+
+*Double Strike
+Info    Attack the same target twice with a single weapon
+Action  Full-Action
+Adrenaline  3
+Skill+1 You may double strike while dual wielding weapons.
+Every other attack has the Half-Cover penalty for dual wielding.
+
+*Vicious Strikes
+Info    As a Free Action that costs 1 Adrenaline, apply the Vicious status to yourself.
+
+Vicious status adds +2d3 damage to attacks.
+The Vicious attacker also recieves that damage, which can not be reduced in any way.
+Vicious damage you recieve back is multiplied on a Critical Hit.
+
+You may end your Vicious state freely at any time.
+Action  Free Action
+Adrenaline  1
+Duration    Until Combat ends or it is Dismissed
+Skill+1 +6 Max HP
+
+*Impenetrable
+Info    Gain 'Resilient' status equal to the amount of adrenaline spent until your next turn.
+
+You can not use this ability on consecutive turns.
+Action  Free Action, Non-Consecutive
+Adrenaline  X
+Skill+1 +1 passive total Armor
+
+*Charged Strike
+Info    Begin channeling as a Full-Action.
+This channel can not be interupted due to damage recieved.
+You may not use Reactions while you are channeling.
+
+At the start of your next turn,
+Attack a 3x2 area with your two handed melee weapon.
+At least one tile must be within your threatened area.
+Apply the 'Strong' and 'True Strike' condition to the attack.
+Targets do not gain the benefit of Cover.
+
+If you hit no targets with Charged Strike,
+Gain 2 Adrenaline.
+Action  Full-Action
+Adrenaline  3
+Channel 1
+Skill+1 Add +1d4 damage to the attack
+Damage is dealt as Piercing.
+
+*Berzerker
+Info    You may decide to deal 22 unavoidable damage to yourself at the beginning of any combat.
+Gain +6 Adrenaline.
+Skill+1 Only deal 18 damage to yourself.
++1 more Adrenaline
+
+*[Tier 4(Resiliance)]
+
+*Natural Armor+
+Info    +1 Armor
+Skill+1 +1 Armor
+
+*Armor Strike
+Info    Non-Consecutive Ability  You may expend ALL of your Armor when you make an attack, adding the expended armor to your damage. Gain the Vulnerable condition until your next turn.  You must decide to do this before you make the attack. If the attack misses your armor is not expended and Adrenaline is refunded.
+Adrenaline  1
+Skill+1 Costs 0 Adrenaline
+
+*Shield Brother
+Info    When an adjacent ally is Attacked who does not have a shield
+you may use this Reaction to provide them with cover as though they had your shield eqiupped.
+
+This counts as though you were the one blocking-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Reaction
+Adrenaline  1
+Skill+1 As part of the same Reaction,
+you also may immediately use a free Step action if it would result in you being close enough to the ally.
+Skill+2 Allies do not need to use Movement when moving through the tile you occupy
+
+*Area Denial
+Info    Enemies who start adjacent to you have 'Slow 1' applied to them.
+Adjacent enemies can not benefit from Half Cover from allied Ranged Attack due to positioning.
+Skill+1 While you occupy a tile,  
+That tile can not have any tile effect created on it that you do not want.
+Skill+2 Also applies to tile effects being created on tiles adjacent to you.
+Skill+3 Enemies who start adjacent to you have 'Slow 2' applied to them.
+
+*Guardian Angel
+Activate    Use this Reaction when an ally
+would be able to take a Reaction, but has already used theirs.
+
+Grant them an additional Reaction.
+Action  Reaction
+Adrenaline  1
+Range   Visible
+Skill+1 You may use the Guardian Angel reaction freely even if you have already used a reaction.
+
+*Bull Rush
+Info    Move in a straight line this turn up to double your maximum movement as though using the Charge maneuver.
+
+When you run into a creature, 
+attempt to Shove the creature to the left or right of you to get them out of your way.
+On a succesful Shove your movement continues.
+
+Do not take Attacks of Opportunity during a Bull Rush.
+
+You stop your movement if the target can not be Shoved out of the way of your path for any reason-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Full Action
+Adrenaline  1
+Skill+1 Targets you Shove aside take damage equal to your current Armor
+
+*Sword and Board
+Info    Shields gain Attack damage as though they were a one handed Dagger of the same weapon tier as the shield.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Spiked Shields do not have an Armor penalty
+Skill+2 Shields gain the 'Balanced' tag when equipped by you.
+Skill+3 No Movement Penalty for using Tower Shields
+Skill+4 Gain 'Resilient 5' during the first round of combat.
+Remove it after the first round.
+
+*Smite
+Info    Use your Action to hit a target with your Shield.
+The target gains the Weak condition for 1 round.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Adrenaline  2
+Skill+1 The Weak condition will remain on this target until they attack somebody other than you.
+
+*Resistance
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Your Armor value reduces Poison damage taken.
+Skill+2 Your Armor value reduces Psychic damage taken.
+Skill+3 Your Armor value reduces Cold damage taken
+Skill+4 Your Armor value reduces Fire damage taken.
+Skill+5 -1 Push recieved from all sources while wearing Heavy armor
+Skill+6 -1 Push recieved from all sources while holding a Shield
+
+*Bait
+Info    Force an adjacent creature to immediately attack you.
+This uses their Reaction if their free one is available.
+Blind and Taunt them for 1 round after their attack.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Skill+1 This ability can be used as a Move action
+Skill+2 If an enemy could attack you with a melee strike from where they are standing, 
+They will always favor you over an ally.
+Skill+3 If an adjacent ally has an ability used on them by an enemy that only has 1 target,
+you may redirect the effect to yourself.
+Skill+4 Instead of Blinding the target for one round,
+Apply Weak to the enemy for their attack against you.
+
+*Shield Speed
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 As a Reaction used when Blocking a Melee Attack,
+apply 1 Slow to the attacker.
+Skill+2 As a Reaction used when Blocking a Melee attack,
+apply 1 Haste to yourself.
+
+*Prone Resistance
+Info    You are a +1 Complexity target
+for anything that would knock you Prone
+Skill+1 +1 Complexity
+Skill+2 +1 Complexity
+
+*Scraping Shove
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 You always deal Splat damage when pushing an enemy who is Prone.
+Skill+2 You may push targets in a direction that would make them go through the area that you occupy.
+They can not end their movement within your area.
+Skill+3 When you critically hit a target also make a Shove attempt against them
+Skill+4 When you Shove a creature that was adjacent to you,
+You may use your Reaction to expend movement as normal to follow the target along the path it was pushed.
+Your movement will not provoke Attacks of Opportunity.
+
+This does not apply during bull rush.
+Skill+5 You Push targets who are prone 2 tiles further.
+Skill+6 You may push an ally 2 while you have a shield equipped as a Free action once per round.
+Doing so stops your movement as if it were an action.
+Skill+7 +2 Push against targets with the 'Weak' condition
+
+*Fierce Shove
+Info    If you roll 10+ on a shove attempt,
+push the target an additional 1 tile.
+Skill+1 If you roll 12+ on a shove attempt,
+resulting Splat damage is amplified by your Critical Multiplier.
+
+This applies to your Splat as well as any triggering effects,
+like being pushed into a spiked wall.
+Skill+2 Choose 1:
+
+Movement a creature makes due to your Shove maneuvers will provoke Attacks of Opportunity from allies. 
+(But not for yourself)
+
+OR
+
+If you shove a creature into another creature,
+the creature you shoved must immediately make an attack against the creature they were shoved into.
+This does not use an action for the shoved creature.
+
+*[Tier 4(Determination)]
+
+*Technique
+Info    Unarmed Attacks lose the 'Frail' tag
+Skill+1 All combat maneuvers may be performed with any 1 Stat roll you choose now instead of their default. (STR, DEX, INT)
+
+*Constrict
+Info    Any target that starts their turn Grappled by you takes 2 piercing damage.
+Skill+1 You may grapple targets 1 size larger than you
+Skill+2 You may attempt to Grapple a target while you Grapple them.
+If this is succesful,
+The target gains the Sleep status for 2 rounds.
+You may freely release the grapple if you wish to avoid waking the target.
+
+If a target starts it's round Sleeping and Grappled by you,
+Constrict deals 3x piercing damage (6)
+Skill+3 You are Immune to Critical hits while you Grapple a target
+Skill+4 You may use Cleave to initiate a Grapple on multiple targets.
+These targets may never be larger than you.
+
+*Crash
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Deal splat damage when you directly use the Trip maneuver and are succesful.
+Skill+2 +1 Splat Damage
+
+*Technical Shoves
+Info    Whenever you Shove a target into another target,
+attempt to Trip both targets at +1 Complexity.
+Use the same roll for both targets.
+Skill+1 You may Shove a target while you are Grappling them.
+If succesful, double the distance shoved.
+
+You throw the target as a Push in any direction over any tiles until they land ontop of the full distance of the Shove.
+A target may clear walls of up to 5ft in height
+This always deals Splat Damage as they hit the ground.
+
+If the thrown target lands on a target they also take the Crash damage.
+Skill+2 You may Push targets in a direction that would make them go through the area that you occupy.
+They can not end their movement within your area.
+Skill+3 You Push targets who are prone 2 tiles further.
+
+*Stunning Strike
+Info    Make a single Unarmed Strike against a target.
+On a succesful tier 2 DEX roll,
+The target is Stunned for 1 round.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Adrenaline  2
+Skill+1 If you fail to Stun the target,
+Your unarmed attack deals x2 damage.
+Skill+2 Only need a Tier 1 success to stun the target
+
+*Dominate
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Attack twice and take the better result against Pinned targets to determine if you Hit or Critically Hit.
+Take the better result of Damage dealt if both rolls are normal Hits or both are Critical Hits.
+Skill+2 A target Pinned by you can not gain the benefit of Cover
+
+*Anticipation
+Info    Attempt to Dodge a melee attack made against you.
+
+If the dodge is succesful,
+You may attempt to Trip, Grapple, or Shove the target.
+Action  Reaction
+Adrenaline  2
+Skill+1 You may attempt to Trip, Grapple or Shove the target
+even if your Dodge was not succesful.
+
+You do this after they finish their attack against you.
+Skill+2 You may attempt to use the 'Clinch Combo' skill and do not need to pay the Adrenline cost.
+
+*Transfer
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Whenever you would Trip or Grapple a target that is adjacent to you,
+you may also decide to trade places with the target.
+Skill+2 You may trade places with the target of a Succesful shove attempt before you Shove them.
+
+*Focused Punch
+Info    Expend 2 focus to put all of your strength into one punch you make this turn.
+Gain the 'Strong' status.
+Make a single Unarmed Attack that deals Piercing damage. You do not get to attack with your Offhand.
+You must still have two free open hands to benefit from Focused Punch.
+Action  Attack
+Focus   2
+Skill+1 Also gain the 'True Shot' status for the attack
+
+*Clinch Combo
+Info    Attempt to trip a target and if succesful
+automatically attempt to Grapple the target.
+Apply the 'Pinned' status if you succeed the Grapple.
+
+Pinned is a +1 Complexity Grapple when attempting to break free
+Action  Attack
+Adrenaline  2
+Skill+1 Also make a single Unarmed attack against the target when you succesfully pin them
+
+*Freedom of Movement
+Info    You are a +1 Complexity target against anything that would slow or stop your movement-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 +1
+Skill+2 You may use Step actions while you grapple targets.
+They travel their full distance.
+
+*Concentration
+Info    Spend 1 Focus to
+Gain +25 Accuracy during this turn.
+Concentration may only be used once per turn.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Free
+Focus   1
+Skill+1 +25 more Accuracy
+Skill+2 When you critically hit while using Concentration,
+you may make a Shove, Trip or Grapple attempt against the target if they are adjacent to you.
+
+You may attempt to Shove or Trip a target that was not adjacent to you.
+Skill+3 Gain 2 Haste on a turn you've used Concentration
+(+1 Move per Haste. Removes Slow. Decays by 1 at the end characters turn.)
+Skill+4 If you use a Charge action while you have Concentration active
+you are considered to be jumping during the entire Charge.
+This jump is not high enough to go up higher in terrain elevation.
+
+This can not be used to clear a single gap of greater than 5 tiles.
+
+Do not provoke from this movement.
+Skill+5 Concentration may be used multiple times during 1 turn.
+This only applies the benefit of Accuracy gain and how many tiles of Movement you gain.
+
+*Zen
+Info    Using Zen is the only thing you may do on a turn that you use it.
+Next turn, you may take 2 actions.
+Action  Full-Action
+Focus   2
+Skill+1 +4 Move on your next turn
+
+*[Tier 4(Strength)]
+
+*Conditional
+Info    Many buffs/debuffs effect you more or less.
+This varies per condition, but is always beneficial.
+
+For example,
+Frenzy adds +1 to damage dealt,
+but not recieved
+
+Vigilant gains +1 Accuracy per Tier
+Skill+1 Further improve the effects of status conditions
+
+For example,
+Frenzy adds +2 to damage dealt,
+but not recieved
+
+Vigilant gains +2 Accuracy per Tier
+
+*Vitality
+Info    +2 HP
+Skill+1 +4 HP
+
+*Heavy Push
+Info    Whenever you deal Splat damage add 1dSTR to the damage dealt.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 If an ally pushes a creature or object into you,
+you may re-direct the remaining push of that object in a new direction and avoid splat damage.
+The object may pass over through or onto your character before you change it's direction.
+
+When re-directing push,
+Add any additional Push earned from putting points in this Skill even if the target is a Creature.
+
+The splat damage is still dealt from the original Ally who pushed the creature or object.
+Your bonuses to Splat damage do not apply, but they deal extra damage because of the increased amount of Push you added.
+Skill+2 Apply +3 Push to Objects when you use the Shove maneuver on them.
+Skill+3 Apply +3 Push to Objects when you use the Shove maneuver on them.
+Skill+4 +1 Splat Damage Dealt
+
+*Lunatic
+Info    Taunt all enemies within 2 tiles while you channel for 1 round.
+This channel can not be interupted by normal means.
+
+While you channel,
+Gain +1 Adrenaline each time an enemy makes an attack action against you and does not miss.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Focus   2
+Skill+1 +2 range for Taunt
+Skill+2 Roll STR whenever you are hit while you have the maximum adrenaline (8) and Lunatic is active.
+Heal for an amount equal to the STR roll.
+Skill+3 Whenever you would first be knocked unconcious by damage during a single Combat,
+immediately make 1 melee attack before you fall.
+Skill+4 Everytime you are attacked in combat,
+add +1 damage to a counter.
+
+At any point during this same combat,
+add all of this damage onto one attack.
+
+This added damage is not multiplied on a critical hit.
+Skill+5 -1 Focus Cost
+
+*Resolve
+Activate    Heal yourself for 3d4.
+If you have any Adrenaline remaining at the end of combat
+you may use Resolve as many times as you would be able to before it ends.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Full-Action,
+Repeatable
+Adrenaline  2
+Skill+1 Add your STR to the amount healed
+Skill+2 May be used as a Reaction to being dealt damage that would place you in negative hitpoints
+Skill+3 Whenever you deal damage to an enemy that is greater than their maximum hit points,
+Resolve activates without spending any Adrenaline.
+Skill+4 Once per Combat,
+Recieve 2x the healing when you would recieve healing.
+You may apply this even if you are unconcious.
+
+*Final Push
+Info    While you are at 8 hp or lower, Deal +1d2 damage.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 The first time you drop to 8 hp or lower during combat gain +1 Adrenaline
+Skill+2 While you are at 10 hp or lower, Deal +1d2 damage.
+
+*Warcry
+Info    All allies within 3 tiles gain +1 Adrenaline.
+
+This does not include yourself or your Twin Soul.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Non-Consecutive
+Adrenaline  2
+Skill+1 +3 tile range
+Skill+2 All allies affected by Warcry heal for 1d4+STR
+
+*Unblockable
+Info    Target of your attacks this turn do not gain the benefit of their Shield
+Adrenaline  2
+Skill+1 Target of attack can not use a reaction to this attack.
+Apply Frenzy for this attack, remove it when your turn is over unless you have it from another source.
+Skill+2 Target of attacks never gains benefit of any Cover.
+Skill+3 Attempt to Shove a target hit by Unblockable. 
+Always add +4 Push.
+Skill+4 Targets gain the Vulnerable condition until their next turn.
+
+*Clash
+Info    When you are attacked in melee, Make an attack back at who attacked you with your equipped melee weapon.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Reaction
+Adrenaline  3
+Skill+1 Whoever's damage is higher is the only person who deals damage.
+If damage is the same, both roll again.
+Skill+2 After activating Clash,
+You may also apply Clash to one more attack you recieve before your next turn.
+
+*Frenzy
+Info    While Frenzy is active,
+You deal 1d3 more damage with weapon attacks
+and always recieve 1d3 more damage.
+
+You determine if you are  using Frenzy at the beginning of your turn.
+Skill+1 Frenzy damage increases by a flat +2
+Skill+2 Frenzy damage increases by a flat +1
+
+*Fury
+Info    The first time you have 5 Adrenaline in Combat,
+Gain 'Vigilent 2' until the end of combat.
+Skill+1 +1 Vigilent gained
+Skill+2 +1 Vigilent gained
+
+*Bludgeon
+Info    Targets hit with your Blunt Melee attacks this turn can not be healed for 1 round.
+Action  Free
+Adrenaline  2
+Skill+1 The targets are confused for 1 round
+Skill+2 You may combine the effets of Bludgeon and Unblockable for the Adrenaline cost of 1 of them.
+
+*Rage
+Info    At the start of Combat,
+You may decide to have up to 2 Focus turn into Adrenaline
+Skill+1 Up to 3
+Skill+2 Up to 4
+
+*[Tier 4(Maelstrom)]
+
+*Challenge
+Info    You may designate a Challenge to a targeted enemy.
+A Challenge lasts until a target is defeated or combat ends.
+You may do this times per day equal to your base STR.
+
+You gain 20 Accuracy against a Challenged target.
+
+While you have a Challenged target you have -20 Accuracy to all other targets.
+
+Whenever you roll to Demoralize a target as part of a Skill within this class,
+MAD is the stat that you roll for success.
+Action  Free
+Skill+1 You are Immune to becoming Demoralized.
+
++5 Accuracy against your Challanged target.
+-5 Accuracy to all other Targets while you have a Challenged target.
+
+*Hatred
+Activate    Attempt to demoralize all enemies within 30ft around you.
+Roll MAD for each individual enemy you may effect.
+On Success, Demoralize the target.
+
+A Demoralized creature has -15 Accuracy
+Action  Full Round
+Adrenaline  2
+Stat    MAD
+Skill+1 A 10+ Success allows for you to make an Attack of Opportunity against a target
+who has become Demorlized due to Hatred
+
+*Brutal Finish
+Info    Use your Reaction when slaying an enemy to attempt to Demoralize a target within 3 tiles.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Reaction
+Skill+1 If the target you slay was Challenged,
+Heal an amount equal to half the damage of the killing blow.
+Skill+2 If the target you slay was Demoralized,
+Heal 2 Sanity.
+Skill+3 After a succesful combat,
+gain the Clear Mind status until the end of the day.
+(Clear mind grants 5 Sanity Resistance for one source of Sanity damage)
+Skill+4 Attempt a Dirty Trick on one target within 3 tiles of the target you slayed.
+This does not Provoke an Attack of Opportunity.
+
+*Demoralize+
+Info    You may attempt to Demoralize a target who is already Demoralized.
+If succesful, they gain the Fear condition.
+
+This application of Fear only impacts the target's Accuracy (-10)
+Skill+1 You always succeed at Demoralizing a target who is Challenged unless they are immune.
+Skill+2 A target you demoralize twice who gains the Fear now also gains the regular Fear effect.
+They may not willingly move closer to you.
+Skill+3 A target Feared by you may not use a Step action
+Skill+4 A target Demoralized by you that starts it's turn adjacent to you
+only has 1/2 its movement this turn.
+
+*Blood Splat
+Info    When you slay a creature leave a Blood tiles on the area the creature occupied.
+
+While you confidently stand in any Blood tile,
+Gain Resilient Tier 1.
+
+(Resilient adds +1 armor per Tier)----- You may Learn the Upgrades to this Skill in any order --------
+Skill+1 You have Reach with melee weapons while standing in Blood.
+This has no effect if you already had Reach.
+Skill+2 Reslient becomes Tier 2.
+Skill+3 Gain Immunity to Taunt and Fear while standing in Blood
+Skill+4 Also create Blood tiles on all tiles adjacent to the target you slayed.
+Skill+5 Immune to the Vulnerable condition while standing in Blood
+
+*Fearless
+Info    When an ally would lose Sanity due to the actions of enemies,
+You may accept to take all of their sanity damage instead.
+Action  Reaction
+Range   6
+Skill+1 While your Sanity is full,
+You can not be Confused, Hindered, Blinded, or Stunned.
+
++1 Resistance to mind altering effects while your Sanity is full.
+Skill+2 +2 Sanity Damage resistance
+
+*Duel
+Info    A target that you Challenge is taunted by you for 1 round.
+This taunt is dismissed if any other ally damages the target of your Challenge
+Skill+1 Gain Half Cover from the target of your Challenge
+
+*Truth Seeker
+Info    You focus on a target for 1 minute.
+While focused you determine if what they are saying and what they just said is truthful with certainty.
+
+Any target you have determined to be deliberately lying is Demoralized by you.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Focus   1
+Skill+1 You are never caught off guard.
+You may act normally if the enemy has started a Surprise round.
+
+You have +6 movement during all Surprise Rounds.
+Skill+2 You have 2 Resistance from others using Stealth against you
+
+*Bloodletting
+Info    When you Critically Hit an enemy with a Melee Attack,
+create Blood in the area that you occupy.
+(If the creature has Blood)-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 If your melee Critical Hit kills a target,
+Gain 1 Adrenaline.
+Skill+2 If your melee Critical Hit kills a target,
+you may decide to apply the Frenzy condition to yourself for the rest of combat.
+Skill+3 Attack twice and take the better result whenever you stand in Blood
+
+*Iaijutsu Strike
+Info    Gain +10 Accuracy with the 'Charged Strike' STR signature ability.
+You may perform a Charged Strike with one handed melee weapons.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Charged strike pushes all targets 2 away from you in the same direction.
+Skill+2 On a succesful DEX roll,
+All hit targets are Blinded for 1 round
+Skill+3 One target hit by Charged Strike can not use Magic for 2 rounds.
+
+*Resolve
+Info    When you would be knocked unconcious due to being below 1 HP,
+You may expend 1 Focus to remain concious for 1 round.
+
+Everytime you are hit while below 0 HP you will have to spend 1 more Focus.
+At the end of your next turn you will also have to expend 1 Focus to stay concious for another Round.
+
+While in this state you are still considered a threat by enemies,
+so the chance of being damaged further and dying is higher than usual.
+
+Your Sanity does not get damaged until you actually fall unconcious.
+Skill+1 You may spend 1 Focus to not be effected by Sleep.
+
+*Manipulating Strike
+Info    Targets you hit with attacks this round may not
+engage with 1 Target of your choice.
+
+This lasts for 1 turn
+Adrenaline  1
+Skill+1 Alternatively,
+You may decide that the target favor a particular creature it considers an Enemy.
+
+It will not seek the creature if they are unreachable.
+
++1 Adrenaline Cost
+
+=====================
+MAD
+=====================
+
+*Sanity
+Info    Max Sanity +4
+Skill+1 Max Sanity +4
+
+*[Tier1]
+
+*Splat
+Info    +1 Splat Damage
+Skill+1 +1 Splat Damage
+
+*Magic Damage
+Info    Gain +1 Magic Damage
+This also applies additional Poison with magic.
+Skill+1 +1 Magic Damage
+
+*Resistance and Recovery
+Info    +1 Sanity Resistance, +2 Bonus Sanity Restored
+Skill+1 +1 Sanity Resistance, +2 Bonus Sanity Restored
+
+*[Tier2]
+
+*Literacy
+Info    You know how to read. This allows you to use 'Ritual' abilities.
+
+*Telekenisis
+Info    Apply a psychic force to a specific location or target within range.
+The force is equal to a punch and can damage as though it were an Unarmed Attack.
+All modifications to Unarmed Attacks apply to Telekenisis.
+You may hit the object from any angle, but only 1 time per cast.
+Range   4
+Sanity  5
+Skill+1 +4 Range
+
+*Sanity
+Info    Max Sanity +3
+Skill+1 Max Sanity +3
+
+*Tome Mastery
+Info    A Tome is a book in which an Occultist has found particular affinity in to create magical effects.
+Only one Tome may be active on a character each day.
+
+Tomes require an Attunement slot.
+Requires    Ability to Read
+Skill+1 You may use Tomes of +1 tier
+Skill+2 You may use Tomes of +1 tier
+Skill+3 You may use Tomes of +1 tier
+
+*Peer Beyond
+Activate    By placing your hands on a wall or door,
+reveal the layout and occupants of an adjacent room.
+Action  Moment
+Sanity  10
+
+*Whisper
+Activate    One target you select can hear your whispers. You must see the
+target to select them, but they can then hear you through walls.
+They do still need to be able to hear noises. 
+They can not respond back to you.
+Anyone close to you can still hear your whispering.
+Action  Free
+Sanity  6
+Range   20
+Duration    1 minute per Character Level
+Skill+1 Increase the range to 40.
+You may attempt to speak to a party member even if you do not see them.
+
+*Balance
+Info    +1 STAT (That is not your Highest) -2 any OTHER STAT
+Skill+1 +1 to Stat you reduced
+
+*Heavy Book
+Info    You may use Tomes as a one handed Melee weapon.
+It deals 2d2 damage.
+Skill+1 Your Tomes gain +1 damage per Tier of Tome it is.
+Skill+2 Your Tomes gain the Heavy tag, but require +1 Load to use.
+
+*[Tier3(Signature Skill)]
+
+*Clear Day
+Info    Start each day with the 'Clear Mind' status.
+
+(Clear mind grants 5 Sanity Resistance for one source of Sanity damage)
+
+*Overdose
+Info    One source of damage dealt this turn by you applies 8 poison
+Adrenaline  4
+Skill+1 -1 Adrenaline Cost
+
+*Muted
+Info    You can not gain Adrenaline or interact with it in any way.
+Immune to all status effects.
+(Even beneficial ones)
+Skill+1 Select one status effect that you are not immune to
+
+*Splitcast
+Info    Magic that targets 1 creature may also target 1 more.
+Adrenaline  4
+Skill+1 +1 More
+
+*Mirror Image
+Activate    When a target attacks you,
+React by Teleporting 4 Tiles before they hit you.
+You may not teleport to somewhere you do not have line of sight.
+Action  Reaction
+Adrenaline  3
+Skill+1 +4 Range added to teleport
+
+*[Tier4(Progenitor)]
+
+*Immune System
+Info    Your amor reduces the damage you recieve from Poison
+Skill+1 At the start of a day or when you contract a Disease, you may completely ignore 1 Disease for the entire day if you spend 1 Focus.  You may do this with up to 3 Diseases
+
+*Cure Disease
+Info    Remove 1 Disease from an afflicted target
+Sanity  25
+Range   Touch
+Skill+1 You may decide to accquire this person's Disease
+
+*Plague Host
+Info    While you have poison stacks,
+you may at any point transfer this poison to a target in touch range.
+(Attack Action, roll to hit)
+Skill+1 Alternatively,
+You may transfer a Disease you have to a target.
+Skill+2 Poison you transfer with this ability can Critically Hit,
+increasing the Poison added to the target by your Crit Multiplier.
+Skill+3 Whenever you gain a Madness,
+Also gain a Disease.
+
+*Poison Eater
+Info    You may touch an enemy target who has Poison stacks on them.
+You may remove any amount of poison they have on them and heal yourself for that amount.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  8
+Skill+1 You may touch an ally and remove all the poison stacks on them.
+They heal for 1/2 the poison you removed.
+Skill+2 When you slay an enemy within 10ft who has Poison stacks,
+heal an amount equal to 1/2 their Poison stacks.
+Skill+3 When you remove Poison Stacks from an enemy with Poison Eater ability
+the enemy also immediately takes poison damage equal to the poison you removed.
+
+*Cobra
+Info    If an enemy starts it's turn Grappled by you,
+It gains 2 Poison.
+Skill+1 +1 Poison
+Skill+2 +1 Poison
+Skill+3 +1 Poison
+
+*Spreading Plague
+Info    When a creature dies that is affected by your Poison
+you may apply 1/2 of it's poison to any target within 2 tiles of it.
+Action  Reaction
+Sanity  6
+Skill+1 When the creature dies it also leaves Poison tiles (2) in the area the creature occupied.
+Skill+2 Also create poison tiles in all tiles adjacent to the area the creature occupied.
+
+*Plague Aura
+Activate    Any creature that starts it's turn within 1 Tile of you while you channel gains 2 Poison stacks
+Action  Attack
+Sanity  20
+Range   5
+Channel 2
+Skill+1 +2 Channel Duration
+Skill+2 +2 Poison
+
+*Projectile Vomit
+Info    Projectile Vomit 4 tiles in a cardinal direction.
+Create Poison tiles (2) on all tiles the vomit travels over.
+
+When the projectile vomit hit's a target,
+apply 4 poison to that target.
+Do not place a poison tile underneath that target.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  10
+Skill+1 Also create Poison Tiles on all tiles adjacent to a target hit with Projectile Vomit
+Skill+2 Poison tiles created by Projectile Vomit are increased to apply +2 Poison
+Skill+3 On a succesful MAD roll,
+Poison Tiles created by Projectile Vomit apply a disease that you have to a target who starts their turn in the poison.
+Skill+4 You may instead apply Projectile Vomit poison tiles to all tiles you have walked over before using this action.
+If you were in the air for any reason, projectile vomit will fall down on enemies and apply poison as if they hit the target.
+Skill+5 Alternatively,
+the Projectile Vomit becomes solid.
+Instead of dealing Poison damage to the target you hit directly with it, it deals 2d3 Piercing damage.
+Create Blood tiles instead of Poison.
+Skill+6 Projectile Vomit travels 6 Tiles.
+Skill+7 Alternatively,
+the Projectile Vomit becomes Web.
+Instead of dealing Poison damage to the target you hit directly with it, it creates a Web tile underneath them.
+Create Web tiles instead of Poison.
+Skill+8 Alternatively,
+vomit out a 3x3 area of Poison tiles (4) infront of yourself.
+At least one of these tiles must be adjacent to your character.
+
+*Toxic Blood
+Info    As a Reaction to being hit by a physical attack,
+you may spray toxic blood on all adjacent creatures,
+applying 4 Poison.
+Action  Reaction
+Adrenaline  2
+Skill+1 +2 Poison
+
+*Speak with Rats
+Info    Initiate a conversation with a rat or rat swarm.
+Action  Attack
+Sanity  8+1 per skill level
+Skill+1 Command a Rat or Rat swarm (medium size) to do as you tell them.
+This effect compels them for 10 minutes per skill level.
+
+A singular Rat will not join you in combat, 
+but a Swarm of at least 10+ Rats can.
+Skill+2 You may see through the eyes of a Rat while it is compelled to do something for you.
+You may freely do this one time while you have compelled that Rat to do something.
+You do not have your own sesnses while you are using the Rat's vision.
+You may freely end the effect.
+Skill+3 You also gain the sense of smell of rats you use the vision of.
+You may also speak with one other form of Vermin.
+Select one: Crow, Frog, Spider, Centipede
+Skill+4 You may decide that a single rat or rat swarm follow you even after your compulsion has worn off.
+These rats will follow you for 1 day. If you wish to extend the duration to another day,
+you must re-apply this skill at the start of every morning.
+Skill+5 You may command Rat Swarms of up to Large size.
+
+*Spiderwalk
+Info    No reduced movement for climbing walls, being in difficult terrain, and auto succeed all climb checks this turn.
++2 movement this turn.
+Action  Move
+Focus   1
+Skill+1 +2 More Movement
+You may climb on ceilings
+Skill+2 You stick to the location where you end your movement.
+At the start of your next turn you may use movement on whatever surface you are on,
+but that movement must be toward returning to normal ground.
+
+If you start your turn on a ceiling,
+gain +4 Move that turn.
+Skill+3 If you start your turn on a ceiling,
+you may immediately let go of the ceiling and fall down to the floor.
+You do not take any fall damage.
+
+You may use your Action to make one Melee attack on a target as you fall or land.
+Roll to hit as normal, but if you do hit it is considered a Critical Hit.
+
+*Web
+Info    Create a Web tile on target unoccupied tile.
+If you start your turn on Web or walk through a Web tile you are knocked Prone.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Range   6
+Sanity  10
+Skill+1 All Webs you create use your Stealth rolls to be hidden.
+Skill+2 While a target is in a Web you created,
+they always recieve +2 Poison damage when being dealt Poison damage.
+Skill+3 Webs you create do not get destroyed when they are triggered.
+A target must succeed a DEX roll to succesfully leave a Web tile.
+They are prone until they succesfully leave.
+Skill+4 You are Immune to Web tiles
+Skill+5 When you Critically hit, create a Web tile underneath yourself
+
+*Spread Affliction
+Info    Copy one negative effect from a creature and 
+place it on a creature within 3 range.
+Action  Attack
+Range   8
+Sanity  10
+Skill+1 Place it on a creature within 8 Range
+
+*Smog
+Info    Create 4 tiles of Darkness.
+Each tile must be adjacent to to one of the other Darkness tiles you created.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Range   8
+Sanity  8+1 Per Skill Level
+Skill+1 Smog also acts as Poison (2)
+Skill+2 Create 6 total tiles
+Skill+3 Become immune to your own Smog.
+Skill+4 Alternatively,
+create Smog on all tiles you Move over before casting it.
+
+*Corpse Explosion
+Activate    Target a creature.
+When this creature dies,
+It explodes in a 2 Tile radius which leaves Blood on all tiles and
+heals all targets caught in the explosion for 1d4+1
+
+You may use a Reaction to prevent the exlpsion from happening.
+Action  Attack
+Sanity  12
+Range   8
+Skill+1 Alternatively,
+You may decide to use this modified Corpse Explosion.
+Decide which to use when the target creature dies.
+
+Instead of Blood tiles,
+Create Poison Tiles (2).
+
+Instead of Healing,
+Deal 2 Poison Damage to all within the Explosion radius
+Skill+2 +2 Healing or Poison from the initial explsion
+Skill+3 +2 Healing or Poison from the initial explsion
+
+*[Tier4(Legion)]
+
+*Cursed
+Info    When you recieve Blight you also heal for the amount of blight recieved
+
+(A blighted target recieves additional damage equal to their Blight)
+(Blight is flat damage added after all other modifiers)
+Skill+1 Gain 'Vigilant' of a Tier equal to the amount of Blight on you.
+
+*Blight
+Info    Apply 1 Blight to a target
+(A blighted target recieves additional damage equal to their Blight)-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Sanity  4+2 per Skill Level
+Skill+1 You instead apply 1dMAD Blight to a target,
+but only on a succesful MAD roll.
+Skill+2 Deal 1dMAD+1 Psychic damage to the target.
+
+*Mind Plague
+Info    Deal 0 damage to a target twice-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  3+3 Per Skill Level
+Range   6
+Skill+1 Deal 0 damage to a target three times
+Skill+2 Alternatively,
+Mind Plague may be applied to all targets in a 3x2 area.
+At least one of these tiles must be adjacent to you.
+
+*Enrage
+Info    Apply the Frenzy status to a target.
+
+This lasts for 5 minutes or until combat ends.
+Action  Attack
+Range   6
+Sanity  6+1 Per Skill
+Skill+1 Target a creature with Frenzy.
+Remove the Frenzy status from a target and heal the target 2d3.
+
+*Psychic Pulse
+Info    Deal 1dMAD Psychic Damage to all tiles in a 3x3 AOE at the end of every round that you channel.
+Action  Attack
+Range   10
+Sanity  10+2 per level
+Channel 3
+Skill+1 +1dMAD damage
+Skill+2 You may move the Psychic Pulse on your turn using your Move action.
+It can be moved 4 tiles.
+Skill+3 +2 Channel
+
+*Summon
+Info    Summon a medium sized illusory creature within 3 Tiles of yourself that only you and targets with the 'Blight' condition can percieve.
+The Summon always acts on your initiative, including immediately after you summon it.
+
+The Summon has only a melee attack which uses your accuracy.
+On a hit, the creature deals 1+1dMAD Psychic damage.
+A summon can only affect a target that is Haunted.
+
+Your Summon is dispelled if it is damaged twice.
+Only people who can see the summon can affect it.
+
+A Summon has 6 Move.
+Even though it is not real it still can not move through walls.
+It is considered Flying-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Full-Action
+Sanity  16
+or
+12 if you recieve -8 Max HP
+Duration    5 minutes or once combat has ended
+Skill+1 Your Summons may use your MAD score to perform Combat Maneuvers.
+These maneuvers provoke unless you as the caster have a way for them not to.
+Skill+2 If a Summon slays a target,
+It grows to Large size, gains reach, and its Melee attack now deals +2 psychic damage.
+It resets the counter for the amount of hits it has recieved.
+Skill+3 As a Move action that costs 6 sanity,
+you may swap places with a Summon within 20 tiles.
+Skill+4 Instead of making a Melee attack that deals Psychic damage,
+A summon always applies 1 Blight to a target in melee range.
+
+-1 Hit before being dispelled
+Skill+5 Your Summon may use your Adrenaline
+Skill+6 You always deal -2 damage with weapon attacks.
+Your summon gains 2 damage.
+Skill+7 Your Summon requires +1 Hit to be dispelled
+
+*Jeopardy
+Info    Apply 3 blight to a target and
+apply 5 blight to yourself.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  8
+Range   6
+Skill+1 +1 to the Blight applied to both targets
+Skill+2 You apply an extra effect when you remove Blight from a target.
+
+If it is an enemy,
+Deal damage to the target equal to double the Blight removed.
+
+If it is an ally,
+Heal the target equal to the amount of Blight removed.
+
+*Confusing Evasion
+Info    As a reaction to a creature in range targeting you with an attack or magic,
+Confuse that target for their specific triggering action.
+Action  Reaction
+Adrenaline  1
+Sanity  8
+Range   4
+Skill+1 Also apply 1 Blight to the target
+
+*False Resurrection
+Info    As a Reaction that also removes your Action on your next turn,
+When a 'Haunted' target witnesses one of their allies die in combat,
+you may cause all targets affected by 'Blight' to see an illusion of their dead ally come back to life to fight them.
+
+For 1 round you control a Summon that mirrors the stats and abilities
+of the fallen target. It maintains it's initiative.
+If you give it no specific instructions it will try it's best to harm your haunted enemies.
+
+All of the damage the Summon inflicts is Psychic. It can not heal anyone.
+After it finishes it's one round it disapears.
+It may be destroyed in 2 hits before it has a chance to act.
+Focus   1
+Sanity  12
+Skill+1 Your False Resurrection acts immediately after your reaction.
+
+*Return Blight
+Info    When a creature dies within range that has Blight on it,
+you may use your Reaction to gain all the stacks of Blight that it had.
+Range   8
+
+*Blight Touch
+Info    Touch a target creature and transfer all of your Blight onto the target.
+Range   Touch
+Sanity  8
+
+*[Tier4(Nostalgia)]
+
+*Ice Walker
+Info    You may change directions while on Ice without risk of falling Prone.
+
+(Targets move 1/2 speed on Ice and can not change directions while moving on it)
+(If you do attempt to change directions, you must succeed a DEX roll to not fall prone)
+Skill+1 You move at normal speed while walking over Ice
+
+*Dive
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 You may hold your breath for 1 day
+Skill+2 Double your movement speed while swimming
+Skill+3 Always recieve -1 Slow
+
+*Bullish Blast
+Info    Push a target creature or object you touch 5 in any cardinal direction.
+Movement caused by this push does NOT provoke.
+
+If targeting an Object,
+You may only push an Object that would require up to a Complexity tier 2 roll to pick up.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Range   Touch
+Sanity  8+2 per skill level
+Skill+1 Splat damage may be converted to Cold damage.
++1 flat Cold Damage if converted.
+Skill+2 The target moves 5ft in any direction before you apply the Push to it
+Skill+3 +4 Range (No longer Touch)
+Skill+4 If the target has 0 total move and is not an Object,
+Double the distance pushed.
+Skill+5 +2 Push
+Skill+6 +2 Push
+
+*Frigid Air
+Info    5x5 cube area of ground becomes a thin layer of Ice.
+(Targets move 1/2 speed on Ice and can not change directions while moving on it)
+(If you do attempt to change directions, you must succeed a DEX roll to not fall prone)-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Range   16
+Sanity  6+2 Per Skill Level
+Skill+1 Water that is turned to ice becomes dense enough to allow safely walking over.
+Skill+2 +2x2 Area
+Skill+3 Alternatively,
+All tiles you move over this turn create Ice tiles.
+Adjacent tiles all become Ice where you end your movement.
+Gain +5 movement this turn.
+
+*Shackles of Ice
+Info    Cause target standing on an Ice tile to become Prone-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Range   16
+Sanity  6+1 Per Level
+Skill+1 Apply 1 Slow to the Target
+Skill+2 Effect is applied to all targets in a 2x2 cube instead of a single target
+Skill+3 Deal +1dMAD Cold Damage to the target
+Skill+4 Deal +1dMAD Cold Damage to the target
+
+*Stalemate
+Info    Next round,
+Nobody may use an Action.
+All creatures within 4 tiles gain 1 Slow
+Action  Attack
+Adrenaline  5
+Skill+1 Alternatively,
+Stalemate may apply to the current round.
+-1 Adrenaline cost
+
+*Iceplosion
+Info    Destroy an Ice Block you can see.
+Deal 2dMAD Cold damage to the area within 4 Range of the destroyed Ice Block
+Range   16
+Sanity  8
+Skill+1 Create Ice Tiles in all the tiles within 2 range of the Iceplosion.
+
+*Frostbite
+Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 For every 2 Poison you would apply to a target, instead always apply 1 Slow.
+If you would ever create Poison tiles, instead create Ice.
+Skill+2 Instead of creating Blood tiles, create Ice tiles.
+Any ability that applies to Blood tiles instead applies to Ice for you.
+Any ability that creates Blood tiles and deals damage now deals Cold damage.
+Skill+3 When you apply 1 Slow to a target,
+you may instead decide to apply 1 Calm.
+Skill+4 Once per combat,
+Even if it is not your turn,
+Whenever a creature recieves Push,
+Immediately decide a new direction for them to be Pushed
+
+*Slow Link
+Info    Apply 3 Slow to yourself and 1 Target
+Range   2
+Sanity  10
+Skill+1 Alternatively,
+Remove all slow from 1 target and apply that much Blight to them.
+
+*Frost Shield
+Info    All your Armor is applied to Cold damage recieved.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 Cost: 3 Adrenaline
+As a reaction to being attacked in Melee,
+Apply the Impervious status to yourself.
+Skill+2 Gain +5hp when you become Impervious
+Skill+3 If an ally pushes a creature or object into you,
+you may re-direct the remaining push of that object in a new direction and avoid splat damage.
+The object may pass over your character before you change it's direction.
+
+When re-directing push,
+add +2 Push
+
+*Ice Block
+Info    Target an unoccupied Ice Tile to create an Ice Block tile. 
+An Ice Block is destroyed in 2 hits (1 if fire damage).
+An Ice Block's top is a higher elevation than the ground around it.
+Anyone who is pushed into an Ice Block recieves 2 slow.
+
+An IceBlock is considered to be an Object with 6 Push resistance-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Range   16
+Sanity  5+1 Per Level
+Skill+1 Create 3 total Ice Blocks that must connect in a straight line in order to form a wall
+Skill+2 You may create an Ice Block in an occupied tile.
+Attempt to Shove an enemy creature on this tile in any direction.
+If the Shove fails or it is an allied creature, they are raised in elevation as the Ice Block grows.
+If they would be crushed by a low cieling, always succeed on the Shove.
+Skill+3 A target pushed into one of your Ice Blocks is dealt 1d3 Cold damage
+and all Splat damage from the push is converted to this single source of Cold damage.
+Skill+4 When you slay an enemy,
+Use your Reaction to cast this ability.
+Create an Ice Block where the target died.
+
+If the target was Large size or bigger you still only create 1 Ice Block.
+
+*Adjust Ice Block
+Info    You ignore the Push resistance on Ice Blocks.
+
+An Ice Block always converts all push damage into cold damage.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Skill+1 A pushed IceBlock creates Ice over all tiles it travels over.
+This Ice will over-write any other tile effects.
+Skill+2 You remove the Push Resistance from Ice Blocks you create for your allies
+
+*Time Capsule
+Info    While you channel,
+All Push exerted on an Object will be stored within that Object.
+
+You may decide at any time as a Reaction,
+(1 Focus Cost if it is not your turn)
+to release the Time Capsule spell and have the object finally be Pushed.
+It is Pushed for the additive total amount and deals all associated Splat damage accumulated.
+
+You choose the direction of this push when you release the Channel,
+Unless you were forcefully removed of your channel. Then it is Pushed in a random cardinal direction.
+
+If shot extreme distances at a target,
+they may gain the benefit of Cover, require a ranged attack to hit, or have a chance to use DEX to dodge at DM's discretion.
+Sanity  12
+Range   6
+Channel 3
+Skill+1 Time Capsule may apply to a willing Ally
+Skill+2 An ally who has Time Capsule applied to them is immune to Splat damage associated with the push from Time Capsule
+Skill+3 An ally Pushed by Time Capsule is also considered to be using the Charge full-action
+
+*Trust
+Info    Skip your turn completely.
+Gain +1 Adrenaline and 5 Healing.
+
+This may not be used on Round 1 of combat.
+Action  Full-Action,
+Non-Consecutive
+Sanity  12
+Skill+1 +1 Adrenaline gained
+Skill+2 You become Impervious.
+Lose the Impervious status at the start of your next turn.
+Skill+3 Do not lose the Impervious status at the start of your next turn.
+
+*[Tier4(Gnosis)]
+
+*Awaken
+Info    Immune to Confusion and Sleep forced upon you.
+Skill+1 You may have 2 Active Mind Tricks at one time
+
+*Mesmerize
+Info    In a conversation, You may take back something that you just said after seeing the reaction.  Nobody who heard you has memory of what you said or what they said
+Focus   1
+
+*Mental Capacity
+Info    -5 Max Sanity +2 Load
+Skill+1 -3 Max Sanity +2 Load
+
+*Vessel
+Info    Target a creature. When they die, whoever dealt the killing blow heals 1d3.
+Action  Attack
+Range   10
+Sanity  8
+Skill+1 +1d3
+
+*Pain Link
+Activate    Target creature recieves 1/2 of the damage you recieve as Psychic damage.
+If you fall unconcious the effect ends.
+Action  Action
+Sanity  16
+Range   4
+Skill+1 Target recieves +1 more damage when you recieve damage
+
+*Chit-Chat
+Info    On a succesful MAD roll,
+a targeted creature becomes stunned for 1 round.
+
+If you can speak to the target, 
+it must answer 1 question to become unstunned.
+It does not need to be a correct answer or even truthful.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Attack
+Sanity  12
+Skill+1 If used outside of combat,
+The target is stunned until they truthfully answer the question, 5 minutes have elapsed, or they are attacked.
+Skill+2 If the target answers untruthfully or without effort,
+they recieve 10 Psychic damage. This damage will never kill a target.
+Skill+3 If you succesfully initiate Chit-Chat on a Frozen target,
+their frozen status requires +1 hit to be broken instead of being Stunned.
+You heal for 1dMAD
+
+*Communion
+Activate    Attempt a direct consultation with The Myriad through a book.
+Gain a unique perspective on the situation, possibly revealing something that you've missed.
+Possibly not helping as much as you wish it would.
+Action  Ritual
+Focus   2
+Sanity  30
+
+*Arrival
+Activate    Learn information about the next person you are likely to meet, but have never met before.
+If it is more likely you do not meet a new person today the spell fails.
+
+This may include their name, what they look like, their race, and what they are currently doing.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Action  Ritual
+Sanity  15
+Skill+1 You may immediately target this person with 1 ability, even if they are not in range or sight.
+This action must be concluded immediately after casting Arrival.
+Skill+2 You may say one sentence telepathically of no more than 10 words to the target. 
+They do not know where these words came from.
+
+*Reservoir
+Info    Any ally within range may freely use (with your permission) up to 2 of your Adrenaline on their turn.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Range   6
+Sanity  -4 Max Sanity
+Skill+1 Up to 3
+Skill+2 +6 Range
+Skill+3 You may use an action to trade health totals with a willing ally within range.
+
+*Object History
+Info    You touch an object and get a brief glimpse into
+some history of the object.
+
+The effect is greatly diminished if the Object has been disturbed by you.
+(Carried around for a while, broken)-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  8
+Range   Touch
+Stat    Roll MAD,
+Results may be improved
+and some objects may have resistances
+Skill+1 You may touch creatures to learn about them. Select one option;
+1 - If they are a Changeling
+2 - About their martial abilities
+3 - If something they have recently said is a lie
+4 - If they carry any unique items or equipment
+
+*Thought Snip
+Activate    Cause a target to forget recent events.
+They have no recollection of the last 1 minute.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  8+1 per Skill Level
+Range   4
+Skill+1 On a succesful MAD roll,
+You may alter the memory with something else.
+It must still be convincing or suffer a higher complexity MAD roll.
+Skill+2 Thought Snip may effect +1 target for every +4 sanity spent
+Skill+3 If used outside of combat,
+you may remove up to 15 minutes of memory.
+
+*Manipulation
+Activate    On a succesful MAD roll,
+Gain a brief insight into the targets mind
+for the purpose of figuring out what they want in order to
+aid you in negotations or your goal in a conversation.
+Sanity  10+1 Per Level
+Stat    MAD
+Skill+1 If you use Manipulation during Combat,
+A target you roll a Success against considers 1 target of your choice to be an enemy for 1d2 rounds.
+This does not mean they must attack this enemy if they also have other enemies.
+Skill+2 It considers this target an enemy for +1 round.
+Skill+3 A target that you have Manipulated will not attack you for 1d3+1 rounds
+
+*Featherfall
+Info    Reduce the splat damage a target recieves by 5.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+Sanity  10
+Range   6
+Duration    1 minute per skill level
+Skill+1 Apply this buff to targets in a 2x2 Cube
+Skill+2 Reduce splat damage by an additional 2.
+
+*Mind Trick
+Info    Place a Mind Trick on a target within range.
+Placing a Mind Trick on yourself reduces the Sanity cost by 2.
+
+You may only have one Mind Trick active at a time.
+
+
+After it is triggered, the trick expires. An unused trick expires when resting.
+You decide if the trigger happens immediately before or immediately after the trigger.
+
+When you place a Mind Trick you determine how it is triggered:
+
+1 - When the target Critically Hits
+2 - When the target is Critically Hit
+3 - When the target slays an enemy
+4 - When the target gains a specific status debuff
+5 - When the target gains Healing
+6 - When you use a Full-Action to trigger it
+7 - When the target walks over a specific tile you designate
+
+Gain a skill below to apply the effect of the trick;
+Action  Attack
+Range   6
+Sanity  10
+Skill+1 Heal the target for 2+1d3
+Skill+2 Damage the target for 3d3 (Piercing)
+Skill+3 Trade places with the Target.
+You may not be more than 20 Tiles apart.
+Skill+4 Push the target 6 in a direction of your choice
+Skill+5 Create a Web tile underneath the target
+Skill+6 Apply 6 Poison to the target
