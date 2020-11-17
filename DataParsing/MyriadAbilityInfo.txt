@@ -1550,7 +1550,7 @@ Gain +6 Adrenaline.
 #Skill+1 Only deal 18 damage to yourself.
 +1 more Adrenaline
 
-*[Tier 4(Resiliance)]
+*[Tier4(Resiliance)]
 
 *Natural Armor+
 #Info    +1 Armor
@@ -1689,7 +1689,7 @@ If you shove a creature into another creature,
 the creature you shoved must immediately make an attack against the creature they were shoved into.
 This does not use an action for the shoved creature.
 
-*[Tier 4(Determination)]
+*[Tier4(Determination)]
 
 *Technique
 #Info    Unarmed Attacks lose the 'Frail' tag
@@ -1819,7 +1819,7 @@ Next turn, you may take 2 actions.
 #Focus   2
 #Skill+1 +4 Move on your next turn
 
-*[Tier 4(Strength)]
+*[Tier4(Strength)]
 
 *Conditional
 #Info    Many buffs/debuffs effect you more or less.
@@ -1953,7 +1953,7 @@ You may decide to have up to 2 Focus turn into Adrenaline
 #Skill+1 Up to 3
 #Skill+2 Up to 4
 
-*[Tier 4(Maelstrom)]
+*[Tier4(Maelstrom)]
 
 *Challenge
 #Info    You may designate a Challenge to a targeted enemy.

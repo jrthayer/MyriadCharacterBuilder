@@ -9,7 +9,6 @@ file.onreadystatechange = function() {
         var abilities = abilityFile[1];
         console.log(abilityBookmarks);
         console.log(abilities);
-        test(myArr);
     }
 }
 
