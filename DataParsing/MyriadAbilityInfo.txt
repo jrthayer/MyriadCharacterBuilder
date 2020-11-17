@@ -557,6 +557,7 @@ This damage is dealt as Psychic damage
 The range always originates from the last target to die.
 #Skill+3 +3 Range
 
+*
 =====================
 INT
 =====================
@@ -1413,6 +1414,7 @@ Leave fire tiles underneath all tiles you melee attacked.
 #Skill+1 Becomes a Free action
 3x3 Area
 
+*
 =====================
 STR
 =====================
@@ -2093,6 +2095,7 @@ It will not seek the creature if they are unreachable.
 
 +1 Adrenaline Cost
 
+*
 =====================
 MAD
 =====================
