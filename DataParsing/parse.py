@@ -38,6 +38,7 @@ for index, ability in enumerate(abilities):
     if "-----" in abilityLines[1]:
         choiceAbility = True;
         abilityLines[1] = abilityLines[1].split("---")[0];
+
     #first line of ability is special case
     abilityLines[0] = [choiceAbility, ["Name" , abilityLines[0]]];
     iterAbilityLines = iter(abilityLines);
@@ -45,11 +46,15 @@ for index, ability in enumerate(abilities):
 
     #split each line into key pairs
     for index2, line in enumerate(iterAbilityLines):
-        abilityLines[index2+1] = line.split(None,1);
+        abilityLines[index2+1] = line.split(None,1);     
 
     #convert to json
     abilities[index] = abilityLines;
 
+    #del ability infos that are empty
+    if len(abilities[index][1]) == 1:
+        del abilities[index][1];
+   
 bookmarks = bookmarks;
 abilityBookmarkList = [bookmarks, abilities];
 
