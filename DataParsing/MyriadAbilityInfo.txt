@@ -508,7 +508,7 @@ Deal 3 psychic damage for every 1 adrenline spent to all of your adjacent Tiles.
 #Skill+2 Apply 1 Blight to all targets you dealt Psychic damage to
 
 *Slayer
------!!! You may Learn the Upgrades to this Skill in any order !!!--------
+#Info -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
 #Skill+1 When you kill an enemy in combat
 you may decide to Dispel 1 on-death effect the creature has.
 #Skill+2 Never become Blind due to Darkness Tiles
@@ -1460,7 +1460,7 @@ STR is added to weapon damage 1 more time
 #Skill+1 Another choice of Combat Maneuver
 
 *Weight Lifted
-Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+#Info    -----!!! You may Learn the Upgrades to this Skill in any order !!!--------
 #Skill+1 +1 movement while wearing no armor
 #Skill+2 +1 Bonus Healing while wearing no armor
 #Skill+3 +1 Armor while wearning no armor

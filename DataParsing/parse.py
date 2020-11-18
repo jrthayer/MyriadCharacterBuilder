@@ -33,9 +33,13 @@ for index, ability in enumerate(abilities):
 
     abilityLines = abilities[index].split("#");
 
-
+    choiceAbility = False;
+    #determine if ability is unordered or ordered(upgrades picked rather than incremented)
+    if "-----" in abilityLines[1]:
+        choiceAbility = True;
+        abilityLines[1] = abilityLines[1].split("---")[0];
     #first line of ability is special case
-    abilityLines[0] = ["Name" , abilityLines[0]]
+    abilityLines[0] = [choiceAbility, ["Name" , abilityLines[0]]];
     iterAbilityLines = iter(abilityLines);
     next(iterAbilityLines);
 
