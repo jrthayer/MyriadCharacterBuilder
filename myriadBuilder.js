@@ -37,6 +37,7 @@ function createAbility(index){
     //Create ability description
     var abilityDesc = document.createElement('div');
     abilityDesc.classList.add("abilityDesc");
+    abilityDesc.style.display = "none";
     abilityDesc.id = index[0][1][1];
 
    
