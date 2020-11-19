@@ -25,9 +25,21 @@ function createAbility(index){
     var ability = document.createElement('div');
     ability.classList.add("ability");
 
+    //create ability icon
+    var abilityIcon = document.createElement('img');
+    var abilityPath = "Assets/MyriadIcons/" + index[0][1][1] + ".png";
+    abilityIcon.src = abilityPath;
+    abilityIcon.alt = index[0][1][1];
+    abilityIcon.onclick = function(){test(index[0][1][1]);};
+
+    ability.appendChild(abilityIcon);
+
     //Create ability description
     var abilityDesc = document.createElement('div');
     abilityDesc.classList.add("abilityDesc");
+    abilityDesc.id = index[0][1][1];
+
+   
     ability.appendChild(abilityDesc);
 
     var abilityHeader = document.createElement('h3');
@@ -49,12 +61,18 @@ function createAbility(index){
         cell2.appendChild(pre2);
         table.appendChild(row);
     }
+
     var container = document.getElementById('container');
     container.appendChild(ability);
 }
 
-function createAbililtyDesc(index){
-
+function test(id){
+    console.log("test");
+    var element = document.getElementById(id);
+    if (element.style.display === "none") {
+        element.style.display = "block";
+    } 
+    else {
+        element.style.display = "none";
+    }
 }
-
-
