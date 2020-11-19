@@ -45,7 +45,7 @@ All weapons you carry gain the 'Quick' tag
 *Reactionary
 #Info    +5 to Initiative
 
-*Light Arsenal
+*Light Arsenal+
 #Info    Increase your weapon tier mastery by 1.
 This applies to Light weapons and Ranged weapons.
 #Skill+1 Increase your weapon tier mastery by 1.
@@ -2133,7 +2133,7 @@ You may hit the object from any angle, but only 1 time per cast.
 #Sanity  5
 #Skill+1 +4 Range
 
-*Sanity
+*Sanity+
 #Info    Max Sanity +3
 #Skill+1 Max Sanity +3
 
