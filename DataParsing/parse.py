@@ -8,7 +8,7 @@ contents = abilityFile.read();
 abilities = contents.split("*");
 
 
-bookmarks = [["DEX"], ["INT"], ["STR"], ["MAD"]];
+bookmarks = [["DEX"], ["INT"], ["STR"], ["MAD"], ["END"]];
 delAbilities = [];
 curStat = -1;
 
@@ -17,6 +17,8 @@ curStat = -1;
 for index, ability in enumerate(abilities):
     #Find index values that seperate each stat tree and their ability tiers
     if "===========" in ability:
+        if curStat != -1:
+            bookmarks[curStat].append(index);
         curStat+=1;
         bookmarks[curStat].append(index);
         del abilities[index];
@@ -48,28 +50,17 @@ for index, ability in enumerate(abilities):
     for index2, line in enumerate(iterAbilityLines):
         abilityLines[index2+1] = line.split(None,1);     
 
-    #convert to json
     abilities[index] = abilityLines;
 
     #del ability infos that are empty
     if len(abilities[index][1]) == 1:
         del abilities[index][1];
-   
-bookmarks = bookmarks;
+
+bookmarks.pop();
+print(bookmarks);
 abilityBookmarkList = [bookmarks, abilities];
 
 with open("ability.json", "w") as file:
     json.dump(abilityBookmarkList, file);
-
-
-
-#remove sepeartion entites from abilities
-# print(delAbilities);
-# print(sorted(delAbilities, reverse=True));
-# for index in sorted(delAbilities, reverse=True):
-#     del abilities[index];
-#print(abilities[18]);
-
-# print(abilityJN);
 
 

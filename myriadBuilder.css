@@ -8,11 +8,6 @@ tr{
     border-bottom: 2px solid white;
 }
 
-.abilityDesc td:first-child{
-    width: 6em;
-    vertical-align: top;
-}
-
 td+td{
     width: auto;
 }
@@ -23,4 +18,21 @@ pre {
     white-space: -o-pre-wrap; /* Opera */
     white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
     word-wrap: break-word; /* IE 5.5+ */
+}
+
+.abilityIcon{
+    width: 75px;
+}
+
+.abilityDesc{
+    display: none;
+}
+
+.abilityActive{
+    display: block;
+}
+
+.abilityDesc td:first-child{
+    width: 6em;
+    vertical-align: top;
 }
