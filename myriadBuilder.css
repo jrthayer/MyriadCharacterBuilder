@@ -24,6 +24,7 @@ pre {
     display: block;
     width: 75px;
     height: 75px;
+    float: left;
 }
 
 .abilityDesc{
@@ -32,6 +33,7 @@ pre {
 
 .skillTree{
     display: none;
+    width: 100%;
 }
 
 .abilityDesc td:first-child{
@@ -59,10 +61,33 @@ pre {
     margin: 25px;
 }
 
-.ability{
+.tier2{
+    width: 300px;
+}
+
+.abilityIcons{
+    width: 70%;
     float: left;
 }
 
-.tier2{
-    width: 300px;
+.abilitydescs{
+    width: 30%;
+    height: 100%;
+    margin-left: 70%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y:scroll;
+
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.abilitydescs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.abilitydescs{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

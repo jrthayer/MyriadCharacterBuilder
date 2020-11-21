@@ -33,13 +33,21 @@ function createSkillTree(abilities, bookmarks, parent){
     console.log(bookmarks);
     console.log(bookmarks[0]);
 
+    var toggleTree = document.createElement('button');
+    var skilltreeId = bookmarks[0];
+
     var skilltree = document.createElement('div');
     skilltree.id = bookmarks[0];
     skilltree.classList.add('skillTree');
-
-    var toggleTree = document.createElement('button');
-    var skilltreeId = bookmarks[0];
     
+    var icons = document.createElement('div');
+    icons.classList.add('abilityIcons');
+
+    var descs = document.createElement('div');
+    descs.classList.add('abilitydescs');
+
+    
+
     toggleTree.innerHTML = skilltreeId;
     toggleTree.onclick = function(){test(skilltreeId);};
     
@@ -51,7 +59,7 @@ function createSkillTree(abilities, bookmarks, parent){
     var x;
     for(x = 0; x < 4; x++){
         var tier = document.createElement('div');
-        skilltree.appendChild(createAbilitySet(tier, x, bookmarks, abilities));
+        icons.appendChild(createAbilitySet(x, bookmarks, abilities, tier, descs));
     }
 
     var tier4 = document.createElement('div');
@@ -60,18 +68,21 @@ function createSkillTree(abilities, bookmarks, parent){
 
     for(x = 4; x < bookmarks.length - 1; x++){
         var classSet = document.createElement('div');
-        tier4.appendChild(createAbilitySet(classSet, x, bookmarks, abilities));
+        tier4.appendChild(createAbilitySet(x, bookmarks, abilities, classSet, descs));
     }
-    skilltree.appendChild(tier4);  
+
+    icons.appendChild(tier4);
+    skilltree.appendChild(icons);
+    skilltree.appendChild(descs);  
 }
 
-function createAbilitySet(parent, index, bookmarks, abilities){
+function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
     var startIndex = 0;
     var endIndex = 0;
 
     if(index < 4){
-        parent.classList.add('tier'+ index);
-        parent.classList.add('tier');
+        iconRoot.classList.add('tier'+ index);
+        iconRoot.classList.add('tier');
         if(index == 3){
             startIndex = bookmarks[index];
             endIndex = bookmarks[index+1][0];
@@ -83,8 +94,8 @@ function createAbilitySet(parent, index, bookmarks, abilities){
     }
     else{
         var className = bookmarks[index][1];
-        parent.classList.add(className);
-        parent.classList.add('classSkills');
+        iconRoot.classList.add(className);
+        iconRoot.classList.add('classSkills');
 
         startIndex = bookmarks[index][0];
             
@@ -96,14 +107,13 @@ function createAbilitySet(parent, index, bookmarks, abilities){
         }
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
-    setAbilities.forEach(ability => createAbility(ability, parent));
+    setAbilities.forEach(ability => createAbility(ability, iconRoot, descRoot));
 
-    return parent;
+    return iconRoot;
 }
 
-function createAbility(index, parent){
-    var ability = document.createElement('div');
-    ability.classList.add("ability");
+function createAbility(index, iconRoot, descRoot){
+    var ability = iconRoot;
 
     //create ability icon
     var abilityIcon = document.createElement('img');
@@ -122,7 +132,7 @@ function createAbility(index, parent){
     abilityDesc.id = index[0][1][1];
 
    
-    ability.appendChild(abilityDesc);
+    descRoot.appendChild(abilityDesc);
 
     var abilityHeader = document.createElement('h3');
     var table = document.createElement('table');
@@ -143,8 +153,6 @@ function createAbility(index, parent){
         cell2.appendChild(pre2);
         table.appendChild(row);
     }
-
-    parent.appendChild(ability);
 }
 
 function test(id){
