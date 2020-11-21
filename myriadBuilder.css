@@ -21,18 +21,43 @@ pre {
 }
 
 .abilityIcon{
+    display: block;
     width: 75px;
+    height: 75px;
 }
 
 .abilityDesc{
     display: none;
 }
 
+.abilityDesc td:first-child{
+    width: 6em;
+    vertical-align: top;
+}
+
 .abilityActive{
     display: block;
 }
 
-.abilityDesc td:first-child{
-    width: 6em;
-    vertical-align: top;
+/*TEMPORARY STYLES*/
+.tier{
+    overflow: hidden;
+    border: solid 2px black;
+    margin: 25px;
+}
+
+.classSkills{
+    overflow: hidden;
+    border: solid 4px black;
+    width: 300px;
+    float: left;
+    margin: 25px;
+}
+
+.ability{
+    float: left;
+}
+
+.tier2{
+    width: 300px;
 }

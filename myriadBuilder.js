@@ -43,34 +43,55 @@ function createSkillTree(abilities, bookmarks, parent){
     bookmarks.shift();
 
     var x;
-    for(x = 0; x < bookmarks.length - 1; x++){
+    for(x = 0; x < 4; x++){
         var tier = document.createElement('div');
         var startIndex = 0;
         var endIndex = 0;
 
-        if(x < 3){
-            tier.classList.add('tier'+x);
-            startIndex = bookmarks[x];
-            endIndex = bookmarks[x+1];
-        }
-        else if( x == 3){
+        if( x == 3){
             tier.classList.add('tier3');
+            tier.classList.add('tier');
             startIndex = bookmarks[x];
             endIndex = bookmarks[x+1][0];
         }
         else{
-            var className = bookmarks[x][1];
-            var classAdd = "tier4" + className;
-            tier.classList.add(classAdd);
-            startIndex = bookmarks[x][0];
-            endIndex = bookmarks[x+1][0]; 
+            tier.classList.add('tier'+x);
+            tier.classList.add('tier');
+            startIndex = bookmarks[x];
+            endIndex = bookmarks[x+1];
         }
-        skilltree.appendChild(tier);
-
+        
         var tierAbilities = abilities.slice(startIndex, endIndex);
         tierAbilities.forEach(ability => createAbility(ability, tier));
+
+        skilltree.appendChild(tier);
     }
+
+    var tier4 = document.createElement('div');
+    tier4.classList.add('tier4');
+    tier4.classList.add('tier');   
+
+    for(x = 4; x < bookmarks.length - 1; x++){
+        var classDiv = document.createElement('div');
+        var className = bookmarks[x][1];
+        classDiv.classList.add(className);
+        classDiv.classList.add('classSkills');
+        startIndex = bookmarks[x][0];
         
+        if(x == bookmarks.length - 2){
+            endIndex = bookmarks[x+1];
+        }
+        else{
+            endIndex = bookmarks[x+1][0];
+        }
+        
+
+        var classAbilities = abilities.slice(startIndex, endIndex);
+        classAbilities.forEach(ability => createAbility(ability, classDiv));
+
+        tier4.appendChild(classDiv);
+    }
+    skilltree.appendChild(tier4);    
 }
 
 function createAbility(index, parent){
