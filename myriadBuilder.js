@@ -51,26 +51,7 @@ function createSkillTree(abilities, bookmarks, parent){
     var x;
     for(x = 0; x < 4; x++){
         var tier = document.createElement('div');
-        var startIndex = 0;
-        var endIndex = 0;
-
-        if( x == 3){
-            tier.classList.add('tier3');
-            tier.classList.add('tier');
-            startIndex = bookmarks[x];
-            endIndex = bookmarks[x+1][0];
-        }
-        else{
-            tier.classList.add('tier'+x);
-            tier.classList.add('tier');
-            startIndex = bookmarks[x];
-            endIndex = bookmarks[x+1];
-        }
-        
-        var tierAbilities = abilities.slice(startIndex, endIndex);
-        tierAbilities.forEach(ability => createAbility(ability, tier));
-
-        skilltree.appendChild(tier);
+        skilltree.appendChild(createAbilitySet(tier, x, bookmarks, abilities));
     }
 
     var tier4 = document.createElement('div');
@@ -78,26 +59,43 @@ function createSkillTree(abilities, bookmarks, parent){
     tier4.classList.add('tier');   
 
     for(x = 4; x < bookmarks.length - 1; x++){
-        var classDiv = document.createElement('div');
+        var classSet = document.createElement('div');
+        tier4.appendChild(createAbilitySet(classSet, x, bookmarks, abilities));
+    }
+    skilltree.appendChild(tier4);  
+}
+
+function createAbilitySet(parent, index, bookmarks, abilities){
+    if(index < 4){
+        parent.classList.add('tier'+ index);
+        parent.classList.add('tier');
+        if(index == 3){
+            startIndex = bookmarks[x];
+            endIndex = bookmarks[x+1][0];
+        }
+        else{
+            startIndex = bookmarks[x];
+            endIndex = bookmarks[x+1];
+        }
+    }
+    else{
         var className = bookmarks[x][1];
-        classDiv.classList.add(className);
-        classDiv.classList.add('classSkills');
+        parent.classList.add(className);
+        parent.classList.add('classSkills');
+
         startIndex = bookmarks[x][0];
-        
+            
         if(x == bookmarks.length - 2){
             endIndex = bookmarks[x+1];
         }
         else{
             endIndex = bookmarks[x+1][0];
         }
-        
-
-        var classAbilities = abilities.slice(startIndex, endIndex);
-        classAbilities.forEach(ability => createAbility(ability, classDiv));
-
-        tier4.appendChild(classDiv);
     }
-    skilltree.appendChild(tier4);    
+    var setAbilities = abilities.slice(startIndex, endIndex);
+    setAbilities.forEach(ability => createAbility(ability, parent));
+
+    return parent;
 }
 
 function createAbility(index, parent){
