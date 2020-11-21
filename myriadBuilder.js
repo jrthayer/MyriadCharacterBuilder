@@ -8,6 +8,7 @@ file.onreadystatechange = function() {
         createWebsite(abilityFile);
         var abilityBookmarks = abilityFile[0];
         var abilities = abilityFile[1];
+        //testing
         console.log(abilityBookmarks);
         console.log(abilities);
     }
@@ -19,14 +20,7 @@ function createWebsite(abilityArray){
     var bookmarks = abilityArray[0];
     var abilities = abilityArray[1];
     var parent = document.getElementById('container');
-    //seperate ability array and index array into seperate stat trees
-    // var x;
-    // for(x = 0; x < bookmarks.length - 1; x++){
-    //     var skillTree = abilities.slice(bookmarks[x][1], bookmarks[x+1][1]);
-    //     createSkillTree(skillTree, bookmarks[x]);
-    // }
-    // var skillTree = abilities.slice(bookmarks[abilityArray[0].length - 1][1]);
-    // createSkillTree(skillTree, bookmarks[bookmarks.length - 1], container);
+
     var x;
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent);
@@ -35,9 +29,21 @@ function createWebsite(abilityArray){
 }
 
 function createSkillTree(abilities, bookmarks, parent){
+    //testing
     console.log(bookmarks);
+    console.log(bookmarks[0]);
+
     var skilltree = document.createElement('div');
-    skilltree.classList.add(bookmarks[0]);
+    skilltree.id = bookmarks[0];
+    skilltree.classList.add('skillTree');
+
+    var toggleTree = document.createElement('button');
+    var skilltreeId = bookmarks[0];
+    
+    toggleTree.innerHTML = skilltreeId;
+    toggleTree.onclick = function(){test(skilltreeId);};
+    
+    parent.appendChild(toggleTree);
     parent.appendChild(skilltree);
 
     bookmarks.shift();
@@ -141,12 +147,11 @@ function createAbility(index, parent){
 }
 
 function test(id){
-    console.log("test");
     var element = document.getElementById(id);
-    if(element.classList.contains("abilityActive")){
-        element.classList.remove("abilityActive");
+    if(element.classList.contains("active")){
+        element.classList.remove("active");
     }
     else{
-        element.classList.add("abilityActive");
+        element.classList.add("active");
     }
 }
