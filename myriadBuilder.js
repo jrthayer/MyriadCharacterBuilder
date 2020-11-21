@@ -66,30 +66,33 @@ function createSkillTree(abilities, bookmarks, parent){
 }
 
 function createAbilitySet(parent, index, bookmarks, abilities){
+    var startIndex = 0;
+    var endIndex = 0;
+
     if(index < 4){
         parent.classList.add('tier'+ index);
         parent.classList.add('tier');
         if(index == 3){
-            startIndex = bookmarks[x];
-            endIndex = bookmarks[x+1][0];
+            startIndex = bookmarks[index];
+            endIndex = bookmarks[index+1][0];
         }
         else{
-            startIndex = bookmarks[x];
-            endIndex = bookmarks[x+1];
+            startIndex = bookmarks[index];
+            endIndex = bookmarks[index+1];
         }
     }
     else{
-        var className = bookmarks[x][1];
+        var className = bookmarks[index][1];
         parent.classList.add(className);
         parent.classList.add('classSkills');
 
-        startIndex = bookmarks[x][0];
+        startIndex = bookmarks[index][0];
             
-        if(x == bookmarks.length - 2){
-            endIndex = bookmarks[x+1];
+        if(index == bookmarks.length - 2){
+            endIndex = bookmarks[index+1];
         }
         else{
-            endIndex = bookmarks[x+1][0];
+            endIndex = bookmarks[index+1][0];
         }
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
