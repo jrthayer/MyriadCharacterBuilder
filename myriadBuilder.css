@@ -27,19 +27,19 @@ pre {
 }
 
 #DEX .abilityIcons{
-    background: rgb(0,51,0);
+    background: rgb(0,55,0);
 }
 
 #INT .abilityIcons{
-    background: rgb(0,0,51);
+    background: rgb(0,20,55);
 }
 
 #STR .abilityIcons{
-    background: rgb(51,0,0);
+    background: rgb(75,0,0);
 }
 
 #MAD .abilityIcons{
-    background: rgb(51,0,51);
+    background: rgb(55,0,55);
 }
 
 .abilityIcon{
