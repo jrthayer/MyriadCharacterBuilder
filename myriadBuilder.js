@@ -6,6 +6,9 @@ file.send();
 var classPassives = [2, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2];
 var passiveIndex = 0;
 
+//Index 0 is the active tab
+//Index 1 is the active ability
+var activeElements = ["none","none"];
 
 file.onreadystatechange = function() {
     if (file.readyState == 4 && file.status == 200) {
@@ -26,12 +29,15 @@ function createWebsite(abilityArray){
     var abilities = abilityArray[1];
     var parent = document.getElementById('container');
     var x;
+    var navBar = document.createElement('div');
+    navBar.id = 'navBar';
+    parent.appendChild(navBar);
     for(x = 0; x < bookmarks.length; x++){
-        createSkillTree(abilities, bookmarks[x], parent);
+        createSkillTree(abilities, bookmarks[x], parent, navBar);
     }
 }
 
-function createSkillTree(abilities, bookmarks, parent){
+function createSkillTree(abilities, bookmarks, parent, navBar){
     //testing
     console.log(bookmarks);
     console.log(bookmarks[0]);
@@ -52,9 +58,9 @@ function createSkillTree(abilities, bookmarks, parent){
     
 
     toggleTree.innerHTML = skilltreeId;
-    toggleTree.onclick = function(){test(skilltreeId);};
+    toggleTree.onclick = function(){activeElement(skilltreeId, activeElements, 0);};
     
-    parent.appendChild(toggleTree);
+    navBar.appendChild(toggleTree);
     parent.appendChild(skilltree);
 
     bookmarks.shift();
@@ -138,7 +144,7 @@ function createAbility(index, iconRoot, descRoot){
     abilityIcon.src = abilityPath;
     abilityIcon.alt = index[0][1][1];
     abilityIcon.classList.add("abilityIcon");
-    abilityIcon.onclick = function(){test(index[0][1][1]);};
+    abilityIcon.onclick = function(){activeElement(index[0][1][1], activeElements, 1);};
 
     ability.appendChild(abilityIcon);
 
@@ -173,7 +179,25 @@ function createAbility(index, iconRoot, descRoot){
     abilityDesc.appendChild(document.createElement('br'));
 }
 
-function test(id){
+function activeElement(id, curActive, index){
+    if(curActive[index] != "none"){
+        if(id == curActive[index]){
+            toggleActive(id);
+            curActive[index] = "none";
+        }
+        else{
+            toggleActive(curActive[index]);
+            curActive[index] = id;
+            toggleActive(curActive[index]);
+        }
+    }
+    else{
+        curActive[index] = id;
+        toggleActive(id);
+    }
+}
+
+function toggleActive(id){
     var element = document.getElementById(id);
     if(element.classList.contains("active")){
         element.classList.remove("active");

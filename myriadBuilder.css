@@ -48,6 +48,7 @@ pre {
     height: var(--iconSize);
     float: left;
     margin: calc(var(--iconMargin)/2);
+    /*border: solid 3px rgb(20,20,20);*/
 }
 
 .abilityDesc{
@@ -80,8 +81,8 @@ pre {
 
 .tier{
     overflow: hidden;
-    border: solid 3px black;
-    background: rgb(0,0,0);
+    border: solid 3px rgb(20,20,20);
+    background: rgb(30,30,30);
     border-radius: 5px;
     width: calc(var(--iconSize)*4 + var(--iconMargin)*4);
     padding: 5px;
@@ -151,8 +152,9 @@ pre {
     display: inline-block;
     padding-bottom: 5px;
     border: solid 3px black;
-    background: black;
+    background: rgb(30,30,30);
     border-radius: 5px;
+    border: solid rgb(30,30,30) 5px;
     width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
     /*min-height: calc(var(--iconSize)*4 + var(--iconMargin)*5 + var(--iconSize)*4 + var(--iconMargin)*5);*/
 }
