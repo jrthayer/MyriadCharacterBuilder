@@ -51,9 +51,7 @@ for index, ability in enumerate(abilities):
         abilityLines[index2+1] = line.split(None,1);
 
     # #remove last newline of ability
-    print(abilityLines[len(abilityLines) - 1][1]); 
     abilityLines[len(abilityLines) - 1][1] = abilityLines[len(abilityLines) - 1][1].rstrip('\n');
-    print(abilityLines[len(abilityLines) - 1][1]);
     abilities[index] = abilityLines;
 
     #del ability infos that are empty

@@ -83,7 +83,7 @@ lock you encounter today.
 #Skill+2 +10 Accuracy
 #Skill+3 +10 Accuracy
 
-*Technique
+*DEX Technique
 #Info    Do not Provoke Attacks of Opportunity when performing a combat maneuver of your choice when you select this skill.
 #Skill+1 Another choice of Combat Maneuver
 
@@ -1455,7 +1455,7 @@ STR is added to weapon damage 1 more time
 #Skill+1 You can wear Heavy Attire
 #Skill+2 Hold Position maneuver costs -1 Adrenaline while you wear Heavy Armor
 
-*Technique
+*STR Technique
 #Info    Do not Provoke Attacks of Opportunity when performing a combat maneuver of your choice when you select this skill.
 #Skill+1 Another choice of Combat Maneuver
 
@@ -1691,7 +1691,7 @@ This does not use an action for the shoved creature.
 
 *[Tier4(Determination)]
 
-*Technique
+*Unarmed Technique
 #Info    Unarmed Attacks lose the 'Frail' tag
 #Skill+1 All combat maneuvers may be performed with any 1 Stat roll you choose now instead of their default. (STR, DEX, INT)
 

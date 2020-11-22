@@ -2,6 +2,9 @@ var file = new XMLHttpRequest();
 file.open("GET", "DataParsing/ability.json");
 file.send();
 
+//Global variables to distinguish class passives
+var classPassives = [2, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2];
+var passiveIndex = 0;
 
 
 file.onreadystatechange = function() {
@@ -22,12 +25,10 @@ function createWebsite(abilityArray){
     var bookmarks = abilityArray[0];
     var abilities = abilityArray[1];
     var parent = document.getElementById('container');
-
     var x;
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent);
     }
-
 }
 
 function createSkillTree(abilities, bookmarks, parent){
@@ -101,9 +102,22 @@ function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
         var classImg = document.createElement('img');
         classImg.classList.add('classImg');
         classImg.src = "Assets/MyriadIcons/" + className + ".png";
-        iconRoot.appendChild(classImg); 
+        iconRoot.appendChild(classImg);
 
-        startIndex = bookmarks[index][0];
+        var passives = document.createElement('div');
+        passives.classList.add('passiveSkills');
+        iconRoot.appendChild(passives);
+
+        for(var x = 0; x < classPassives[passiveIndex]; x++){
+            createAbility(abilities[bookmarks[index][0]+x], passives, descRoot);
+        } 
+        passiveIndex++;
+
+        console.log(index);
+        console.log(classPassives);
+        console.log(classPassives[index]);
+
+        startIndex = bookmarks[index][0] + classPassives[index];
             
         if(index == bookmarks.length - 2){
             endIndex = bookmarks[index+1];
@@ -172,3 +186,4 @@ function test(id){
         element.classList.add("active");
     }
 }
+

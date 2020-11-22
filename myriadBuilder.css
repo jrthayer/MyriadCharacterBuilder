@@ -101,21 +101,35 @@ pre {
     width: calc(var(--iconSize)*5 + var(--iconMargin)*5);
 }
 
-.classSkills .abilityIcon:nth-of-type(2){
+.classSkills div ~ .abilityIcon:nth-of-type(2){
     margin-left: var(--iconMargin);
 }
 
-.classSkills .abilityIcon:nth-of-type(4n+2){
+.classSkills div ~ .abilityIcon:nth-of-type(4n+2){
     margin-left: var(--iconMargin);
 }
 
-.classSkills .abilityIcon:nth-of-type(4n+1){
+.classSkills div ~ .abilityIcon:nth-of-type(4n+1){
     margin-right: var(--iconMargin);
 }
 
-/*.tier .abilityIcon:nth-of-type(-n+5){
-    margin-top: var(--iconMargin);
-}*/
+.passiveSkills{
+    width: calc(var(--iconSize)*2 + var(--iconMargin)*3);
+    height: calc(var(--iconSize) + var(--iconMargin));
+    position: relative;
+    top: -10px;
+    margin-top: calc((var(--iconSize) + var(--iconMargin)) * -1);
+}
+
+.passiveSkills img{
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+
+.passiveSkills img:first-child{
+    margin-left: 10px;
+}
 
 /*NEEDS to be after skillTree and abilityDesc*/
 .active{
