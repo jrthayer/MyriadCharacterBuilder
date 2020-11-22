@@ -96,8 +96,8 @@ function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
     }
     else{
         var className = bookmarks[index][1];
-        iconRoot.classList.add(className);
-        iconRoot.classList.add('classSkills');
+        iconRoot.id = className;
+        iconRoot.classList.add('classDiv');
 
         var classImg = document.createElement('img');
         classImg.classList.add('classImg');
@@ -111,13 +111,8 @@ function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
         for(var x = 0; x < classPassives[passiveIndex]; x++){
             createAbility(abilities[bookmarks[index][0]+x], passives, descRoot);
         } 
-        passiveIndex++;
-
-        console.log(index);
-        console.log(classPassives);
-        console.log(classPassives[index]);
-
-        startIndex = bookmarks[index][0] + classPassives[index];
+    
+        startIndex = bookmarks[index][0] + classPassives[passiveIndex];
             
         if(index == bookmarks.length - 2){
             endIndex = bookmarks[index+1];
@@ -125,6 +120,7 @@ function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
         else{
             endIndex = bookmarks[index+1][0];
         }
+        passiveIndex++;
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
     setAbilities.forEach(ability => createAbility(ability, iconRoot, descRoot));

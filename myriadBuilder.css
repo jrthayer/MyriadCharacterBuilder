@@ -27,19 +27,19 @@ pre {
 }
 
 #DEX .abilityIcons{
-    background: green;
+    background: rgb(0,51,0);
 }
 
 #INT .abilityIcons{
-    background: blue;
+    background: rgb(0,0,51);
 }
 
 #STR .abilityIcons{
-    background: red;
+    background: rgb(51,0,0);
 }
 
 #MAD .abilityIcons{
-    background: purple;
+    background: rgb(51,0,51);
 }
 
 .abilityIcon{
@@ -53,7 +53,7 @@ pre {
 .abilityDesc{
     display: none;
     margin: 10px;
-    background: lightgray;
+    background: rgb(200,200,200);
     border-radius: 10px;
 }
 
@@ -81,11 +81,11 @@ pre {
 .tier{
     overflow: hidden;
     border: solid 3px black;
-    margin: 25px;
-    background: DimGrey;
+    background: rgb(0,0,0);
     border-radius: 5px;
     width: calc(var(--iconSize)*4 + var(--iconMargin)*4);
     padding: 5px;
+    margin: 25px auto;
 }
 
 .tier0{
@@ -101,15 +101,22 @@ pre {
     width: calc(var(--iconSize)*5 + var(--iconMargin)*5);
 }
 
-.classSkills div ~ .abilityIcon:nth-of-type(2){
+.tier4{
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin: 0 auto; 
+}
+
+.classDiv div ~ .abilityIcon:nth-of-type(2){
     margin-left: var(--iconMargin);
 }
 
-.classSkills div ~ .abilityIcon:nth-of-type(4n+2){
+.classDiv div ~ .abilityIcon:nth-of-type(4n+2){
     margin-left: var(--iconMargin);
 }
 
-.classSkills div ~ .abilityIcon:nth-of-type(4n+1){
+.classDiv div ~ .abilityIcon:nth-of-type(4n+1){
     margin-right: var(--iconMargin);
 }
 
@@ -138,16 +145,16 @@ pre {
 
 
 /*TEMPORARY STYLES*/
-.classSkills{
-    float: left;
+.classDiv{
+    margin: 25px 25px;
+    vertical-align: top;
+    display: inline-block;
     padding-bottom: 5px;
-    overflow: hidden;
     border: solid 3px black;
-    margin: 25px;
-    background: DimGrey;
+    background: black;
     border-radius: 5px;
     width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
-    min-height: calc(var(--iconSize)*4 + var(--iconMargin)*5 + var(--iconSize)*4 + var(--iconMargin)*5);
+    /*min-height: calc(var(--iconSize)*4 + var(--iconMargin)*5 + var(--iconSize)*4 + var(--iconMargin)*5);*/
 }
 
 .classImg{
@@ -183,7 +190,4 @@ pre {
 .abilitydescs{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-}
-
-.tier4{
 }
