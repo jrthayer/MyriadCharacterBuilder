@@ -2,6 +2,8 @@ var file = new XMLHttpRequest();
 file.open("GET", "DataParsing/ability.json");
 file.send();
 
+
+
 file.onreadystatechange = function() {
     if (file.readyState == 4 && file.status == 200) {
         var abilityFile = JSON.parse(file.responseText);
@@ -63,8 +65,7 @@ function createSkillTree(abilities, bookmarks, parent){
     }
 
     var tier4 = document.createElement('div');
-    tier4.classList.add('tier4');
-    tier4.classList.add('tier');   
+    tier4.classList.add('tier4');   
 
     for(x = 4; x < bookmarks.length - 1; x++){
         var classSet = document.createElement('div');
@@ -96,6 +97,11 @@ function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
         var className = bookmarks[index][1];
         iconRoot.classList.add(className);
         iconRoot.classList.add('classSkills');
+
+        var classImg = document.createElement('img');
+        classImg.classList.add('classImg');
+        classImg.src = "Assets/MyriadIcons/" + className + ".png";
+        iconRoot.appendChild(classImg); 
 
         startIndex = bookmarks[index][0];
             
@@ -155,8 +161,6 @@ function createAbility(index, iconRoot, descRoot){
     }
 
     abilityDesc.appendChild(document.createElement('br'));
-
-
 }
 
 function test(id){

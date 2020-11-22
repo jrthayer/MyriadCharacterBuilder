@@ -1,3 +1,9 @@
+:root {
+    --iconSize: 50px;
+    --iconMargin: 10px;
+    background: rgb(50, 50, 50);
+}
+
 table{
     table-layout: fixed;
     border-collapse: collapse;
@@ -20,11 +26,28 @@ pre {
     word-wrap: break-word; /* IE 5.5+ */
 }
 
+#DEX .abilityIcons{
+    background: green;
+}
+
+#INT .abilityIcons{
+    background: blue;
+}
+
+#STR .abilityIcons{
+    background: red;
+}
+
+#MAD .abilityIcons{
+    background: purple;
+}
+
 .abilityIcon{
     display: block;
-    width: 75px;
-    height: 75px;
+    width: var(--iconSize);
+    height: var(--iconSize);
     float: left;
+    margin: calc(var(--iconMargin)/2);
 }
 
 .abilityDesc{
@@ -45,38 +68,79 @@ pre {
     padding-right: 10px;
 }
 
-.skillTree{
-    display: none;
-    width: 100%;
-}
-
 .abilityDesc td:first-child{
     width: 6em;
     vertical-align: top;
 }
 
+.skillTree{
+    display: none;
+    width: 100%;
+}
+
+.tier{
+    overflow: hidden;
+    border: solid 3px black;
+    margin: 25px;
+    background: DimGrey;
+    border-radius: 5px;
+    width: calc(var(--iconSize)*4 + var(--iconMargin)*4);
+    padding: 5px;
+}
+
+.tier0{
+    width: calc(var(--iconSize)*2 + var(--iconMargin)*2);
+    padding: 5px;
+}
+
+.tier1{
+    padding: 5px;
+}
+
+.tier3{
+    width: calc(var(--iconSize)*5 + var(--iconMargin)*5);
+}
+
+.classSkills .abilityIcon:nth-of-type(2){
+    margin-left: var(--iconMargin);
+}
+
+.classSkills .abilityIcon:nth-of-type(4n+2){
+    margin-left: var(--iconMargin);
+}
+
+.classSkills .abilityIcon:nth-of-type(4n+1){
+    margin-right: var(--iconMargin);
+}
+
+/*.tier .abilityIcon:nth-of-type(-n+5){
+    margin-top: var(--iconMargin);
+}*/
+
+/*NEEDS to be after skillTree and abilityDesc*/
 .active{
     display: block;
 }
 
 
 /*TEMPORARY STYLES*/
-.tier{
-    overflow: hidden;
-    border: solid 2px black;
-    margin: 25px;
-}
-
 .classSkills{
-    overflow: hidden;
-    border: solid 4px black;
-    width: 300px;
     float: left;
+    padding-bottom: 5px;
+    overflow: hidden;
+    border: solid 3px black;
     margin: 25px;
+    background: DimGrey;
+    border-radius: 5px;
+    width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
+    min-height: calc(var(--iconSize)*4 + var(--iconMargin)*5 + var(--iconSize)*4 + var(--iconMargin)*5);
 }
 
-.tier2{
-    width: 300px;
+.classImg{
+    width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
+    height: calc(var(--iconSize)*4 + var(--iconMargin)*5);
+    border-bottom: solid 5px black;
+    background: black;
 }
 
 .abilityIcons{
@@ -94,7 +158,6 @@ pre {
     overflow-y:scroll;
 
     background: gray;
-
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -106,4 +169,7 @@ pre {
 .abilitydescs{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+.tier4{
 }
