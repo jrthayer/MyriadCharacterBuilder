@@ -153,6 +153,10 @@ function createAbility(index, iconRoot, descRoot){
         cell2.appendChild(pre2);
         table.appendChild(row);
     }
+
+    abilityDesc.appendChild(document.createElement('br'));
+
+
 }
 
 function test(id){

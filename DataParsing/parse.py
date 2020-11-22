@@ -48,8 +48,12 @@ for index, ability in enumerate(abilities):
 
     #split each line into key pairs
     for index2, line in enumerate(iterAbilityLines):
-        abilityLines[index2+1] = line.split(None,1);     
+        abilityLines[index2+1] = line.split(None,1);
 
+    # #remove last newline of ability
+    print(abilityLines[len(abilityLines) - 1][1]); 
+    abilityLines[len(abilityLines) - 1][1] = abilityLines[len(abilityLines) - 1][1].rstrip('\n');
+    print(abilityLines[len(abilityLines) - 1][1]);
     abilities[index] = abilityLines;
 
     #del ability infos that are empty
@@ -57,7 +61,7 @@ for index, ability in enumerate(abilities):
         del abilities[index][1];
 
 bookmarks.pop();
-print(bookmarks);
+abilities.pop();
 abilityBookmarkList = [bookmarks, abilities];
 
 with open("ability.json", "w") as file:

@@ -5,7 +5,7 @@ table{
 }
 
 tr{
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid black;
 }
 
 td+td{
@@ -29,6 +29,20 @@ pre {
 
 .abilityDesc{
     display: none;
+    margin: 10px;
+    background: lightgray;
+    border-radius: 10px;
+}
+
+.abilityDesc h3{
+    border-bottom: solid black 2px;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.abilityDesc td{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .skillTree{
@@ -78,6 +92,8 @@ pre {
     top: 0;
     left: 0;
     overflow-y:scroll;
+
+    background: gray;
 
 }
 
