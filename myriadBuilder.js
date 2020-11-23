@@ -32,32 +32,63 @@ function createWebsite(abilityArray){
     var navBar = document.createElement('div');
     navBar.id = 'navBar';
     parent.appendChild(navBar);
+
+    createCharacterPages(parent, navBar, bookmarks);
+
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent, navBar);
     }
 }
 
-function createSkillTree(abilities, bookmarks, parent, navBar){
-    //testing
-    console.log(bookmarks);
-    console.log(bookmarks[0]);
+function createCharacterPages(parent, navBar, bookmarks){
+    var togglePage = document.createElement('div');
+    var charPage = document.createElement('div');
 
-    var toggleTree = document.createElement('button');
+    charPage.id = "create";
+    charPage.classList.add('page');
+
+    togglePage.classList.add('tab');
+    togglePage.innerHTML = charPage.id;
+    togglePage.onclick = function(){activeElement(charPage.id, activeElements, 0);};
+    
+    navBar.appendChild(togglePage);
+    parent.appendChild(charPage);
+
+    var choiceBar = document.createElement('div');
+    
+
+    for(var x = 0; x < 2; x++){
+        var row = document.createElement('div');
+        for(var y = 0; y < bookmarks.length; y++){
+            var stat = document.createElement('img');
+            stat.classList.add("statIcon");
+            stat.src = "Assets/MyriadIcons/" + bookmarks[y][0] + '.png';
+            row.appendChild(stat);
+        }
+        choiceBar.appendChild(row);
+    }
+
+    charPage.appendChild(choiceBar);
+    console.log(bookmarks.length);
+    console.log(bookmarks[0]);
+}
+
+function createSkillTree(abilities, bookmarks, parent, navBar){
+    var toggleTree = document.createElement('img');
     var skilltreeId = bookmarks[0];
 
     var skilltree = document.createElement('div');
     skilltree.id = bookmarks[0];
-    skilltree.classList.add('skillTree');
+    skilltree.classList.add('page');
     
     var icons = document.createElement('div');
     icons.classList.add('abilityIcons');
 
     var descs = document.createElement('div');
-    descs.classList.add('abilitydescs');
+    descs.classList.add('abilitydescs');    
 
-    
-
-    toggleTree.innerHTML = skilltreeId;
+    toggleTree.classList.add('tab');
+    toggleTree.src = "Assets/MyriadIcons/" + bookmarks[0] + '.png';
     toggleTree.onclick = function(){activeElement(skilltreeId, activeElements, 0);};
     
     navBar.appendChild(toggleTree);
@@ -84,13 +115,13 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     skilltree.appendChild(descs);  
 }
 
-function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
+function createAbilitySet(index, bookmarks, abilities, abilitySet, descRoot){
     var startIndex = 0;
     var endIndex = 0;
 
     if(index < 4){
-        iconRoot.classList.add('tier'+ index);
-        iconRoot.classList.add('tier');
+        abilitySet.classList.add('tier'+ index);
+        abilitySet.classList.add('tier');
         if(index == 3){
             startIndex = bookmarks[index];
             endIndex = bookmarks[index+1][0];
@@ -102,17 +133,17 @@ function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
     }
     else{
         var className = bookmarks[index][1];
-        iconRoot.id = className;
-        iconRoot.classList.add('classDiv');
+        abilitySet.id = className;
+        abilitySet.classList.add('classDiv');
 
         var classImg = document.createElement('img');
         classImg.classList.add('classImg');
         classImg.src = "Assets/MyriadIcons/" + className + ".png";
-        iconRoot.appendChild(classImg);
+        abilitySet.appendChild(classImg);
 
         var passives = document.createElement('div');
         passives.classList.add('passiveSkills');
-        iconRoot.appendChild(passives);
+        abilitySet.appendChild(passives);
 
         for(var x = 0; x < classPassives[passiveIndex]; x++){
             createAbility(abilities[bookmarks[index][0]+x], passives, descRoot);
@@ -129,14 +160,12 @@ function createAbilitySet(index, bookmarks, abilities, iconRoot, descRoot){
         passiveIndex++;
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
-    setAbilities.forEach(ability => createAbility(ability, iconRoot, descRoot));
+    setAbilities.forEach(ability => createAbility(ability, abilitySet, descRoot));
 
-    return iconRoot;
+    return abilitySet;
 }
 
-function createAbility(index, iconRoot, descRoot){
-    var ability = iconRoot;
-
+function createAbility(index, parent, descRoot){
     //create ability icon
     var abilityIcon = document.createElement('img');
 
@@ -146,7 +175,7 @@ function createAbility(index, iconRoot, descRoot){
     abilityIcon.classList.add("abilityIcon");
     abilityIcon.onclick = function(){activeElement(index[0][1][1], activeElements, 1);};
 
-    ability.appendChild(abilityIcon);
+    parent.appendChild(abilityIcon);
 
     //Create ability description
     var abilityDesc = document.createElement('div');
