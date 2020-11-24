@@ -24,11 +24,18 @@ for index, ability in enumerate(abilities):
         del abilities[index];
     elif "[Tier" in ability:
         if "[Tier4" in ability:
+            #get class name
             classMarker = ability.split("(");
             className = classMarker[1];
             className = className.split(")");
+            
+            #get num of class passives
+            classPassiveNum = className[1];
+            classPassiveNum = classPassiveNum.split("]");
+            classPassiveNum = classPassiveNum[0];
+
             className = className[0];
-            bookmarks[curStat].append([index, className]);
+            bookmarks[curStat].append([index, className, classPassiveNum]);
         else:
             bookmarks[curStat].append(index);
         del abilities[index];

@@ -112,7 +112,7 @@ at the beginning of the next round.
 #Skill+1 Deal the damage to 4 unique targets
 
 
-*[Tier4(Subtlety)]
+*[Tier4(Subtlety)2]
 
 *Stealth Mastery
 #Info    Carried light sources do not count agaisnt you while you are using Stealth
@@ -225,7 +225,7 @@ The item will always activate on your turn.
 #Skill+2 An item placed on an enemy is twice as effective against this specific target.
 #Skill+3 -1 Focus Cost
 
-*[Tier4(Finesse)]
+*[Tier4(Finesse)2]
 
 *Light Weaponry
 #Info    +8 Accuracy with Light weapons +1 Damage with Daggers
@@ -337,7 +337,7 @@ but the target has +2 Resistance to this trip attempt.
 #Info    You are a +1 Complexity target against anything that would slow or stop your movement
 #Skill+1 +1
 
-*[Tier4(Distance)]
+*[Tier4(Distance)1]
 
 *Mobile Hitter
 #Info    You may continue using your remaining movement after a Ranged weapon attack.
@@ -443,7 +443,7 @@ You may not benefit from Defensive Stance if you are using the Overwatch ability
 #Skill+3 Whenever your ranged weapon deals damage as part of an AoO,
 it's damage is dealt as Piercing.
 
-*[Tier4(Desperation)]
+*[Tier4(Desperation)2]
 
 *Conversion
 #Info    Convert 15 Sanity into 2 Adrenaline. You may freely do this once per round.
@@ -673,7 +673,7 @@ You may level that skill as though it were a Racial skill.
 #Skill+1 Increase your weapon tier mastery by 1 with Light weapons.
 +0.20 Crit Multiplier
 
-*[Tier4(Tactician)]
+*[Tier4(Tactician)2]
 
 *Study Target
 #Activate    Focus on a target in combat to attempt to reveal
@@ -819,7 +819,7 @@ roll MAD. On a success, the spell is dispelled.
 #Skill+2 May also be used on a target within 4 Range to remove 1 magical effect. 
 Requires a succesful INT roll whose complexity varies based on the effect you are countering.
 
-*[Tier4(Cleric)]
+*[Tier4(Cleric)2]
 
 *Last Chance
 #Info    The first time you would drop to 0 or lower HP in combat,
@@ -1016,7 +1016,7 @@ they will instead be dealt 2d4 damage.
 #Skill+4 For 6 Adrenaline and No Focus,
 Create a 2x3 area of Healing Wells.
 
-*[Tier4(Foreman)]
+*[Tier4(Foreman)2]
 
 *Coin is King
 #Info    You may use 'Ritual' abilities even if you can not read
@@ -1219,7 +1219,7 @@ all tiles adjacent to the Totem gain 2 healing.
 #Info    You always Push Objects 2 more.
 #Skill+1 +1 Splat Damage
 
-*[Tier4(Chemist)]
+*[Tier4(Chemist)1]
 
 *Crafted Item
 #Info    Select a consumeable item that costs no more than 1 Wealth at the start of each day.
@@ -1550,7 +1550,7 @@ Gain +6 Adrenaline.
 #Skill+1 Only deal 18 damage to yourself.
 +1 more Adrenaline
 
-*[Tier4(Resiliance)]
+*[Tier4(Resiliance)2]
 
 *Natural Armor+
 #Info    +1 Armor
@@ -1689,7 +1689,7 @@ If you shove a creature into another creature,
 the creature you shoved must immediately make an attack against the creature they were shoved into.
 This does not use an action for the shoved creature.
 
-*[Tier4(Determination)]
+*[Tier4(Determination)1]
 
 *Unarmed Technique
 #Info    Unarmed Attacks lose the 'Frail' tag
@@ -1819,7 +1819,7 @@ Next turn, you may take 2 actions.
 #Focus   2
 #Skill+1 +4 Move on your next turn
 
-*[Tier4(Strength)]
+*[Tier4(Strength)2]
 
 *Conditional
 #Info    Many buffs/debuffs effect you more or less.
@@ -1953,7 +1953,7 @@ You may decide to have up to 2 Focus turn into Adrenaline
 #Skill+1 Up to 3
 #Skill+2 Up to 4
 
-*[Tier4(Maelstrom)]
+*[Tier4(Maelstrom)1]
 
 *Challenge
 #Info    You may designate a Challenge to a targeted enemy.
@@ -2207,7 +2207,7 @@ You may not teleport to somewhere you do not have line of sight.
 #Adrenaline  3
 #Skill+1 +4 Range added to teleport
 
-*[Tier4(Progenitor)]
+*[Tier4(Progenitor)2]
 
 *Immune System
 #Info    Your amor reduces the damage you recieve from Poison
@@ -2397,7 +2397,7 @@ Deal 2 Poison Damage to all within the Explosion radius
 #Skill+2 +2 Healing or Poison from the initial explsion
 #Skill+3 +2 Healing or Poison from the initial explsion
 
-*[Tier4(Legion)]
+*[Tier4(Legion)1]
 
 *Cursed
 #Info    When you recieve Blight you also heal for the amount of blight recieved
@@ -2529,7 +2529,7 @@ you may use your Reaction to gain all the stacks of Blight that it had.
 #Range   Touch
 #Sanity  8
 
-*[Tier4(Nostalgia)]
+*[Tier4(Nostalgia)1]
 
 *Ice Walker
 #Info    You may change directions while on Ice without risk of falling Prone.
@@ -2701,7 +2701,7 @@ This may not be used on Round 1 of combat.
 Lose the Impervious status at the start of your next turn.
 #Skill+3 Do not lose the Impervious status at the start of your next turn.
 
-*[Tier4(Gnosis)]
+*[Tier4(Gnosis)2]
 
 *Awaken
 #Info    Immune to Confusion and Sleep forced upon you.

@@ -206,6 +206,7 @@ pre {
     top: -10px;
     margin-top: calc((var(--iconSize) + var(--iconMargin)) * -1);
 }
+
 .passiveSkills img{
     margin-right: 5px;
     margin-left: 5px;

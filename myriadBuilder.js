@@ -2,15 +2,12 @@ var file = new XMLHttpRequest();
 file.open("GET", "DataParsing/ability.json");
 file.send();
 
-//Global variables 
-//distinguish class passives
-var classPassives = [2, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2];
-var passiveIndex = 0;
-
+//GLOBAL ELEMENTS
+//=================
 //Index 0 is the active tab
 //Index 1 is the active ability
 var activeElements = ["none","none"];
-//
+//=================
 
 // 
 file.onreadystatechange = function() {
@@ -195,12 +192,12 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot){
         abilitySet.appendChild(passives);
 
         //create passive abilities
-        for(var x = 0; x < classPassives[passiveIndex]; x++){
+        for(var x = 0; x < bookmarks[index][2]; x++){
             createAbility(abilities[bookmarks[index][0]+x], passives, descRoot);
         } 
         
         //determine subset of abilities of the class without passives
-        startIndex = bookmarks[index][0] + classPassives[passiveIndex];
+        startIndex = bookmarks[index][0] + parseInt(bookmarks[index][2]);
             
         if(index == bookmarks.length - 2){
             endIndex = bookmarks[index+1];
@@ -208,9 +205,8 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot){
         else{
             endIndex = bookmarks[index+1][0];
         }
+        console.log(startIndex+":"+endIndex);
 
-        //increment passiveIndex to next class entry(bad programming)
-        passiveIndex++;
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
     setAbilities.forEach(ability => createAbility(ability, abilitySet, descRoot));
