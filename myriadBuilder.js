@@ -2,14 +2,17 @@ var file = new XMLHttpRequest();
 file.open("GET", "DataParsing/ability.json");
 file.send();
 
-//Global variables to distinguish class passives
+//Global variables 
+//distinguish class passives
 var classPassives = [2, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2];
 var passiveIndex = 0;
 
 //Index 0 is the active tab
 //Index 1 is the active ability
 var activeElements = ["none","none"];
+//
 
+// 
 file.onreadystatechange = function() {
     if (file.readyState == 4 && file.status == 200) {
         var abilityFile = JSON.parse(file.responseText);
@@ -22,6 +25,12 @@ file.onreadystatechange = function() {
     }
 }
 
+//Info: Called to create the whole web page
+//Parameters:
+//  +abilityArray = array consisting of two arrays
+//      *index 0: array of ints that represent significant 
+//                break points in the index 1 array
+//      *index 1: array of all individual abilities 
 function createWebsite(abilityArray){
     //seperate json info into an array with all abilities and an array with 
     //index bookmarks
@@ -33,21 +42,33 @@ function createWebsite(abilityArray){
     navBar.id = 'navBar';
     parent.appendChild(navBar);
 
-    createCharacterPages(parent, navBar, bookmarks);
+    var statArray = [];
+    for(var x = 0; x < bookmarks.length; x++){
+        statArray.push(bookmarks[x][0]);
+    }    
+    createCharacterPages(parent, navBar, statArray);
 
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent, navBar);
     }
 }
 
-function createCharacterPages(parent, navBar, bookmarks){
+//Info: Creates the character pages
+//Parameters:
+//  +parent = parent document element of the character page 
+//  +navBar = navBar document element
+//  +stats = array of strings that represent each stat.      
+function createCharacterPages(parent, navBar, stats){
+    //page navBar tab element
     var togglePage = document.createElement('div');
+    togglePage.classList.add('tab');
+    
+    //page div
     var charPage = document.createElement('div');
-
     charPage.id = "create";
     charPage.classList.add('page');
-
-    togglePage.classList.add('tab');
+    
+    //set navBar listener(needs to be after skilltree exists)
     togglePage.innerHTML = charPage.id;
     togglePage.onclick = function(){activeElement(charPage.id, activeElements, 0);};
     
@@ -56,69 +77,93 @@ function createCharacterPages(parent, navBar, bookmarks){
 
     var choiceBar = document.createElement('div');
     
-
+    //stat choices x 2 because each character picks two stats
     for(var x = 0; x < 2; x++){
         var row = document.createElement('div');
-        for(var y = 0; y < bookmarks.length; y++){
+        for(var y = 0; y < stats.length; y++){
             var stat = document.createElement('img');
             stat.classList.add("statIcon");
-            stat.src = "Assets/MyriadIcons/" + bookmarks[y][0] + '.png';
+            stat.src = "Assets/MyriadIcons/" + stats[y] + '.png';
             row.appendChild(stat);
         }
         choiceBar.appendChild(row);
     }
 
     charPage.appendChild(choiceBar);
-    console.log(bookmarks.length);
-    console.log(bookmarks[0]);
 }
 
+//Info: Creates each ability type tab
+//Parameters:
+//  +abilities = array of all individual abilities
+//  +bookmarks = array of ints that represent significant 
+//               break points in the index 1 array
+//  +parent = parent document element 
+//  +navBar = navBar document element
 function createSkillTree(abilities, bookmarks, parent, navBar){
+    //page navBar tab element
     var toggleTree = document.createElement('img');
-    var skilltreeId = bookmarks[0];
-
-    var skilltree = document.createElement('div');
-    skilltree.id = bookmarks[0];
-    skilltree.classList.add('page');
-    
-    var icons = document.createElement('div');
-    icons.classList.add('abilityIcons');
-
-    var descs = document.createElement('div');
-    descs.classList.add('abilitydescs');    
-
     toggleTree.classList.add('tab');
     toggleTree.src = "Assets/MyriadIcons/" + bookmarks[0] + '.png';
-    toggleTree.onclick = function(){activeElement(skilltreeId, activeElements, 0);};
-    
     navBar.appendChild(toggleTree);
+
+    //page div
+    var skilltree = document.createElement('div');
+    var skilltreeId = bookmarks[0];
+    skilltree.id = skilltreeId;
+    skilltree.classList.add('page');
+    
     parent.appendChild(skilltree);
 
+    //set navBar listener(needs to be after skilltree exists)
+    toggleTree.onclick = function(){activeElement(skilltreeId, activeElements, 0);};
+    //get rid of index 0 which is a string representing that stat tree
     bookmarks.shift();
 
-    var x;
-    for(x = 0; x < 4; x++){
-        var tier = document.createElement('div');
-        icons.appendChild(createAbilitySet(x, bookmarks, abilities, tier, descs));
-    }
+    //icons div panel
+    var icons = document.createElement('div');
+    icons.classList.add('abilityIcons');
+    //descriptions div panel
+    var descs = document.createElement('div');
+    descs.classList.add('abilitydescs');   
 
-    var tier4 = document.createElement('div');
-    tier4.classList.add('tier4');   
-
-    for(x = 4; x < bookmarks.length - 1; x++){
-        var classSet = document.createElement('div');
-        tier4.appendChild(createAbilitySet(x, bookmarks, abilities, classSet, descs));
-    }
-
-    icons.appendChild(tier4);
     skilltree.appendChild(icons);
-    skilltree.appendChild(descs);  
+    skilltree.appendChild(descs);   
+
+    //tiers 0 - 3
+    for(var x = 0; x < 4; x++){
+        var tier = document.createElement('div');
+        icons.appendChild(tier);
+        createAbilitySet(x, abilities, bookmarks, tier, descs);
+    }
+
+    //tier 4
+    var tier4 = document.createElement('div');
+    tier4.classList.add('tier4');
+    icons.appendChild(tier4);   
+
+    //class divs
+    for(var x = 4; x < bookmarks.length - 1; x++){
+        var classSet = document.createElement('div');
+        tier4.appendChild(classSet);
+        createAbilitySet(x, abilities, bookmarks, classSet, descs);
+    }
 }
 
-function createAbilitySet(index, bookmarks, abilities, abilitySet, descRoot){
+//Info: Creates each tier of abilities
+//Parameters:
+//  +index = integer which represents which stat tree 
+//  +abilities  = array of all individual abilities
+//  +bookmarks  = array of ints that represent significant 
+//                break points in the index 1 array
+//  +abilitySet = icon parent document element
+//  +descRoot = description parent document element
+function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot){
     var startIndex = 0;
     var endIndex = 0;
 
+    //Determine subset of abilities for each tier
+    //tiers 0-3 == <4
+    //tier 4(classes) == >4
     if(index < 4){
         abilitySet.classList.add('tier'+ index);
         abilitySet.classList.add('tier');
@@ -132,6 +177,10 @@ function createAbilitySet(index, bookmarks, abilities, abilitySet, descRoot){
         }
     }
     else{
+        //Classes have special formatting
+        //+appended onto new parent div
+        //+includes class image
+        //+class passives
         var className = bookmarks[index][1];
         abilitySet.id = className;
         abilitySet.classList.add('classDiv');
@@ -145,10 +194,12 @@ function createAbilitySet(index, bookmarks, abilities, abilitySet, descRoot){
         passives.classList.add('passiveSkills');
         abilitySet.appendChild(passives);
 
+        //create passive abilities
         for(var x = 0; x < classPassives[passiveIndex]; x++){
             createAbility(abilities[bookmarks[index][0]+x], passives, descRoot);
         } 
-    
+        
+        //determine subset of abilities of the class without passives
         startIndex = bookmarks[index][0] + classPassives[passiveIndex];
             
         if(index == bookmarks.length - 2){
@@ -157,34 +208,36 @@ function createAbilitySet(index, bookmarks, abilities, abilitySet, descRoot){
         else{
             endIndex = bookmarks[index+1][0];
         }
+
+        //increment passiveIndex to next class entry(bad programming)
         passiveIndex++;
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
     setAbilities.forEach(ability => createAbility(ability, abilitySet, descRoot));
-
-    return abilitySet;
 }
 
+//Info: Create each ability
+//Parameters:
+//  +index = integer which represents which ability this is
+//  +parent  = parent document element for the ability icon
+//  +descRoot = parent document element for the ability desc
 function createAbility(index, parent, descRoot){
-    //create ability icon
+    //create ability icon then set attributes, classes, events
     var abilityIcon = document.createElement('img');
-
-    var abilityPath = "Assets/MyriadIcons/" + index[0][1][1] + ".png";
-    abilityIcon.src = abilityPath;
+    abilityIcon.src = "Assets/MyriadIcons/" + index[0][1][1] + ".png";
+    // abilityIcon.src = "Assets/MyriadIcons/" + index[0][1][1] + ".png";
     abilityIcon.alt = index[0][1][1];
     abilityIcon.classList.add("abilityIcon");
     abilityIcon.onclick = function(){activeElement(index[0][1][1], activeElements, 1);};
-
     parent.appendChild(abilityIcon);
 
     //Create ability description
     var abilityDesc = document.createElement('div');
     abilityDesc.classList.add("abilityDesc");
     abilityDesc.id = index[0][1][1];
-
-   
     descRoot.appendChild(abilityDesc);
 
+    //populate ability description
     var abilityHeader = document.createElement('h3');
     var table = document.createElement('table');
 
@@ -208,6 +261,14 @@ function createAbility(index, parent, descRoot){
     abilityDesc.appendChild(document.createElement('br'));
 }
 
+//Info: Sets an icon or tab to active
+//Parameters:
+//  +id = id of new active element 
+//  +curActive = array which consists of the ids of currently active elements
+//      *index 0: active tab
+//      *index 1: active ability
+//  +index = determines if tab or ability is being set to active,
+//           refer to index values described above
 function activeElement(id, curActive, index){
     if(curActive[index] != "none"){
         if(id == curActive[index]){
@@ -226,6 +287,9 @@ function activeElement(id, curActive, index){
     }
 }
 
+//Info: Toggles "active" css class on an element
+//Parameters:
+//  +id = id of element
 function toggleActive(id){
     var element = document.getElementById(id);
     if(element.classList.contains("active")){
