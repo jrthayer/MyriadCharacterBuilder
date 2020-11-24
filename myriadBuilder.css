@@ -4,15 +4,14 @@
     background: rgb(50, 50, 50);
 }
 
+
+
+/*TAG Selectors
+=====================*/
 html, body{
     width: 100%;
     height: 100%;
     overflow: auto;
-}
-
-#navBar{
-    width: 100%;
-    height: 50px;
 }
 
 img:hover{
@@ -43,6 +42,56 @@ pre {
     word-wrap: break-word; /* IE 5.5+ */
 }
 
+
+
+/*NavBar Selectors
+=====================*/
+#navBar{
+    width: 100%;
+    height: 50px;
+}
+
+#navBar img:nth-of-type(1){
+    background: rgb(0,35,0);
+}
+
+#navBar img:nth-of-type(2){
+    background: rgb(0,10,45);
+}
+
+#navBar img:nth-of-type(3){
+    background: rgb(55,0,0);
+}
+
+#navBar img:nth-of-type(4){
+    background: rgb(35,0,35);
+    /*border-top: rgb(35,0,35) 5px solid;
+    border-left: rgb(35,0,35) 5px solid;
+    border-right: rgb(35,0,35) 5px solid;*/
+}
+
+.tab{
+    width: 90px;
+    height: 30px;
+    background: rgb(30,30,30);
+    padding: 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin: 0px 2px;
+    display: inline-block;
+    float: left;
+    cursor: default;
+}
+
+
+
+/*Tab Selectors
+=====================*/
+/*Changes Tab background Color of Ability Tiers Panel*/
+#create{
+    background: rgb(30,30,30);
+}
+
 #DEX .abilityIcons{
     background: rgba(0,55,0,100);
     border-top: rgb(0,35,0) 10px solid;
@@ -63,47 +112,24 @@ pre {
     border-top: rgb(35,0,35) 10px solid;
 }
 
-#create{
-    background: rgb(30,30,30);
-}
-
-.abilityIcon{
-    display: block;
-    width: var(--iconSize);
-    height: var(--iconSize);
-    float: left;
-    margin: calc(var(--iconMargin)/2);
-    /*border: solid 3px rgb(20,20,20);*/
-}
-
-.abilityDesc{
-    display: none;
-    margin: 10px;
-    background: rgb(200,200,200);
-    border-radius: 10px;
-}
-
-.abilityDesc h3{
-    border-bottom: solid black 2px;
-    margin-bottom: 0px;
-    padding: 10px;
-}
-
-.abilityDesc td{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.abilityDesc td:first-child{
-    width: 6em;
-    vertical-align: top;
-}
-
 .page{
     display: none;
     width: 100%;
 }
 
+
+
+/*Tab Ability Icons Panel
+===========*/
+.abilityIcons{
+    width: 70%;
+    float: left;
+}
+
+
+
+/*Ability Tier Selectors
+======*/
 .tier{
     overflow: hidden;
     border: solid 3px rgb(20,20,20);
@@ -134,43 +160,6 @@ pre {
     margin: 0 auto; 
 }
 
-.classDiv div ~ .abilityIcon:nth-of-type(2){
-    margin-left: var(--iconMargin);
-}
-
-.classDiv div ~ .abilityIcon:nth-of-type(4n+2){
-    margin-left: var(--iconMargin);
-}
-
-.classDiv div ~ .abilityIcon:nth-of-type(4n+1){
-    margin-right: var(--iconMargin);
-}
-
-.passiveSkills{
-    width: calc(var(--iconSize)*2 + var(--iconMargin)*3);
-    height: calc(var(--iconSize) + var(--iconMargin));
-    position: relative;
-    top: -10px;
-    margin-top: calc((var(--iconSize) + var(--iconMargin)) * -1);
-}
-
-.passiveSkills img{
-    margin-right: 5px;
-    margin-left: 5px;
-    border-radius: 50%;
-}
-
-.passiveSkills img:first-child{
-    margin-left: 10px;
-}
-
-/*NEEDS to be after skillTree and abilityDesc*/
-.active{
-    display: block;
-}
-
-
-/*TEMPORARY STYLES*/
 .classDiv{
     margin: 25px 25px;
     vertical-align: top;
@@ -184,18 +173,53 @@ pre {
     /*min-height: calc(var(--iconSize)*4 + var(--iconMargin)*5 + var(--iconSize)*4 + var(--iconMargin)*5);*/
 }
 
-.classImg{
-    width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
-    height: calc(var(--iconSize)*4 + var(--iconMargin)*5);
-    border-bottom: solid 5px black;
-    background: black;
-}
 
-.abilityIcons{
-    width: 70%;
+
+/*Individual Ability Icon Selectors
+===*/
+.abilityIcon{
+    display: block;
+    width: var(--iconSize);
+    height: var(--iconSize);
     float: left;
+    margin: calc(var(--iconMargin)/2);
+    /*border: solid 3px rgb(20,20,20);*/
 }
 
+.classDiv div ~ .abilityIcon:nth-of-type(2){
+    margin-left: var(--iconMargin);
+}
+
+.classDiv div ~ .abilityIcon:nth-of-type(4n+2){
+    margin-left: var(--iconMargin);
+}
+
+.classDiv div ~ .abilityIcon:nth-of-type(4n+1){
+    margin-right: var(--iconMargin);
+}
+
+/*Passive Skills*/
+.passiveSkills{
+    width: calc(var(--iconSize)*2 + var(--iconMargin)*3);
+    height: calc(var(--iconSize) + var(--iconMargin));
+    position: relative;
+    top: -10px;
+    margin-top: calc((var(--iconSize) + var(--iconMargin)) * -1);
+}
+.passiveSkills img{
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+
+.passiveSkills img:first-child{
+    margin-left: 10px;
+}
+
+
+
+/*Tab Ability Description Panel Selectors
+===========*/
 .abilitydescs{
     width: 30%;
     height: 100%;
@@ -208,27 +232,20 @@ pre {
     background: gray;
 }
 
-.statIcon{
-    width: 90px;
-    height: 30px;
-    background: rgb(30,30,30);
-    border: solid 5px rgb(40,40,40);
-    padding: 5px;
-    margin: 5px;
-    border-radius: 15px;
+.abilityDesc h3{
+    border-bottom: solid black 2px;
+    margin-bottom: 0px;
+    padding: 10px;
 }
 
-.tab{
-    width: 90px;
-    height: 30px;
-    background: rgb(30,30,30);
-    padding: 10px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    margin: 0px 2px;
-    display: inline-block;
-    float: left;
-    cursor: default;
+.abilityDesc td{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.abilityDesc td:first-child{
+    width: 6em;
+    vertical-align: top;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -242,23 +259,46 @@ pre {
   scrollbar-width: none;  /* Firefox */
 }
 
+
+
+/*Individual Ability Descriptions
+======*/
+.abilityDesc{
+    display: none;
+    margin: 10px;
+    background: rgb(200,200,200);
+    border-radius: 10px;
+}
+
+
+
+/*Unorganized Selectors
+=================================*/
+
+/*NEEDS to be after skillTree and abilityDesc*/
+.active{
+    display: block;
+}
+
+/*TEMPORARY STYLES*/
+.classImg{
+    width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
+    height: calc(var(--iconSize)*4 + var(--iconMargin)*5);
+    border-bottom: solid 5px black;
+    background: black;
+}
+
+.statIcon{
+    width: 90px;
+    height: 30px;
+    background: rgb(30,30,30);
+    border: solid 5px rgb(40,40,40);
+    padding: 5px;
+    margin: 5px;
+    border-radius: 15px;
+}
+
 .lockedImgs{
     filter: grayscale(100%);
 }
 
-#navBar img:nth-of-type(1){
-    background: rgb(0,35,0);
-}
-#navBar img:nth-of-type(2){
-    background: rgb(0,10,45);
-}
-
-#navBar img:nth-of-type(3){
-    background: rgb(55,0,0);
-}
-#navBar img:nth-of-type(4){
-    background: rgb(35,0,35);
-    /*border-top: rgb(35,0,35) 5px solid;
-    border-left: rgb(35,0,35) 5px solid;
-    border-right: rgb(35,0,35) 5px solid;*/
-}
