@@ -75,12 +75,16 @@ function createCharacterPages(parent, navBar, stats){
     var choiceBar = document.createElement('div');
     
     //stat choices x 2 because each character picks two stats
-    for(var x = 0; x < 2; x++){
+    for(let x = 0; x < 2; x++){
         var row = document.createElement('div');
-        for(var y = 0; y < stats.length; y++){
+        let rowId = "statChoice"+ x;
+        row.id = rowId;
+
+        for(let y = 0; y < stats.length; y++){
             var stat = document.createElement('img');
             stat.classList.add("statIcon");
             stat.src = "Assets/MyriadIcons/" + stats[y] + '.png';
+            stat.onclick = function(){removeLock(stats[y], y, rowId);};
             row.appendChild(stat);
         }
         choiceBar.appendChild(row);
@@ -100,6 +104,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     //page navBar tab element
     var toggleTree = document.createElement('img');
     toggleTree.classList.add('tab');
+    toggleTree.classList.add('hardLock');
     toggleTree.src = "Assets/MyriadIcons/" + bookmarks[0] + '.png';
     navBar.appendChild(toggleTree);
 
@@ -119,6 +124,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     //icons div panel
     var icons = document.createElement('div');
     icons.classList.add('abilityIcons');
+    icons.classList.add('hardLock');
     //descriptions div panel
     var descs = document.createElement('div');
     descs.classList.add('abilitydescs');   
@@ -294,5 +300,29 @@ function toggleActive(id){
     else{
         element.classList.add("active");
     }
+}
+
+function removeLock(id, tabIndex, rowId){
+    // var element = document.querySelector("#"+id);
+    // var locked = element.querySelectorAll('.hardLock');
+    var page = document.getElementById(id);
+    var locked = page.getElementsByClassName('hardLock');
+    var tabs = document.getElementsByClassName('tab');
+    var tab = tabs[tabIndex+1];
+    tab.classList.remove('hardLock');
+    if(locked.length>0){
+        locked[0].classList.remove('hardLock');
+    }
+    
+
+    console.log(rowId);
+    var row = document.getElementById(rowId);
+    var buttons = row.querySelectorAll('img');
+    buttons.forEach((button) => {
+        button.classList.add("noClick");
+        button.classList.add('hardLock');
+    });
+
+    buttons[tabIndex].classList.remove('hardLock');
 }
 

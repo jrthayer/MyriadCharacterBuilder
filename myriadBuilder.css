@@ -303,3 +303,12 @@ pre {
     filter: grayscale(100%);
 }
 
+.hardLock{
+    filter: grayscale(100%);
+    opacity: .5;
+}
+
+.noClick{
+    pointer-events: none;
+}
+
