@@ -11,7 +11,8 @@ var activeElements = ["none","none"];
 //skill point array
 var skillPoints = [];
 //skill tree index variables
-var statChoice = [0, 0];
+var statChoices = [0, 0];
+var statChoiceElements = [];
 var statTabsOffset = 0;
 //character level
 var charLvl = 0;
@@ -58,7 +59,7 @@ function createWebsite(abilityArray){
     }
     //testing
     console.log(skillPoints);
-    console.log(statChoice);
+    console.log(statChoices);
 }
 
 //Info: Creates the character pages
@@ -342,10 +343,10 @@ function setStatChoice(indexValue, row, parentName){
     rowElement[indexValue].classList.remove('hardLock');
 
     //global variable being set
-    statChoice[row] = indexValue;
+    statChoices[row] = indexValue;
     
     //testing
-    console.log(statChoice);
+    console.log(statChoices);
 }
 
 //Info: Submits user input for character creation and adds styling 
@@ -366,37 +367,89 @@ function submitCharacter(){
     }
 
     //Modify selected tabs and pages
-    for(var x = 0; x < statChoice.length; x++)
+    for(var x = 0; x < statChoices.length; x++)
     {
         //Removing 'hardLock' 
-        pages[statChoice[x]].classList.remove('hardLock');
-        tabs[statChoice[x]+statTabsOffset].classList.remove('hardLock');
+        pages[statChoices[x]].classList.remove('hardLock');
+        tabs[statChoices[x]+statTabsOffset].classList.remove('hardLock');
         
         //Setting 'hardLock' on each ability tier
-        var tiers = pages[statChoice[x]].querySelectorAll('.tier');
+        var tiers = pages[statChoices[x]].querySelectorAll('.tier');
         for(var y = 0; y < tiers.length; y++){
             tiers[y].classList.add('hardLock');
         }
 
         //setting 'hardLock' on each class ability set
-        var classes = pages[statChoice[x]].querySelectorAll('.classDiv');
+        var classes = pages[statChoices[x]].querySelectorAll('.classDiv');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
+
+        //set global stat choice elements
+        statChoiceElements.push(pages[statChoices[x]]);
     }
 
+    //testing
+    console.log(statChoiceElements);
     generateCharacter(createTab);
 }
 
 function generateCharacter(parent){
+    //testing
+    console.log('generating Character');
+
     while(parent.firstChild){
         parent.removeChild(parent.lastChild);
     }
-    var levelBtn = document.createElement('button');
-    levelBtn.textContent = "LEVEL UP+";
-    
-    parent.appendChild(levelBtn);
+    var level = document.createElement('div');
+    level.textContent = charLvl;
+    parent.appendChild(level);
 
-    console.log('generating Character');
+    var levelUpBtn = document.createElement('button');
+    levelUpBtn.textContent = "LEVEL UP+";
+    levelUpBtn.onclick = function(){levelUp();};
+    
+    parent.appendChild(levelUpBtn);    
 }
 
+function levelUp(){
+    charLvl++;
+    var pages = document.querySelectorAll('.abilityIcons');
+    //testing
+    console.log(charLvl);
+    switch(charLvl){
+        case 1:
+            for(var x = 0; x < statChoiceElements.length; x++){
+                var tierMod = statChoiceElements[x].querySelectorAll('.tier1');
+                tierMod[0].classList.remove('hardLock');
+            }
+            //testing
+            console.log('tier1');
+            break;
+        case 2:
+            for(var x = 0; x < statChoiceElements.length; x++){
+                var tierMod = statChoiceElements[x].querySelectorAll('.tier2');
+                tierMod[0].classList.remove('hardLock');
+            }
+            //testing
+            console.log('tier2');
+            break;
+        case 3:
+            for(var x = 0; x < statChoiceElements.length; x++){
+                var tierMod = statChoiceElements[x].querySelectorAll('.tier3');
+                tierMod[0].classList.remove('hardLock');
+            }
+            //testing
+            console.log('tier3');
+            break;
+        case 4:
+            for(var x = 0; x < statChoiceElements.length; x++){
+                var tierMod = statChoiceElements[x].querySelectorAll('.classDiv');
+                for(var y =0; y < tierMod.length; y++)
+                {
+                    tierMod[y].classList.remove('hardLock');
+                }
+            }
+            break;
+    }
+}
