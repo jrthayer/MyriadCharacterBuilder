@@ -86,7 +86,7 @@ pre {
 /*Tab Selectors
 =====================*/
 /*Changes Tab background Color of Ability Tiers Panel*/
-#create{
+#character{
     background: rgb(30,30,30);
 }
 
@@ -299,6 +299,10 @@ pre {
 
 .lockedImgs{
     filter: grayscale(100%);
+}
+
+.levelLock{
+    opacity: .5;
 }
 
 .hardLock{

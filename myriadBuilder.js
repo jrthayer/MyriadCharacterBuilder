@@ -11,8 +11,10 @@ var activeElements = ["none","none"];
 //skill point array
 var skillPoints = [];
 //skill tree index variables
-var statChoice = [2, 2];
+var statChoice = [0, 0];
 var statTabsOffset = 0;
+//character level
+var charLvl = 0;
 //=================
 
 // 
@@ -71,7 +73,7 @@ function createCharacterPages(parent, navBar, stats){
     
     //page div
     var charPage = document.createElement('div');
-    charPage.id = "create";
+    charPage.id = "character";
     charPage.classList.add('page');
     
     //set navBar listener(needs to be after skilltree exists)
@@ -83,7 +85,7 @@ function createCharacterPages(parent, navBar, stats){
 
     var choiceBar = document.createElement('div');
     
-    //stat choices x 2 because each character picks two stats
+    //stat choices x < 2 because each character picks two stats
     for(let x = 0; x < 2; x++){
         var row = document.createElement('div');
         let rowId = "statChoice"+ x;
@@ -93,7 +95,6 @@ function createCharacterPages(parent, navBar, stats){
             var stat = document.createElement('img');
             stat.classList.add("statIcon");
             stat.src = "Assets/MyriadIcons/" + stats[y] + '.png';
-            // stat.onclick = function(){removeLock(stats[y], y, rowId);};
             stat.onclick = function(){setStatChoice(y, x, rowId);};
             row.appendChild(stat);
         }
@@ -105,7 +106,7 @@ function createCharacterPages(parent, navBar, stats){
     //submit button
     var submitBtn = document.createElement('button');
     submitBtn.textContent = "SUBMIT";
-    submitBtn.onclick = function(){lockSkillTrees();};
+    submitBtn.onclick = function(){submitCharacter();};
 
     charPage.appendChild(submitBtn);
 
@@ -327,52 +328,36 @@ function toggleActive(id){
     }
 }
 
-// function removeLock(id, tabIndex, rowId){
-//     // var element = document.querySelector("#"+id);
-//     // var locked = element.querySelectorAll('.hardLock');
-//     var page = document.getElementById(id);
-//     var locked = page.getElementsByClassName('hardLock');
-//     var tabs = document.getElementsByClassName('tab');
-//     var tab = tabs[tabIndex+1];
-//     tab.classList.remove('hardLock');
-//     if(locked.length>0){
-//         locked[0].classList.remove('hardLock');
-//     }
-    
-
-//     console.log(rowId);
-//     var row = document.getElementById(rowId);
-//     var buttons = row.querySelectorAll('img');
-//     buttons.forEach((button) => {
-//         button.classList.add("noClick");
-//         button.classList.add('hardLock');
-//     });
-
-//     buttons[tabIndex].classList.remove('hardLock');
-// }
-
-function setStatChoice(indexValue, indexInstance, rowId){
-    var statChoiceRow = document.querySelectorAll("#"+rowId+" img");
-    statChoiceRow.forEach((stat) => {
-        stat.classList.add('hardLock');
+//Info: 
+//Parameters:
+//  +indexValue = index of button choosen
+//  +row = number representing which stat choice row is being set
+//  +parentName = id string of div element containing set of stat buttons
+function setStatChoice(indexValue, row, parentName){
+    var rowElement = document.querySelectorAll("#"+parentName+" img");
+    rowElement.forEach((statBtn) => {
+        statBtn.classList.add('hardLock');
     });
 
-    statChoiceRow[indexValue].classList.remove('hardLock');
+    rowElement[indexValue].classList.remove('hardLock');
 
-    if(indexInstance < 2){
-        statChoice[indexInstance] = indexValue;
-    }
-    else{
-        console.log("set stat error: greater than 2");
-    }
+    //global variable being set
+    statChoice[row] = indexValue;
+    
     //testing
     console.log(statChoice);
 }
 
-function lockSkillTrees(){
+//Info: Submits user input for character creation and adds styling 
+//  +Sets 'hardLock' class on tabs not selected
+//  +Sets 'hardLock' class on ability tiers of tabs selected
+//  +Calls generateCharacter()
+function submitCharacter(){
+    var createTab = document.getElementById('character');
     var tabs = document.querySelectorAll('.tab');
     var pages = document.querySelectorAll('.abilityIcons');
 
+    //Setting 'hardLock' on all ability tabs and pages
     for(var x = 0; x < pages.length; x++){
         pages[x].classList.add('hardLock');
     }
@@ -380,11 +365,38 @@ function lockSkillTrees(){
         tabs[x].classList.add('hardLock');
     }
 
+    //Modify selected tabs and pages
     for(var x = 0; x < statChoice.length; x++)
     {
+        //Removing 'hardLock' 
         pages[statChoice[x]].classList.remove('hardLock');
         tabs[statChoice[x]+statTabsOffset].classList.remove('hardLock');
+        
+        //Setting 'hardLock' on each ability tier
+        var tiers = pages[statChoice[x]].querySelectorAll('.tier');
+        for(var y = 0; y < tiers.length; y++){
+            tiers[y].classList.add('hardLock');
+        }
+
+        //setting 'hardLock' on each class ability set
+        var classes = pages[statChoice[x]].querySelectorAll('.classDiv');
+        for(var y = 0; y < classes.length; y++){
+            classes[y].classList.add('hardLock');
+        }
     }
 
+    generateCharacter(createTab);
+}
+
+function generateCharacter(parent){
+    while(parent.firstChild){
+        parent.removeChild(parent.lastChild);
+    }
+    var levelBtn = document.createElement('button');
+    levelBtn.textContent = "LEVEL UP+";
+    
+    parent.appendChild(levelBtn);
+
+    console.log('generating Character');
 }
 
