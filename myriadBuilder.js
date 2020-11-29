@@ -7,6 +7,12 @@ file.send();
 //Index 0 is the active tab
 //Index 1 is the active ability
 var activeElements = ["none","none"];
+
+//skill point array
+var skillPoints = [];
+//skill tree index variables
+var statChoice = [2, 2];
+var statTabsOffset = 0;
 //=================
 
 // 
@@ -48,6 +54,9 @@ function createWebsite(abilityArray){
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent, navBar);
     }
+    //testing
+    console.log(skillPoints);
+    console.log(statChoice);
 }
 
 //Info: Creates the character pages
@@ -84,13 +93,24 @@ function createCharacterPages(parent, navBar, stats){
             var stat = document.createElement('img');
             stat.classList.add("statIcon");
             stat.src = "Assets/MyriadIcons/" + stats[y] + '.png';
-            stat.onclick = function(){removeLock(stats[y], y, rowId);};
+            // stat.onclick = function(){removeLock(stats[y], y, rowId);};
+            stat.onclick = function(){setStatChoice(y, x, rowId);};
             row.appendChild(stat);
         }
         choiceBar.appendChild(row);
     }
 
     charPage.appendChild(choiceBar);
+
+    //submit button
+    var submitBtn = document.createElement('button');
+    submitBtn.textContent = "SUBMIT";
+    submitBtn.onclick = function(){lockSkillTrees();};
+
+    charPage.appendChild(submitBtn);
+
+    //stat tabs offset+
+    statTabsOffset++;
 }
 
 //Info: Creates each ability type tab
@@ -104,7 +124,6 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     //page navBar tab element
     var toggleTree = document.createElement('img');
     toggleTree.classList.add('tab');
-    toggleTree.classList.add('hardLock');
     toggleTree.src = "Assets/MyriadIcons/" + bookmarks[0] + '.png';
     navBar.appendChild(toggleTree);
 
@@ -124,13 +143,12 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     //icons div panel
     var icons = document.createElement('div');
     icons.classList.add('abilityIcons');
-    icons.classList.add('hardLock');
     //descriptions div panel
     var descs = document.createElement('div');
     descs.classList.add('abilitydescs');   
 
     skilltree.appendChild(icons);
-    skilltree.appendChild(descs);   
+    skilltree.appendChild(descs);
 
     //tiers 0 - 3
     for(var x = 0; x < 4; x++){
@@ -144,12 +162,19 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     tier4.classList.add('tier4');
     icons.appendChild(tier4);   
 
+    //skill point array for classes of a tree
+    var classes = [];
+
     //class divs
     for(var x = 4; x < bookmarks.length - 1; x++){
         var classSet = document.createElement('div');
         tier4.appendChild(classSet);
         createAbilitySet(x, abilities, bookmarks, classSet, descs);
+        classes.push(0);
     }
+
+    //array of all skill points
+    skillPoints.push([0, classes]); 
 }
 
 //Info: Creates each tier of abilities
@@ -302,27 +327,64 @@ function toggleActive(id){
     }
 }
 
-function removeLock(id, tabIndex, rowId){
-    // var element = document.querySelector("#"+id);
-    // var locked = element.querySelectorAll('.hardLock');
-    var page = document.getElementById(id);
-    var locked = page.getElementsByClassName('hardLock');
-    var tabs = document.getElementsByClassName('tab');
-    var tab = tabs[tabIndex+1];
-    tab.classList.remove('hardLock');
-    if(locked.length>0){
-        locked[0].classList.remove('hardLock');
-    }
+// function removeLock(id, tabIndex, rowId){
+//     // var element = document.querySelector("#"+id);
+//     // var locked = element.querySelectorAll('.hardLock');
+//     var page = document.getElementById(id);
+//     var locked = page.getElementsByClassName('hardLock');
+//     var tabs = document.getElementsByClassName('tab');
+//     var tab = tabs[tabIndex+1];
+//     tab.classList.remove('hardLock');
+//     if(locked.length>0){
+//         locked[0].classList.remove('hardLock');
+//     }
     
 
-    console.log(rowId);
-    var row = document.getElementById(rowId);
-    var buttons = row.querySelectorAll('img');
-    buttons.forEach((button) => {
-        button.classList.add("noClick");
-        button.classList.add('hardLock');
+//     console.log(rowId);
+//     var row = document.getElementById(rowId);
+//     var buttons = row.querySelectorAll('img');
+//     buttons.forEach((button) => {
+//         button.classList.add("noClick");
+//         button.classList.add('hardLock');
+//     });
+
+//     buttons[tabIndex].classList.remove('hardLock');
+// }
+
+function setStatChoice(indexValue, indexInstance, rowId){
+    var statChoiceRow = document.querySelectorAll("#"+rowId+" img");
+    statChoiceRow.forEach((stat) => {
+        stat.classList.add('hardLock');
     });
 
-    buttons[tabIndex].classList.remove('hardLock');
+    statChoiceRow[indexValue].classList.remove('hardLock');
+
+    if(indexInstance < 2){
+        statChoice[indexInstance] = indexValue;
+    }
+    else{
+        console.log("set stat error: greater than 2");
+    }
+    //testing
+    console.log(statChoice);
+}
+
+function lockSkillTrees(){
+    var tabs = document.querySelectorAll('.tab');
+    var pages = document.querySelectorAll('.abilityIcons');
+
+    for(var x = 0; x < pages.length; x++){
+        pages[x].classList.add('hardLock');
+    }
+    for(var x = statTabsOffset; x < tabs.length; x++){
+        tabs[x].classList.add('hardLock');
+    }
+
+    for(var x = 0; x < statChoice.length; x++)
+    {
+        pages[statChoice[x]].classList.remove('hardLock');
+        tabs[statChoice[x]+statTabsOffset].classList.remove('hardLock');
+    }
+
 }
 
