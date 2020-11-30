@@ -132,27 +132,27 @@ pre {
     margin: 25px auto;
 }
 
-.tier0{
+.abilityIcons .tier0{
     width: calc(var(--iconSize)*2 + var(--iconMargin)*2);
     padding: 5px;
 }
 
-.tier1{
+.abilityIcons .tier1{
     padding: 5px;
 }
 
-.tier3{
+.abilityIcons .tier3{
     width: calc(var(--iconSize)*5 + var(--iconMargin)*5);
 }
 
-.tier4{
+.abilityIcons .tier4{
     width: 100%;
     display: block;
     text-align: center;
     margin: 0 auto; 
 }
 
-.classDiv{
+.abilityIcons .classDiv{
     margin: 25px 25px;
     vertical-align: top;
     display: inline-block;
