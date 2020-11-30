@@ -4,18 +4,27 @@ file.send();
 
 //GLOBAL ELEMENTS
 //=================
-//Index 0 is the active tab
-//Index 1 is the active ability
-var activeElements = ["none","none"];
+var character = {
+    text:{
+        test:"hello"
+    },
+    stat:{
+        //character level
+        charLvl: 0,
 
-//skill point array
-var skillPoints = [];
-//skill tree index variables
-var statChoices = [0, 0];
-var statChoiceElements = [];
-var statTabsOffset = 0;
-//character level
-var charLvl = 0;
+        choices: [0,0],
+        tabsOffset: 0,
+        skillPoints: []
+    },
+    html:{
+        //Index 0 is the active tab
+        //Index 1 is the active ability
+        activeElements: ["none","none"],
+        //skill tree index variables
+        statChoiceElements: []
+    }
+}
+
 //=================
 
 // 
@@ -57,9 +66,6 @@ function createWebsite(abilityArray){
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent, navBar);
     }
-    //testing
-    console.log(skillPoints);
-    console.log(statChoices);
 }
 
 //Info: Creates the character pages
@@ -79,7 +85,7 @@ function createCharacterPages(parent, navBar, stats){
     
     //set navBar listener(needs to be after skilltree exists)
     togglePage.innerHTML = charPage.id;
-    togglePage.onclick = function(){activeElement(charPage.id, activeElements, 0);};
+    togglePage.onclick = function(){activeElement(charPage.id, character.html.activeElements, 0);};
     
     navBar.appendChild(togglePage);
     parent.appendChild(charPage);
@@ -112,7 +118,7 @@ function createCharacterPages(parent, navBar, stats){
     charPage.appendChild(submitBtn);
 
     //stat tabs offset+
-    statTabsOffset++;
+    character.stat.tabsOffset++;
 }
 
 //Info: Creates each ability type tab
@@ -138,7 +144,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     parent.appendChild(skilltree);
 
     //set navBar listener(needs to be after skilltree exists)
-    toggleTree.onclick = function(){activeElement(skilltreeId, activeElements, 0);};
+    toggleTree.onclick = function(){activeElement(skilltreeId, character.html.activeElements, 0);};
     //get rid of index 0 which is a string representing that stat tree
     bookmarks.shift();
 
@@ -176,7 +182,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar){
     }
 
     //array of all skill points
-    skillPoints.push([0, classes]); 
+    character.stat.skillPoints.push([0, classes]); 
 }
 
 //Info: Creates each tier of abilities
@@ -257,7 +263,7 @@ function createAbility(index, parent, descRoot){
     // abilityIcon.src = "Assets/MyriadIcons/" + index[0][1][1] + ".png";
     abilityIcon.alt = index[0][1][1];
     abilityIcon.classList.add("abilityIcon");
-    abilityIcon.onclick = function(){activeElement(index[0][1][1], activeElements, 1);};
+    abilityIcon.onclick = function(){activeElement(index[0][1][1], character.html.activeElements, 1);};
     parent.appendChild(abilityIcon);
 
     //Create ability description
@@ -288,7 +294,10 @@ function createAbility(index, parent, descRoot){
         //testing
         console.log(index[x][0]+"test");
         if(index[x][0].includes('Skill+')){
-            row.classList.add('skillRowLock');
+            row.classList.add('abilityUpgradeLock');
+        }
+        else{
+            row.classList.add('abilityBaseLock');
         }
 
         table.appendChild(row);
@@ -303,7 +312,8 @@ function createAbility(index, parent, descRoot){
     }
 
     upgradeBtn.textContent = upgradeBtnTxt;
-    upgradeBtn.classList.add('skillRowLock');
+    upgradeBtn.classList.add('abilityBaseLock');
+    upgradeBtn.classList.add('noClick');
     abilityDesc.appendChild(upgradeBtn);
 }
 
@@ -360,10 +370,7 @@ function setStatChoice(indexValue, row, parentName){
     rowElement[indexValue].classList.remove('hardLock');
 
     //global variable being set
-    statChoices[row] = indexValue;
-    
-    //testing
-    console.log(statChoices);
+    character.stat.choices[row] = indexValue;
 }
 
 //Info: Submits user input for character creation and adds styling 
@@ -379,35 +386,35 @@ function submitCharacter(){
     for(var x = 0; x < pages.length; x++){
         pages[x].classList.add('hardLock');
     }
-    for(var x = statTabsOffset; x < tabs.length; x++){
+    for(var x = character.stat.tabsOffset; x < tabs.length; x++){
         tabs[x].classList.add('hardLock');
     }
 
     //Modify selected tabs and pages
-    for(var x = 0; x < statChoices.length; x++)
+    for(var x = 0; x < character.stat.choices.length; x++)
     {
         //Removing 'hardLock' 
-        pages[statChoices[x]].classList.remove('hardLock');
-        tabs[statChoices[x]+statTabsOffset].classList.remove('hardLock');
+        pages[character.stat.choices[x]].classList.remove('hardLock');
+        tabs[character.stat.choices[x]+character.stat.tabsOffset].classList.remove('hardLock');
         
         //Setting 'hardLock' on each ability tier
-        var tiers = pages[statChoices[x]].querySelectorAll('.tier');
+        var tiers = pages[character.stat.choices[x]].querySelectorAll('.tier');
         for(var y = 0; y < tiers.length; y++){
             tiers[y].classList.add('hardLock');
         }
 
         //setting 'hardLock' on each class ability set
-        var classes = pages[statChoices[x]].querySelectorAll('.classDiv');
+        var classes = pages[character.stat.choices[x]].querySelectorAll('.classDiv');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
 
         //set global stat choice elements
-        statChoiceElements.push(pages[statChoices[x]]);
+        character.html.statChoiceElements.push(pages[character.stat.choices[x]]);
     }
 
     //testing
-    console.log(statChoiceElements);
+    console.log(character.html.statChoiceElements);
     generateCharacter(createTab);
 }
 
@@ -419,7 +426,7 @@ function generateCharacter(parent){
         parent.removeChild(parent.lastChild);
     }
     var level = document.createElement('div');
-    level.textContent = charLvl;
+    level.textContent = character.stat.charLvl;
     parent.appendChild(level);
 
     var levelUpBtn = document.createElement('button');
@@ -430,38 +437,38 @@ function generateCharacter(parent){
 }
 
 function levelUp(){
-    charLvl++;
+    character.stat.charLvl++;
     var pages = document.querySelectorAll('.abilityIcons');
     //testing
-    console.log(charLvl);
-    switch(charLvl){
+    console.log(character.stat.charLvl);
+    switch(character.stat.charLvl){
         case 1:
-            for(var x = 0; x < statChoiceElements.length; x++){
-                var tierMod = statChoiceElements[x].querySelectorAll('.tier1');
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier1');
                 tierMod[0].classList.remove('hardLock');
             }
             //testing
             console.log('tier1');
             break;
         case 2:
-            for(var x = 0; x < statChoiceElements.length; x++){
-                var tierMod = statChoiceElements[x].querySelectorAll('.tier2');
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier2');
                 tierMod[0].classList.remove('hardLock');
             }
             //testing
             console.log('tier2');
             break;
         case 3:
-            for(var x = 0; x < statChoiceElements.length; x++){
-                var tierMod = statChoiceElements[x].querySelectorAll('.tier3');
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier3');
                 tierMod[0].classList.remove('hardLock');
             }
             //testing
             console.log('tier3');
             break;
         case 4:
-            for(var x = 0; x < statChoiceElements.length; x++){
-                var tierMod = statChoiceElements[x].querySelectorAll('.classDiv');
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.classDiv');
                 for(var y =0; y < tierMod.length; y++)
                 {
                     tierMod[y].classList.remove('hardLock');

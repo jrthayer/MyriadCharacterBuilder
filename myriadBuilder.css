@@ -259,12 +259,12 @@ pre {
   scrollbar-width: none;  /* Firefox */
 }
 
-.skillRowLock td{
-    background: rgb(80,80,80);
+.abilityBaseLock{
+    background: rgb(130, 130, 130);
 }
 
-.skillRowLock{
-    background: rgb(80,80,80);
+.abilityUpgradeLock{
+    background: rgb(80, 80, 80);
 }
 
 .abilityDesc button{
