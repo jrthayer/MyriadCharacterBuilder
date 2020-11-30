@@ -18,14 +18,8 @@ img:hover{
     box-shadow: 0 0 10px #ccc;
 }
 
-table{
-    table-layout: fixed;
-    border-collapse: collapse;
-    width: 100%;
-}
-
 tr{
-    border-bottom: 2px solid black;
+    border: 2px solid black;
 }
 
 td+td{
@@ -130,8 +124,8 @@ pre {
 ======*/
 .tier{
     overflow: hidden;
-    border: solid 3px rgb(20,20,20);
-    background: rgb(30,30,30);
+    border: solid 3px rgb(0,0,0);
+    background: rgb(120,120,120);
     border-radius: 5px;
     width: calc(var(--iconSize)*4 + var(--iconMargin)*4);
     padding: 5px;
@@ -164,9 +158,10 @@ pre {
     display: inline-block;
     padding-bottom: 5px;
     border: solid 3px black;
-    background: rgb(30,30,30);
+    /*background: rgb(30,30,30);*/
+    background: rgb(120,120,120);
     border-radius: 5px;
-    border: solid rgb(30,30,30) 5px;
+    border: solid rgb(0,0,0) 5px;
     width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
     /*min-height: calc(var(--iconSize)*4 + var(--iconMargin)*5 + var(--iconSize)*4 + var(--iconMargin)*5);*/
 }
@@ -181,7 +176,6 @@ pre {
     height: var(--iconSize);
     float: left;
     margin: calc(var(--iconMargin)/2);
-    /*border: solid 3px rgb(20,20,20);*/
 }
 
 .classDiv div ~ .abilityIcon:nth-of-type(2){
@@ -228,13 +222,20 @@ pre {
     left: 0;
     overflow-y:scroll;
 
-    background: gray;
+    background: black;
 }
 
 .abilityDesc h3{
-    border-bottom: solid black 2px;
     margin-bottom: 0px;
     padding: 10px;
+}
+
+.abilityDesc table{
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: calc(100% - 10px);
+    margin: 5px;
+    border-radius: 10px;
 }
 
 .abilityDesc td{
@@ -243,7 +244,7 @@ pre {
 }
 
 .abilityDesc td:first-child{
-    width: 6em;
+    width: 5em;
     vertical-align: top;
 }
 
@@ -256,6 +257,19 @@ pre {
 .abilitydescs{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+.skillRowLock td{
+    background: rgb(80,80,80);
+}
+
+.skillRowLock{
+    background: rgb(80,80,80);
+}
+
+.abilityDesc button{
+    width: calc(100% - 20px);
+    margin: 10px;
 }
 
 
@@ -281,10 +295,9 @@ pre {
 
 /*TEMPORARY STYLES*/
 .classImg{
-    width: calc(var(--iconSize)*4 + var(--iconMargin)*5);
-    height: calc(var(--iconSize)*4 + var(--iconMargin)*5);
-    border-bottom: solid 5px black;
-    background: black;
+    width: calc(var(--iconSize)*4 + var(--iconMargin)*5 - 10px);
+    height: calc(var(--iconSize)*4 + var(--iconMargin)*5 - 10px);
+    margin: 5px;
 }
 
 .statIcon{
@@ -313,4 +326,5 @@ pre {
 .noClick{
     pointer-events: none;
 }
+
 

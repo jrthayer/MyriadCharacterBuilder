@@ -270,7 +270,7 @@ function createAbility(index, parent, descRoot){
     var abilityHeader = document.createElement('h3');
     var table = document.createElement('table');
 
-    abilityHeader.innerHTML = index[0][1][1] + ": " + index[0][0];
+    abilityHeader.innerHTML = index[0][1][1];
     abilityDesc.appendChild(abilityHeader);
     abilityDesc.appendChild(table);
 
@@ -284,10 +284,27 @@ function createAbility(index, parent, descRoot){
         pre2.innerHTML = index[x][1];
         cell1.appendChild(pre1);
         cell2.appendChild(pre2);
+
+        //testing
+        console.log(index[x][0]+"test");
+        if(index[x][0].includes('Skill+')){
+            row.classList.add('skillRowLock');
+        }
+
         table.appendChild(row);
     }
 
-    abilityDesc.appendChild(document.createElement('br'));
+    var upgradeBtn = document.createElement('button');
+    if(index[0][0]){
+        upgradeBtnTxt = "CHOOSE UPGRADE";
+    }
+    else{
+        upgradeBtnTxt = "UPGRADE";
+    }
+
+    upgradeBtn.textContent = upgradeBtnTxt;
+    upgradeBtn.classList.add('skillRowLock');
+    abilityDesc.appendChild(upgradeBtn);
 }
 
 //Info: Sets an icon or tab to active
