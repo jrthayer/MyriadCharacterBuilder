@@ -13,7 +13,7 @@ var character = {
         charLvl: 0,
         choices: [0,0],
         tabsOffset: 0,
-        skillPoints: []
+        skillPoints: [0, []]
     },
     html:{
         charLvl: 'none',
@@ -219,7 +219,7 @@ function levelUp(){
                 for(var y = 0; y < descrs.length; y++){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
-                character.stat.skillPoints[character.stat.choices[x]][0]++;
+                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
             }
             break;
         case 2:
@@ -231,7 +231,7 @@ function levelUp(){
                 for(var y = 0; y < descrs.length; y++){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
-                character.stat.skillPoints[character.stat.choices[x]][0]++;
+                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
             }
             break;
         case 3:
@@ -243,7 +243,7 @@ function levelUp(){
                 for(var y = 0; y < descrs.length; y++){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
-                character.stat.skillPoints[character.stat.choices[x]][0]++;
+                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
             }
             break;
         case 4:
@@ -332,7 +332,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat){
     }
 
     //array of all skill points
-    character.stat.skillPoints.push([0, classes]); 
+    character.stat.skillPoints[1].push([0, classes]); 
 }
 
 //Info: Creates each tier of abilities
@@ -474,7 +474,7 @@ function createAbility(index, parent, descRoot, stat){
 function spendPoint(stat){
     console.log(stat);
     console.log(character.stat.skillPoints);
-    character.stat.skillPoints[stat][0]--;
+    character.stat.skillPoints[1][stat][0]--;
 }
 
 //Info: Sets an icon or tab to active
