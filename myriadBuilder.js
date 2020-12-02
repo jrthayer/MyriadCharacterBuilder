@@ -21,7 +21,8 @@ var character = {
         //Index 1 is the active ability
         activeElements: ["none","none"],
         //skill tree index variables
-        statChoiceElements: []
+        statChoiceElements: [],
+        levelBtn: 'none'
     }
 }
 
@@ -200,6 +201,8 @@ function generateCharacter(parent){
     var levelUpBtn = document.createElement('button');
     levelUpBtn.textContent = "LEVEL UP+";
     levelUpBtn.onclick = function(){levelUp();};
+
+    character.html.levelBtn = levelUpBtn;
     
     parent.appendChild(levelUpBtn);     
 }
@@ -207,8 +210,15 @@ function generateCharacter(parent){
 function levelUp(){
     character.stat.charLvl++;
     character.html.charLvl.textContent = character.stat.charLvl;
-    var pages = document.querySelectorAll('.abilityIcons');
     
+    unlockLevel();
+
+    //testing
+    console.log(character.stat.skillPoints);
+    character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
+}
+
+function unlockLevel(){
     switch(character.stat.charLvl){
         case 1:
             for(var x = 0; x < character.html.statChoiceElements.length; x++){
@@ -220,6 +230,7 @@ function levelUp(){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
                 character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+                character.stat.skillPoints[0]++;
             }
             break;
         case 2:
@@ -232,6 +243,7 @@ function levelUp(){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
                 character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+                character.stat.skillPoints[0]++;
             }
             break;
         case 3:
@@ -244,6 +256,7 @@ function levelUp(){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
                 character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+                character.stat.skillPoints[0]++;
             }
             break;
         case 4:
@@ -256,8 +269,55 @@ function levelUp(){
             }
             break;
     }
+}
+
+function lockLevel(stat){
+    var nth = stat+character.stat.tabsOffset;
+    var statPage = document.querySelectorAll('.page')[nth];
     //testing
-    console.log(character.stat.skillPoints);
+    console.log(statPage);
+    switch(character.stat.charLvl){
+        case 1:
+            var tierMod = statPage.querySelectorAll('.tier1');
+            for(var x = 0; x < tierMod.length; x++){
+                
+                tierMod[0].classList.add('hardLock');
+                
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.add('noClick', 'abilityBaseLock');
+                }
+            }
+            break;
+        case 2:
+            var tierMod = statPage.querySelectorAll('.tier2');
+            for(var x = 0; x < tierMod.length; x++){
+                
+                tierMod[0].classList.add('hardLock');
+                
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.add('noClick', 'abilityBaseLock');
+                }
+            }
+            break;
+        case 3:
+            var tierMod = statPage.querySelectorAll('.tier3');
+            for(var x = 0; x < tierMod.length; x++){
+                
+                tierMod[0].classList.add('hardLock');
+                
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.add('noClick', 'abilityBaseLock');
+                }
+            }
+            break
+    }
+}
+
+function levelComplete(){
+    character.html.levelBtn.classList.remove('noClick', 'abilityBaseLock');
 }
 
 //SKILL TREE TABS
@@ -475,6 +535,15 @@ function spendPoint(stat){
     console.log(stat);
     console.log(character.stat.skillPoints);
     character.stat.skillPoints[1][stat][0]--;
+    character.stat.skillPoints[0]--;
+    if(character.stat.skillPoints[1][stat][0] == 0){
+        //lock stat tree components
+        lockLevel(stat);
+        if(character.stat.skillPoints[0] == 0){
+            //unlock level up
+            levelComplete();
+        }
+    }
 }
 
 //Info: Sets an icon or tab to active
