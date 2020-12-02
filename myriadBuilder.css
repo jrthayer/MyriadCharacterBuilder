@@ -319,6 +319,10 @@ pre {
 }
 
 .hardLock{
+    opacity: .5;
+}
+
+.hardLock>*{
     filter: grayscale(100%);
     opacity: .5;
 }
@@ -327,4 +331,13 @@ pre {
     pointer-events: none;
 }
 
+.selected{
+    filter: grayscale(0%);
+    opacity: 1;
+    box-shadow: 0px 0px 0px 1px #fff;
+}
 
+.max{
+    pointer-events: none;
+    background: rgb(80, 80, 80);
+}

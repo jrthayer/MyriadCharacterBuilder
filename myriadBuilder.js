@@ -240,7 +240,9 @@ function unlockLevel(){
 
                 var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
                 for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
+                    if(!descrs[y].classList.contains('maxed')){
+                        descrs[y].classList.remove('noClick', 'abilityBaseLock');
+                    }
                 }
                 character.stat.skillPoints[1][character.stat.choices[x]][0]++;
                 character.stat.skillPoints[0]++;
@@ -293,7 +295,7 @@ function lockLevel(stat){
             var tierMod = statPage.querySelectorAll('.tier2');
             for(var x = 0; x < tierMod.length; x++){
                 
-                tierMod[0].classList.add('hardLock');
+                // tierMod[0].classList.add('hardLock');
                 
                 var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
                 for(var y = 0; y < descrs.length; y++){
@@ -312,7 +314,7 @@ function lockLevel(stat){
                     descrs[y].classList.add('noClick', 'abilityBaseLock');
                 }
             }
-            break
+            break;
     }
 }
 
@@ -527,15 +529,36 @@ function createAbility(index, parent, descRoot, stat){
     upgradeBtn.textContent = upgradeBtnTxt;
     upgradeBtn.classList.add('abilityBaseLock');
     upgradeBtn.classList.add('noClick');
-    upgradeBtn.onclick = function(){spendPoint(stat);};
+    upgradeBtn.onclick = function(){spendPoint(stat, abilityIcon, abilityDesc);};
     abilityDesc.appendChild(upgradeBtn);
 }
 
-function spendPoint(stat){
+function spendPoint(stat, icon, desc){
     console.log(stat);
     console.log(character.stat.skillPoints);
     character.stat.skillPoints[1][stat][0]--;
     character.stat.skillPoints[0]--;
+    if(icon.classList.contains('selected')){
+        desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
+        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
+            desc.querySelector('button').classList.add('max');
+            desc.querySelector('button').textContent = "MAXED";
+        }
+    }
+    else{
+        icon.classList.add('selected');
+        var baseLock = desc.getElementsByClassName('abilityBaseLock');
+        console.log(baseLock);
+        while(baseLock.length>0){
+            baseLock[0].classList.remove('abilityBaseLock');
+        }
+
+        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
+            desc.querySelector('button').classList.add('max');
+            desc.querySelector('button').textContent = "MAXED";
+        }
+    }
+
     if(character.stat.skillPoints[1][stat][0] == 0){
         //lock stat tree components
         lockLevel(stat);
