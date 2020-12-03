@@ -481,22 +481,22 @@ function spendPoint(stat, icon, desc){
     character.stat.skillPoints[0]--;
     if(icon.classList.contains('selected')){
         desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
-        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
-            desc.querySelector('button').classList.add('max');
-            desc.querySelector('button').textContent = "MAXED";
-        }
+        checkAbilityMax(desc);
     }
     else{
         icon.classList.add('selected');
         var baseLock = desc.getElementsByClassName('abilityBaseLock');
-        console.log(baseLock);
-        while(baseLock.length>0){
-            baseLock[0].classList.remove('abilityBaseLock');
-        }
+        if(baseLock.length != 0){
+            console.log(baseLock);
+            while(baseLock.length>0){
+                baseLock[0].classList.remove('abilityBaseLock');
+            }
 
-        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
-            desc.querySelector('button').classList.add('max');
-            desc.querySelector('button').textContent = "MAXED";
+            checkAbilityMax(desc);
+        }
+        else{
+            desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
+            checkAbilityMax(desc);
         }
     }
 
@@ -510,6 +510,13 @@ function spendPoint(stat, icon, desc){
     }
 }
 
+function checkAbilityMax(desc){
+    if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
+        desc.querySelector('button').classList.add('max');
+        desc.querySelector('button').textContent = "MAXED";
+    }
+}
+
 function lockLevel(stat){
     var nth = stat+character.stat.tabsOffset;
     var statPage = document.querySelectorAll('.page')[nth];
@@ -517,41 +524,46 @@ function lockLevel(stat){
     console.log(statPage);
     switch(character.stat.charLvl){
         case 1:
-            var tierMod = statPage.querySelectorAll('.tier1');
-            for(var x = 0; x < tierMod.length; x++){
-                
-                tierMod[0].classList.add('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.add('noClick', 'abilityBaseLock');
-                }
-            }
+            var pageTier = statPage.querySelectorAll('.tier1');
+            lockSet(pageTier);
             break;
         case 2:
-            var tierMod = statPage.querySelectorAll('.tier2');
-            for(var x = 0; x < tierMod.length; x++){
-                
-                // tierMod[0].classList.add('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.add('noClick', 'abilityBaseLock');
-                }
-            }
+            var pageTier = statPage.querySelectorAll('.tier2');
+            lockSet(pageTier);
             break;
         case 3:
-            var tierMod = statPage.querySelectorAll('.tier3');
-            for(var x = 0; x < tierMod.length; x++){
-                
-                tierMod[0].classList.add('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.add('noClick', 'abilityBaseLock');
-                }
+            var pageTier = statPage.querySelectorAll('.tier2');
+            lockSet(pageTier);
+            pageTier = statPage.querySelectorAll('.tier3');
+            lockSet(pageTier);
+            break;
+        default:
+            var pageTier = statPage.querySelectorAll('.tier2');
+            lockSet(pageTier);
+
+            var tier4s = statPage.querySelectorAll('.tier4');
+            let classDivIcons = tier4s[0].querySelectorAll('.classDiv');
+            let classDivDescs = tier4s[1].querySelectorAll('.classDiv');
+            var classNum = classDivIcons.length;
+            for(var x = 0; x < classNum; x++){  
+                console.log(classDivIcons[x]);
+                console.log(classDivDescs[x]);
+                var classDiv = [classDivIcons[x], classDivDescs[x]];
+                lockSet(classDiv);
             }
             break;
+    }
+}
+
+function lockSet(set){
+    for(var x = 0; x < set.length; x++){
+        
+        set[0].classList.add('hardLock');
+        
+        var descrs = set[1].querySelectorAll('.abilityDesc button');
+        for(var y = 0; y < descrs.length; y++){
+            descrs[y].classList.add('noClick', 'abilityBaseLock');
+        }
     }
 }
 
@@ -570,53 +582,26 @@ function levelUp(){
 
     //testing
     console.log(character.stat.skillPoints);
-    character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
+    // character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
 }
 
 function unlockLevel(){
     switch(character.stat.charLvl){
         case 1:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier1');
-                tierMod[0].classList.remove('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
-                }
-                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
-                character.stat.skillPoints[0]++;
-            }
+            unlockSet('.tier1');
+            addPoints();
             break;
         case 2:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier2');
-                tierMod[0].classList.remove('hardLock');
-
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    if(!descrs[y].classList.contains('maxed')){
-                        descrs[y].classList.remove('noClick', 'abilityBaseLock');
-                    }
-                }
-                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
-                character.stat.skillPoints[0]++;
-            }
+            unlockSet('.tier2');
+            addPoints();
             break;
         case 3:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier3');
-                tierMod[0].classList.remove('hardLock');
-
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
-                }
-                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
-                character.stat.skillPoints[0]++;
-            }
+            unlockSet('.tier2');
+            unlockSet('.tier3');
+            addPoints();
             break;
-        case 4:
+        default:
+            unlockSet('.tier2');
             for(var x = 0; x < character.html.statChoiceElements.length; x++){
                 var tierMod = character.html.statChoiceElements[x].querySelectorAll('.classDiv');
                 for(var y =0; y < tierMod.length; y++)
@@ -624,7 +609,28 @@ function unlockLevel(){
                     tierMod[y].classList.remove('hardLock');
                 }
             }
+            addPoints();
             break;
+    }
+}
+
+function unlockSet(setClass){
+    for(var x = 0; x < character.html.statChoiceElements.length; x++){
+        var tierMod = character.html.statChoiceElements[x].querySelectorAll(setClass);
+        tierMod[0].classList.remove('hardLock');
+        
+        var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+        for(var y = 0; y < descrs.length; y++){
+            descrs[y].classList.remove('noClick', 'abilityBaseLock');
+        }
+        
+    }
+}
+
+function addPoints(){
+    for(var x = 0; x < character.html.statChoiceElements.length; x++){
+        character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+        character.stat.skillPoints[0]++;
     }
 }
 
