@@ -41,6 +41,10 @@ file.onreadystatechange = function() {
     }
 }
 
+//PAGE CREATION/INIT
+//============================================================
+//============================================================
+
 //Info: Called to create the whole web page
 //Parameters:
 //  +abilityArray = array consisting of two arrays
@@ -123,203 +127,6 @@ function createCharacterPages(parent, navBar, stats){
 
     //stat tabs offset+
     character.stat.tabsOffset++;
-}
-
-//Info: 
-//Parameters:
-//  +indexValue = index of button choosen
-//  +row = number representing which stat choice row is being set
-//  +parentName = id string of div element containing set of stat buttons
-function setStatChoice(indexValue, row, parentName){
-    var rowElement = document.querySelectorAll("#"+parentName+" img");
-    rowElement.forEach((statBtn) => {
-        statBtn.classList.add('hardLock');
-    });
-
-    rowElement[indexValue].classList.remove('hardLock');
-
-    //global variable being set
-    character.stat.choices[row] = indexValue;
-}
-
-//Info: Submits user input for character creation and adds styling 
-//  +Sets 'hardLock' class on tabs not selected
-//  +Sets 'hardLock' class on ability tiers of tabs selected
-//  +Calls generateCharacter()
-function submitCharacter(){
-    var createTab = document.getElementById('character');
-    var tabs = document.querySelectorAll('.tab');
-    var pages = document.querySelectorAll('.abilityIcons');
-
-    //Setting 'hardLock' on all ability tabs and pages
-    for(var x = 0; x < pages.length; x++){
-        pages[x].classList.add('hardLock');
-    }
-    for(var x = character.stat.tabsOffset; x < tabs.length; x++){
-        tabs[x].classList.add('hardLock');
-    }
-
-    //Modify selected tabs and pages
-    for(var x = 0; x < character.stat.choices.length; x++)
-    {
-        //Removing 'hardLock' 
-        pages[character.stat.choices[x]].classList.remove('hardLock');
-        tabs[character.stat.choices[x]+character.stat.tabsOffset].classList.remove('hardLock');
-        
-        //Setting 'hardLock' on each ability tier
-        var tiers = pages[character.stat.choices[x]].querySelectorAll('.tier');
-        for(var y = 0; y < tiers.length; y++){
-            tiers[y].classList.add('hardLock');
-        }
-
-        //setting 'hardLock' on each class ability set
-        var classes = pages[character.stat.choices[x]].querySelectorAll('.classDiv');
-        for(var y = 0; y < classes.length; y++){
-            classes[y].classList.add('hardLock');
-        }
-
-        //set global stat choice element pages
-        var page = document.querySelectorAll('.page');
-        character.html.statChoiceElements.push(page[character.stat.choices[x]+character.stat.tabsOffset]);
-    }
-
-    generateCharacter(createTab);
-}
-
-function generateCharacter(parent){
-    //testing
-    console.log('generating Character');
-
-    while(parent.firstChild){
-        parent.removeChild(parent.lastChild);
-    }
-    var level = document.createElement('div');
-    level.textContent = character.stat.charLvl;
-    parent.appendChild(level);
-    character.html.charLvl = level;
-
-    var levelUpBtn = document.createElement('button');
-    levelUpBtn.textContent = "LEVEL UP+";
-    levelUpBtn.onclick = function(){levelUp();};
-
-    character.html.levelBtn = levelUpBtn;
-    
-    parent.appendChild(levelUpBtn);     
-}
-
-function levelUp(){
-    character.stat.charLvl++;
-    character.html.charLvl.textContent = character.stat.charLvl;
-    
-    unlockLevel();
-
-    //testing
-    console.log(character.stat.skillPoints);
-    character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
-}
-
-function unlockLevel(){
-    switch(character.stat.charLvl){
-        case 1:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier1');
-                tierMod[0].classList.remove('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
-                }
-                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
-                character.stat.skillPoints[0]++;
-            }
-            break;
-        case 2:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier2');
-                tierMod[0].classList.remove('hardLock');
-
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    if(!descrs[y].classList.contains('maxed')){
-                        descrs[y].classList.remove('noClick', 'abilityBaseLock');
-                    }
-                }
-                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
-                character.stat.skillPoints[0]++;
-            }
-            break;
-        case 3:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier3');
-                tierMod[0].classList.remove('hardLock');
-
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
-                }
-                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
-                character.stat.skillPoints[0]++;
-            }
-            break;
-        case 4:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.classDiv');
-                for(var y =0; y < tierMod.length; y++)
-                {
-                    tierMod[y].classList.remove('hardLock');
-                }
-            }
-            break;
-    }
-}
-
-function lockLevel(stat){
-    var nth = stat+character.stat.tabsOffset;
-    var statPage = document.querySelectorAll('.page')[nth];
-    //testing
-    console.log(statPage);
-    switch(character.stat.charLvl){
-        case 1:
-            var tierMod = statPage.querySelectorAll('.tier1');
-            for(var x = 0; x < tierMod.length; x++){
-                
-                tierMod[0].classList.add('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.add('noClick', 'abilityBaseLock');
-                }
-            }
-            break;
-        case 2:
-            var tierMod = statPage.querySelectorAll('.tier2');
-            for(var x = 0; x < tierMod.length; x++){
-                
-                // tierMod[0].classList.add('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.add('noClick', 'abilityBaseLock');
-                }
-            }
-            break;
-        case 3:
-            var tierMod = statPage.querySelectorAll('.tier3');
-            for(var x = 0; x < tierMod.length; x++){
-                
-                tierMod[0].classList.add('hardLock');
-                
-                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.add('noClick', 'abilityBaseLock');
-                }
-            }
-            break;
-    }
-}
-
-function levelComplete(){
-    character.html.levelBtn.classList.remove('noClick', 'abilityBaseLock');
 }
 
 //SKILL TREE TABS
@@ -533,41 +340,12 @@ function createAbility(index, parent, descRoot, stat){
     abilityDesc.appendChild(upgradeBtn);
 }
 
-function spendPoint(stat, icon, desc){
-    console.log(stat);
-    console.log(character.stat.skillPoints);
-    character.stat.skillPoints[1][stat][0]--;
-    character.stat.skillPoints[0]--;
-    if(icon.classList.contains('selected')){
-        desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
-        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
-            desc.querySelector('button').classList.add('max');
-            desc.querySelector('button').textContent = "MAXED";
-        }
-    }
-    else{
-        icon.classList.add('selected');
-        var baseLock = desc.getElementsByClassName('abilityBaseLock');
-        console.log(baseLock);
-        while(baseLock.length>0){
-            baseLock[0].classList.remove('abilityBaseLock');
-        }
+//PAGE MODIFY
+//============================================================
+//============================================================
 
-        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
-            desc.querySelector('button').classList.add('max');
-            desc.querySelector('button').textContent = "MAXED";
-        }
-    }
-
-    if(character.stat.skillPoints[1][stat][0] == 0){
-        //lock stat tree components
-        lockLevel(stat);
-        if(character.stat.skillPoints[0] == 0){
-            //unlock level up
-            levelComplete();
-        }
-    }
-}
+//ACTIVE ELEMENT
+//================================
 
 //Info: Sets an icon or tab to active
 //Parameters:
@@ -605,6 +383,248 @@ function toggleActive(id){
     }
     else{
         element.classList.add("active");
+    }
+}
+
+//CHARACTER MODIFICATION
+//================================
+
+//Info: 
+//Parameters:
+//  +indexValue = index of button choosen
+//  +row = number representing which stat choice row is being set
+//  +parentName = id string of div element containing set of stat buttons
+function setStatChoice(indexValue, row, parentName){
+    var rowElement = document.querySelectorAll("#"+parentName+" img");
+    rowElement.forEach((statBtn) => {
+        statBtn.classList.add('hardLock');
+    });
+
+    rowElement[indexValue].classList.remove('hardLock');
+
+    //global variable being set
+    character.stat.choices[row] = indexValue;
+}
+
+//Info: Submits user input for character creation and adds styling 
+//  +Sets 'hardLock' class on tabs not selected
+//  +Sets 'hardLock' class on ability tiers of tabs selected
+//  +Calls generateCharacter()
+function submitCharacter(){
+    var createTab = document.getElementById('character');
+    var tabs = document.querySelectorAll('.tab');
+    var pages = document.querySelectorAll('.abilityIcons');
+
+    //Setting 'hardLock' on all ability tabs and pages
+    for(var x = 0; x < pages.length; x++){
+        pages[x].classList.add('hardLock');
+    }
+    for(var x = character.stat.tabsOffset; x < tabs.length; x++){
+        tabs[x].classList.add('hardLock');
+    }
+
+    //Modify selected tabs and pages
+    for(var x = 0; x < character.stat.choices.length; x++)
+    {
+        //Removing 'hardLock' 
+        pages[character.stat.choices[x]].classList.remove('hardLock');
+        tabs[character.stat.choices[x]+character.stat.tabsOffset].classList.remove('hardLock');
+        
+        //Setting 'hardLock' on each ability tier
+        var tiers = pages[character.stat.choices[x]].querySelectorAll('.tier');
+        for(var y = 0; y < tiers.length; y++){
+            tiers[y].classList.add('hardLock');
+        }
+
+        //setting 'hardLock' on each class ability set
+        var classes = pages[character.stat.choices[x]].querySelectorAll('.classDiv');
+        for(var y = 0; y < classes.length; y++){
+            classes[y].classList.add('hardLock');
+        }
+
+        //set global stat choice element pages
+        var page = document.querySelectorAll('.page');
+        character.html.statChoiceElements.push(page[character.stat.choices[x]+character.stat.tabsOffset]);
+    }
+
+    generateCharacter(createTab);
+}
+
+function generateCharacter(parent){
+    //testing
+    console.log('generating Character');
+
+    while(parent.firstChild){
+        parent.removeChild(parent.lastChild);
+    }
+    var level = document.createElement('div');
+    level.textContent = character.stat.charLvl;
+    parent.appendChild(level);
+    character.html.charLvl = level;
+
+    var levelUpBtn = document.createElement('button');
+    levelUpBtn.textContent = "LEVEL UP+";
+    levelUpBtn.onclick = function(){levelUp();};
+
+    character.html.levelBtn = levelUpBtn;
+    
+    parent.appendChild(levelUpBtn);     
+}
+
+//SPEND POINTS
+//================================
+
+function spendPoint(stat, icon, desc){
+    console.log(stat);
+    console.log(character.stat.skillPoints);
+    character.stat.skillPoints[1][stat][0]--;
+    character.stat.skillPoints[0]--;
+    if(icon.classList.contains('selected')){
+        desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
+        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
+            desc.querySelector('button').classList.add('max');
+            desc.querySelector('button').textContent = "MAXED";
+        }
+    }
+    else{
+        icon.classList.add('selected');
+        var baseLock = desc.getElementsByClassName('abilityBaseLock');
+        console.log(baseLock);
+        while(baseLock.length>0){
+            baseLock[0].classList.remove('abilityBaseLock');
+        }
+
+        if(desc.getElementsByClassName('abilityUpgradeLock').length == 0){
+            desc.querySelector('button').classList.add('max');
+            desc.querySelector('button').textContent = "MAXED";
+        }
+    }
+
+    if(character.stat.skillPoints[1][stat][0] == 0){
+        //lock stat tree components
+        lockLevel(stat);
+        if(character.stat.skillPoints[0] == 0){
+            //unlock level up
+            levelComplete();
+        }
+    }
+}
+
+function lockLevel(stat){
+    var nth = stat+character.stat.tabsOffset;
+    var statPage = document.querySelectorAll('.page')[nth];
+    //testing
+    console.log(statPage);
+    switch(character.stat.charLvl){
+        case 1:
+            var tierMod = statPage.querySelectorAll('.tier1');
+            for(var x = 0; x < tierMod.length; x++){
+                
+                tierMod[0].classList.add('hardLock');
+                
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.add('noClick', 'abilityBaseLock');
+                }
+            }
+            break;
+        case 2:
+            var tierMod = statPage.querySelectorAll('.tier2');
+            for(var x = 0; x < tierMod.length; x++){
+                
+                // tierMod[0].classList.add('hardLock');
+                
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.add('noClick', 'abilityBaseLock');
+                }
+            }
+            break;
+        case 3:
+            var tierMod = statPage.querySelectorAll('.tier3');
+            for(var x = 0; x < tierMod.length; x++){
+                
+                tierMod[0].classList.add('hardLock');
+                
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.add('noClick', 'abilityBaseLock');
+                }
+            }
+            break;
+    }
+}
+
+function levelComplete(){
+    character.html.levelBtn.classList.remove('noClick', 'abilityBaseLock');
+}
+
+//ADD POINTS/LEVEL UP
+//================================
+
+function levelUp(){
+    character.stat.charLvl++;
+    character.html.charLvl.textContent = character.stat.charLvl;
+    
+    unlockLevel();
+
+    //testing
+    console.log(character.stat.skillPoints);
+    character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
+}
+
+function unlockLevel(){
+    switch(character.stat.charLvl){
+        case 1:
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier1');
+                tierMod[0].classList.remove('hardLock');
+                
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
+                }
+                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+                character.stat.skillPoints[0]++;
+            }
+            break;
+        case 2:
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier2');
+                tierMod[0].classList.remove('hardLock');
+
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    if(!descrs[y].classList.contains('maxed')){
+                        descrs[y].classList.remove('noClick', 'abilityBaseLock');
+                    }
+                }
+                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+                character.stat.skillPoints[0]++;
+            }
+            break;
+        case 3:
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.tier3');
+                tierMod[0].classList.remove('hardLock');
+
+                var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
+                }
+                character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+                character.stat.skillPoints[0]++;
+            }
+            break;
+        case 4:
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.classDiv');
+                for(var y =0; y < tierMod.length; y++)
+                {
+                    tierMod[y].classList.remove('hardLock');
+                }
+            }
+            break;
     }
 }
 
