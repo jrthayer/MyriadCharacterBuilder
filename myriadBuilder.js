@@ -13,7 +13,8 @@ var character = {
         charLvl: 0,
         choices: [0,0],
         tabsOffset: 0,
-        skillPoints: [0, []]
+        skillPoints: [0, []],
+        classPoints: []
     },
     html:{
         charLvl: 'none',
@@ -67,6 +68,9 @@ function createWebsite(abilityArray){
         statArray.push(bookmarks[x][0]);
     }    
     createCharacterPages(parent, navBar, statArray);
+
+    //testing
+    console.log(character.stat.classPoints);
 
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent, navBar, x);
@@ -127,6 +131,7 @@ function createCharacterPages(parent, navBar, stats){
 
     //stat tabs offset+
     character.stat.tabsOffset++;
+
 }
 
 //SKILL TREE TABS
@@ -201,7 +206,8 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat){
     }
 
     //array of all skill points
-    character.stat.skillPoints[1].push([0, classes]); 
+    character.stat.skillPoints[1].push([0, classes]);
+    character.stat.classPoints.push(0); 
 }
 
 //Info: Creates each tier of abilities
@@ -239,6 +245,7 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
         //+includes class image
         //+class passives
         var className = bookmarks[index][1];
+        var classInfoId = className + "Info";
         abilitySet.classList.add(className);
         abilitySet.classList.add('classDiv');
         descRoot.classList.add('classDiv');
@@ -249,13 +256,34 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
         classImg.src = "Assets/MyriadIcons/" + className + ".png";
         abilitySet.appendChild(classImg);
 
+        //class Info desc panel addition
+        var classInfo = document.createElement('div');
+        var classHeader = document.createElement('h3');
+        var classSelectBtn = document.createElement('button');
+        classSelectBtn.classList.add('abilityBaseLock' , 'noClick');
+        classInfo.classList.add('abilityDesc');
+        classInfo.id = classInfoId;
+        
+        classSelectBtn.textContent = "Select Class";
+        classHeader.textContent = className;
+        classInfo.appendChild(classHeader);
+        classInfo.appendChild(classSelectBtn);
+        descRoot.appendChild(classInfo);
+
+        classImg.onclick = function(){activeElement(classInfoId, character.html.activeElements, 1);};
+
+
         var passives = document.createElement('div');
         passives.classList.add('passiveSkills');
         abilitySet.appendChild(passives);
 
+        var passiveDescs = document.createElement('div');
+        passiveDescs.classList.add('passiveSkills');
+        descRoot.appendChild(passiveDescs);
+
         //create passive abilities
         for(var x = 0; x < bookmarks[index][2]; x++){
-            createAbility(abilities[bookmarks[index][0]+x], passives, descRoot, stat);
+            createAbility(abilities[bookmarks[index][0]+x], passives, passiveDescs, stat);
         } 
         
         //determine subset of abilities of the class without passives
@@ -267,8 +295,16 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
         else{
             endIndex = bookmarks[index+1][0];
         }
-        console.log(startIndex+":"+endIndex);
+        var classSkillsIcons = document.createElement('div');
+        classSkillsIcons.classList.add('classSkills');
+        abilitySet.appendChild(classSkillsIcons);
 
+        var classSkillsDescs = document.createElement('div');
+        classSkillsDescs.classList.add('classSkills');
+        descRoot.appendChild(classSkillsDescs);
+
+        abilitySet = classSkillsIcons;
+        descRoot = classSkillsDescs;
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
     setAbilities.forEach(ability => createAbility(ability, abilitySet, descRoot, stat));
@@ -446,13 +482,16 @@ function submitCharacter(){
         var page = document.querySelectorAll('.page');
         character.html.statChoiceElements.push(page[character.stat.choices[x]+character.stat.tabsOffset]);
     }
-
     generateCharacter(createTab);
 }
 
 function generateCharacter(parent){
     //testing
     console.log('generating Character');
+    for(var x = 0; x < character.stat.choices.length; x++){
+        character.stat.classPoints[character.stat.choices[x]]++;
+    }
+    
 
     while(parent.firstChild){
         parent.removeChild(parent.lastChild);
@@ -468,7 +507,10 @@ function generateCharacter(parent){
 
     character.html.levelBtn = levelUpBtn;
     
-    parent.appendChild(levelUpBtn);     
+    parent.appendChild(levelUpBtn);
+
+    //testing
+    console.log(character.stat.classPoints);     
 }
 
 //SPEND POINTS
@@ -600,6 +642,23 @@ function unlockLevel(){
             unlockSet('.tier3');
             addPoints();
             break;
+        case 4:
+            for(var x = 0; x < character.html.statChoiceElements.length; x++){
+                var classImgs = character.html.statChoiceElements[x].querySelectorAll('.classImg');
+                
+                //testing
+                console.log(classImgs);
+
+                for(var y = 0; y < classImgs.length; y++){
+                    classImgs[y].classList.remove('hardLock');
+                }
+                
+                var descrs = character.html.statChoiceElements[x].querySelectorAll('.classDiv .abilityDesc:first-of-type button');
+                for(var y = 0; y < descrs.length; y++){
+                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
+                }
+            }
+            break;
         default:
             unlockSet('.tier2');
             for(var x = 0; x < character.html.statChoiceElements.length; x++){
@@ -636,3 +695,7 @@ function addPoints(){
 
 
 
+//NEXT STEPS
+// +choose classes
+// +unlock/lock for classes
+// +choose upgrade abilities
