@@ -12,9 +12,11 @@ var character = {
         //character level
         charLvl: 0,
         choices: [0,0],
+        classChoices: [[0,0],[0,0]],
         tabsOffset: 0,
         skillPoints: [0, []],
-        classPoints: []
+        classPoints: [],
+        numOfClasses: 0
     },
     html:{
         charLvl: 'none',
@@ -251,30 +253,40 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
         descRoot.classList.add('classDiv');
         descRoot.classList.add(className);
 
-        var classImg = document.createElement('img');
-        classImg.classList.add('classImg');
-        classImg.src = "Assets/MyriadIcons/" + className + ".png";
-        abilitySet.appendChild(classImg);
+        var classInfoDiv = document.createElement('div');
+        classInfoDiv.classList.add('classInfo');
+        descRoot.appendChild(classInfoDiv);
 
-        //class Info desc panel addition
-        var classInfo = document.createElement('div');
+        //class desc panel 
+        var classDesc = document.createElement('div');
         var classHeader = document.createElement('h3');
         var classSelectBtn = document.createElement('button');
         classSelectBtn.classList.add('abilityBaseLock' , 'noClick');
-        classInfo.classList.add('abilityDesc');
-        classInfo.id = classInfoId;
+        classSelectBtn.onclick = function(){selectClass(index-4, stat)};
+        classDesc.classList.add('abilityDesc');
+        classDesc.id = classInfoId;
         
         classSelectBtn.textContent = "Select Class";
         classHeader.textContent = className;
-        classInfo.appendChild(classHeader);
-        classInfo.appendChild(classSelectBtn);
-        descRoot.appendChild(classInfo);
+        classDesc.appendChild(classHeader);
+        classDesc.appendChild(classSelectBtn);
+        classInfoDiv.appendChild(classDesc);
+        
+        //class img
+        var classIconDiv = document.createElement('div');
+        classIconDiv.classList.add('classInfo');
+        abilitySet.appendChild(classIconDiv);
+
+        var classImg = document.createElement('img');
+        classImg.classList.add('classImg');
+        classImg.src = "Assets/MyriadIcons/" + className + ".png";
+        classIconDiv.appendChild(classImg);
 
         classImg.onclick = function(){activeElement(classInfoId, character.html.activeElements, 1);};
 
 
         var passives = document.createElement('div');
-        passives.classList.add('passiveSkills');
+        passives.classList.add('passiveSkills' , 'passiveIcons');
         abilitySet.appendChild(passives);
 
         var passiveDescs = document.createElement('div');
@@ -473,10 +485,21 @@ function submitCharacter(){
         }
 
         //setting 'hardLock' on each class ability set
-        var classes = pages[character.stat.choices[x]].querySelectorAll('.classDiv');
+        var classes = pages[character.stat.choices[x]].querySelectorAll('.classInfo');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
+
+        classes = pages[character.stat.choices[x]].querySelectorAll('.passiveSkills');
+        for(var y = 0; y < classes.length; y++){
+            classes[y].classList.add('hardLock');
+        }
+
+        classes = pages[character.stat.choices[x]].querySelectorAll('.classSkills');
+        for(var y = 0; y < classes.length; y++){
+            classes[y].classList.add('hardLock');
+        }
+
 
         //set global stat choice element pages
         var page = document.querySelectorAll('.page');
@@ -588,6 +611,7 @@ function lockLevel(stat){
             let classDivDescs = tier4s[1].querySelectorAll('.classDiv');
             var classNum = classDivIcons.length;
             for(var x = 0; x < classNum; x++){  
+                //testing
                 console.log(classDivIcons[x]);
                 console.log(classDivDescs[x]);
                 var classDiv = [classDivIcons[x], classDivDescs[x]];
@@ -624,7 +648,7 @@ function levelUp(){
 
     //testing
     console.log(character.stat.skillPoints);
-    // character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
+    character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
 }
 
 function unlockLevel(){
@@ -638,13 +662,12 @@ function unlockLevel(){
             addPoints();
             break;
         case 3:
-            unlockSet('.tier2');
             unlockSet('.tier3');
             addPoints();
             break;
         case 4:
             for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var classImgs = character.html.statChoiceElements[x].querySelectorAll('.classImg');
+                var classImgs = character.html.statChoiceElements[x].querySelectorAll('.classInfo');
                 
                 //testing
                 console.log(classImgs);
@@ -653,11 +676,12 @@ function unlockLevel(){
                     classImgs[y].classList.remove('hardLock');
                 }
                 
-                var descrs = character.html.statChoiceElements[x].querySelectorAll('.classDiv .abilityDesc:first-of-type button');
+                var descrs = character.html.statChoiceElements[x].querySelectorAll('.classInfo .abilityDesc button');
                 for(var y = 0; y < descrs.length; y++){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
             }
+
             break;
         default:
             unlockSet('.tier2');
@@ -693,7 +717,30 @@ function addPoints(){
     }
 }
 
+//stat = which tree
+//index = which class
+//abilitySet = icon parent div
+function selectClass(index,stat){
+    if(character.stat.numOfClasses < 2){
+        character.stat.classChoices[character.stat.numOfClasses][0] = stat;
+        character.stat.classChoices[character.stat.numOfClasses][1] = index;
+    }
+    character.stat.classPoints[stat]--;
+    var stats = document.querySelectorAll('.page');
 
+    if(character.stat.classPoints[stat] == 0){
+        var pages = document.querySelectorAll('.abilitydescs');
+        
+        var page = pages[stat];
+        var classes = page.querySelectorAll('.classDiv .classInfo .abilityDesc button');
+        for(var x = 0; x < classes.length; x++){
+            classes[x].classList.add('hardLock', 'noClick');
+        }
+    }
+    character.stat.numOfClasses++;
+    //testing 
+        console.log(character.stat.classChoices);
+}
 
 //NEXT STEPS
 // +choose classes

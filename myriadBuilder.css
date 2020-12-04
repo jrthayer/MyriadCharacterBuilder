@@ -191,7 +191,7 @@ pre {
 }
 
 /*Passive Skills*/
-.passiveSkills{
+.passiveIcons{
     width: calc(var(--iconSize)*2 + var(--iconMargin)*3);
     height: calc(var(--iconSize) + var(--iconMargin));
     position: relative;
@@ -199,13 +199,13 @@ pre {
     margin-top: calc((var(--iconSize) + var(--iconMargin)) * -1);
 }
 
-.passiveSkills img{
+.passiveIcons img{
     margin-right: 5px;
     margin-left: 5px;
     border-radius: 50%;
 }
 
-.passiveSkills img:first-child{
+.passiveIcons img:first-child{
     margin-left: 10px;
 }
 
