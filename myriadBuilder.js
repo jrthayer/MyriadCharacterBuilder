@@ -11,7 +11,7 @@ var character = {
     stat:{
         //character level
         charLvl: 0,
-        choices: [0,0],
+        statChoices: [0,0],
         classChoices: [[0,0],[0,0]],
         tabsOffset: 0,
         skillPoints: [0, []],
@@ -284,7 +284,7 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
 
         classImg.onclick = function(){activeElement(classInfoId, character.html.activeElements, 1);};
 
-
+        //class passives div parents
         var passives = document.createElement('div');
         passives.classList.add('passiveSkills' , 'passiveIcons');
         abilitySet.appendChild(passives);
@@ -307,6 +307,8 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
         else{
             endIndex = bookmarks[index+1][0];
         }
+
+        //class skills/descs parent divs
         var classSkillsIcons = document.createElement('div');
         classSkillsIcons.classList.add('classSkills');
         abilitySet.appendChild(classSkillsIcons);
@@ -451,7 +453,7 @@ function setStatChoice(indexValue, row, parentName){
     rowElement[indexValue].classList.remove('hardLock');
 
     //global variable being set
-    character.stat.choices[row] = indexValue;
+    character.stat.statChoices[row] = indexValue;
 }
 
 //Info: Submits user input for character creation and adds styling 
@@ -472,30 +474,30 @@ function submitCharacter(){
     }
 
     //Modify selected tabs and pages
-    for(var x = 0; x < character.stat.choices.length; x++)
+    for(var x = 0; x < character.stat.statChoices.length; x++)
     {
         //Removing 'hardLock' 
-        pages[character.stat.choices[x]].classList.remove('hardLock');
-        tabs[character.stat.choices[x]+character.stat.tabsOffset].classList.remove('hardLock');
+        pages[character.stat.statChoices[x]].classList.remove('hardLock');
+        tabs[character.stat.statChoices[x]+character.stat.tabsOffset].classList.remove('hardLock');
         
         //Setting 'hardLock' on each ability tier
-        var tiers = pages[character.stat.choices[x]].querySelectorAll('.tier');
+        var tiers = pages[character.stat.statChoices[x]].querySelectorAll('.tier');
         for(var y = 0; y < tiers.length; y++){
             tiers[y].classList.add('hardLock');
         }
 
         //setting 'hardLock' on each class ability set
-        var classes = pages[character.stat.choices[x]].querySelectorAll('.classInfo');
+        var classes = pages[character.stat.statChoices[x]].querySelectorAll('.classInfo');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
 
-        classes = pages[character.stat.choices[x]].querySelectorAll('.passiveSkills');
+        classes = pages[character.stat.statChoices[x]].querySelectorAll('.passiveSkills');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
 
-        classes = pages[character.stat.choices[x]].querySelectorAll('.classSkills');
+        classes = pages[character.stat.statChoices[x]].querySelectorAll('.classSkills');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
@@ -503,7 +505,7 @@ function submitCharacter(){
 
         //set global stat choice element pages
         var page = document.querySelectorAll('.page');
-        character.html.statChoiceElements.push(page[character.stat.choices[x]+character.stat.tabsOffset]);
+        character.html.statChoiceElements.push(page[character.stat.statChoices[x]+character.stat.tabsOffset]);
     }
     generateCharacter(createTab);
 }
@@ -511,8 +513,8 @@ function submitCharacter(){
 function generateCharacter(parent){
     //testing
     console.log('generating Character');
-    for(var x = 0; x < character.stat.choices.length; x++){
-        character.stat.classPoints[character.stat.choices[x]]++;
+    for(var x = 0; x < character.stat.statChoices.length; x++){
+        character.stat.classPoints[character.stat.statChoices[x]]++;
     }
     
 
@@ -681,7 +683,6 @@ function unlockLevel(){
                     descrs[y].classList.remove('noClick', 'abilityBaseLock');
                 }
             }
-
             break;
         default:
             unlockSet('.tier2');
@@ -712,7 +713,7 @@ function unlockSet(setClass){
 
 function addPoints(){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
-        character.stat.skillPoints[1][character.stat.choices[x]][0]++;
+        character.stat.skillPoints[1][character.stat.statChoices[x]][0]++;
         character.stat.skillPoints[0]++;
     }
 }
@@ -730,19 +731,17 @@ function selectClass(index,stat){
 
     if(character.stat.classPoints[stat] == 0){
         var pages = document.querySelectorAll('.abilitydescs');
-        
         var page = pages[stat];
         var classes = page.querySelectorAll('.classDiv .classInfo .abilityDesc button');
         for(var x = 0; x < classes.length; x++){
             classes[x].classList.add('hardLock', 'noClick');
         }
+        //lock not selected classes
+        //unlock class selected skills
+        //unlock tier 2
+        //add skill points for level 4
     }
     character.stat.numOfClasses++;
     //testing 
-        console.log(character.stat.classChoices);
+    console.log(character.stat.classChoices);
 }
-
-//NEXT STEPS
-// +choose classes
-// +unlock/lock for classes
-// +choose upgrade abilities
