@@ -12,7 +12,7 @@ var character = {
         //character level
         charLvl: 0,
         statChoices: [0,0],
-        classChoices: [[0,0],[0,0]],
+        classChoices: [[-1,-1],[-1,-1]],
         tabsOffset: 0,
         skillPoints: [0, []],
         classPoints: [],
@@ -38,9 +38,6 @@ file.onreadystatechange = function() {
         createWebsite(abilityFile);
         var abilityBookmarks = abilityFile[0];
         var abilities = abilityFile[1];
-        //testing
-        // console.log(abilityBookmarks);
-        // console.log(abilities);
     }
 }
 
@@ -70,9 +67,6 @@ function createWebsite(abilityArray){
         statArray.push(bookmarks[x][0]);
     }    
     createCharacterPages(parent, navBar, statArray);
-
-    //testing
-    console.log(character.stat.classPoints);
 
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent, navBar, x);
@@ -133,7 +127,6 @@ function createCharacterPages(parent, navBar, stats){
 
     //stat tabs offset+
     character.stat.tabsOffset++;
-
 }
 
 //SKILL TREE TABS
@@ -183,7 +176,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat){
         var descsTier = document.createElement('div');
         descs.appendChild(descsTier);
         icons.appendChild(tier);
-        createAbilitySet(x, abilities, bookmarks, tier, descsTier, stat);
+        createAbilitySet(x, abilities, bookmarks, tier, descsTier, stat, -1);
     }
 
     //tier 4
@@ -203,7 +196,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat){
         var classSetDescs = document.createElement('div');
         tier4.appendChild(classSet);
         descsTier4.appendChild(classSetDescs);
-        createAbilitySet(x, abilities, bookmarks, classSet, classSetDescs, stat);
+        createAbilitySet(x, abilities, bookmarks, classSet, classSetDescs, stat, x-4);
         classes.push(0);
     }
 
@@ -221,7 +214,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat){
 //  +abilitySet = icon parent document element
 //  +descRoot = description parent document element
 //  +stat = index representing which stat this ability set is of
-function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, stat){
+function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, stat, classNum){
     var startIndex = 0;
     var endIndex = 0;
 
@@ -295,7 +288,7 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
 
         //create passive abilities
         for(var x = 0; x < bookmarks[index][2]; x++){
-            createAbility(abilities[bookmarks[index][0]+x], passives, passiveDescs, stat);
+            createAbility(abilities[bookmarks[index][0]+x], passives, passiveDescs, stat, classNum);
         } 
         
         //determine subset of abilities of the class without passives
@@ -321,7 +314,7 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
         descRoot = classSkillsDescs;
     }
     var setAbilities = abilities.slice(startIndex, endIndex);
-    setAbilities.forEach(ability => createAbility(ability, abilitySet, descRoot, stat));
+    setAbilities.forEach(ability => createAbility(ability, abilitySet, descRoot, stat, classNum));
 }
 
 //Info: Create each ability
@@ -330,7 +323,7 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
 //  +parent  = parent document element for the ability icon
 //  +descRoot = parent document element for the ability desc
 //  +stat = index representing which stat this ability is
-function createAbility(index, parent, descRoot, stat){
+function createAbility(index, parent, descRoot, stat, classNum){
     //create ability icon then set attributes, classes, events
     var abilityIcon = document.createElement('img');
     abilityIcon.src = "Assets/MyriadIcons/" + index[0][1][1] + ".png";
@@ -386,7 +379,7 @@ function createAbility(index, parent, descRoot, stat){
     upgradeBtn.textContent = upgradeBtnTxt;
     upgradeBtn.classList.add('abilityBaseLock');
     upgradeBtn.classList.add('noClick');
-    upgradeBtn.onclick = function(){spendPoint(stat, abilityIcon, abilityDesc);};
+    upgradeBtn.onclick = function(){spendPoint(abilityIcon, abilityDesc, stat, classNum);};
     abilityDesc.appendChild(upgradeBtn);
 }
 
@@ -511,12 +504,9 @@ function submitCharacter(){
 }
 
 function generateCharacter(parent){
-    //testing
-    console.log('generating Character');
     for(var x = 0; x < character.stat.statChoices.length; x++){
         character.stat.classPoints[character.stat.statChoices[x]]++;
     }
-    
 
     while(parent.firstChild){
         parent.removeChild(parent.lastChild);
@@ -532,20 +522,63 @@ function generateCharacter(parent){
 
     character.html.levelBtn = levelUpBtn;
     
-    parent.appendChild(levelUpBtn);
+    parent.appendChild(levelUpBtn);    
+}
 
-    //testing
-    console.log(character.stat.classPoints);     
+//stat = which tree
+//index = which class
+//abilitySet = icon parent div
+function selectClass(index,stat){
+    if(character.stat.numOfClasses < 2){
+        var classes = getClasses(stat);
+
+        character.stat.classChoices[character.stat.numOfClasses][0] = stat;
+        character.stat.classChoices[character.stat.numOfClasses][1] = index;
+        //select classes and passives
+        var classImg = classes[index][0][0].querySelector('img');
+        classImg.classList.add('selected');
+
+
+        var classPassives = classes[index][1][0].querySelectorAll('img');
+        for(var x = 0; x < classPassives.length; x++){
+            classPassives[x].classList.add('selected');
+        }
+
+
+        //reduce class points per stat tree
+        character.stat.classPoints[stat]--;
+        if(character.stat.classPoints[stat] == 0){
+            
+            for(var x = 0; x < classes.length; x++){
+                lockSet(classes[x][0]);
+            }
+        }
+
+        //increment number of classes
+        character.stat.numOfClasses++;
+        //
+        if(character.stat.numOfClasses == 2){
+            addPoints();
+            unlockLevel();
+        }
+    }
+    else{
+        //testing
+        console.log("select class error!");
+    }
 }
 
 //SPEND POINTS
 //================================
 
-function spendPoint(stat, icon, desc){
-    console.log(stat);
-    console.log(character.stat.skillPoints);
+function spendPoint(icon, desc, stat, classNum){
+
+    if(character.stat.charLvl >= 4 && classNum != -1){
+        character.stat.skillPoints[1][stat][1][classNum]--;
+    }
     character.stat.skillPoints[1][stat][0]--;
     character.stat.skillPoints[0]--;
+
     if(icon.classList.contains('selected')){
         desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
         checkAbilityMax(desc);
@@ -554,7 +587,6 @@ function spendPoint(stat, icon, desc){
         icon.classList.add('selected');
         var baseLock = desc.getElementsByClassName('abilityBaseLock');
         if(baseLock.length != 0){
-            console.log(baseLock);
             while(baseLock.length>0){
                 baseLock[0].classList.remove('abilityBaseLock');
             }
@@ -567,14 +599,23 @@ function spendPoint(stat, icon, desc){
         }
     }
 
+    //lock class
+    if(character.stat.skillPoints[1][stat][1][classNum] == 0){
+        var lockClass = getClass(stat, classNum);
+        lockSet(lockClass[0]);
+        lockSet(lockClass[1]);
+        lockSet(lockClass[2]);
+    }
+
     if(character.stat.skillPoints[1][stat][0] == 0){
         //lock stat tree components
         lockLevel(stat);
         if(character.stat.skillPoints[0] == 0){
             //unlock level up
+            resetSkillPoint();
             levelComplete();
         }
-    }
+    }  
 }
 
 function checkAbilityMax(desc){
@@ -587,8 +628,7 @@ function checkAbilityMax(desc){
 function lockLevel(stat){
     var nth = stat+character.stat.tabsOffset;
     var statPage = document.querySelectorAll('.page')[nth];
-    //testing
-    console.log(statPage);
+
     switch(character.stat.charLvl){
         case 1:
             var pageTier = statPage.querySelectorAll('.tier1');
@@ -604,20 +644,31 @@ function lockLevel(stat){
             pageTier = statPage.querySelectorAll('.tier3');
             lockSet(pageTier);
             break;
+        case 4:
+            var pageTier = statPage.querySelectorAll('.tier2');
+            lockSet(pageTier);
+
+            for(var x = 0; x<character.stat.classChoices.length; x++){
+                if(character.stat.classChoices[x][0] == stat){
+                    var cls = getClass(character.stat.classChoices[x][0], character.stat.classChoices[x][1]);
+                    lockSet(cls[0]);
+                    lockSet(cls[1]);
+                    lockSet(cls[2]);
+                }
+            }
+
+            break;
         default:
             var pageTier = statPage.querySelectorAll('.tier2');
             lockSet(pageTier);
 
-            var tier4s = statPage.querySelectorAll('.tier4');
-            let classDivIcons = tier4s[0].querySelectorAll('.classDiv');
-            let classDivDescs = tier4s[1].querySelectorAll('.classDiv');
-            var classNum = classDivIcons.length;
-            for(var x = 0; x < classNum; x++){  
-                //testing
-                console.log(classDivIcons[x]);
-                console.log(classDivDescs[x]);
-                var classDiv = [classDivIcons[x], classDivDescs[x]];
-                lockSet(classDiv);
+            for(var x = 0; x<character.stat.classChoices.length; x++){
+                if(character.stat.classChoices[x][0] == stat){
+                    var cls = getClass(character.stat.classChoices[x][0], character.stat.classChoices[x][1]);
+                    lockSet(cls[0]);
+                    lockSet(cls[1]);
+                    lockSet(cls[2]);
+                }
             }
             break;
     }
@@ -646,68 +697,65 @@ function levelUp(){
     character.stat.charLvl++;
     character.html.charLvl.textContent = character.stat.charLvl;
     
-    unlockLevel();
+    if(character.stat.charLvl != 4){
+        unlockLevel();
+        addPoints();
+    }
+    else{
+        for(var x = 0; x < character.html.statChoiceElements.length; x++){
+            var classImgs = character.html.statChoiceElements[x].querySelectorAll('.classInfo');
 
-    //testing
-    console.log(character.stat.skillPoints);
+            for(var y = 0; y < classImgs.length; y++){
+                classImgs[y].classList.remove('hardLock');
+            }
+            
+            var descrs = character.html.statChoiceElements[x].querySelectorAll('.classInfo .abilityDesc button');
+            for(var y = 0; y < descrs.length; y++){
+                descrs[y].classList.remove('noClick', 'abilityBaseLock');
+            }
+        }
+    }
+
     character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
 }
 
 function unlockLevel(){
     switch(character.stat.charLvl){
         case 1:
-            unlockSet('.tier1');
-            addPoints();
+            unlockPageTiers('.tier1');
             break;
         case 2:
-            unlockSet('.tier2');
-            addPoints();
+            unlockPageTiers('.tier2');
             break;
         case 3:
-            unlockSet('.tier3');
-            addPoints();
-            break;
-        case 4:
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var classImgs = character.html.statChoiceElements[x].querySelectorAll('.classInfo');
-                
-                //testing
-                console.log(classImgs);
-
-                for(var y = 0; y < classImgs.length; y++){
-                    classImgs[y].classList.remove('hardLock');
-                }
-                
-                var descrs = character.html.statChoiceElements[x].querySelectorAll('.classInfo .abilityDesc button');
-                for(var y = 0; y < descrs.length; y++){
-                    descrs[y].classList.remove('noClick', 'abilityBaseLock');
-                }
-            }
+            unlockPageTiers('.tier3');
             break;
         default:
-            unlockSet('.tier2');
-            for(var x = 0; x < character.html.statChoiceElements.length; x++){
-                var tierMod = character.html.statChoiceElements[x].querySelectorAll('.classDiv');
-                for(var y =0; y < tierMod.length; y++)
-                {
-                    tierMod[y].classList.remove('hardLock');
-                }
+            unlockPageTiers('.tier2');
+
+            for(var x = 0; x<character.stat.classChoices.length; x++){
+                var cls = getClass(character.stat.classChoices[x][0], character.stat.classChoices[x][1]);
+                unlockSet(cls[0][0], cls[0][1]);
+                unlockSet(cls[1][0], cls[1][1]);
+                unlockSet(cls[2][0], cls[2][1]);
             }
-            addPoints();
             break;
     }
 }
 
-function unlockSet(setClass){
+function unlockPageTiers(selector){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
-        var tierMod = character.html.statChoiceElements[x].querySelectorAll(setClass);
-        tierMod[0].classList.remove('hardLock');
-        
-        var descrs = tierMod[1].querySelectorAll('.abilityDesc button');
-        for(var y = 0; y < descrs.length; y++){
-            descrs[y].classList.remove('noClick', 'abilityBaseLock');
-        }
-        
+        var tierMod = character.html.statChoiceElements[x].querySelectorAll(selector);
+
+        unlockSet(tierMod[0], tierMod[1]);
+    }
+}
+
+function unlockSet(iconParent, descsParent){
+    iconParent.classList.remove('hardLock');
+    var descrsBtns = descsParent.querySelectorAll('.abilityDesc button');
+    for(var y = 0; y < descrsBtns.length; y++){
+        descrsBtns[y].classList.remove('noClick', 'abilityBaseLock');
     }
 }
 
@@ -715,33 +763,53 @@ function addPoints(){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
         character.stat.skillPoints[1][character.stat.statChoices[x]][0]++;
         character.stat.skillPoints[0]++;
+        if(character.stat.charLvl >= 4){
+            character.stat.skillPoints[1][character.stat.classChoices[x][0]][1][character.stat.classChoices[x][1]]++;
+        }
     }
 }
 
-//stat = which tree
-//index = which class
-//abilitySet = icon parent div
-function selectClass(index,stat){
-    if(character.stat.numOfClasses < 2){
-        character.stat.classChoices[character.stat.numOfClasses][0] = stat;
-        character.stat.classChoices[character.stat.numOfClasses][1] = index;
-    }
-    character.stat.classPoints[stat]--;
-    var stats = document.querySelectorAll('.page');
+//Class Selectors
+//======================
 
-    if(character.stat.classPoints[stat] == 0){
-        var pages = document.querySelectorAll('.abilitydescs');
-        var page = pages[stat];
-        var classes = page.querySelectorAll('.classDiv .classInfo .abilityDesc button');
-        for(var x = 0; x < classes.length; x++){
-            classes[x].classList.add('hardLock', 'noClick');
-        }
-        //lock not selected classes
-        //unlock class selected skills
-        //unlock tier 2
-        //add skill points for level 4
+function getClass(stat, classNum){
+    var icons = document.querySelectorAll('.abilityIcons');
+    var descs = document.querySelectorAll('.abilitydescs');
+    var iconPage = icons[stat];
+    var descsPage = descs[stat];
+    var classIcons = iconPage.querySelectorAll('.classDiv');
+    var classDescs = descsPage.querySelectorAll('.classDiv');
+    var classInfoIcon = iconPage.querySelectorAll('.classDiv .classInfo');
+    var classInfoDesc = descsPage.querySelectorAll('.classDiv .classInfo');
+    var classPassiveIcon = iconPage.querySelectorAll('.classDiv .passiveSkills');
+    var classPassiveDesc = descsPage.querySelectorAll('.classDiv .passiveSkills');
+    var classClassIcon = iconPage.querySelectorAll('.classDiv .classSkills');
+    var classClassDesc = descsPage.querySelectorAll('.classDiv .classSkills');
+    var classArray = [];
+    classArray.push([classInfoIcon[classNum], classInfoDesc[classNum]]);
+    classArray.push([classPassiveIcon[classNum], classPassiveDesc[classNum]]);
+    classArray.push([classClassIcon[classNum], classClassDesc[classNum]]);
+    return classArray;
+}
+
+function getClasses(stat){
+    var icons = document.querySelectorAll('.abilityIcons');
+    var descs = document.querySelectorAll('.abilitydescs');
+    var iconPage = icons[stat];
+    var descsPage = descs[stat];
+    var classIcons = iconPage.querySelectorAll('.classDiv');
+    var classes = [];
+    for(var x = 0; x < classIcons.length; x++){
+        classes.push(getClass(stat, x));
     }
-    character.stat.numOfClasses++;
-    //testing 
-    console.log(character.stat.classChoices);
+    return classes;
+}
+
+function resetSkillPoint(){
+    for(var x = 0; x < character.stat.skillPoints[1].length; x++){
+        character.stat.skillPoints[1][x][0] = 0;
+        for(var y = 0; y < character.stat.skillPoints[1][x][1].length; y++){
+            character.stat.skillPoints[1][x][1][y] = 0;
+        }
+    }
 }

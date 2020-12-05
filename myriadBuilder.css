@@ -120,7 +120,7 @@ pre {
 
 
 
-/*Ability Tier Selectors
+/*Ability Tier Icon Selectors
 ======*/
 .tier{
     overflow: hidden;
@@ -190,7 +190,7 @@ pre {
     margin-right: var(--iconMargin);
 }
 
-/*Passive Skills*/
+/*Passive Skills Icons*/
 .passiveIcons{
     width: calc(var(--iconSize)*2 + var(--iconMargin)*3);
     height: calc(var(--iconSize) + var(--iconMargin));
@@ -273,7 +273,6 @@ pre {
 }
 
 
-
 /*Individual Ability Descriptions
 ======*/
 .abilityDesc{
@@ -281,6 +280,18 @@ pre {
     margin: 10px;
     background: rgb(200,200,200);
     border-radius: 10px;
+}
+
+/*Tier 0 Descriptions*/
+.tier0 .abilityDesc button{
+    visibility: hidden;
+    margin: 0px;
+}
+
+/*Passive Ability Descriptions*/
+.passiveSkills .abilityDesc button{
+    visibility: hidden;
+    margin: 0px;
 }
 
 
