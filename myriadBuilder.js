@@ -675,14 +675,11 @@ function lockLevel(stat){
 }
 
 function lockSet(set){
-    for(var x = 0; x < set.length; x++){
+    set[0].classList.add('hardLock');
         
-        set[0].classList.add('hardLock');
-        
-        var descrs = set[1].querySelectorAll('.abilityDesc button');
-        for(var y = 0; y < descrs.length; y++){
-            descrs[y].classList.add('noClick', 'abilityBaseLock');
-        }
+    var descrs = set[1].querySelectorAll('.abilityDesc button');
+    for(var x = 0; x < descrs.length; x++){
+        descrs[x].classList.add('noClick', 'abilityBaseLock');
     }
 }
 
@@ -735,9 +732,9 @@ function unlockLevel(){
 
             for(var x = 0; x<character.stat.classChoices.length; x++){
                 var cls = getClass(character.stat.classChoices[x][0], character.stat.classChoices[x][1]);
-                unlockSet(cls[0][0], cls[0][1]);
-                unlockSet(cls[1][0], cls[1][1]);
-                unlockSet(cls[2][0], cls[2][1]);
+                unlockSet(cls[0]);
+                unlockSet(cls[1]);
+                unlockSet(cls[2]);
             }
             break;
     }
@@ -747,15 +744,16 @@ function unlockPageTiers(selector){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
         var tierMod = character.html.statChoiceElements[x].querySelectorAll(selector);
 
-        unlockSet(tierMod[0], tierMod[1]);
+        unlockSet(tierMod);
     }
 }
 
-function unlockSet(iconParent, descsParent){
-    iconParent.classList.remove('hardLock');
-    var descrsBtns = descsParent.querySelectorAll('.abilityDesc button');
-    for(var y = 0; y < descrsBtns.length; y++){
-        descrsBtns[y].classList.remove('noClick', 'abilityBaseLock');
+function unlockSet(set){
+    set[0].classList.remove('hardLock');
+        
+    var descrs = set[1].querySelectorAll('.abilityDesc button');
+    for(var x = 0; x < descrs.length; x++){
+        descrs[x].classList.remove('noClick', 'abilityBaseLock');
     }
 }
 
