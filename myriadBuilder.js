@@ -365,7 +365,8 @@ function createAbility(index, parent, descRoot, stat, classNum){
         if(index[x][0].includes('Skill+')){
             row.classList.add('abilityUpgradeLock');
             row.classList.add('noClick');
-            row.onclick = function(){selectUpgrade(row)};
+            let upgradeOption = row;
+            row.onclick = function(){selectUpgrade(upgradeOption, abilityDesc)};
         }
         else{
             row.classList.add('abilityBaseLock');
@@ -421,8 +422,6 @@ function activeElement(id, curActive, index){
         curActive[index] = id;
         toggleActive(id);
     }
-    //testing
-    console.log(curActive);
 }
 
 //Info: Toggles "active" css class on an element
@@ -557,9 +556,13 @@ function selectClass(index,stat){
         //reduce class points per stat tree
         character.stat.classPoints[stat]--;
         if(character.stat.classPoints[stat] == 0){
-            
+            //LockClasses
             for(var x = 0; x < classes.length; x++){
-                lockSet(classes[x][0]);
+                var classInfoImg = classes[x][0][0].querySelector('img');
+                classInfoImg.classList.add('hardLock');
+                var classInfoDesc = classes[x][0][1];
+                var classSelectBtn = classInfoDesc.querySelector('button');
+                classSelectBtn.classList.add('max');
             }
         }
 
@@ -580,7 +583,7 @@ function selectClass(index,stat){
 //SPEND POINTS
 //================================
 //spending points is the start of a leveling process
-function spendPoint(icon, desc, stat, classNum, chooseUpgrade){
+function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
 
     if(character.stat.charLvl >= 4 && classNum != -1){
         character.stat.skillPoints[1][stat][1][classNum]--;
@@ -589,12 +592,12 @@ function spendPoint(icon, desc, stat, classNum, chooseUpgrade){
     character.stat.skillPoints[0]--;
 
     if(icon.classList.contains('selected')){
-        if(chooseUpgrade == false){
+        if(choiceUpgrade == false){
             desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
             checkAbilityMax(desc);
         }
         else{
-            //Choose Upgrade
+            chooseUpgrade(desc);
         }
     }
     else{
@@ -609,8 +612,9 @@ function spendPoint(icon, desc, stat, classNum, chooseUpgrade){
         }
         else{
             //choose Upgrade
-            desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
-            checkAbilityMax(desc);
+            chooseUpgrade(desc);
+            // desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
+            // checkAbilityMax(desc);
         }
     }
 
@@ -638,6 +642,23 @@ function checkAbilityMax(desc){
         desc.querySelector('button').classList.add('max');
         desc.querySelector('button').textContent = "MAXED";
     }
+}
+
+function chooseUpgrade(desc){
+    var upgrades = desc.querySelectorAll('.abilityUpgradeLock');
+    for(var x = 0; x < upgrades.length; x++){
+        upgrades[x].classList.add('option');
+        upgrades[x].classList.remove('noClick');
+    }
+}
+
+function selectUpgrade(row, desc){
+    var upgrades = desc.querySelectorAll('.abilityUpgradeLock');
+    for(var x = 0; x < upgrades.length; x++){
+        upgrades[x].classList.remove('option');
+    }
+    row.classList.remove('abilityUpgradeLock');
+    checkAbilityMax(desc);
 }
 
 //lock level can be only one page
@@ -704,6 +725,7 @@ function lockSet(set){
     set[0].classList.add('hardLock');
         
     var descrs = set[1].querySelectorAll('.abilityDesc button');
+    
     for(var x = 0; x < descrs.length; x++){
         descrs[x].classList.add('noClick', 'abilityBaseLock');
     }
@@ -725,16 +747,11 @@ function levelUp(){
         addPoints();
     }
     else{
-        for(var x = 0; x < character.html.statChoiceElements.length; x++){
-            var classImgs = character.html.statChoiceElements[x].querySelectorAll('.classInfo');
-
-            for(var y = 0; y < classImgs.length; y++){
-                classImgs[y].classList.remove('hardLock');
-            }
-            
-            var descrs = character.html.statChoiceElements[x].querySelectorAll('.classInfo .abilityDesc button');
-            for(var y = 0; y < descrs.length; y++){
-                descrs[y].classList.remove('noClick', 'abilityBaseLock');
+        for(var x = 0; x<character.stat.statChoices.length; x++){
+            var classes = getClasses(character.stat.statChoices[x]);
+            for(var y = 0; y < classes.length; y++){
+                var cls = getClass(character.stat.statChoices[x], y);
+                unlockSet(cls[0]);
             }
         }
     }
@@ -771,11 +788,12 @@ function unlockPageTiers(selector){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
         var tierIcons = character.html.statChoiceElements[x].querySelectorAll(selector);
         
-        var tierDescs = document.querySelectorAll('.abilitydescs');
-        tierDescs = tierDescs[character.stat.statChoices[x]];
+        var pageDescs = document.querySelectorAll('.abilitydescs');
+        var pageDesc = pageDescs[character.stat.statChoices[x]];
+        var tierDesc = pageDesc.querySelectorAll(selector);
 
         var tierMod = [tierIcons[0]];
-        tierMod.push(tierDescs);
+        tierMod.push(tierDesc[0]);
 
         unlockSet(tierMod);
     }
