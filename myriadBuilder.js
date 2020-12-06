@@ -364,6 +364,8 @@ function createAbility(index, parent, descRoot, stat, classNum){
 
         if(index[x][0].includes('Skill+')){
             row.classList.add('abilityUpgradeLock');
+            row.classList.add('noClick');
+            row.onclick = function(){selectUpgrade(row)};
         }
         else{
             row.classList.add('abilityBaseLock');
@@ -375,15 +377,16 @@ function createAbility(index, parent, descRoot, stat, classNum){
     var upgradeBtn = document.createElement('button');
     if(index[0][0]){
         upgradeBtnTxt = "CHOOSE UPGRADE";
+        upgradeBtn.onclick = function(){spendPoint(abilityIcon, abilityDesc, stat, classNum, true);};
     }
     else{
         upgradeBtnTxt = "UPGRADE";
+        upgradeBtn.onclick = function(){spendPoint(abilityIcon, abilityDesc, stat, classNum, false);};
     }
 
     upgradeBtn.textContent = upgradeBtnTxt;
     upgradeBtn.classList.add('abilityBaseLock');
     upgradeBtn.classList.add('noClick');
-    upgradeBtn.onclick = function(){spendPoint(abilityIcon, abilityDesc, stat, classNum);};
     abilityDesc.appendChild(upgradeBtn);
 }
 
@@ -577,7 +580,7 @@ function selectClass(index,stat){
 //SPEND POINTS
 //================================
 //spending points is the start of a leveling process
-function spendPoint(icon, desc, stat, classNum){
+function spendPoint(icon, desc, stat, classNum, chooseUpgrade){
 
     if(character.stat.charLvl >= 4 && classNum != -1){
         character.stat.skillPoints[1][stat][1][classNum]--;
@@ -586,8 +589,13 @@ function spendPoint(icon, desc, stat, classNum){
     character.stat.skillPoints[0]--;
 
     if(icon.classList.contains('selected')){
-        desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
-        checkAbilityMax(desc);
+        if(chooseUpgrade == false){
+            desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
+            checkAbilityMax(desc);
+        }
+        else{
+            //Choose Upgrade
+        }
     }
     else{
         icon.classList.add('selected');
@@ -600,6 +608,7 @@ function spendPoint(icon, desc, stat, classNum){
             checkAbilityMax(desc);
         }
         else{
+            //choose Upgrade
             desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
             checkAbilityMax(desc);
         }
@@ -633,26 +642,23 @@ function checkAbilityMax(desc){
 
 //lock level can be only one page
 function lockLevel(stat){
-    var nth = stat+character.stat.tabsOffset;
-    var statPage = document.querySelectorAll('.page')[nth];
-
     switch(character.stat.charLvl){
         case 1:
-            var pageTier = statPage.querySelectorAll('.tier1');
+            var pageTier = getPageTier('.tier1', stat);
             lockSet(pageTier);
             break;
         case 2:
-            var pageTier = statPage.querySelectorAll('.tier2');
+            var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
             break;
         case 3:
-            var pageTier = statPage.querySelectorAll('.tier2');
+            var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
-            pageTier = statPage.querySelectorAll('.tier3');
+            pageTier = getPageTier('.tier3', stat);
             lockSet(pageTier);
             break;
         case 4:
-            var pageTier = statPage.querySelectorAll('.tier2');
+            var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
 
             for(var x = 0; x<character.stat.classChoices.length; x++){
@@ -666,7 +672,7 @@ function lockLevel(stat){
 
             break;
         default:
-            var pageTier = statPage.querySelectorAll('.tier2');
+            var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
 
             for(var x = 0; x<character.stat.classChoices.length; x++){
@@ -679,6 +685,19 @@ function lockLevel(stat){
             }
             break;
     }
+}
+
+function getPageTier(tier, stat){
+    var nth = stat+character.stat.tabsOffset;
+    var statPage = document.querySelectorAll('.page')[nth];
+
+    var pageTierIcons = statPage.querySelectorAll(tier);
+    var pageDescs = document.querySelectorAll('.abilitydescs');
+    var pageTierDescs = pageDescs[stat].querySelectorAll(tier);
+    
+    var pageTier = [pageTierIcons[0]];
+    pageTier.push(pageTierDescs[0]);
+    return pageTier;
 }
 
 function lockSet(set){
@@ -750,7 +769,13 @@ function unlockLevel(){
 
 function unlockPageTiers(selector){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
-        var tierMod = character.html.statChoiceElements[x].querySelectorAll(selector);
+        var tierIcons = character.html.statChoiceElements[x].querySelectorAll(selector);
+        
+        var tierDescs = document.querySelectorAll('.abilitydescs');
+        tierDescs = tierDescs[character.stat.statChoices[x]];
+
+        var tierMod = [tierIcons[0]];
+        tierMod.push(tierDescs);
 
         unlockSet(tierMod);
     }

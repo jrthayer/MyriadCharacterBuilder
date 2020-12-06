@@ -366,3 +366,12 @@ pre {
 #descBar::-webkit-scrollbar {
   display: none;
 }
+
+.option{
+    animation-name: flashingBorder;
+}
+
+@keyframes flashingBorder{
+    from{border-color: black;}
+    to{border-color: white;}
+}
