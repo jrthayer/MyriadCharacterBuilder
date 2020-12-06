@@ -558,7 +558,7 @@ function selectClass(index,stat){
         if(character.stat.classPoints[stat] == 0){
             //LockClasses
             for(var x = 0; x < classes.length; x++){
-                var classInfoImg = classes[x][0][0].querySelector('img');
+                var classInfoImg = classes[x][0][0];
                 classInfoImg.classList.add('hardLock');
                 var classInfoDesc = classes[x][0][1];
                 var classSelectBtn = classInfoDesc.querySelector('button');
