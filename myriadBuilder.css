@@ -107,6 +107,7 @@ pre {
 .page{
     display: none;
     width: 70%;
+    float: left;
 }
 
 
@@ -166,6 +167,21 @@ pre {
     /*min-height: calc(var(--iconSize)*4 + var(--iconMargin)*5 + var(--iconSize)*4 + var(--iconMargin)*5);*/
 }
 
+#DEX .tier3{
+    width: calc(var(--iconSize)*4 + var(--iconMargin)*4);
+}
+
+#INT .tier1{
+    width: calc(var(--iconSize)*3 + var(--iconMargin)*3);
+}
+
+#MAD .tier0{
+    width: calc(var(--iconSize)*1 + var(--iconMargin)*2);
+}  
+#MAD .tier1{
+    width: calc(var(--iconSize)*3 + var(--iconMargin)*3);
+}         
+
 
 
 /*Individual Ability Icon Selectors
@@ -213,8 +229,13 @@ pre {
 
 /*Tab Ability Description Panel Selectors
 ===========*/
-.abilitydescs{
-    
+.abilityDesc{
+    display: none;
+    margin: 10px;
+    background: rgb(200,200,200);
+    border-radius: 10px;
+
+    z-index: 1;
 }
 
 .abilityDesc h3{
@@ -240,17 +261,6 @@ pre {
     vertical-align: top;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.abilitydescs::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.abilitydescs{
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
 .abilityBaseLock{
     background: rgb(130, 130, 130);
 }
@@ -262,18 +272,6 @@ pre {
 .abilityDesc button{
     width: calc(100% - 20px);
     margin: 10px;
-}
-
-
-/*Individual Ability Descriptions
-======*/
-.abilityDesc{
-    display: none;
-    margin: 10px;
-    background: rgb(200,200,200);
-    border-radius: 10px;
-
-    z-index: 0;
 }
 
 /*Tier 0 Descriptions*/
@@ -357,5 +355,14 @@ pre {
     overflow-y:scroll;
 
     background: black;
-    z-index: -1;
+    z-index: 0;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#descBar::-webkit-scrollbar {
+  display: none;
 }

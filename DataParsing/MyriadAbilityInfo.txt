@@ -571,7 +571,7 @@ INT
 
 *[Tier1]
 
-*Focus
+*Focus+
 #Info    +1 Focus
 #Skill+1 +1  Focus
 
@@ -1783,7 +1783,7 @@ Pinned is a +1 Complexity Grapple when attempting to break free
 #Adrenaline  2
 #Skill+1 Also make a single Unarmed attack against the target when you succesfully pin them
 
-*Freedom of Movement
+*Strength of Movement
 #Info    You are a +1 Complexity target against anything that would slow or stop your movement-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
 #Skill+1 +1
 #Skill+2 You may use Step actions while you grapple targets.
@@ -2051,7 +2051,7 @@ You may act normally if the enemy has started a Surprise round.
 You have +6 movement during all Surprise Rounds.
 #Skill+2 You have 2 Resistance from others using Stealth against you
 
-*Bloodletting
+*Bloodburst
 #Info    When you Critically Hit an enemy with a Melee Attack,
 create Blood in the area that you occupy.
 (If the creature has Blood)-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
