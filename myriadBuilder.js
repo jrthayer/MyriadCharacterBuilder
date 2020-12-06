@@ -62,6 +62,10 @@ function createWebsite(abilityArray){
     navBar.id = 'navBar';
     parent.appendChild(navBar);
 
+    var descBar = document.createElement('div');
+    descBar.id = 'descBar';
+    parent.appendChild(descBar);
+
     var statArray = [];
     for(var x = 0; x < bookmarks.length; x++){
         statArray.push(bookmarks[x][0]);
@@ -69,7 +73,7 @@ function createWebsite(abilityArray){
     createCharacterPages(parent, navBar, statArray);
 
     for(x = 0; x < bookmarks.length; x++){
-        createSkillTree(abilities, bookmarks[x], parent, navBar, x);
+        createSkillTree(abilities, bookmarks[x], parent, navBar, x, descBar);
     }
 }
 
@@ -140,7 +144,7 @@ function createCharacterPages(parent, navBar, stats){
 //  +parent = parent document element 
 //  +navBar = navBar document element
 //  +stat = index representing which stat tree is being created
-function createSkillTree(abilities, bookmarks, parent, navBar, stat){
+function createSkillTree(abilities, bookmarks, parent, navBar, stat, descBar){
     //page navBar tab element
     var toggleTree = document.createElement('img');
     toggleTree.classList.add('tab');
@@ -168,7 +172,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat){
     descs.classList.add('abilitydescs');   
 
     skilltree.appendChild(icons);
-    skilltree.appendChild(descs);
+    descBar.appendChild(descs);
 
     //tiers 0 - 3
     for(var x = 0; x < 4; x++){
@@ -414,6 +418,8 @@ function activeElement(id, curActive, index){
         curActive[index] = id;
         toggleActive(id);
     }
+    //testing
+    console.log(curActive);
 }
 
 //Info: Toggles "active" css class on an element
@@ -570,7 +576,7 @@ function selectClass(index,stat){
 
 //SPEND POINTS
 //================================
-
+//spending points is the start of a leveling process
 function spendPoint(icon, desc, stat, classNum){
 
     if(character.stat.charLvl >= 4 && classNum != -1){
@@ -625,6 +631,7 @@ function checkAbilityMax(desc){
     }
 }
 
+//lock level can be only one page
 function lockLevel(stat){
     var nth = stat+character.stat.tabsOffset;
     var statPage = document.querySelectorAll('.page')[nth];
@@ -682,7 +689,7 @@ function lockSet(set){
         descrs[x].classList.add('noClick', 'abilityBaseLock');
     }
 }
-
+//having no points is the end of a leveling process
 function levelComplete(){
     character.html.levelBtn.classList.remove('noClick', 'abilityBaseLock');
 }
@@ -716,6 +723,7 @@ function levelUp(){
     character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
 }
 
+//unlock always unlocks all selected pages
 function unlockLevel(){
     switch(character.stat.charLvl){
         case 1:
@@ -757,6 +765,7 @@ function unlockSet(set){
     }
 }
 
+//add points is at the end of a level up process
 function addPoints(){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
         character.stat.skillPoints[1][character.stat.statChoices[x]][0]++;

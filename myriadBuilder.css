@@ -106,7 +106,7 @@ pre {
 
 .page{
     display: none;
-    width: 100%;
+    width: 70%;
 }
 
 
@@ -114,8 +114,8 @@ pre {
 /*Tab Ability Icons Panel
 ===========*/
 .abilityIcons{
-    width: 70%;
-    float: left;
+    /*width: 70%;*/
+    /*float: left;*/
 }
 
 
@@ -214,15 +214,7 @@ pre {
 /*Tab Ability Description Panel Selectors
 ===========*/
 .abilitydescs{
-    width: 30%;
-    height: 100%;
-    margin-left: 70%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y:scroll;
-
-    background: black;
+    
 }
 
 .abilityDesc h3{
@@ -280,6 +272,8 @@ pre {
     margin: 10px;
     background: rgb(200,200,200);
     border-radius: 10px;
+
+    z-index: 0;
 }
 
 /*Tier 0 Descriptions*/
@@ -351,4 +345,17 @@ pre {
 .max{
     pointer-events: none;
     background: rgb(80, 80, 80);
+}
+
+#descBar{
+    width: 30%;
+    height: 100%;
+    margin-left: 70%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y:scroll;
+
+    background: black;
+    z-index: -1;
 }
