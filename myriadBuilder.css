@@ -40,7 +40,7 @@ pre {
 =====================*/
 #navBar{
     width: 100%;
-    height: 50px;
+    height: 50px;  
 }
 
 #navBar img:nth-of-type(1){
@@ -73,6 +73,12 @@ pre {
     display: inline-block;
     float: left;
     cursor: default;
+    background: rgb(15,15,15);
+    color: gray;
+}
+
+.tab:nth-of-type(2){
+    background: rgb(20,20,20);
 }
 
 
@@ -82,6 +88,12 @@ pre {
 /*Changes Tab background Color of Ability Tiers Panel*/
 #character{
     background: rgb(30,30,30);
+    border-top: rgb(15,15,15) 10px solid;
+}
+
+#character2{
+    background: rgb(30,30,30);
+    border-top: rgb(20,20,20) 10px solid;
 }
 
 #DEX .abilityIcons{
@@ -108,6 +120,7 @@ pre {
     display: none;
     width: 70%;
     float: left;
+    min-height: 300px;
 }
 
 

@@ -131,6 +131,25 @@ function createCharacterPages(parent, navBar, stats){
 
     //stat tabs offset+
     character.stat.tabsOffset++;
+
+    //create racial tab?
+    var page2tab = document.createElement('div');
+    page2tab.classList.add('tab');
+    
+    //page div
+    var charPage2 = document.createElement('div');
+    charPage2.id = "character2";
+    charPage2.classList.add('page');
+
+    navBar.appendChild(page2tab);
+    parent.appendChild(charPage2);
+
+    //set navBar listener(needs to be after skilltree exists)
+    page2tab.innerHTML = charPage2.id;
+    page2tab.onclick = function(){activeElement(charPage2.id, character.html.activeElements, 0);};
+
+    //stat tabs offset+
+    character.stat.tabsOffset++;
 }
 
 //SKILL TREE TABS
@@ -532,7 +551,12 @@ function generateCharacter(parent){
     
     parent.appendChild(levelUpBtn);
 
+    createSkillPage();
     loadCharacter();
+}
+
+function createSkillPage(){
+
 }
 
 function loadCharacter(){
@@ -625,6 +649,9 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
     }
     else{
         icon.classList.add('selected');
+
+        createSkillDouble(icon);
+
         var baseLock = desc.getElementsByClassName('abilityBaseLock');
         if(baseLock.length != 0){
             while(baseLock.length>0){
@@ -663,10 +690,6 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
             levelComplete();
         }
     }  
-}
-
-function unlockSkillVisuals(icon, desc, choiceUpgrade){
-
 }
 
 function checkAbilityMax(desc){
@@ -897,6 +920,19 @@ function resetSkillPoints(){
     }
 }
 
+//Create Elements
+//======================
+
+function createSkillDouble(icon){
+    var copyIcon = icon.cloneNode();
+    copyIcon.onclick = function(){clickOriginal(icon);};
+    var skillsPage = document.querySelector('#character2');
+    skillsPage.appendChild(copyIcon);
+}
+
+function clickOriginal(icon){
+    icon.click();
+}
 //NEXT UP
 //+Add selected skill icons to character page
 //+edit url and use it to load character
