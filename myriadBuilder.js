@@ -724,16 +724,17 @@ function lockLevel(stat){
             lockSet(pageTier);
             break;
         case 2:
+        case 3:
             var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
             break;
-        case 3:
+        case 4:
             var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
             pageTier = getPageTier('.tier3', stat);
             lockSet(pageTier);
             break;
-        case 4:
+        case 5:
             var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
 
@@ -797,7 +798,7 @@ function levelUp(){
     character.stat.charLvl++;
     character.html.charLvl.textContent = character.stat.charLvl;
     
-    if(character.stat.charLvl != 4){
+    if(character.stat.charLvl != 5){
         unlockLevel();
         addPoints();
     }
@@ -821,9 +822,10 @@ function unlockLevel(){
             unlockPageTiers('.tier1');
             break;
         case 2:
+        case 3:
             unlockPageTiers('.tier2');
             break;
-        case 3:
+        case 4:
             unlockPageTiers('.tier3');
             break;
         default:
@@ -868,7 +870,7 @@ function addPoints(){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
         character.stat.skillPoints[1][character.stat.statChoices[x]][0]++;
         character.stat.skillPoints[0]++;
-        if(character.stat.charLvl >= 4){
+        if(character.stat.charLvl >= 5){
             character.stat.skillPoints[1][character.stat.classChoices[x][0]][1][character.stat.classChoices[x][1]]++;
         }
     }
