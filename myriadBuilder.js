@@ -530,7 +530,22 @@ function generateCharacter(parent){
 
     character.html.levelBtn = levelUpBtn;
     
-    parent.appendChild(levelUpBtn);    
+    parent.appendChild(levelUpBtn);
+
+    loadCharacter();
+}
+
+function loadCharacter(){
+    //get tree passives
+    var abilityPageDescs = document.querySelectorAll('.abilitydescs .tier0');
+
+    for(var x = 0; x < character.stat.statChoices.length; x++){
+        var passives = abilityPageDescs[character.stat.statChoices[x]].querySelectorAll("* button");
+        for(var y = 0; y < passives.length; y++){
+            passives[y].click();
+        }
+    }
+    resetSkillPoints();
 }
 
 //stat = which tree
@@ -548,8 +563,11 @@ function selectClass(index,stat){
 
 
         var classPassives = classes[index][1][0].querySelectorAll('img');
+        var classPassivesDescBtns = classes[index][1][1].querySelectorAll('button');
+        
         for(var x = 0; x < classPassives.length; x++){
-            classPassives[x].classList.add('selected');
+            // classPassives[x].classList.add('selected');
+            classPassivesDescBtns[x].click();
         }
 
 
@@ -570,6 +588,9 @@ function selectClass(index,stat){
         character.stat.numOfClasses++;
         //
         if(character.stat.numOfClasses == 2){
+            //reset skill points because we messed the skillpoint values
+            //when we clicked on passives
+            resetSkillPoints();
             addPoints();
             unlockLevel();
         }
@@ -583,18 +604,20 @@ function selectClass(index,stat){
 //SPEND POINTS
 //================================
 //spending points is the start of a leveling process
+//should only be clickable when you have points to spend and upgrades left
 function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
-
-    if(character.stat.charLvl >= 4 && classNum != -1){
-        character.stat.skillPoints[1][stat][1][classNum]--;
-    }
-    character.stat.skillPoints[1][stat][0]--;
-    character.stat.skillPoints[0]--;
-
+    //change css of icon and desc
     if(icon.classList.contains('selected')){
         if(choiceUpgrade == false){
-            desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
-            checkAbilityMax(desc);
+            var upgradeLock = desc.getElementsByClassName('abilityUpgradeLock');
+            if(upgradeLock.length>0){
+                upgradeLock[0].classList.remove('abilityUpgradeLock');
+                checkAbilityMax(desc);
+            }
+            else{
+                //testing
+                console.log("clicked on ability that is MAXED!");
+            }
         }
         else{
             chooseUpgrade(desc);
@@ -611,12 +634,16 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
             checkAbilityMax(desc);
         }
         else{
-            //choose Upgrade
             chooseUpgrade(desc);
-            // desc.getElementsByClassName('abilityUpgradeLock')[0].classList.remove('abilityUpgradeLock');
-            // checkAbilityMax(desc);
         }
     }
+
+    //subtract points
+    if(character.stat.charLvl >= 4 && classNum != -1){
+        character.stat.skillPoints[1][stat][1][classNum]--;
+    }
+    character.stat.skillPoints[1][stat][0]--;
+    character.stat.skillPoints[0]--;
 
     //lock class
     if(character.stat.skillPoints[1][stat][1][classNum] == 0){
@@ -626,15 +653,20 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
         lockSet(lockClass[2]);
     }
 
+    //lock levels and end level up
     if(character.stat.skillPoints[1][stat][0] == 0){
         //lock stat tree components
         lockLevel(stat);
         if(character.stat.skillPoints[0] == 0){
             //unlock level up
-            resetSkillPoint();
+            resetSkillPoints();
             levelComplete();
         }
     }  
+}
+
+function unlockSkillVisuals(icon, desc, choiceUpgrade){
+
 }
 
 function checkAbilityMax(desc){
@@ -855,7 +887,8 @@ function getClasses(stat){
     return classes;
 }
 
-function resetSkillPoint(){
+function resetSkillPoints(){
+    character.stat.skillPoints[0] = 0;
     for(var x = 0; x < character.stat.skillPoints[1].length; x++){
         character.stat.skillPoints[1][x][0] = 0;
         for(var y = 0; y < character.stat.skillPoints[1][x][1].length; y++){
@@ -863,3 +896,7 @@ function resetSkillPoint(){
         }
     }
 }
+
+//NEXT UP
+//+Add selected skill icons to character page
+//+edit url and use it to load character

@@ -176,7 +176,7 @@ pre {
 }
 
 #MAD .tier0{
-    width: calc(var(--iconSize)*1 + var(--iconMargin)*2);
+    width: calc(var(--iconSize)*1 + var(--iconMargin)*1);
 }  
 #MAD .tier1{
     width: calc(var(--iconSize)*3 + var(--iconMargin)*3);
