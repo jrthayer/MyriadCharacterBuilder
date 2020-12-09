@@ -94,6 +94,7 @@ pre {
 #character2{
     background: rgb(30,30,30);
     border-top: rgb(20,20,20) 10px solid;
+    padding: 10px;
 }
 
 #DEX .abilityIcons{
@@ -299,16 +300,6 @@ pre {
     margin: 0px;
 }
 
-
-
-/*Unorganized Selectors
-=================================*/
-
-/*NEEDS to be after skillTree and abilityDesc*/
-.active{
-    display: block;
-}
-
 /*TEMPORARY STYLES*/
 .classImg{
     width: calc(var(--iconSize)*4 + var(--iconMargin)*5 - 10px);
@@ -410,7 +401,38 @@ pre {
 }
 
 .skillPageTier{
-    margin: 25px 10px;
+    margin-top: 5px;
+    margin-bottom: 25px;
     overflow: hidden;
     background: rgb(200,200,200);
+    border: solid 3px rgb(90,90,90);
+}
+
+.skillPageTierTitle{
+    color: gray;
+    margin: 10px 0px;
+}
+
+.skillAll{
+    opacity: .5;
+}
+
+.skillHighlight{
+    opacity: 1;
+}
+
+.btnSelected{
+    background: black;
+    color: white;
+    outline: none;
+}
+
+
+
+/*Unorganized Selectors
+=================================*/
+
+/*NEEDS to be after skillTree and abilityDesc*/
+.active{
+    display: block;
 }

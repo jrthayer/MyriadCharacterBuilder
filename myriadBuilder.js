@@ -570,14 +570,37 @@ function loadCharacter(){
 
 function createSkillPage(){
     var skillsPage = document.querySelector('#character2');
+    var groupClasses = [[],[]];
+    groupClasses[0] = ['All', 'Armor', 'Focus', 'Adrenaline', 'Wealth', 'Accuracy', 'Sanity'];
+    groupClasses[1] = ['Attack', 'Move', 'Reaction', 'Free'];
+
+    //testing
+    console.log(groupClasses);
 
     for(var x = 0; x < 2; x++){
+        var title = document.createElement('h2');
+        title.classList.add('skillPageTierTitle');
+        skillsPage.appendChild(title);
+
+        var btnBar = document.createElement('div');
+        btnBar.classList.add('skillBtnBar');
+        skillsPage.appendChild(btnBar);
+
+        for(var y = 0; y < groupClasses[x].length; y++){
+            let sortBtn = document.createElement('button');
+            sortBtn.textContent = groupClasses[x][y];
+            sortBtn.onclick = function(){setSkillsActive(sortBtn, sortBtn.textContent)};
+            btnBar.appendChild(sortBtn);
+        }
+
         var group = document.createElement('div');
         if(x == 0){
             group.classList.add('skillPassives');
+            title.textContent = "Passives";
         }
         else{
             group.classList.add('skillActives');
+            title.textContent = "Actives";
         }
         group.classList.add('skillPageTier');
         skillsPage.appendChild(group);
@@ -987,25 +1010,52 @@ function addDoubleClasses(icon, desc){
         var cellsContent = [cells[0].textContent, cells[1].textContent];
         descArray.push(cellsContent);
 
+        icon.classList.add('skillAll');
+
         if(cells[0].textContent.includes('Action')){
             icon.classList.add('skillAction');
+            if(cells[1].textContent.includes('Attack')){
+                icon.classList.add('skillAttack');
+            }
+            if(cells[1].textContent.includes('Move')){
+                icon.classList.add('skillMove');
+            }
+            if(cells[1].textContent.includes('Reaction')){
+                icon.classList.add('skillReaction');
+            }
+            if(cells[1].textContent.includes('Free')){
+                icon.classList.add('skillFree');
+            }
         }
 
         if(cells[0].textContent.includes('Adrenaline')){
+            icon.classList.add('skillAdrenaline');
+        }
+        if(cells[1].textContent.includes('Adrenaline')){
             icon.classList.add('skillAdrenaline');
         }
 
         if(cells[0].textContent.includes('Sanity')){
             icon.classList.add('skillSanity');
         }
+        if(cells[1].textContent.includes('Sanity')){
+            icon.classList.add('skillSanity');
+        }
 
         if(cells[0].textContent.includes('Focus')){
+            icon.classList.add('skillFocus');
+        }
+        if(cells[1].textContent.includes('Focus')){
             icon.classList.add('skillFocus');
         }
 
         if(cells[0].textContent.includes('Wealth')){
             icon.classList.add('skillWealth');
         }
+
+        if(cells[1].textContent.includes('Accuracy')){
+            icon.classList.add('skillAccuracy');
+        }        
     }
 }
 
@@ -1015,3 +1065,26 @@ function clickOriginal(icon){
 //NEXT UP
 //+Add selected skill icons to character page
 //+edit url and use it to load character
+
+function setSkillsActive(button, name){
+    //testing
+    console.log(name);
+    var selector = '.skill' + name;
+    var allSkills = document.querySelectorAll('.skillPageTier img');
+    var skills = document.querySelectorAll(selector);
+
+    var allBtns = document.querySelectorAll('.skillBtnBar button');
+
+    for(var x = 0; x < allBtns.length; x++){
+        allBtns[x].classList.remove('btnSelected');
+    }
+    button.classList.add('btnSelected');
+
+    for(var x = 0; x < allSkills.length; x++){
+        allSkills[x].classList.remove('skillHighlight');
+    }
+
+    for(var x = 0; x < skills.length; x++){
+        skills[x].classList.add('skillHighlight');
+    }
+}
