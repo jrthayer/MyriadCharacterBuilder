@@ -600,7 +600,7 @@ The Vigilant condition grants +10 Accuracy per tier.
 
 *Magic Find
 #Info    Gain +15 Rarity & Magic Find
-Action  Reaction to finding random loot
+#Action  Reaction to finding random loot
 #Focus   2
 #Sanity  10
 #Skill+1 +15 Rarity & Magic Find

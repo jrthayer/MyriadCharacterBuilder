@@ -207,15 +207,15 @@ pre {
     margin: calc(var(--iconMargin)/2);
 }
 
-.classDiv div ~ .abilityIcon:nth-of-type(2){
+.classSkills .abilityIcon:nth-of-type(1){
     margin-left: var(--iconMargin);
 }
 
-.classDiv div ~ .abilityIcon:nth-of-type(4n+2){
+.classSkills .abilityIcon:nth-of-type(4n+5){
     margin-left: var(--iconMargin);
 }
 
-.classDiv div ~ .abilityIcon:nth-of-type(4n+1){
+.classSkills .abilityIcon:nth-of-type(4n){
     margin-right: var(--iconMargin);
 }
 
@@ -386,6 +386,31 @@ pre {
 
 @keyframes flashingBorder{
     from{background: rgb(200,200,200);}
-    to{background: rgb(80,80,80);}
-    
+    to{background: rgb(80,80,80);}   
+}
+
+.str{
+    background: rgb(55,0,0);
+    padding: 10px;
+}
+
+.dex{
+    background: rgb(0,35,0);
+    padding: 10px;
+}
+
+.int{
+    background: rgb(0,10,45);
+    padding: 10px;
+}
+
+.mad{
+    background: rgb(35,0,35);
+    padding: 10px;
+}
+
+.skillPageTier{
+    margin: 25px 10px;
+    overflow: hidden;
+    background: rgb(200,200,200);
 }

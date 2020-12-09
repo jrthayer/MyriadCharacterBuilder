@@ -199,7 +199,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat, descBar){
         var descsTier = document.createElement('div');
         descs.appendChild(descsTier);
         icons.appendChild(tier);
-        createAbilitySet(x, abilities, bookmarks, tier, descsTier, stat, -1);
+        createAbilitySet(x, abilities, bookmarks, tier, descsTier, stat, x);
     }
 
     //tier 4
@@ -219,7 +219,7 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat, descBar){
         var classSetDescs = document.createElement('div');
         tier4.appendChild(classSet);
         descsTier4.appendChild(classSetDescs);
-        createAbilitySet(x, abilities, bookmarks, classSet, classSetDescs, stat, x-4);
+        createAbilitySet(x, abilities, bookmarks, classSet, classSetDescs, stat, x);
         classes.push(0);
     }
 
@@ -555,10 +555,6 @@ function generateCharacter(parent){
     loadCharacter();
 }
 
-function createSkillPage(){
-
-}
-
 function loadCharacter(){
     //get tree passives
     var abilityPageDescs = document.querySelectorAll('.abilitydescs .tier0');
@@ -570,6 +566,22 @@ function loadCharacter(){
         }
     }
     resetSkillPoints();
+}
+
+function createSkillPage(){
+    var skillsPage = document.querySelector('#character2');
+
+    for(var x = 0; x < 2; x++){
+        var group = document.createElement('div');
+        if(x == 0){
+            group.classList.add('skillPassives');
+        }
+        else{
+            group.classList.add('skillActives');
+        }
+        group.classList.add('skillPageTier');
+        skillsPage.appendChild(group);
+    }
 }
 
 //stat = which tree
@@ -650,7 +662,7 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
     else{
         icon.classList.add('selected');
 
-        createSkillDouble(icon);
+        createSkillDouble(icon, desc, stat);
 
         var baseLock = desc.getElementsByClassName('abilityBaseLock');
         if(baseLock.length != 0){
@@ -665,20 +677,25 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
         }
     }
 
+    //change classNum to classIndex
+    var classIndex = classNum - 4;
     //subtract points
-    if(character.stat.charLvl >= 4 && classNum != -1){
-        character.stat.skillPoints[1][stat][1][classNum]--;
+    if(character.stat.charLvl >= 4 && classIndex > -1){
+        character.stat.skillPoints[1][stat][1][classIndex]--;
     }
     character.stat.skillPoints[1][stat][0]--;
     character.stat.skillPoints[0]--;
 
     //lock class
-    if(character.stat.skillPoints[1][stat][1][classNum] == 0){
-        var lockClass = getClass(stat, classNum);
+    if(classIndex >= 0){
+        if(character.stat.skillPoints[1][stat][1][classIndex] == 0){
+        var lockClass = getClass(stat, classIndex);
         lockSet(lockClass[0]);
         lockSet(lockClass[1]);
         lockSet(lockClass[2]);
+        }
     }
+    
 
     //lock levels and end level up
     if(character.stat.skillPoints[1][stat][0] == 0){
@@ -925,11 +942,71 @@ function resetSkillPoints(){
 //Create Elements
 //======================
 
-function createSkillDouble(icon){
+function createSkillDouble(icon, desc, stat){
     var copyIcon = icon.cloneNode();
+    copyIcon.classList.remove('selected');
     copyIcon.onclick = function(){clickOriginal(icon);};
+
+    switch(stat){
+        case 0:
+            copyIcon.classList.add('dex');
+            break;
+        case 1:
+            copyIcon.classList.add('int');
+            break;
+        case 2:
+            copyIcon.classList.add('str');
+            break;
+        case 3:
+            copyIcon.classList.add('mad');
+            break;
+    }
+
+    addDoubleClasses(copyIcon, desc);
+
     var skillsPage = document.querySelector('#character2');
-    skillsPage.appendChild(copyIcon);
+    var action = copyIcon.classList.contains('skillAction');
+    var adrenaline = copyIcon.classList.contains('skillAdrenaline');
+    var parent;
+    
+    if(action || adrenaline){  
+        parent = skillsPage.querySelector('.skillActives');
+    }
+    else{
+        parent = skillsPage.querySelector('.skillPassives');
+    }
+
+    parent.appendChild(copyIcon);
+}
+
+function addDoubleClasses(icon, desc){
+    var descArray = [];
+    var rows = desc.querySelectorAll('tr');
+    for(var x = 0; x < rows.length; x++){
+        var cells = rows[x].querySelectorAll('td pre');
+        var cellsContent = [cells[0].textContent, cells[1].textContent];
+        descArray.push(cellsContent);
+
+        if(cells[0].textContent.includes('Action')){
+            icon.classList.add('skillAction');
+        }
+
+        if(cells[0].textContent.includes('Adrenaline')){
+            icon.classList.add('skillAdrenaline');
+        }
+
+        if(cells[0].textContent.includes('Sanity')){
+            icon.classList.add('skillSanity');
+        }
+
+        if(cells[0].textContent.includes('Focus')){
+            icon.classList.add('skillFocus');
+        }
+
+        if(cells[0].textContent.includes('Wealth')){
+            icon.classList.add('skillWealth');
+        }
+    }
 }
 
 function clickOriginal(icon){
