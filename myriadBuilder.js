@@ -10,7 +10,16 @@ var character = {
     },
     stat:{
         //character level
-        charLvl: 0,
+        level: 0,
+        health: 30,
+        sanity: 30,
+        focus: 2,
+        load: 3,
+        wealth: 0,
+        accuracy: 0,
+        armor: 0
+    },
+    misc:{
         statChoices: [0,0],
         classChoices: [[-1,-1],[-1,-1]],
         tabsOffset: 0,
@@ -19,7 +28,7 @@ var character = {
         numOfClasses: 0
     },
     html:{
-        charLvl: 'none',
+        level: 'none',
         //Index 0 is the active tab
         //Index 1 is the active ability
         activeElements: ["none","none"],
@@ -130,7 +139,7 @@ function createCharacterPages(parent, navBar, stats){
     charPage.appendChild(submitBtn);
 
     //stat tabs offset+
-    character.stat.tabsOffset++;
+    character.misc.tabsOffset++;
 
     //create racial tab?
     var page2tab = document.createElement('div');
@@ -149,7 +158,7 @@ function createCharacterPages(parent, navBar, stats){
     page2tab.onclick = function(){activeElement(charPage2.id, character.html.activeElements, 0);};
 
     //stat tabs offset+
-    character.stat.tabsOffset++;
+    character.misc.tabsOffset++;
 }
 
 //SKILL TREE TABS
@@ -224,8 +233,8 @@ function createSkillTree(abilities, bookmarks, parent, navBar, stat, descBar){
     }
 
     //array of all skill points
-    character.stat.skillPoints[1].push([0, classes]);
-    character.stat.classPoints.push(0); 
+    character.misc.skillPoints[1].push([0, classes]);
+    character.misc.classPoints.push(0); 
 }
 
 //Info: Creates each tier of abilities
@@ -298,7 +307,10 @@ function createAbilitySet(index, abilities, bookmarks, abilitySet, descRoot, sta
         classImg.src = "Assets/MyriadIcons/" + className + ".png";
         classIconDiv.appendChild(classImg);
 
+
         classImg.onclick = function(){activeElement(classInfoId, character.html.activeElements, 1);};
+        //mouse over feature
+        //classImg.addEventListener("mouseover", function(){classImg.click()});
 
         //class passives div parents
         var passives = document.createElement('div');
@@ -354,6 +366,8 @@ function createAbility(index, parent, descRoot, stat, classNum){
     abilityIcon.alt = index[0][1][1];
     abilityIcon.classList.add("abilityIcon");
     abilityIcon.onclick = function(){activeElement(index[0][1][1], character.html.activeElements, 1);};
+    //mouse over feature
+    //abilityIcon.addEventListener("mouseover", function(){abilityIcon.click()});
     parent.appendChild(abilityIcon);
 
     //Create ability description
@@ -473,7 +487,7 @@ function setStatChoice(indexValue, row, parentName){
     rowElement[indexValue].classList.remove('hardLock');
 
     //global variable being set
-    character.stat.statChoices[row] = indexValue;
+    character.misc.statChoices[row] = indexValue;
 }
 
 //Info: Submits user input for character creation and adds styling 
@@ -489,35 +503,35 @@ function submitCharacter(){
     for(var x = 0; x < pages.length; x++){
         pages[x].classList.add('hardLock');
     }
-    for(var x = character.stat.tabsOffset; x < tabs.length; x++){
+    for(var x = character.misc.tabsOffset; x < tabs.length; x++){
         tabs[x].classList.add('hardLock');
     }
 
     //Modify selected tabs and pages
-    for(var x = 0; x < character.stat.statChoices.length; x++)
+    for(var x = 0; x < character.misc.statChoices.length; x++)
     {
         //Removing 'hardLock' 
-        pages[character.stat.statChoices[x]].classList.remove('hardLock');
-        tabs[character.stat.statChoices[x]+character.stat.tabsOffset].classList.remove('hardLock');
+        pages[character.misc.statChoices[x]].classList.remove('hardLock');
+        tabs[character.misc.statChoices[x]+character.misc.tabsOffset].classList.remove('hardLock');
         
         //Setting 'hardLock' on each ability tier
-        var tiers = pages[character.stat.statChoices[x]].querySelectorAll('.tier');
+        var tiers = pages[character.misc.statChoices[x]].querySelectorAll('.tier');
         for(var y = 0; y < tiers.length; y++){
             tiers[y].classList.add('hardLock');
         }
 
         //setting 'hardLock' on each class ability set
-        var classes = pages[character.stat.statChoices[x]].querySelectorAll('.classInfo');
+        var classes = pages[character.misc.statChoices[x]].querySelectorAll('.classInfo');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
 
-        classes = pages[character.stat.statChoices[x]].querySelectorAll('.passiveSkills');
+        classes = pages[character.misc.statChoices[x]].querySelectorAll('.passiveSkills');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
 
-        classes = pages[character.stat.statChoices[x]].querySelectorAll('.classSkills');
+        classes = pages[character.misc.statChoices[x]].querySelectorAll('.classSkills');
         for(var y = 0; y < classes.length; y++){
             classes[y].classList.add('hardLock');
         }
@@ -525,23 +539,45 @@ function submitCharacter(){
 
         //set global stat choice element pages
         var page = document.querySelectorAll('.page');
-        character.html.statChoiceElements.push(page[character.stat.statChoices[x]+character.stat.tabsOffset]);
+        character.html.statChoiceElements.push(page[character.misc.statChoices[x]+character.misc.tabsOffset]);
     }
     generateCharacter(createTab);
 }
 
 function generateCharacter(parent){
-    for(var x = 0; x < character.stat.statChoices.length; x++){
-        character.stat.classPoints[character.stat.statChoices[x]]++;
+    for(var x = 0; x < character.misc.statChoices.length; x++){
+        character.misc.classPoints[character.misc.statChoices[x]]++;
     }
 
     while(parent.firstChild){
         parent.removeChild(parent.lastChild);
     }
-    var level = document.createElement('div');
-    level.textContent = character.stat.charLvl;
-    parent.appendChild(level);
-    character.html.charLvl = level;
+    var charValues = document.createElement('table');
+    var body = document.createElement('tbody');
+    for(var x = 0; x < Object.keys(character.stat).length; x++){
+        var row = document.createElement('tr');
+        for(var y = 0; y < 2; y++){
+            var data = document.createElement('td');
+            if(y == 0){
+                data.innerHTML = Object.keys(character.stat)[x];
+            }
+            else{
+                data.innerHTML = Object.values(character.stat)[x];
+                var firstLetter = Object.keys(character.stat)[x].charAt(0).toUpperCase();
+                var statName = firstLetter + Object.keys(character.stat)[x].slice(1);
+                data.id = "char"+statName;
+            }
+            row.appendChild(data);
+        }
+        body.appendChild(row);
+    }
+    charValues.appendChild(body);
+    parent.appendChild(charValues);
+
+    // var level = document.createElement('div');
+    // level.textContent = character.stat.level;
+    // parent.appendChild(level);
+    // character.html.level = level;
 
     var levelUpBtn = document.createElement('button');
     levelUpBtn.textContent = "LEVEL UP+";
@@ -559,8 +595,8 @@ function loadCharacter(){
     //get tree passives
     var abilityPageDescs = document.querySelectorAll('.abilitydescs .tier0');
 
-    for(var x = 0; x < character.stat.statChoices.length; x++){
-        var passives = abilityPageDescs[character.stat.statChoices[x]].querySelectorAll("* button");
+    for(var x = 0; x < character.misc.statChoices.length; x++){
+        var passives = abilityPageDescs[character.misc.statChoices[x]].querySelectorAll("* button");
         for(var y = 0; y < passives.length; y++){
             passives[y].click();
         }
@@ -611,11 +647,11 @@ function createSkillPage(){
 //index = which class
 //abilitySet = icon parent div
 function selectClass(index,stat){
-    if(character.stat.numOfClasses < 2){
+    if(character.misc.numOfClasses < 2){
         var classes = getClasses(stat);
 
-        character.stat.classChoices[character.stat.numOfClasses][0] = stat;
-        character.stat.classChoices[character.stat.numOfClasses][1] = index;
+        character.misc.classChoices[character.misc.numOfClasses][0] = stat;
+        character.misc.classChoices[character.misc.numOfClasses][1] = index;
         //select classes and passives
         var classImg = classes[index][0][0].querySelector('img');
         classImg.classList.add('selected');
@@ -631,8 +667,8 @@ function selectClass(index,stat){
 
 
         //reduce class points per stat tree
-        character.stat.classPoints[stat]--;
-        if(character.stat.classPoints[stat] == 0){
+        character.misc.classPoints[stat]--;
+        if(character.misc.classPoints[stat] == 0){
             //LockClasses
             for(var x = 0; x < classes.length; x++){
                 var classInfoImg = classes[x][0][0];
@@ -644,9 +680,9 @@ function selectClass(index,stat){
         }
 
         //increment number of classes
-        character.stat.numOfClasses++;
+        character.misc.numOfClasses++;
         //
-        if(character.stat.numOfClasses == 2){
+        if(character.misc.numOfClasses == 2){
             //reset skill points because we messed the skillpoint values
             //when we clicked on passives
             resetSkillPoints();
@@ -703,15 +739,15 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
     //change classNum to classIndex
     var classIndex = classNum - 4;
     //subtract points
-    if(character.stat.charLvl >= 4 && classIndex > -1){
-        character.stat.skillPoints[1][stat][1][classIndex]--;
+    if(character.stat.level >= 4 && classIndex > -1){
+        character.misc.skillPoints[1][stat][1][classIndex]--;
     }
-    character.stat.skillPoints[1][stat][0]--;
-    character.stat.skillPoints[0]--;
+    character.misc.skillPoints[1][stat][0]--;
+    character.misc.skillPoints[0]--;
 
     //lock class
     if(classIndex >= 0){
-        if(character.stat.skillPoints[1][stat][1][classIndex] == 0){
+        if(character.misc.skillPoints[1][stat][1][classIndex] == 0){
         var lockClass = getClass(stat, classIndex);
         lockSet(lockClass[0]);
         lockSet(lockClass[1]);
@@ -721,10 +757,10 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
     
 
     //lock levels and end level up
-    if(character.stat.skillPoints[1][stat][0] == 0){
+    if(character.misc.skillPoints[1][stat][0] == 0){
         //lock stat tree components
         lockLevel(stat);
-        if(character.stat.skillPoints[0] == 0){
+        if(character.misc.skillPoints[0] == 0){
             //unlock level up
             resetSkillPoints();
             levelComplete();
@@ -758,7 +794,7 @@ function selectUpgrade(row, desc){
 
 //lock level can be only one page
 function lockLevel(stat){
-    switch(character.stat.charLvl){
+    switch(character.stat.level){
         case 1:
             var pageTier = getPageTier('.tier1', stat);
             lockSet(pageTier);
@@ -778,9 +814,9 @@ function lockLevel(stat){
             var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
 
-            for(var x = 0; x<character.stat.classChoices.length; x++){
-                if(character.stat.classChoices[x][0] == stat){
-                    var cls = getClass(character.stat.classChoices[x][0], character.stat.classChoices[x][1]);
+            for(var x = 0; x<character.misc.classChoices.length; x++){
+                if(character.misc.classChoices[x][0] == stat){
+                    var cls = getClass(character.misc.classChoices[x][0], character.misc.classChoices[x][1]);
                     lockSet(cls[0]);
                     lockSet(cls[1]);
                     lockSet(cls[2]);
@@ -792,9 +828,9 @@ function lockLevel(stat){
             var pageTier = getPageTier('.tier2', stat);
             lockSet(pageTier);
 
-            for(var x = 0; x<character.stat.classChoices.length; x++){
-                if(character.stat.classChoices[x][0] == stat){
-                    var cls = getClass(character.stat.classChoices[x][0], character.stat.classChoices[x][1]);
+            for(var x = 0; x<character.misc.classChoices.length; x++){
+                if(character.misc.classChoices[x][0] == stat){
+                    var cls = getClass(character.misc.classChoices[x][0], character.misc.classChoices[x][1]);
                     lockSet(cls[0]);
                     lockSet(cls[1]);
                     lockSet(cls[2]);
@@ -805,7 +841,7 @@ function lockLevel(stat){
 }
 
 function getPageTier(tier, stat){
-    var nth = stat+character.stat.tabsOffset;
+    var nth = stat+character.misc.tabsOffset;
     var statPage = document.querySelectorAll('.page')[nth];
 
     var pageTierIcons = statPage.querySelectorAll(tier);
@@ -835,18 +871,18 @@ function levelComplete(){
 //================================
 
 function levelUp(){
-    character.stat.charLvl++;
-    character.html.charLvl.textContent = character.stat.charLvl;
+    updateStat("level", 1);
+    console.log(character.stat.level);
     
-    if(character.stat.charLvl != 5){
+    if(character.stat.level != 5){
         unlockLevel();
         addPoints();
     }
     else{
-        for(var x = 0; x<character.stat.statChoices.length; x++){
-            var classes = getClasses(character.stat.statChoices[x]);
+        for(var x = 0; x<character.misc.statChoices.length; x++){
+            var classes = getClasses(character.misc.statChoices[x]);
             for(var y = 0; y < classes.length; y++){
-                var cls = getClass(character.stat.statChoices[x], y);
+                var cls = getClass(character.misc.statChoices[x], y);
                 unlockSet(cls[0]);
             }
         }
@@ -857,7 +893,8 @@ function levelUp(){
 
 //unlock always unlocks all selected pages
 function unlockLevel(){
-    switch(character.stat.charLvl){
+    console.log(character.stat.level);
+    switch(character.stat.level){
         case 1:
             unlockPageTiers('.tier1');
             break;
@@ -871,8 +908,8 @@ function unlockLevel(){
         default:
             unlockPageTiers('.tier2');
 
-            for(var x = 0; x<character.stat.classChoices.length; x++){
-                var cls = getClass(character.stat.classChoices[x][0], character.stat.classChoices[x][1]);
+            for(var x = 0; x<character.misc.classChoices.length; x++){
+                var cls = getClass(character.misc.classChoices[x][0], character.misc.classChoices[x][1]);
                 unlockSet(cls[0]);
                 unlockSet(cls[1]);
                 unlockSet(cls[2]);
@@ -886,7 +923,7 @@ function unlockPageTiers(selector){
         var tierIcons = character.html.statChoiceElements[x].querySelectorAll(selector);
         
         var pageDescs = document.querySelectorAll('.abilitydescs');
-        var pageDesc = pageDescs[character.stat.statChoices[x]];
+        var pageDesc = pageDescs[character.misc.statChoices[x]];
         var tierDesc = pageDesc.querySelectorAll(selector);
 
         var tierMod = [tierIcons[0]];
@@ -908,10 +945,10 @@ function unlockSet(set){
 //add points is at the end of a level up process
 function addPoints(){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
-        character.stat.skillPoints[1][character.stat.statChoices[x]][0]++;
-        character.stat.skillPoints[0]++;
-        if(character.stat.charLvl >= 5){
-            character.stat.skillPoints[1][character.stat.classChoices[x][0]][1][character.stat.classChoices[x][1]]++;
+        character.misc.skillPoints[1][character.misc.statChoices[x]][0]++;
+        character.misc.skillPoints[0]++;
+        if(character.stat.level >= 5){
+            character.misc.skillPoints[1][character.misc.classChoices[x][0]][1][character.misc.classChoices[x][1]]++;
         }
     }
 }
@@ -953,11 +990,11 @@ function getClasses(stat){
 }
 
 function resetSkillPoints(){
-    character.stat.skillPoints[0] = 0;
-    for(var x = 0; x < character.stat.skillPoints[1].length; x++){
-        character.stat.skillPoints[1][x][0] = 0;
-        for(var y = 0; y < character.stat.skillPoints[1][x][1].length; y++){
-            character.stat.skillPoints[1][x][1][y] = 0;
+    character.misc.skillPoints[0] = 0;
+    for(var x = 0; x < character.misc.skillPoints[1].length; x++){
+        character.misc.skillPoints[1][x][0] = 0;
+        for(var y = 0; y < character.misc.skillPoints[1][x][1].length; y++){
+            character.misc.skillPoints[1][x][1][y] = 0;
         }
     }
 }
@@ -1087,4 +1124,14 @@ function setSkillsActive(button, name){
     for(var x = 0; x < skills.length; x++){
         skills[x].classList.add('skillHighlight');
     }
+}
+
+function updateStat(varName, value){
+    console.log(varName);
+    character.stat[varName] = character.stat[varName] + value;
+    
+    var id = "char"+varName[0].toUpperCase()+varName.slice(1).toLowerCase();
+    console.log(id);
+    var htmlValue = document.getElementById(id);
+    htmlValue.innerHTML = character.stat[varName];
 }
