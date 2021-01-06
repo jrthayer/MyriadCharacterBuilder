@@ -10,14 +10,36 @@ var character = {
     },
     stat:{
         //character level
-        level: 0,
-        health: 30,
-        sanity: 30,
-        focus: 2,
-        load: 3,
-        wealth: 0,
-        accuracy: 0,
-        armor: 0
+        Level: 0,
+        HP: 30,
+        Sanity: 30,
+        Focus: 2,
+        Load: 3,
+        Wealth: 0,
+        Accuracy: 0,
+        Armor: 0,
+        Melee: 0,
+        Light: 0,
+        Blunt: 0,
+        Range: 0,
+        Shields: 0,
+        Attire: 0
+    },
+    passives:{
+        Level: 0,
+        HP: 0,
+        Sanity: 0,
+        Focus: 0,
+        Load: 0,
+        Wealth: 0,
+        Accuracy: 0,
+        Armor: 0,
+        Melee: 0,
+        Light: 0,
+        Blunt: 0,
+        Range: 0,
+        Shields: 0,
+        Attire: 0
     },
     misc:{
         statChoices: [0,0],
@@ -563,9 +585,7 @@ function generateCharacter(parent){
             }
             else{
                 data.innerHTML = Object.values(character.stat)[x];
-                var firstLetter = Object.keys(character.stat)[x].charAt(0).toUpperCase();
-                var statName = firstLetter + Object.keys(character.stat)[x].slice(1);
-                data.id = "char"+statName;
+                data.id = "char"+Object.keys(character.stat)[x];
             }
             row.appendChild(data);
         }
@@ -609,9 +629,6 @@ function createSkillPage(){
     var groupClasses = [[],[]];
     groupClasses[0] = ['All', 'Armor', 'Focus', 'Adrenaline', 'Wealth', 'Accuracy', 'Sanity'];
     groupClasses[1] = ['Attack', 'Move', 'Reaction', 'Free'];
-
-    //testing
-    console.log(groupClasses);
 
     for(var x = 0; x < 2; x++){
         var title = document.createElement('h2');
@@ -739,7 +756,7 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
     //change classNum to classIndex
     var classIndex = classNum - 4;
     //subtract points
-    if(character.stat.level >= 4 && classIndex > -1){
+    if(character.stat.Level >= 4 && classIndex > -1){
         character.misc.skillPoints[1][stat][1][classIndex]--;
     }
     character.misc.skillPoints[1][stat][0]--;
@@ -765,7 +782,11 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
             resetSkillPoints();
             levelComplete();
         }
-    }  
+    }
+
+    //update character stats
+    updateStats();
+
 }
 
 function checkAbilityMax(desc){
@@ -794,7 +815,7 @@ function selectUpgrade(row, desc){
 
 //lock level can be only one page
 function lockLevel(stat){
-    switch(character.stat.level){
+    switch(character.stat.Level){
         case 1:
             var pageTier = getPageTier('.tier1', stat);
             lockSet(pageTier);
@@ -871,10 +892,9 @@ function levelComplete(){
 //================================
 
 function levelUp(){
-    updateStat("level", 1);
-    console.log(character.stat.level);
+    updateStat("Level", 1);
     
-    if(character.stat.level != 5){
+    if(character.stat.Level != 5){
         unlockLevel();
         addPoints();
     }
@@ -893,8 +913,7 @@ function levelUp(){
 
 //unlock always unlocks all selected pages
 function unlockLevel(){
-    console.log(character.stat.level);
-    switch(character.stat.level){
+    switch(character.stat.Level){
         case 1:
             unlockPageTiers('.tier1');
             break;
@@ -947,7 +966,7 @@ function addPoints(){
     for(var x = 0; x < character.html.statChoiceElements.length; x++){
         character.misc.skillPoints[1][character.misc.statChoices[x]][0]++;
         character.misc.skillPoints[0]++;
-        if(character.stat.level >= 5){
+        if(character.stat.Level >= 5){
             character.misc.skillPoints[1][character.misc.classChoices[x][0]][1][character.misc.classChoices[x][1]]++;
         }
     }
@@ -1029,7 +1048,7 @@ function createSkillDouble(icon, desc, stat){
     var adrenaline = copyIcon.classList.contains('skillAdrenaline');
     var parent;
     
-    if(action || adrenaline){  
+    if(action){  
         parent = skillsPage.querySelector('.skillActives');
     }
     else{
@@ -1127,11 +1146,62 @@ function setSkillsActive(button, name){
 }
 
 function updateStat(varName, value){
-    console.log(varName);
     character.stat[varName] = character.stat[varName] + value;
     
-    var id = "char"+varName[0].toUpperCase()+varName.slice(1).toLowerCase();
-    console.log(id);
+    var id = "char"+varName;
     var htmlValue = document.getElementById(id);
     htmlValue.innerHTML = character.stat[varName];
 }
+
+function calcPassives(){
+    for(var x = 0; x < Object.keys(character.passives).length; x++){
+        character.passives[Object.keys(character.passives)[x]] = 0;
+    }
+
+    var passives = document.querySelectorAll('.skillPassives img');
+    for(var x = 0; x < passives.length; x++){
+        var desc = document.getElementById(passives[x].alt);
+        var rows = desc.querySelectorAll('tr:not(.abilityBaseLock):not(.abilityUpgradeLock) td+td pre');
+        
+        for(var y = 0; y < rows.length; y++){
+            for(var z = 0; z < Object.keys(character.stat).length; z++){
+                if(rows[y].textContent.includes(Object.keys(character.stat)[z])){
+                    var key = Object.keys(character.stat)[z];
+                    console.log(Object.keys(character.stat)[z]);
+                    var increment = rows[y].textContent.split('+')[1];
+                    if(increment === undefined){
+                        increment = rows[y].textContent.split('-')[1];
+                        if(increment === undefined){
+                            increment = 1;
+                        }
+                        else{
+                            increment = increment.split(' ')[0];
+                            increment = "-" + increment;
+                        }
+                    }
+                    else{
+                        increment = increment.split(' ')[0];
+                    }
+                    
+                    character.passives[key] = parseInt(character.passives[key]) + parseInt(increment);
+                    console.log(increment);
+                    console.log(character.passives[key]);
+                }
+            }
+        }
+
+    }
+    console.log(passives);
+}
+
+function updateStats(){
+    calcPassives();
+    for(var x = 0; x < Object.keys(character.stat).length; x++){
+        var total = Object.values(character.stat)[x] + Object.values(character.passives)[x];
+        var name = Object.keys(character.stat)[x];
+        var id = "char"+name;
+        var element = document.getElementById(id);
+        element.innerHTML = total;
+    }
+}
+

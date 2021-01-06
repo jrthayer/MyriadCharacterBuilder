@@ -824,7 +824,7 @@ Requires a succesful INT roll whose complexity varies based on the effect you ar
 *Last Chance
 #Info    The first time you would drop to 0 or lower HP in combat,
 instead stop at 1 HP and Gain +2 Adrenaline.
-#Skill+1 +2 more Adrenaline
+#Skill+1 +3 more Adrenaline Gain Tier 3 weapon mastery with Thuribles
 
 *Cure Madness
 #Activate    Perform a Ritual to attempt to clear someone's mind
@@ -1470,7 +1470,7 @@ STR is added to weapon damage 1 more time
 #Info    You can use Melee weapons of +1 weapon Tier
 #Skill+1 You can use Melee weapons of +1 weapon Tier
 
-*Accuracy
+*Accuracy STR
 #Info    +6 Accuracy
 #Skill+1 +6 Accuracy
 #Skill+2 +6 Accuracy
@@ -1491,7 +1491,7 @@ instead gain Pure Heart.
 
 This does not work if you are immune to recieving these status effects.
 
-*Shield Arsenal
+*Shield Arsenal STR
 #Info    You can use Shields of +1 Tier
 #Skill+1 You can use Shields of +1 Tier
 
@@ -1838,7 +1838,7 @@ but not recieved
 
 Vigilant gains +2 Accuracy per Tier
 
-*Vitality
+*Primal Vitality
 #Info    +2 HP
 #Skill+1 +4 HP
 
