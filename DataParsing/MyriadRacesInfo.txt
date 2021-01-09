@@ -1,0 +1,205 @@
+=Human
+#Info    +1 Load
+#Passive    +1 skill point at level 1.
+This skill point may immediately be placed in 1 class that you will take later.
+You do not gain the initial passively earned skills of that class until you unlock it normally.
+#Stats  +3 Any
++2 Any
++1 Any
+
+*Literacy
+#Info   Through hard work and dedication you have learned how to read. This allows you to use 'Ritual' abilities. And read.
+
+*Load
+#Info    +1 Load
+
+=Twin Souls
+#Info   Twin Souls are two human character tokens controlled by 1 player.
+
+--Dependancy--
+These characters are dependant on eachother and suffer +1 Complexity to
+do any task while their other Twin Soul is not adjacent to them.
+
+If they have access to a way to auto-succeed a roll,
+they must be adjacent for this ability to work.
+
+They also attack twice with weapons and use the worse result  when suffering from Dependancy.
+
+
+Even when seperated, 
+Twin Souls share a psychic bond and share all information and senses.
+If seperated for long extended periods of time they gain Madnesses over time.
+#Passive    +1 skill point at level 1.
+This skill point may immediately be placed in 1 class that you will take later.
+You do not gain the initial passively earned skills of that class until you unlock it normally.
+#Passive2    Twin Souls share Health total, Adrenaline pool, Focus pool, and act simultaneously on Initiative.
+Twin Souls share all skills learned through leveling up.
+
+Twin Souls may only use their actions to cast 1 spell per round between the both of them.
+
+Twin Souls actions are indpendant of eachother, with the exception of Steps.
+When one Soul steps, the Twin does the same step in the same direction.
+
+Effects gained from Adrenaline spent only applies to 1 of the two Souls,
+unless it is a Step action.
+
+You must purchase seperate wearable equipment for each Soul,
+but consumeable items and load is always shared.
+#Passive3  +8 Max HP
+#Stats  +3 Any
++2 Any
++1 Any
+-1 Any
+
+*The Space Between Us
+#Info   Your Twin Souls may be up to 1 Tile apart without suffering from Dependancy
+#Skill+1 Your Twin Souls may be up to 2 Tiles apart without suffering from Dependancy.
+Select 1 Buff. This buff will apply to both Twin Souls whenever 1 of them have it.
+#Skill+2    Your Twin Souls may be up to 3 Tiles apart without suffering from Dependancy
+#Skill+3    Your Twin Souls may be up to 6 Tiles apart without suffering from Dependancy
+
+*Absence
+#Info   If your Twin Souls begin their turn far enough away from eachother
+that they are suffering from Dependacy,
+both souls gain +3 Move this turn.
+This movement may only be used when moving toward the other Soul.
+#Skill+1 This movement may be used to move anywhere.
+
+=Troll
+#Info   -1 Focus
+-10 Accuracy
+Size LARGE w/ Reach
+(Large suffers +1 Complexity for all DEX rolls)
+5 Move
+
+
+Any Step action costs +1 Adrenaline
+(Default step usually costs 0)
+#Passive    Automatically succeed at Tier 1 Strength checks
+
+As a free action,
+For 1 Adrenaline,
+When you succesfully Shove a target this turn,
+shove them 1d4+1 distance instead of 1 tile.
+
+Trolls always gain +1 Splat Damage
+#Passive 2  Can not select INT class choices
+
+No matter what your class selections are,
+your Signature Abilities are always selected from the STR path
+
+Weapons and Attire must be made special for your size,
+which will increase the cost of them.
+
+You can not use 'Light' weapons.
+#Passive 3  +8 Max HP
+#Stats +5 STR 
++1 ANY 
+-2 INT
+
+*True to Self
+#Info   You are either too pure or too stupid.
+You have +1 Resistance to any mind effecting abilities.
+
+*Titan Grip
+#Info   You may use two-handed weapons with one hand,
+but suffer -10 accuracy when wielding them this way.
+
+You may use Troll-Sized two handed weapons
+#Skill+1    +1 flat damage to all weapon attacks
+
+*Ground Slam
+#Info   Make a single Trip attempt against all targets within your natural Threatened area.
+This is not extended by holding a weapon with Reach.
+#Adrenaline 3
+#Skill+1    All succesfully Tripped targets take 1d8 Splat Damage
+
+=Serpent
+#Info   5 Tile Move
+Size SMALL
+-5 HP
+-2 Load
+
+Serpent's have a Bite attack that deals 2d2 damage.
+This qualifies as an Unarmed Attack for all purposes.
+
+Serpent's can not be knocked Prone.
+Serpents are Immune to an Eclipse.
+#Passive    A Serpent can not speak, but may have a psychic understanding with an owner.
+A player Serpent considers their entire party their 'Maseter'. 
+
+Can not use most items, weapons, or armor.
+#Stats +3 Any
++2 Any
+
+*Defender
+#Info   A Serpent can attach to a Master and move as they do.
+While attached to a Master, Gain +1 Reach.
+The Master and Serpent gain Resilience 1.
+The Master is in control of all Movement.
+
+A Master can not have multiple attached serpents at one time.
+
+A Serpent can not Grapple targets while attatched to a Master.
+If you initiate a Grapple you immediately detatch from your Master.
+
+If a Serpent is Large size and it's Master is smaller than it,
+The Serpent becomes the one who dictates movement for the Master.
+This makes the Master immune to being knocked Prone.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+#Skill+1    You grant yourself and your Master half-cover as if you were his shield while attatched.
+#Skill+2    You may spend 1 Adrenaline to take damage your Master would have taken while you are attatched.
+This does not cost an action.
+#Skill+3    You may make an Attack of Opportunity on any target a Maser you are attatched to Critically Hits
+#Skill+4    You may take any Sanity damage that your Master you are attatched to would recieve.
+#Skill+5    You and your Master decide who takes single target damage or effects when it
+is directed at either of you while you are attatched.
+
+*Maturity
+#Info   Gain a Heightened sense of Smell.
+You can also smell the concept of Guilt.
+You do not get to know what the guilt pertains to.
+
+You can hold your breath for 1 hour and do not lose movement speed in Water.
+Requires    May only be selected ONCE on Non-Consecutive level ups
+#Skill+1 Become size Medium.
++5 HP.
+You gain 1 Move.
+You can perform Grapples without provoking.
+
+Once per day,
+When your attack hits,
+You may have your Bite become Venom Bite;
+The total damage from your bite applies as Poison.
+#Skill+2 Gain 1 Armor
+
+On a succesful DEX roll,
+Your Venom Bite stuns the target it hits for 1 round.
+#Skill+3 Your bite becomes 2d3 damage.
+
+Gain +1 daily use of Venom Bite.
+
+You automatically succeed at climbing of any surface that is not a completely flat wall.
+You do not use extra movement to climb.
+#Skill+4 You are immune to Stun
++4 Max HP
+#Skill+5 Your armor applies to one additional damage type of your choice.
++1 Armor
+
+Once per day,
+With a Succesful MAD roll,
+Determine what a target feels Guilty about.
+#Skill+6 Grow to size Large.
+Gain +1 Armor
++4 Max HP
+Gain +2 Move
+Gain +4 Max Sanity
+Your Bite now deals 2d4+1 damage.
+#Skill+7 +1 to all Stats
+This can not increase a stat above +5
+
+*Scales
+#Info-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
+#Skill+1 When you use your Bite attack against a target your size or smaller,
+Gain Half-Cover against all of their attacks until your next turn.
+#Skill+2 Your scales reflect light in the darkness.
+You may replicate a Light effect carried by 1 ally.
