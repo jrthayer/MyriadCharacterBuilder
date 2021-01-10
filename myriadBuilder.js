@@ -1128,7 +1128,7 @@ function getClass(stat, classNum){
     var icons = document.querySelectorAll('.abilityIcons');
     var descs = document.querySelectorAll('.abilitydescs');
     var iconPage = icons[stat];
-    var descsPage = descs[stat];
+    var descsPage = descs[stat+1];
     var classIcons = iconPage.querySelectorAll('.classDiv');
     var classDescs = descsPage.querySelectorAll('.classDiv');
     var classInfoIcon = iconPage.querySelectorAll('.classDiv .classInfo');
