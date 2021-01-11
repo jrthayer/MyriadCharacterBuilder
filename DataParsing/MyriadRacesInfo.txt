@@ -45,7 +45,7 @@ unless it is a Step action.
 
 You must purchase seperate wearable equipment for each Soul,
 but consumeable items and load is always shared.
-#Passive3  +8 Max HP
+#Passive3  Max HP +8
 #Stats  +3 Any
 +2 Any
 +1 Any
@@ -92,7 +92,7 @@ Weapons and Attire must be made special for your size,
 which will increase the cost of them.
 
 You can not use 'Light' weapons.
-#Passive 3  +8 Max HP
+#Passive 3  Max HP +8
 #Stats +5 STR 
 +1 ANY 
 -2 INT
@@ -111,6 +111,7 @@ You may use Troll-Sized two handed weapons
 *Ground Slam
 #Info   Make a single Trip attempt against all targets within your natural Threatened area.
 This is not extended by holding a weapon with Reach.
+#Action Attack
 #Adrenaline 3
 #Skill+1    All succesfully Tripped targets take 1d8 Splat Damage
 
@@ -181,7 +182,7 @@ Gain +1 daily use of Venom Bite.
 You automatically succeed at climbing of any surface that is not a completely flat wall.
 You do not use extra movement to climb.
 #Skill+4 You are immune to Stun
-+4 Max HP
+Max HP +4
 #Skill+5 Your armor applies to one additional damage type of your choice.
 +1 Armor
 
@@ -190,9 +191,9 @@ With a Succesful MAD roll,
 Determine what a target feels Guilty about.
 #Skill+6 Grow to size Large.
 Gain +1 Armor
-+4 Max HP
+Max HP +4
 Gain +2 Move
-Gain +4 Max Sanity
+Gain Max Sanity +4
 Your Bite now deals 2d4+1 damage.
 #Skill+7 +1 to all Stats
 This can not increase a stat above +5

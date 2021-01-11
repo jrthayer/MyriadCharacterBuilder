@@ -19,7 +19,7 @@ var character = {
         Light: 0,
         Blunt: 0,
         Range: 0,
-        Shields: 0,
+        Shield: 0,
         Attire: 0
     },
     passives:{
@@ -36,7 +36,7 @@ var character = {
         Light: 0,
         Blunt: 0,
         Range: 0,
-        Shields: 0,
+        Shield: 0,
         Attire: 0
     },
     misc:{
@@ -1316,22 +1316,41 @@ function calcPassives(){
             for(var z = 0; z < Object.keys(character.stat).length; z++){
                 if(rows[y].textContent.includes(Object.keys(character.stat)[z])){
                     var key = Object.keys(character.stat)[z];
-                    var increment = rows[y].textContent.split('+')[1];
-                    if(increment === undefined){
-                        increment = rows[y].textContent.split('-')[1];
+                    var matches = rows[y].textContent.split(Object.keys(character.stat)[z]).filter(function(el) {return el.length != 0});
+                    matches.pop();
+                    var valueFound = false;
+                    console.log("I got here");
+                    console.log(matches);
+                    for(var a = 0; a < matches.length; a++){
+                        if(valueFound == true){
+                            break;
+                        }
+                        var words = matches[a].split(' ').filter(function(el) {return el.length != 0});
+                        console.log(words);
+                        console.log(words[words.length-1]);
+                        let adjacentWord = words[0];
+                        console.log("adjWord"+adjacentWord);
+                        console.log(key);
+                        var increment = adjacentWord.split('+')[1];
+
                         if(increment === undefined){
-                            increment = 1;
+                            increment = adjacentWord.split('-')[1];
+                            
+                            if(increment === undefined){
+                                increment = 0;
+                            }
+                            else{
+                                increment = increment.split(' ')[0];
+                                increment = "-" + increment;
+                                valueFound = true;
+                            }
                         }
                         else{
-                            increment = increment.split(' ')[0];
-                            increment = "-" + increment;
+                            valueFound = true;
                         }
+                        
+                        character.passives[key] = parseInt(character.passives[key]) + parseInt(increment);
                     }
-                    else{
-                        increment = increment.split(' ')[0];
-                    }
-                    
-                    character.passives[key] = parseInt(character.passives[key]) + parseInt(increment);
                 }
             }
         }
