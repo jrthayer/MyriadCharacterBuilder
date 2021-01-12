@@ -10,7 +10,7 @@ var character = {
         HP: 30,
         Sanity: 30,
         MadnessResist: 0,
-        Focus: 2,
+        Focus: 0,
         Load: 3,
         Wealth: 0,
         Accuracy: 0,
@@ -46,7 +46,8 @@ var character = {
         skillPoints: [0, []],
         classPoints: [],
         numOfClasses: 0,
-        statValues: [0,0,0,0]
+        statValues: [0,0,0,0],
+        raceIndex: -1
     },
     html:{
         level: 'none',
@@ -55,7 +56,10 @@ var character = {
         activeElements: ["none","none"],
         //skill tree index variables
         statChoiceElements: [],
-        levelBtn: 'none'
+        levelBtn: 'none',
+        raceDescDiv: 'none',
+        raceIconsDiv: 'none',
+        raceSet: ['none', 'none']
     }
 }
 
@@ -127,6 +131,9 @@ function createWebsite(abilityArray, raceFile){
     for(x = 0; x < bookmarks.length; x++){
         createSkillTree(abilities, bookmarks[x], parent, navBar, x, descBar);
     }
+
+    var firstTab = navBar.querySelector('.tab');
+    firstTab.click();
 }
 
 //CHARACTER TABS
@@ -154,12 +161,26 @@ function createCharacterPages(parent, navBar, stats, raceFile, descBar){
     navBar.appendChild(togglePage);
     parent.appendChild(charPage);
 
+    var racialProfile = document.createElement('div');
+    racialProfile.id = "racialProfile";
+    charPage.appendChild(racialProfile);
+
     var racialSelection = document.createElement('img');
     racialSelection.src = 'Assets/MyriadIcons/Sanity.png';
     racialSelection.style.filter = "grayscale(100%)";
     racialSelection.id = 'raceImg';
     racialSelection.onclick = function(){page2tab.click();};
-    charPage.appendChild(racialSelection);
+    racialProfile.appendChild(racialSelection);
+
+    var racialStats = document.createElement('div');
+    racialStats.id = "racialStats";
+    racialStats.classList.add("abilityDesc", 'active');
+    racialProfile.appendChild(racialStats);
+
+    var racialAbilityBar = document.createElement('div');
+    racialAbilityBar.id = "racialAbilityBar";
+    charPage.appendChild(racialAbilityBar);
+    racialAbilityBar.classList.add('hardLock', 'tier');
 
     var statPointsBar = document.createElement('div');
     statPointsBar.classList.add('statPointsBar');
@@ -167,40 +188,6 @@ function createCharacterPages(parent, navBar, stats, raceFile, descBar){
     var choiceTitle = document.createElement('h2');
     choiceTitle.innerHTML = "Stat Points";
     statPointsBar.appendChild(choiceTitle);
-
-    var statValueBar = document.createElement('div');
-    statValueBar.classList.add('statValueBar');
-
-    var rowImgs = document.createElement('div');
-    rowImgs.classList.add('statValueRef');
-
-    for(let y = 0; y < stats.length; y++){
-        var stat = document.createElement('img');
-        // stat.classList.add('statValue');
-        stat.src = "Assets/MyriadIcons/" + stats[y] + '.png';
-        rowImgs.appendChild(stat);
-    }
-    statValueBar.appendChild(rowImgs);
-
-    for(let x = 0; x < stats.length; x++){
-        var stat = document.createElement('div');
-        stat.classList.add('statValue');
-        var addBtn = document.createElement('button');
-        addBtn.innerHTML = "+";
-        addBtn.onclick = function(){addStat(x, statNum);};
-        let statNum = document.createElement('div');
-        statNum.innerHTML = character.misc.statValues[x];
-        var subBtn = document.createElement('button');
-        subBtn.innerHTML = "-";
-        subBtn.onclick = function(){subStat(x, statNum);};
-        stat.appendChild(addBtn);
-        stat.appendChild(statNum);
-        stat.appendChild(subBtn);
-        statValueBar.appendChild(stat);
-    }
-    statPointsBar.appendChild(statValueBar);
-
-    charPage.appendChild(statPointsBar);
 
     var choiceBar = document.createElement('div');
     choiceBar.classList.add('statsChoiceBar');
@@ -259,14 +246,26 @@ function createCharacterPages(parent, navBar, stats, raceFile, descBar){
     for(let x = 0; x < raceFile.length; x++){
         var raceDiv = document.createElement('div');
         raceDiv.classList.add('raceDiv');
+
+        var raceDescDiv = document.createElement('div');
+        raceDescDiv.classList.add('raceDesc');
+        descs.appendChild(raceDescDiv);
         for(var y = 0; y<raceFile[x].length; y++){
-            createAbility(raceFile[x][y], raceDiv, descs, -1, -1);
+            createAbility(raceFile[x][y], raceDiv, raceDescDiv, -1, -1);
             if(y == 0){
-                var raceDesc = descBar.querySelector('.abilitydescs .abilityDesc:last-child');
+                var raceDesc = descBar.querySelector('.abilitydescs');
+                raceDesc = raceDesc.querySelectorAll('.raceDesc');
+                raceDesc = raceDesc[x].querySelector('.abilityDesc'); 
+
                 var raceBtn = raceDesc.querySelector('button');
+                raceBtn.style.display = 'none';
                 raceBtn.classList.remove('abilityBaseLock', 'noClick');
-                raceBtn.onclick = function(){selectRace(raceFile, x, submitBtn);};
-                raceBtn.innerHTML = "SELECT RACE";
+                let raceStats = raceDesc.querySelector('table tr:last-child').cloneNode(true);
+                raceStats.classList.remove('abilityBaseLock');
+                var raceSelectionBtn = document.createElement('button');
+                raceSelectionBtn.innerHTML = "SELECT RACE";
+                raceSelectionBtn.onclick = function(){selectRace(raceFile, x, submitBtn, raceStats);};
+                raceDesc.insertBefore(raceSelectionBtn, raceBtn);
             }
         }
         charPage2.appendChild(raceDiv);
@@ -570,8 +569,8 @@ function createAbility(index, parent, descRoot, stat, classNum){
 function activeElement(id, curActive, index){
     if(curActive[index] != "none"){
         if(id == curActive[index]){
-            toggleActive(id);
-            curActive[index] = "none";
+            // toggleActive(id);
+            // curActive[index] = "none";
         }
         else{
             toggleActive(curActive[index]);
@@ -601,14 +600,37 @@ function toggleActive(id){
 //CHARACTER MODIFICATION
 //================================
 
-function selectRace(raceFile, raceIndex, submitBtn){
+function selectRace(raceFile, raceIndex, submitBtn, raceStats){
+    character.misc.raceIndex = raceIndex;
     var raceImg = document.getElementById('raceImg');
+    var raceStatPanel = document.getElementById('racialStats');
     var characterTab = document.querySelector('#navBar .tab');
+    var racialAbilityBar = document.querySelector('#racialAbilityBar');
     submitBtn.classList.remove("noClick", "abilityBaseLock");
     characterTab.click();
-    
-    raceImg.src = "Assets/MyriadIcons/"+raceFile[raceIndex][0][0][1][1]+".png";
 
+    //empty racial ability bar
+    while(racialAbilityBar.firstChild){
+        racialAbilityBar.removeChild(racialAbilityBar.firstChild);
+    }
+
+    var raceIcons = document.querySelectorAll(".raceDiv");
+
+    var curRaceIcons = raceIcons[raceIndex];
+    console.log(curRaceIcons);
+    curRaceIcons = curRaceIcons.querySelectorAll('img');
+    console.log(curRaceIcons);
+
+    for(let x = 0; x < curRaceIcons.length; x++){
+        var copyIcon = curRaceIcons[x].cloneNode();
+        copyIcon.onclick = function(){clickOriginal(curRaceIcons[x]);};
+        racialAbilityBar.appendChild(copyIcon);
+    }
+
+    raceImg.src = "Assets/MyriadIcons/"+raceFile[raceIndex][0][0][1][1]+".png";
+    var statTable = document.createElement('table');
+    statTable.appendChild(raceStats);
+    raceStatPanel.appendChild(raceStats);
 }
 
 //Info: 
@@ -684,8 +706,11 @@ function submitCharacter(){
 }
 
 function generateCharacter(parent, parent2){
-    var raceImg = document.getElementById('raceImg');
-    raceImg.onclick = null;
+    var racialProfile = document.getElementById('racialProfile');
+    var racialAbilityBar = document.getElementById('racialAbilityBar');
+    var racialImg = racialProfile.querySelector('img');
+    racialImg.style.removeProperty('filter');
+    
 
     for(var x = 0; x < character.misc.statChoices.length; x++){
         character.misc.classPoints[character.misc.statChoices[x]]++;
@@ -699,8 +724,46 @@ function generateCharacter(parent, parent2){
         parent2.removeChild(parent2.lastChild);
     }
 
-    parent.appendChild(raceImg);
+    parent.appendChild(racialProfile);
+    parent.appendChild(racialAbilityBar);
 
+    
+
+    //stats Bar
+    var stats = ['DEX', 'INT', 'STR', 'MAD'];
+    var statValueBar = document.createElement('div');
+    statValueBar.classList.add('statValueBar');
+
+    var rowImgs = document.createElement('div');
+    rowImgs.classList.add('statValueRef');
+
+    for(let y = 0; y < stats.length; y++){
+        var stat = document.createElement('img');
+        // stat.classList.add('statValue');
+        stat.src = "Assets/MyriadIcons/" + stats[y] + '.png';
+        rowImgs.appendChild(stat);
+    }
+    statValueBar.appendChild(rowImgs);
+
+    for(let x = 0; x < stats.length; x++){
+        var stat = document.createElement('div');
+        stat.classList.add('statValue');
+        var addBtn = document.createElement('button');
+        addBtn.innerHTML = "+";
+        addBtn.onclick = function(){addStat(x, statNum);};
+        let statNum = document.createElement('div');
+        statNum.innerHTML = character.misc.statValues[x];
+        var subBtn = document.createElement('button');
+        subBtn.innerHTML = "-";
+        subBtn.onclick = function(){subStat(x, statNum);};
+        stat.appendChild(addBtn);
+        stat.appendChild(statNum);
+        stat.appendChild(subBtn);
+        statValueBar.appendChild(stat);
+    }
+    parent.appendChild(statValueBar);
+
+    calcStatBar();
     var charValues = document.createElement('table');
     var body = document.createElement('tbody');
     for(var x = 0; x < Object.keys(character.stat).length; x++){
@@ -721,11 +784,6 @@ function generateCharacter(parent, parent2){
     charValues.appendChild(body);
     parent.appendChild(charValues);
 
-    // var level = document.createElement('div');
-    // level.textContent = character.stat.level;
-    // parent.appendChild(level);
-    // character.html.level = level;
-
     var levelUpBtn = document.createElement('button');
     levelUpBtn.textContent = "LEVEL UP+";
     levelUpBtn.onclick = function(){levelUp();};
@@ -741,27 +799,29 @@ function generateCharacter(parent, parent2){
 
 function loadCharacter(){
     //get tree passives
+    let race = document.querySelector('.abilitydescs');
+    race = race.querySelectorAll('.raceDesc');
+    race = race[character.misc.raceIndex];
+    character.html.raceDescDiv = race;
+    character.html.raceIconsDiv = document.getElementById('racialAbilityBar');
+    character.html.raceSet[0] = character.html.raceIconsDiv;
+    character.html.raceSet[1] = character.html.raceDescDiv;
+    console.log(character.html.raceSet);
+    var raceInfo = race.querySelector('.abilityDesc');
+    var raceBtn = raceInfo.querySelector('button');
+    raceBtn.remove();
+    raceBtn = race.querySelector('button');
+    raceBtn.click();
+    raceBtn.style.display = "block";
+    raceBtn.style.visibility = "hidden";
+    console.log(race);
+
     var abilityPageDescs = document.querySelectorAll('.abilitydescs .tier0');
 
     for(var x = 0; x < character.misc.statChoices.length; x++){
         var passives = abilityPageDescs[character.misc.statChoices[x]].querySelectorAll("* button");
         for(var y = 0; y < passives.length; y++){
             passives[y].click();
-        }
-    }
-    for(var x = 0; x < character.misc.statValues.length; x++){
-        if(x == 0){
-            var add = parseInt(character.misc.statValues[x]) * 3;
-            character.stat.Accuracy = parseInt(character.stat.Accuracy) + parseInt(add);
-        }
-        else if(x == 1){
-            character.stat.Focus = character.stat.Focus + character.misc.statValues[x]*1;
-        }
-        else if(x == 3){
-            character.stat.MadnessResist = character.stat.MadnessResist + character.misc.statValues[x]*1;
-        }
-        else{
-            //str or negative
         }
     }
 
@@ -849,6 +909,7 @@ function selectClass(index,stat){
             resetSkillPoints();
             addPoints();
             unlockLevel();
+            unlockSet(character.html.raceSet);
         }
     }
     else{
@@ -903,7 +964,10 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
     if(character.stat.Level >= 4 && classIndex > -1){
         character.misc.skillPoints[1][stat][1][classIndex]--;
     }
-    character.misc.skillPoints[1][stat][0]--;
+    if(stat != -1){
+        character.misc.skillPoints[1][stat][0]--;
+    }
+    
     character.misc.skillPoints[0]--;
 
     //lock class
@@ -916,19 +980,34 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
         }
     }
     
+    console.log(stat);
+    console.log(character.misc.skillPoints[0]);
 
-    //lock levels and end level up
-    if(character.misc.skillPoints[1][stat][0] == 0){
-        //lock stat tree components
-        lockLevel(stat);
+    if(stat == -1){
         if(character.misc.skillPoints[0] == 0){
-            //unlock level up
+            lockLevel(character.misc.statChoices[0]);
+            lockLevel(character.misc.statChoices[1]);
             resetSkillPoints();
             levelComplete();
         }
     }
+    else{
+        //lock levels and end level up
+        if(character.misc.skillPoints[1][stat][0] == 0){
+            //lock stat tree components
+            lockLevel(stat);
+            if(character.misc.skillPoints[0] == 0){
+                //unlock level up
+                resetSkillPoints();
+                levelComplete();
+            }
+        }
+    }
+
+    
 
     //update character stats
+    calcPassives();
     updateStats();
 
 }
@@ -959,6 +1038,7 @@ function selectUpgrade(row, desc){
 
 //lock level can be only one page
 function lockLevel(stat){
+    lockSet(character.html.raceSet);
     switch(character.stat.Level){
         case 1:
             var pageTier = getPageTier('.tier1', stat);
@@ -1063,12 +1143,14 @@ function unlockLevel(){
             break;
         case 2:
         case 3:
+            unlockSet(character.html.raceSet);
             unlockPageTiers('.tier2');
             break;
         case 4:
             unlockPageTiers('.tier3');
             break;
         default:
+            unlockSet(character.html.raceSet);
             unlockPageTiers('.tier2');
 
             for(var x = 0; x<character.misc.classChoices.length; x++){
@@ -1313,18 +1395,6 @@ function calcPassives(){
                 var matchIndex = rows[y].textContent.indexOf(key);
                 if(matchIndex != -1){
                     var modifier = rows[y].textContent.substring(matchIndex-4, matchIndex-1);
-                    // var matches = rows[y].textContent.split(Object.keys(character.stat)[z]);
-                    // matches.pop();
-                    
-                    // console.log("I got here");
-                    // console.log(matches);
-                    
-                    // var words = matches[0].split(' ').filter(function(el) {return el.length != 0});
-                    // console.log(words);
-                    // console.log(words[words.length-1]);
-                    // let adjacentWord = words[0];
-                    // console.log("adjWord"+adjacentWord);
-                    // console.log(key);
                     var increment = modifier.split('+')[1];
 
                     if(increment === undefined){
@@ -1334,21 +1404,35 @@ function calcPassives(){
                             increment = 0;
                         }
                         else{
-                            // increment = increment.split(' ')[0];
                             increment = "-" + increment;
                         }
                     }
                     
                     character.passives[key] = parseInt(character.passives[key]) + parseInt(increment);
-                
                 }
             }
+        }
+    }    
+}
+
+function calcStatBar(){
+    for(var x = 0; x < character.misc.statValues.length; x++){
+        if(x == 0){
+            character.stat.Accuracy = character.misc.statValues[x] * 3;
+        }
+        else if(x == 1){
+            character.stat.Focus = character.misc.statValues[x]*1+2;
+        }
+        else if(x == 3){
+            character.stat.MadnessResist = character.misc.statValues[x]*1;
+        }
+        else{
+            //str or negative
         }
     }
 }
 
 function updateStats(){
-    calcPassives();
     for(var x = 0; x < Object.keys(character.stat).length; x++){
         var total = Object.values(character.stat)[x] + Object.values(character.passives)[x];
         var name = Object.keys(character.stat)[x];
@@ -1361,10 +1445,14 @@ function updateStats(){
 function addStat(index, statDisplay){
     character.misc.statValues[index] += 1;
     statDisplay.innerHTML = character.misc.statValues[index];
+    calcStatBar();
+    updateStats();
 }
 
 function subStat(index, statDisplay){
     character.misc.statValues[index]--;
     statDisplay.innerHTML = character.misc.statValues[index];
+    calcStatBar();
+    updateStats();
 }
 

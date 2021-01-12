@@ -29,10 +29,7 @@ They also attack twice with weapons and use the worse result  when suffering fro
 Even when seperated, 
 Twin Souls share a psychic bond and share all information and senses.
 If seperated for long extended periods of time they gain Madnesses over time.
-#Passive    +1 skill point at level 1.
-This skill point may immediately be placed in 1 class that you will take later.
-You do not gain the initial passively earned skills of that class until you unlock it normally.
-#Passive2    Twin Souls share Health total, Adrenaline pool, Focus pool, and act simultaneously on Initiative.
+#Passive    Twin Souls share Health total, Adrenaline pool, Focus pool, and act simultaneously on Initiative.
 Twin Souls share all skills learned through leveling up.
 
 Twin Souls may only use their actions to cast 1 spell per round between the both of them.
@@ -45,7 +42,7 @@ unless it is a Step action.
 
 You must purchase seperate wearable equipment for each Soul,
 but consumeable items and load is always shared.
-#Passive3  Max HP +8
+#Passive2 +8 HP
 #Stats  +3 Any
 +2 Any
 +1 Any
@@ -83,7 +80,7 @@ When you succesfully Shove a target this turn,
 shove them 1d4+1 distance instead of 1 tile.
 
 Trolls always gain +1 Splat Damage
-#Passive 2  Can not select INT class choices
+#Passive2  Can not select INT class choices
 
 No matter what your class selections are,
 your Signature Abilities are always selected from the STR path
@@ -92,7 +89,7 @@ Weapons and Attire must be made special for your size,
 which will increase the cost of them.
 
 You can not use 'Light' weapons.
-#Passive 3  Max HP +8
+#Passive3  +8 HP 
 #Stats +5 STR 
 +1 ANY 
 -2 INT
@@ -171,7 +168,7 @@ Once per day,
 When your attack hits,
 You may have your Bite become Venom Bite;
 The total damage from your bite applies as Poison.
-#Skill+2 Gain 1 Armor
+#Skill+2 Gain +1 Armor
 
 On a succesful DEX roll,
 Your Venom Bite stuns the target it hits for 1 round.
