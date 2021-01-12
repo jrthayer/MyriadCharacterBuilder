@@ -462,7 +462,7 @@ it's damage is dealt as Piercing.
 #Skill+1 -3 Sanity Cost
 
 *Sustained
-#Info    -5 Sanity lost when falling in Combat
+#Info    Sanity lost when falling in Combat is reduced by 5
 #Skill+1 Do not lose any Adrenaline when you fall in battle.
 
 *Incite Madness
@@ -541,7 +541,7 @@ Frenzy ends whenever the target does not recieve damage before their next turn.
 #Info    You may make Melee Attacks against a target with 'Blight' that is up to 4 Range away from you.
 This does not increase your threat range or apply to reactions.
 #Range   4
-#Sanity  Max Sanity -8
+#Sanity  -8 Sanity Max 
 #Skill+1 +4 Range
 #Skill+2 Psychic Swings count as Ranged Weapon attacks for all abilities that require them.
 
@@ -728,7 +728,7 @@ which may include the direction they went.
 It regains any one time attack statuses that expired.
 
 You always take the re-rolled result.
-#Focus   Max Focus -1
+#Focus   -1 Focus Max
 
 *Magic Reflect
 #Info    Target yourself.
@@ -1376,7 +1376,7 @@ While inside your body a Homonculus can not recieve damage.
 
 Gain +4 maximum hit points-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
 #Requires    Familiar
-#Sanity  Max Sanity -5
+#Sanity  -5 Sanity Max
 #Skill+1 The Homonculus allows you to breathe underwater while it is in your body.
 #Skill+2 Your Armor value reduces Poison damage while a Homonculus is in your body
 #Skill+3 Your Homonculus grants you +15 accuracy while it is alive
@@ -1553,7 +1553,7 @@ You may end your Vicious state freely at any time.
 #Action  Free Action
 #Adrenaline  1
 #Duration    Until Combat ends or it is Dismissed
-#Skill+1 +6 Max HP
+#Skill+1 +6 HP Max 
 
 *Impenetrable
 #Info    Gain 'Resilient' status equal to the amount of adrenaline spent until your next turn.
@@ -2146,8 +2146,8 @@ MAD
 =====================
 
 *Sanity
-#Info    Max Sanity +4
-#Skill+1 Max Sanity +4
+#Info  +4 Sanity Max
+#Skill+1 +4 Sanity Max
 
 *[Tier1]
 
@@ -2161,8 +2161,8 @@ This also applies additional Poison with magic.
 #Skill+1 +1 Magic Damage
 
 *Resistance and Recovery
-#Info    +1 Sanity Resistance, +2 Bonus Sanity Restored
-#Skill+1 +1 Sanity Resistance, +2 Bonus Sanity Restored
+#Info    +1 MadnessResist, +2 Bonus Sanity Restored
+#Skill+1 +1 MadnessResist, +2 Bonus Sanity Restored
 
 *[Tier2]
 
@@ -2179,8 +2179,8 @@ You may hit the object from any angle, but only 1 time per cast.
 #Skill+1 +4 Range
 
 *Sanity+
-#Info    Max Sanity +3
-#Skill+1 Max Sanity +3
+#Info    +3 Sanity Max
+#Skill+1 +3 Sanity Max
 
 *Tome Mastery
 #Info    A Tome is a book in which an Occultist has found particular affinity in to create magical effects.
@@ -2514,7 +2514,7 @@ It is considered Flying-----!!! You may Learn the Upgrades to this Skill in any 
 #Action  Full-Action
 #Sanity  16
 or
-12 if you recieve -8 Max HP
+12 if you recieve -8 HP Max
 Duration    5 minutes or once combat has ended
 #Skill+1 Your Summons may use your MAD score to perform Combat Maneuvers.
 These maneuvers provoke unless you as the caster have a way for them not to.
@@ -2770,10 +2770,8 @@ Lose the Impervious status at the start of your next turn.
 #Focus   1
 
 *Mental Capacity
-#Info    Max Sanity -5 
-#        Load +2
-#Skill+1 Max Sanity -3 
-#        Load +2
+#Info    -5 Sanity Max +2 Load
+#Skill+1 -3 Sanity Max +2 Load
 
 *Vessel
 #Info    Target a creature. When they die, whoever dealt the killing blow heals 1d3.
@@ -2830,7 +2828,7 @@ They do not know where these words came from.
 *Reservoir
 #Info    Any ally within range may freely use (with your permission) up to 2 of your Adrenaline on their turn.-----!!! You may Learn the Upgrades to this Skill in any order !!!--------
 #Range   6
-#Sanity  Max Sanity -4
+#Sanity  -4 Sanity Max
 #Skill+1 Up to 3
 #Skill+2 +6 Range
 #Skill+3 You may use an action to trade health totals with a willing ally within range.

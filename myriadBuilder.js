@@ -9,7 +9,7 @@ var character = {
         Level: 0,
         HP: 30,
         Sanity: 30,
-        MadResist: 0,
+        MadnessResist: 0,
         Focus: 2,
         Load: 3,
         Wealth: 0,
@@ -26,7 +26,7 @@ var character = {
         Level: 0,
         HP: 0,
         Sanity: 0,
-        MadResist: 0,
+        MadnessResist: 0,
         Focus: 0,
         Load: 0,
         Wealth: 0,
@@ -749,21 +749,16 @@ function loadCharacter(){
             passives[y].click();
         }
     }
-
-    console.log(character.misc.statValues.length);
     for(var x = 0; x < character.misc.statValues.length; x++){
-        console.log(character.stat.Accuracy);
         if(x == 0){
             var add = parseInt(character.misc.statValues[x]) * 3;
-            console.log(add);
             character.stat.Accuracy = parseInt(character.stat.Accuracy) + parseInt(add);
-            console.log(character.stat.Accuracy);
         }
         else if(x == 1){
             character.stat.Focus = character.stat.Focus + character.misc.statValues[x]*1;
         }
         else if(x == 3){
-            character.stat.MadResist = character.stat.MadResist + character.misc.statValues[x]*1;
+            character.stat.MadnessResist = character.stat.MadnessResist + character.misc.statValues[x]*1;
         }
         else{
             //str or negative
@@ -1314,43 +1309,38 @@ function calcPassives(){
         
         for(var y = 0; y < rows.length; y++){
             for(var z = 0; z < Object.keys(character.stat).length; z++){
-                if(rows[y].textContent.includes(Object.keys(character.stat)[z])){
-                    var key = Object.keys(character.stat)[z];
-                    var matches = rows[y].textContent.split(Object.keys(character.stat)[z]).filter(function(el) {return el.length != 0});
-                    matches.pop();
-                    var valueFound = false;
-                    console.log("I got here");
-                    console.log(matches);
-                    for(var a = 0; a < matches.length; a++){
-                        if(valueFound == true){
-                            break;
-                        }
-                        var words = matches[a].split(' ').filter(function(el) {return el.length != 0});
-                        console.log(words);
-                        console.log(words[words.length-1]);
-                        let adjacentWord = words[0];
-                        console.log("adjWord"+adjacentWord);
-                        console.log(key);
-                        var increment = adjacentWord.split('+')[1];
+                var key = Object.keys(character.stat)[z];
+                var matchIndex = rows[y].textContent.indexOf(key);
+                if(matchIndex != -1){
+                    var modifier = rows[y].textContent.substring(matchIndex-4, matchIndex-1);
+                    // var matches = rows[y].textContent.split(Object.keys(character.stat)[z]);
+                    // matches.pop();
+                    
+                    // console.log("I got here");
+                    // console.log(matches);
+                    
+                    // var words = matches[0].split(' ').filter(function(el) {return el.length != 0});
+                    // console.log(words);
+                    // console.log(words[words.length-1]);
+                    // let adjacentWord = words[0];
+                    // console.log("adjWord"+adjacentWord);
+                    // console.log(key);
+                    var increment = modifier.split('+')[1];
 
+                    if(increment === undefined){
+                        increment = modifier.split('-')[1];
+                        
                         if(increment === undefined){
-                            increment = adjacentWord.split('-')[1];
-                            
-                            if(increment === undefined){
-                                increment = 0;
-                            }
-                            else{
-                                increment = increment.split(' ')[0];
-                                increment = "-" + increment;
-                                valueFound = true;
-                            }
+                            increment = 0;
                         }
                         else{
-                            valueFound = true;
+                            // increment = increment.split(' ')[0];
+                            increment = "-" + increment;
                         }
-                        
-                        character.passives[key] = parseInt(character.passives[key]) + parseInt(increment);
                     }
+                    
+                    character.passives[key] = parseInt(character.passives[key]) + parseInt(increment);
+                
                 }
             }
         }
@@ -1360,7 +1350,6 @@ function calcPassives(){
 function updateStats(){
     calcPassives();
     for(var x = 0; x < Object.keys(character.stat).length; x++){
-        console.log(Object.values(character.stat)[x]);
         var total = Object.values(character.stat)[x] + Object.values(character.passives)[x];
         var name = Object.keys(character.stat)[x];
         var id = "char"+name;

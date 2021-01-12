@@ -99,7 +99,7 @@ You can not use 'Light' weapons.
 
 *True to Self
 #Info   You are either too pure or too stupid.
-You have +1 Resistance to any mind effecting abilities.
+You have +1 MadnessResist to any mind effecting abilities.
 
 *Titan Grip
 #Info   You may use two-handed weapons with one hand,
@@ -182,7 +182,7 @@ Gain +1 daily use of Venom Bite.
 You automatically succeed at climbing of any surface that is not a completely flat wall.
 You do not use extra movement to climb.
 #Skill+4 You are immune to Stun
-Max HP +4
++4 HP 
 #Skill+5 Your armor applies to one additional damage type of your choice.
 +1 Armor
 
@@ -191,9 +191,9 @@ With a Succesful MAD roll,
 Determine what a target feels Guilty about.
 #Skill+6 Grow to size Large.
 Gain +1 Armor
-Max HP +4
++4 HP 
 Gain +2 Move
-Gain Max Sanity +4
+Gain +4 Sanity Max
 Your Bite now deals 2d4+1 damage.
 #Skill+7 +1 to all Stats
 This can not increase a stat above +5
