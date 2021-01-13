@@ -735,6 +735,10 @@ function setStatChoice(indexValue, row, parentName){
 function submitCharacter(){
     var createTab = document.getElementById('character');
     var raceTab = document.getElementById('character2');
+    var tabs = document.getElementById('navBar').querySelectorAll('.tab');
+
+
+    tabs[1].innerHTML = "Skills";
     var tabs = document.querySelectorAll('.tab');
     var pages = document.querySelectorAll('.abilityIcons');
 
@@ -789,23 +793,21 @@ function generateCharacter(parent, parent2){
     var infoBar = document.getElementById('infoBar');
     var racialImg = racialProfile.querySelector('img');
     racialImg.style.removeProperty('filter');
-    
+
+    var statChoicesBar = document.querySelector('.statsChoiceBar');
+    console.log(statChoicesBar);
 
     for(var x = 0; x < character.misc.statChoices.length; x++){
         character.misc.classPoints[character.misc.statChoices[x]]++;
     }
 
-    while(parent.firstChild){
-        parent.removeChild(parent.lastChild);
-    }
+    parent.removeChild(statChoicesBar);
+    parent.removeChild(parent.lastChild);
+    
 
     while(parent2.firstChild){
         parent2.removeChild(parent2.lastChild);
     }
-
-    parent.appendChild(racialProfile);
-    parent.appendChild(racialAbilityBar);
-    parent.appendChild(infoBar);
 
     //stats Bar
     var stats = ['DEX', 'INT', 'STR', 'MAD'];
@@ -907,8 +909,8 @@ function loadCharacter(){
 function createSkillPage(){
     var skillsPage = document.querySelector('#character2');
     var groupClasses = [[],[]];
-    groupClasses[0] = ['All', 'Armor', 'Focus', 'Adrenaline', 'Wealth', 'Accuracy', 'Sanity'];
-    groupClasses[1] = ['Attack', 'Move', 'Reaction', 'Free'];
+    groupClasses[0] = ['All', 'Accuracy', 'Adrenaline', 'Armor', 'HP', 'Focus',  'Sanity', 'Wealth'];
+    groupClasses[1] = ['Full-Action', 'Attack', 'Move', 'Reaction', 'Free'];
 
     for(var x = 0; x < 2; x++){
         var title = document.createElement('h2');
@@ -1018,6 +1020,7 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
         }
     }
     else{
+        console.log(icon);
         icon.classList.add('selected');
 
         if(choiceUpgrade){
@@ -1395,6 +1398,9 @@ function addDoubleClasses(icon, desc){
 
         if(cells[0].textContent.includes('Action')){
             icon.classList.add('skillAction');
+            if(cells[1].textContent.includes('Full-Action')){
+                icon.classList.add('skillFull-Action');
+            }
             if(cells[1].textContent.includes('Attack')){
                 icon.classList.add('skillAttack');
             }
@@ -1436,7 +1442,13 @@ function addDoubleClasses(icon, desc){
 
         if(cells[1].textContent.includes('Accuracy')){
             icon.classList.add('skillAccuracy');
-        }        
+        }
+        if(cells[1].textContent.includes('HP')){
+            icon.classList.add('skillHP');
+        }
+        if(cells[1].textContent.includes('Armor')){
+            icon.classList.add('skillArmor');
+        }         
     }
 }
 
