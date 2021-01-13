@@ -1,0 +1,332 @@
+@stat
+#=======
+--DEX--
+=======
+DEX focuses on accuracy, crit, and acting quickly.  
+
+Your DEX x3 is added as Accuracy Dex x2 is added to Initiative
+
+=======
+--INT--
+=======
+INT focuses on knowledge, varied skills, and wealth.  
+
+Your INT value adds +1 Focus per INT.
+
+=======
+--STR--
+=======
+STR focuses on Health, Armor, and Weapon Damage.  
+
+Your 1dSTR is added to weapon damage rolls.
+
+=======
+--MAD--
+=======
+MAD focuses on occult spellcasting, sacrifice, and debuffs.  
+
+Your MAD subtracts from all Sanity damage recieved
+
+--------------------------
+
+============
+--Accuracy--
+============
+Accuracy is a stat which determines your chance to hit an enemy.
+
+You also gain Accuracy equal to 3x your DEX.
+
+Accuracy is also required to Critically Hit when attacking.
+
+
+With 0 Accuracy:
+
+You have a 90% Chance to hit targets with No Cover
+
+You have a 50% Chance to hit targets with Half Cover
+
+You have a 20% Chance to hit targets with Full Cover
+
+
+With 10 Accuracy:
+
+You have a 100% Chance to hit targets with No Cover.
+
+Any additional increase in Accuracy will offer you a chance to 
+
+Critically Hit targets with No Cover.
+
+========
+--Crit--
+========
+Your crit chance is determined by Accuracy.
+
+When your Accuracy roll exceeds a 100% chance to hit you deal critical damage.
+
+The chance to hit, and therefore critical, is reduced when the target of your attack has Cover.
+
+
+You need at least +1 Accuracy to crit (101% chance to hit).
+1 Accuracy gives +1% crit chance against targets with No Cover.
+
+
+You need +41 Accuracy to crit Half Cover targets.
+You need +71 Accuracy to crit Full Cover targets.
+
+==============
+--Adrenaline--
+==============
+Adrenaline is used during combat on a unique spread of special and basic abilities. 
+
+Each character by default gains 1 Adrenaline at the beggining of a round in Combat. The maximum amount of Adrenaline that can be gained is 8.
+
+
+Generally, Adrenaline is a useful tool to mitigate damage dealt to you. Chances to be hit when not using a shield is high so forcing Half Cover on attacks is valuable. 
+
+High cost and class specific Adrenaline spenders are like ultimate abilities that reward you for doing well in combat and not needing to spend adrenaline on mitigating damage. 
+
+Stealth and Ranged based characters can more easily access higher Adrenaline due to the nature of where they are positioned.    
+
+
+When you Critically hit your total damage dealt to the target is multiplied by your Crit Multiplier.
+
+The default Critical Multiplier is 1.5x
+
+==========
+--Sanity--
+==========
+When your Sanity drops to 0 you gain a Madness.  
+
+The MAD stat reduces Sanity loss by an amoutn equal to your MAD stat.  
+
+MAD associated spells will drain Sanity on cast. Various monsters may damage Sanity with attacks. Reading books and many actions can damage your Sanity.
+
+
+15 Sanity is recovered after a comfortable and safe night's rest. (costs 1 wealth per night's rest outside of a town or safe enviorment)
+
+
+????If you go down in combat, anything that damages Sanity deals +1 more sanity damage until you rest.)) Maybe not.
+
+============
+--Leveling--
+============
+Everytime you level you will have 1 Skill point to spend in each Stat tree.
+
+If you selected INT and DEX, you would put 1 point in INT and 1 point in DEX.
+
+If you selected DEX and DEX, you would put 2 points in the DEX path.
+
+
+At level 4 you will select a class.
+
+You select a class in every Stat you have access to and continue leveling them simultaneously.
+
+
+If you have 2 selections of one stat,
+you can choose to put both points into 1 class or select two classes from that same Stat.
+
+
+@Status
+#==============
+--Unconcious--
+==============
+A player who has dropped to 0 HP or lower.
+
+A player will be -hp equal to the last damage they recieved, and can be healed to become active again.
+
+At -10 HP a player dies.
+
+============
+--Poisoned--
+============
+Takes poison damage equal to poison stack at the start of turn.
+
+After recieving Poison damage, it is reduced by 2.
+Healing removes Poison equal to 1/2 of the Healing a target recieves.
+
+If out of combat, damage is dealt every 5 minutes.
+
+==========
+--OnFire--
+==========
+Target takes 1dOnFire amount of damage at the start of their turns.
+
+Removed by spending an action or being doused.
+
+===========
+--Stunned--
+===========
+A stunned creature skip's it's turn.
+
+It gains no Cover benefits.
+
+=========
+--Blind--
+=========
+Cannot use any ability which requires targeting.
+
+Gain blind vision distance.
+
+Melee attacks are made with Ethereal cover
+
+==============
+--Clear Mind--
+==============
++5 Sanity Resistance from one source of Sanity Damage
+
+==========
+--Slowed--
+==========
+-1 Move per Slow.
+
+Removes Haste.
+
+Decays by 1 at the end characters turn.
+
+=========
+--Haste--
+=========
++1 Move per Haste
+
+Removes Slow.
+
+Decays by 1 at the end characters turn.
+
+============
+--Hindered--
+============
+-2 Move
+
+No reactions
+
+=========
+--Prone--
+=========
+Pathfinder stand up provoke rules.
+
+Requires 3 move to stand.
+
+==============
+--Pure Heart--
+==============
++50% healing recieved for 1 Heal
+
+============
+--Confused--
+============
+Set a random facing direction right before using an action that targets
+
+=========
+--Sleep--
+=========
+Can take no actions.
+
+Condition ends if dealt damage or awoken
+
+==========
+--Frenzy--
+==========
+Deal 1d3 more damage with weapon attacks,
+
+but recieve 1d3 more damage from all sources.
+
+=============
+--Precision--
+=============
++0.5 crit multiplier for 1 Crit
+
+===========
+--Viglant--
+===========
+Gain +10 Accuracy per tier of Vigilant
+
+===========
+--Vicious--
+===========
+Deal +2d3 damage with weapon attacks.
+
+Also apply this damage to yourself, multiplied on a crit.
+
+Vicious damage the attacker recieves can not be reduced.
+
+=============
+--Resilient--
+=============
++1 Armor per Tier of Resilient
+
+==============
+--Vulnerable--
+==============
+Armor does not apply.
+
+Damage macro detects vulnerable condition.
+
+========
+--Weak--
+========
+-50% damage dealt with weapon attacks
+
+==========
+--Strong--
+==========
++50% damage dealt with weapon attacks
+
+=============
+--True Shot--
+=============
+2x Accuracy for 1 Shot
+
+@Level 0
+#To start the character creation process you select a race and two stat choices. After making your selection select the submit button at the bottom of the Character Tab.
+
+Race each has unique passives and determines what starting stat values the character can have.
+
+The stat selections determine what skill trees the character will unlock skills from. You can select the same stat twice, this results in getting 2 skill points in that tree each level.
+
+For example:
+
+*A STR/DEX character gets 1 STR skill point per level and 1 DEX skill point per level
+
+*A DEX/DEX character gets 2 DEX skill points per level
+
+@Level 1
+#This level unlocks Tier 1 Abilities.
+
+These can only be unlocked on level 1 so this decision is important!
+
+
+=================
+Note On Spending Points
+
+When spending points the first point in an ability unlocks the base ability and adds it to the skills tab. 
+
+Each point after the initial point will unlock a modifier to the ability.
+
+If the button says CHOOSE UPGRADE the modifierers currently locked will flash and you will click on the modifier you want to unlock. 
+
+When all available skill points have been spent the LEVEL UP+ button on the character tab is unlocked and can be clicked to level up.
+@Level 2
+#This level unlocks Tier 2 Abilities and Racial skills.
+
+Tier 2 abilities and Racial skills can be selected at every level except at level 4.
+@Level 3
+#Same as level 2.
+
+Tier 2 abilities and Racial Skills are available.
+@Level 4
+#This level unlocks Signature Abilities
+
+These can only be unlocked on level 4 so this decision is important!
+@Level 5
+#This level unlocks Classes
+
+To select a class click on the class img and click select class.
+
+You select one class in each tree selected at character creation. So if you selected the same stat tree twice you select two classes in that stat tree.
+
+Classes can be selected twice resulting in upgraded passives and the ability to spend 2 points in that class per level rather than 1.
+@Level 6
+#This level onwards skill points can be put into:
+*Tier 2 Skills
+*Racial Skills
+*Class Skills

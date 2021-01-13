@@ -515,9 +515,8 @@ they ignore you completely for 1 minute unless attacked or interacted with.
 *Maw
 #Info    Spend all of your Adrenaline.
 Deal 3 psychic damage for every 1 adrenline spent to all of your adjacent Tiles.
-#Action  Attack
+#Action  Attack, Non-Consecutive
 #Adrenaline  X
-#Non-Consecutive
 #Skill+1 Always deals a flat +1 Psychic Damage
 #Skill+2 Apply 1 Blight to all targets you dealt Psychic damage to
 

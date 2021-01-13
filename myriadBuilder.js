@@ -65,6 +65,7 @@ var character = {
 
 var raceFile;
 var abilityFile;
+var levelFile;
 var filesLoaded = 0;
 
 var file = new XMLHttpRequest();
@@ -86,12 +87,22 @@ file2.onreadystatechange = function(){
 } 
 file2.open("GET", "DataParsing/races.json");
 file2.send();
+
+var file3 = new XMLHttpRequest();
+file3.onreadystatechange = function(){
+    if (file3.readyState == 4 && file3.status == 200) {
+        levelFile = JSON.parse(file3.responseText);
+        checkFilesLoaded();
+    }
+} 
+file3.open("GET", "DataParsing/levels.json");
+file3.send();
 //=================
 
 
 function checkFilesLoaded(){
     filesLoaded += 1;
-    if(filesLoaded == 2){
+    if(filesLoaded == 3){
         createWebsite(abilityFile, raceFile);
     }
 }
@@ -109,7 +120,6 @@ function checkFilesLoaded(){
 function createWebsite(abilityArray, raceFile){
     //seperate json info into an array with all abilities and an array with 
     //index bookmarks
-    console.log(raceFile);
     var bookmarks = abilityArray[0];
     var abilities = abilityArray[1];
     var parent = document.getElementById('container');
@@ -132,8 +142,60 @@ function createWebsite(abilityArray, raceFile){
         createSkillTree(abilities, bookmarks[x], parent, navBar, x, descBar);
     }
 
+    createLevelsDescs(descBar);
+
     var firstTab = navBar.querySelector('.tab');
     firstTab.click();
+
+    activeElement("levelDesc0", character.html.activeElements, 1);    
+}
+
+function createLevelsDescs(descBar){
+    var descs = document.createElement('div');
+    descs.classList.add('abilitydescs');
+    descBar.appendChild(descs);
+
+    for(var x = 0; x < levelFile.length; x++){
+        //Create ability description
+        var levelDesc = document.createElement('div');
+        levelDesc.classList.add("abilityDesc");
+
+        //populate ability description
+        var levelHeader = document.createElement('h3');
+        var table = document.createElement('table');
+
+        if(x == 0){
+            levelHeader.innerHTML = "STATS";
+            levelDesc.id = "stats";
+        }
+        else if(x == 1){
+            levelHeader.innerHTML = "STATUS";
+            levelDesc.id = "status";
+        }
+        else{
+            levelHeader.innerHTML = "LEVEL " + (x-2);
+            levelDesc.id = "levelDesc"+(x-2);
+        }
+        
+        descs.appendChild(levelDesc);
+        
+        levelDesc.appendChild(levelHeader);
+        levelDesc.appendChild(table);
+
+        var row = document.createElement('tr');
+        var cell1 = row.insertCell(0);  
+        var pre1 = document.createElement('pre');
+        pre1.innerHTML = levelFile[x];
+        cell1.appendChild(pre1);
+
+        table.appendChild(row);
+
+        var upgradeBtn = document.createElement('button');
+        upgradeBtn.classList.add('abilityBaseLock');
+        upgradeBtn.classList.add('noClick');
+        upgradeBtn.style.visibility = "hidden";
+        levelDesc.appendChild(upgradeBtn);
+    }
 }
 
 //CHARACTER TABS
@@ -194,6 +256,25 @@ function createCharacterPages(parent, navBar, stats, raceFile, descBar){
     var choiceTitle = document.createElement('h2');
     choiceTitle.innerHTML = "Stat Choices";
     choiceBar.appendChild(choiceTitle);
+
+    var InfoBar = document.createElement('div');
+    InfoBar.id = "infoBar";
+    charPage.appendChild(InfoBar);
+
+    var levelInfoBtn = document.createElement('button');
+    levelInfoBtn.textContent = "Level Info";
+    levelInfoBtn.onclick = function(){activeElement("levelDesc"+character.stat.Level, character.html.activeElements, 1);};
+    infoBar.appendChild(levelInfoBtn);
+
+    var statsBtn = document.createElement('button');
+    statsBtn.textContent = "Stats";
+    statsBtn.onclick = function(){activeElement("stats", character.html.activeElements, 1);};
+    infoBar.appendChild(statsBtn);
+
+    var statusBtn = document.createElement('button');
+    statusBtn.textContent = "Status";
+    statusBtn.onclick = function(){activeElement("status", character.html.activeElements, 1);};
+    infoBar.appendChild(statusBtn);
     
     //stat choices x < 2 because each character picks two stats
     for(let x = 0; x < 2; x++){
@@ -536,12 +617,11 @@ function createAbility(index, parent, descRoot, stat, classNum){
     }
 
     var upgradeBtn = document.createElement('button');
+    upgradeBtnTxt = "UNLOCK ABILITY";
     if(index[0][0]){
-        upgradeBtnTxt = "CHOOSE UPGRADE";
         upgradeBtn.onclick = function(){spendPoint(abilityIcon, abilityDesc, stat, classNum, true);};
     }
     else{
-        upgradeBtnTxt = "UPGRADE";
         upgradeBtn.onclick = function(){spendPoint(abilityIcon, abilityDesc, stat, classNum, false);};
     }
 
@@ -617,9 +697,7 @@ function selectRace(raceFile, raceIndex, submitBtn, raceStats){
     var raceIcons = document.querySelectorAll(".raceDiv");
 
     var curRaceIcons = raceIcons[raceIndex];
-    console.log(curRaceIcons);
     curRaceIcons = curRaceIcons.querySelectorAll('img');
-    console.log(curRaceIcons);
 
     for(let x = 0; x < curRaceIcons.length; x++){
         var copyIcon = curRaceIcons[x].cloneNode();
@@ -708,6 +786,7 @@ function submitCharacter(){
 function generateCharacter(parent, parent2){
     var racialProfile = document.getElementById('racialProfile');
     var racialAbilityBar = document.getElementById('racialAbilityBar');
+    var infoBar = document.getElementById('infoBar');
     var racialImg = racialProfile.querySelector('img');
     racialImg.style.removeProperty('filter');
     
@@ -726,8 +805,7 @@ function generateCharacter(parent, parent2){
 
     parent.appendChild(racialProfile);
     parent.appendChild(racialAbilityBar);
-
-    
+    parent.appendChild(infoBar);
 
     //stats Bar
     var stats = ['DEX', 'INT', 'STR', 'MAD'];
@@ -806,7 +884,6 @@ function loadCharacter(){
     character.html.raceIconsDiv = document.getElementById('racialAbilityBar');
     character.html.raceSet[0] = character.html.raceIconsDiv;
     character.html.raceSet[1] = character.html.raceDescDiv;
-    console.log(character.html.raceSet);
     var raceInfo = race.querySelector('.abilityDesc');
     var raceBtn = raceInfo.querySelector('button');
     raceBtn.remove();
@@ -814,7 +891,6 @@ function loadCharacter(){
     raceBtn.click();
     raceBtn.style.display = "block";
     raceBtn.style.visibility = "hidden";
-    console.log(race);
 
     var abilityPageDescs = document.querySelectorAll('.abilitydescs .tier0');
 
@@ -923,6 +999,7 @@ function selectClass(index,stat){
 //spending points is the start of a leveling process
 //should only be clickable when you have points to spend and upgrades left
 function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
+    var descBtn = desc.querySelector('button');
     //change css of icon and desc
     if(icon.classList.contains('selected')){
         if(choiceUpgrade == false){
@@ -942,6 +1019,13 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
     }
     else{
         icon.classList.add('selected');
+
+        if(choiceUpgrade){
+            descBtn.textContent = "CHOOSE UPGRADE";
+        }
+        else{
+            descBtn.textContent = "UPGRADE";
+        }
 
         createSkillDouble(icon, desc, stat);
 
@@ -979,9 +1063,6 @@ function spendPoint(icon, desc, stat, classNum, choiceUpgrade){
         lockSet(lockClass[2]);
         }
     }
-    
-    console.log(stat);
-    console.log(character.misc.skillPoints[0]);
 
     if(stat == -1){
         if(character.misc.skillPoints[0] == 0){
@@ -1021,6 +1102,8 @@ function checkAbilityMax(desc){
 
 function chooseUpgrade(desc){
     var upgrades = desc.querySelectorAll('.abilityUpgradeLock');
+    var btn = desc.querySelector('button');
+    btn.classList.add('noClick', 'abilityBaseLock');
     for(var x = 0; x < upgrades.length; x++){
         upgrades[x].classList.add('option');
         upgrades[x].classList.remove('noClick');
@@ -1029,6 +1112,13 @@ function chooseUpgrade(desc){
 
 function selectUpgrade(row, desc){
     var upgrades = desc.querySelectorAll('.abilityUpgradeLock');
+    var btn = desc.querySelector('button');
+
+    //skill points are still available
+    if(character.misc.skillPoints[0] != 0){
+        btn.classList.remove('noClick', 'abilityBaseLock');
+    }
+
     for(var x = 0; x < upgrades.length; x++){
         upgrades[x].classList.remove('option');
     }
@@ -1133,6 +1223,15 @@ function levelUp(){
     }
 
     character.html.levelBtn.classList.add('noClick', 'abilityBaseLock');
+    var tooltipID = "none";
+    if(character.stat.Level <= 6){
+        tooltipID = "levelDesc"+character.stat.Level;
+    }
+    else{
+        tooltipID = "levelDesc5";
+    }
+
+    activeElement(tooltipID, character.html.activeElements, 1);
 }
 
 //unlock always unlocks all selected pages
@@ -1349,8 +1448,6 @@ function clickOriginal(icon){
 //+edit url and use it to load character
 
 function setSkillsActive(button, name){
-    //testing
-    console.log(name);
     var selector = '.skill' + name;
     var allSkills = document.querySelectorAll('.skillPageTier img');
     var skills = document.querySelectorAll(selector);
