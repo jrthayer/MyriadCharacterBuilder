@@ -147,7 +147,9 @@ function createWebsite(abilityArray, raceFile){
     var firstTab = navBar.querySelector('.tab');
     firstTab.click();
 
-    activeElement("levelDesc0", character.html.activeElements, 1);    
+    activeElement("levelDesc0", character.html.activeElements, 1);
+
+    alert("This is an old version of the Myriad Character Creation Process and does not represent the current system!!! There is no save functionality, it just showcases the first Myriad character creation system.");   
 }
 
 function createLevelsDescs(descBar){
