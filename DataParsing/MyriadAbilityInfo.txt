@@ -40,7 +40,7 @@ All weapons you carry gain the 'Quick' tag
 *[Tier2]
 
 *Medium Attire
-#Info    +1 Attire tier
+#Info    You can wear Medium Attire
 
 *Reactionary
 #Info    +5 to Initiative
@@ -1479,13 +1479,13 @@ STR is added to weapon damage 1 more time
 
 *Ultimate Arsenal
 #Info    You may use any weapon or shield except for Tomes.
-#Skill+1 +2 Attire tier
+#Skill+1 You may use any Attire type.
 
 *[Tier 2]
 
 *Attire+
-#Info    +1 Attire tier
-#Skill+1 +1 Attire tier
+#Info    You can wear Medium Attire
+#Skill+1 You can wear Heavy Attire
 #Skill+2 Hold Position maneuver costs -1 Adrenaline while you wear Heavy Armor
 
 *STR Technique

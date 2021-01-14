@@ -279,7 +279,7 @@ Damage macro detects vulnerable condition.
 @Level 0
 #To start the character creation process you select a race and two stat choices. After making your selection select the submit button at the bottom of the Character Tab.
 
-Race each has unique passives and determines what starting stat values the character can have.
+Each race has unique passives and determines what starting stat values the character can have.
 
 The stat selections determine what skill trees the character will unlock skills from. You can select the same stat twice, this results in getting 2 skill points in that tree each level.
 
