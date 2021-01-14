@@ -277,17 +277,19 @@ Damage macro detects vulnerable condition.
 2x Accuracy for 1 Shot
 
 @Level 0
-#To start the character creation process you select a race and two stat choices. After making your selection select the submit button at the bottom of the Character Tab.
+#To start the character creation process you select a race and two stat choices. After making your selection click the submit button at the bottom of the Character Tab.
 
 Each race has unique passives and determines what starting stat values the character can have.
 
-The stat selections determine what skill trees the character will unlock skills from. You can select the same stat twice, this results in getting 2 skill points in that tree each level.
+The stat selections determine what skill trees the character will unlock skills from. You can select the same stat twice, this results in getting 2 skill points in that stat tree each level.
 
 For example:
 
 *A STR/DEX character gets 1 STR skill point per level and 1 DEX skill point per level
 
 *A DEX/DEX character gets 2 DEX skill points per level
+
+The stat selections also determine what intial passives you get at level 0. These are added automatically and are the first row of the stat skill trees.
 
 @Level 1
 #This level unlocks Tier 1 Abilities.
@@ -309,6 +311,8 @@ When all available skill points have been spent the LEVEL UP+ button on the char
 #This level unlocks Tier 2 Abilities and Racial skills.
 
 Tier 2 abilities and Racial skills can be selected at every level except at level 4.
+
+Racial skills can be found on the character page under the info buttons.
 @Level 3
 #Same as level 2.
 

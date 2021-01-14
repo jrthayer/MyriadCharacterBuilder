@@ -3,6 +3,10 @@
 #Passive    +1 skill point at level 1.
 This skill point may immediately be placed in 1 class that you will take later.
 You do not gain the initial passively earned skills of that class until you unlock it normally.
+
+++++++++++
+THIS HAS NOT BEEN IMPLEMENTED!!!!
+++++++++++
 #Stats  +3 Any
 +2 Any
 +1 Any

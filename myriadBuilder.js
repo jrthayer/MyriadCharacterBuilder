@@ -15,11 +15,12 @@ var character = {
         Wealth: 0,
         Accuracy: 0,
         Armor: 0,
-        Melee: 0,
         Light: 0,
         Blunt: 0,
+        Heavy: 0,
         Range: 0,
         Shield: 0,
+        Thurible: 0
     },
     passives:{
         Level: 0,
@@ -31,11 +32,12 @@ var character = {
         Wealth: 0,
         Accuracy: 0,
         Armor: 0,
-        Melee: 0,
         Light: 0,
         Blunt: 0,
+        Heavy: 0,
         Range: 0,
         Shield: 0,
+        Thurible: 0
     },
     misc:{
         statChoices: [0,0],
@@ -796,6 +798,7 @@ function generateCharacter(parent, parent2){
     var racialProfile = document.getElementById('racialProfile');
     var racialAbilityBar = document.getElementById('racialAbilityBar');
     var infoBar = document.getElementById('infoBar');
+    racialAbilityBar.classList.add('submited');
     var racialImg = racialProfile.querySelector('img');
     racialImg.style.removeProperty('filter');
 
@@ -861,7 +864,13 @@ function generateCharacter(parent, parent2){
             var data = document.createElement('td');
             var pre = document.createElement('pre');
             if(y == 0){
-                pre.innerHTML = Object.keys(character.stat)[x];
+                if(x > 8){
+                    pre.innerHTML = Object.keys(character.stat)[x] + " Weapon Tier";
+                }
+                else{
+                    pre.innerHTML = Object.keys(character.stat)[x];
+
+                }
             }
             else{
                 pre.innerHTML = Object.values(character.stat)[x];
@@ -870,7 +879,24 @@ function generateCharacter(parent, parent2){
             data.appendChild(pre);
             row.appendChild(data);
         }
+        
+        if(x == 0){
+            var row2 = document.createElement('h3');
+            // var data2 = document.createElement('td');
+            // row2.appendChild(data2);
+            row2.innerHTML = 'Stats';
+            body.appendChild(row2);
+        }
+
         body.appendChild(row);
+
+        if(x == 8){
+            var row2 = document.createElement('h3');
+            // var data2 = document.createElement('td');
+            // row2.appendChild(data2);
+            row2.innerHTML = 'Weapon Tiers';
+            body.appendChild(row2);
+        }
     }
     charValues.appendChild(body);
     charValuesDiv.appendChild(charValues);
@@ -1134,15 +1160,26 @@ function selectUpgrade(row, desc, stat, classIndex){
     var btn = desc.querySelector('button');
 
     //skill points are still available
-    if(character.misc.skillPoints[0] != 0 && character.misc.skillPoints[1][stat][1][classIndex] != 0){
-        btn.classList.remove('noClick', 'abilityBaseLock');
+    if(character.stat.Level >= 5){
+        if(character.misc.skillPoints[0] != 0 && character.misc.skillPoints[1][stat][1][classIndex] != 0){
+            btn.classList.remove('noClick', 'abilityBaseLock');
+        }
     }
-
+    else{
+        if(character.misc.skillPoints[0] != 0){
+            btn.classList.remove('noClick', 'abilityBaseLock');
+        }
+    }
+    
     for(var x = 0; x < upgrades.length; x++){
         upgrades[x].classList.remove('option');
     }
     row.classList.remove('abilityUpgradeLock');
     checkAbilityMax(desc);
+
+    for(var x = 0; x < upgrades.length; x++){
+        upgrades[x].classList.add('noClick');
+    }
 }
 
 //lock level can be only one page

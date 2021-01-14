@@ -128,7 +128,8 @@ pre {
     display: none;
     width: 70%;
     float: left;
-    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
 }
 
 
@@ -641,6 +642,28 @@ h2{
 #levelUpDiv{
     width: 250px;
     margin: 25px auto;
+}
+
+#container{
+    height: 100%;
+}
+
+#charValuesDiv h3{
+    text-align: center;
+    font-weight: bold;
+    background: rgb(150,150,150);
+    padding: 5px 0px;
+    width: 165px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px; 
+}
+
+#charValuesDiv h3+tr{
+    border-top: 2px solid black;
+}
+
+.submited img{
+    filter: none;
 }
 
 @media only screen and (max-width: 1400px){

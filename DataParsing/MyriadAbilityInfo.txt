@@ -685,10 +685,17 @@ Heal an ally you touch for 3x the amount of Adrenaline spent.
 *Wonder Child
 #Info    Select 1 skill from a class from a different STAT tree
 other than the ones you have access to.
+
++++++++++
+THIS HAS NOT BEEN IMPLEMENTED!!!!
+++++++++++
 #Apply 1 Skillpoint to this ability.
 
 You may level that skill as though it were a Racial skill.
 #Skill+1 You may only select this skill twice if you are Human
++++++++++
+THIS HAS NOT BEEN IMPLEMENTED!!!!
+++++++++++
 
 *Crit Multiplier INT
 #Info    +0.30 Crit Multiplier
